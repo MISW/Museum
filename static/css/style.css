@@ -1,0 +1,111 @@
+.header {
+    padding: 30px;
+    color: blue
+}
+
+.jumbotron {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    margin-bottom: 0;
+    background-color: ;
+}
+
+@media (min-width: 768px) {
+    .jumbotron {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+    }
+}
+
+.jumbotron p:last-child {
+    margin-bottom: 0;
+}
+
+.jumbotron-heading {
+    font-weight: 300;
+}
+
+
+.jumbotron .container {
+    max-width: 40rem;
+}
+
+.text-dark {
+    color: #343a40 !important;
+}
+
+.p-2 {
+    padding: .5rem !important;
+}
+
+.mb-4,
+.my-4 {
+    margin-bottom: 1.5rem !important;
+}
+
+.shadow-sm {
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+}
+
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+}
+
+.card-body {
+    margin: 15px
+}
+
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.pricing-header {
+    max-width: 700px;
+}
+
+.card-deck .card {
+    min-width: 220px;
+}
+
+.container {
+    max-width: 960px;
+    padding-top: 50px;
+}
+
+footer {
+    padding-top: 3rem;
+}
+
+footer p {
+    margin-bottom: .25rem;
+}
+
+footer#footer {
+    background-color: #eee !important;
+}
+.site-footer.footer-bottom-vertical {
+    text-align: center;
+}
+
+.footer-bottom {
+    background-color: #1b62e5 !important;
+    padding-bottom: 3rem
+}
+
+
