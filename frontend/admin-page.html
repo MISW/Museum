@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Sample</title>
+    <!-- BootstrapのCSS読み込み -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/style.css" rel="stylesheet">
+    <!-- jQuery読み込み -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- BootstrapのJS読み込み -->
+    <script src="../static/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            <nav>
+                <a class="p-2 text-dark" href="./">管理者画面</a>
+                <style>
+                    header {
+                        border:1.5px solid;
+                        background-color:#B1DDF0;
+                        border-color:#10739E;
+                    }
+                </style>
+            </nav>
+        </div>
+
+    </header>
+
+    <main role="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card mb-4 shadow-sm">
+                        <img class="card-img-top" style="height: 100%; width: 100%; display: block;" src="../static/icons/games-icon/mistrain.png" data-holder-rendered="true">
+                        <div class="card-body">
+                            <p class="card-text">
+                                <font size="5">MIS列車でGO!</font>
+                            </p>
+                            <p>作成者：HarrisonKawagoe, yagi, SEED, タコス, okanon</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="">詳しく見る</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 sidebar">
+                    <aside role="sidebar">
+                        <ul calss="list-unstyled">
+                                <li><a class="p-3 text-dark" href="./" >申請ゲーム一覧</a></li>
+                                <li><a class="p-3 text-dark" href="./" >公開中ゲーム一覧</a></li>
+                                <li><a class="p-3 text-dark" href="./" >非公開ゲーム一覧</a></li>
+                                <li><a class="p-3 text-dark" href="./" >開発者ゲーム一覧</a></li>
+                            </ul>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
