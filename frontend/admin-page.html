@@ -16,6 +16,7 @@
 </head>
 
 <body>
+
     <header>
         <div class="header">
             <nav>
@@ -30,40 +31,70 @@
             </nav>
         </div>
     </header>
-
     <main role="main">
+        <aside>
+            <ul calss="list-unstyled">
+                    <li><a class="p-3 text-dark" href="./" >申請ゲーム一覧</a></li>
+                    <li><a class="p-3 text-dark" href="./" >公開中ゲーム一覧</a></li>
+                    <li><a class="p-3 text-dark" href="./" >非公開ゲーム一覧</a></li>
+                    <li><a class="p-3 text-dark" href="./" >開発者ゲーム一覧</a></li>
+                </ul>
+            <style>
+                aside{
+                    float:left;
+                    background-color:#F5F5F5;
+                    padding-right:30px;
+                    border:1px solid;
+                    height:900px;
+                }
+                li{
+                    margin:20px;
+                }
+            </style>
+        </aside>
         <div class="container">
             <div class="row">
-                <aside>
-                    <div class="col-xs-3">
-                        <div class="sidebar_fixed">
-                            <ul calss="list-unstyled">
-                                    <li><a class="p-3 text-dark" href="./" >申請ゲーム一覧</a></li>
-                                    <li><a class="p-3 text-dark" href="./" >公開中ゲーム一覧</a></li>
-                                    <li><a class="p-3 text-dark" href="./" >非公開ゲーム一覧</a></li>
-                                    <li><a class="p-3 text-dark" href="./" >開発者ゲーム一覧</a></li>
-                                </ul>
-                            <style>
-                                .col-md-3{
-                                    background-color:black;
-                                }
-                                aside{
-                                    float:left;
-                                }
-                            </style>
-                        </div>
-                    </div>
-                </aside>
                 <div class="col-md-6">
-                    <div class="card mb-4 shadow-sm">
-                        <img class="card-img-top" style="height: 100%; width: 100%; display: block;" src="../static/icons/games-icon/mistrain.png" data-holder-rendered="true">
+                    <div class="card mb-6 shadow-sm">
+                        <table>
+                            <tr>
+                                <th class="ID">ゲームID</th>
+                                <th class="pro">写真</th>
+                                <th class="pro">ゲーム名</th>
+                                <th class="pro">申請者</th>
+                                <th class="info">""</th>
+                                <th class="info">""</th>
+                            </tr>
+                            <!--データ入れる場所-->
+                            <tr>
+                                <td class="basic-info">0000001</td>
+                                <td class="basic-info"><img class="thumbnail" style="height:60%; width:60%; display:block;"src="../static/icons/games-icon/mistrain.png" data-holder-rendered="true"></td>
+                                <td class="basic-info"></td>
+                            </tr>
+                            <tr>
+                                <td calss="basic-info"></td>
+                                <td calss="basic-info"></td>
+                                <td calss="basic-info"></td>
+                                <td calss="basic-info"></td>
+                                <td calss="basic-info"></td>
+                                <td calss="basic-info"></td>
+                            </tr>
+                            cent
+                        </table>
                         <div class="card-body">
+                            <img class="card-img-top" style="height: 100%; width: 100%; display: block;" src="../static/icons/games-icon/mistrain.png" data-holder-rendered="true">
                             <p class="card-text">
                                 <font="5">MIS列車でGO!</font>
                             </p>
                             <p>作成者：HarrisonKawagoe, yagi, SEED, タコス, okanon</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <a href="">詳しく見る</a>
+                            <style>
+                                main{
+                                    height:auto;
+                                    min-height:100%;
+                                }
+                            </style>
                             </div>
                         </div>
                     </div>
