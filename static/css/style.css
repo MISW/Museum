@@ -26,7 +26,7 @@
 }
 
 
-.jumbotron .container {
+.jumbotron .container .container-1{
     max-width: 40rem;
 }
 
@@ -53,6 +53,7 @@ form{
 }
 
 .card {
+    width: 25%
     position: relative;
     display: -ms-flexbox;
     display: flex;
@@ -89,8 +90,22 @@ html {
 }
 
 .container {
-    max-width: 960px;
-    padding-top: 50px;
+    max-width: auto;
+    margin-top: 20px;
+}
+
+.container-1 {
+    max-width: auto;
+}
+
+.col-sm-12 {
+    width: 100%;
+    padding-left: 15px;
+    padding-top: 15px;
+}
+
+.share{
+    padding-right: 15px;
 }
 
 footer {
