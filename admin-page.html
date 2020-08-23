@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Sample</title>
+    <!-- BootstrapのCSS読み込み -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../frontend/admin-page.css" rel="stylesheet">
+    <!-- jQuery読み込み -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- BootstrapのJS読み込み -->
+    <script src="../static/js/bootstrap.min.js"></script>
+</head>
+
+<body >
+    <div id="navbar" class="navbar">
+        <a class="admin" href="./">管理者画面</a>
+        <a class="mypage" href="./"><img src="./"></a>
+        <button class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+        <div id="menu" calss="list-unstyled collapse">
+            <ul>
+                <li ><a id="request"class="p-3 text-dark text-center" href="./" >申請ゲーム一覧</a></li>
+                <li ><a id="public"class="p-3 text-dark text-center" href="./" >公開中ゲーム一覧</a></li>
+                <li ><a id="private"class="p-3 text-dark text-center" href="./" >非公開ゲーム一覧</a></li>
+                <li ><a id="developer"class="p-3 text-dark text-center" href="./" >開発者一覧</a></li>
+            </ul>
+        </div>
+    </div>
+    <main role="main">
+        <div class="innner right-block text-center">
+            <div id="menu" calss="list-unstyled collapse">
+                <ul>
+                    <li class="active"><a id="request"class="p-3 text-dark text-center" href="./" >申請ゲーム一覧</a></li>
+                    <li class="active"><a id="public"class="p-3 text-dark text-center" href="./" >公開中ゲーム一覧</a></li>
+                    <li class="active"><a id="private"class="p-3 text-dark text-center" href="./" >非公開ゲーム一覧</a></li>
+                    <li class="active"><a id="developer"class="p-3 text-dark text-center" href="./" >開発者一覧</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-1 col-md-9">
+                    <h2>申請ゲームリスト</h2>
+                    <!--データ入れる場所-->
+                    <div class="card">
+                        <table class=“table  table-hover p-2 text-nowrap overflow-auto “>
+                            <thead class=“thead-light”>
+                                <tr class="title">
+                                    <th class=“d-table-cell” style=“width:15%;” >ゲームID</th>
+                                    <th class=“d-none d-md-table-cell” style=“width:15%;“>写真</th>
+                                    <th class=“d-none d-md-table-cell” style=“width:10%;“>ゲーム名</th>
+                                    <th class=“d-table-cell”　style=“width:20%;“>申請者</th>
+                                    <th class=“d-none d-md-table-cell” style=“width:15%;“></th>
+                                    <th class=“d-table-cell” style=“width:15%;“></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="game-data"> <!-- 1つめ -->
+                                    <td class=“d-table-cell”><span class=“btn btn-primary”>0000001</span></td>
+                                    <td class=“d-none d-md-table-cell align-middle”><img src="../static/icons/games-icon/mistrain.png" width="64" height="32"></td>
+                                    <td class=“d-none d-md-table-cell align-middle ”>MIS列車でGO！</td>
+                                    <td class=“d-table-cell text-wrap align-middle”>やぎ</td><!--overflow-hidden  -->
+                                    <td calss=" d-none d-md-table-cell align-middle active"><a class="detail " href="./">詳細</a></td>
+                                    <td calss="d-none d-md-table-cell align-middle" style><button class="btn btn-primary btn-sm public" href="\.">公開</button></td>
+                                </tr>
+                                <tr class="game-data"> <!-- 1つめ -->
+                                    <td class=“d-table-cell”><span class=“btn btn-primary”>0000001</span></td>
+                                    <td class=“d-none d-md-table-cell align-middle”><img src="../static/icons/games-icon/mistrain.png" width="64" height="32"></td>
+                                    <td class=“d-none d-md-table-cell align-middle ”>MIS列車でGO！</td>
+                                    <td class=“d-table-cell text-wrap align-middle”>やぎ</td><!--overflow-hidden  -->
+                                    <td calss=" d-none d-md-table-cell align-middle active"><a class="detail " href="./">詳細</a></td>
+                                    <td calss="d-none d-md-table-cell align-middle" style><button class="btn btn-primary btn-sm public" href="\.">公開</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                            <style>
+                                .col-md-8{
+                                    padding:40px
+                                }
+                                .title{
+                                    padding:5px 10px 0px;
+                                }
+                                .ID{
+                                    margin:
+                                }
+                                .pro{
+                                    margin:
+
+                                }
+                                .info{
+
+                                }
+                            </style>
+                        <!--
+                        <div class="card-body">
+                            <img class="card-img-top" style="height: 100%; width: 100%; display: block;" src="../static/icons/games-icon/mistrain.png" data-holder-rendered="true">
+                            <p class="card-text">
+                                <font="5">MIS列車でGO!</font>
+                            </p>
+                            <p>作成者：HarrisonKawagoe, yagi, SEED, タコス, okanon</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="">詳しく見る</a>
+                                <style>
+                                    main{
+                                        height:auto;
+                                        min-height:100%;
+                                    }
+                                </style>
+                            </div>
+                        </div>
+                    -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
