@@ -8,57 +8,40 @@
     <title>Bootstrap Sample</title>
     <!-- BootstrapのCSS読み込み -->
     <link href="../static/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../static/css/style.css" rel="stylesheet">
+    <link href="../static/css/admin-page.css" rel="stylesheet">
     <!-- jQuery読み込み -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- BootstrapのJS読み込み -->
     <script src="../static/js/bootstrap.min.js"></script>
 </head>
 
-<body>
-
-    <header>
-        <div class="header">
+<body data-spy="scroll" data-target="#header">
+        <div id="header" class="navbar-header">
             <nav>
                 <a class="p-2 text-dark" href="./">管理者画面</a>
-                <style>
-                    header {
-                        border:1.5px solid;
-                        background-color:#B1DDF0;
-                        border-color:#10739E;
-                    }
-                </style>
+                <button>
+                    <a class="icon" href="./"><img src="./"></a>
+                </button>
             </nav>
         </div>
-    </header>
     <main role="main">
+        <div class="innner  right-block text-center">
+            <button class="navbar-toggle">
+                <span class="sr-only"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <ul calss=" nav navbar-nav list-unstyled">
+                <li class="active"><a id="request"class="p-3 text-dark text-center" href="./" >申請ゲーム一覧</a></li>
+                <li class="active"><a id="public"class="p-3 text-dark text-center" href="./" >公開中ゲーム一覧</a></li>
+                <li class="active"><a id="private"class="p-3 text-dark text-center" href="./" >非公開ゲーム一覧</a></li>
+                <li class="active"><a id="developer"class="p-3 text-dark text-center" href="./" >開発者一覧</a></li>
+            </ul>
+        </div>
         <div class="container">
             <div class="row">
-                <div class="col-md-2 pr-5">
-                    <ul calss="list-unstyled">
-                            <li><a class="p-3 text-dark" href="./" >申請ゲーム一覧</a></li>
-                            <li><a class="p-3 text-dark" href="./" >公開中ゲーム一覧</a></li>
-                            <li><a class="p-3 text-dark" href="./" >非公開ゲーム一覧</a></li>
-                            <li><a class="p-3 text-dark" href="./" >開発者ゲーム一覧</a></li>
-                        </ul>
-                    <style>
-                        ul{
-                            float:left;
-                            background-color:#F5F5F5;
-                            text-align:center;
-                            border:1px solid;
-                            height:900px;
-                        }
-                        ul {
-                            list-style: none;
-                        }
-                        li{
-
-                        }
-                    </style>
-                </div>
                 <div class="col-md-offset-1 col-md-9">
-                    <table class="table table-bordered tavle-responsive">
                             <tr class="title">
                                 <th class="ID">ゲームID</th>
                                 <th class="pro">写真</th>
@@ -73,14 +56,14 @@
                                 <td class="basic-info"><img class="thumbnail" style="height:5%; width:10%; display:block;"src="../static/icons/games-icon/mistrain.png" data-holder-rendered="true"></td>
                                 <td class="basic-info"></td>
                             </tr>
-                            <tr>
+                            <div class="card">
                                 <td calss="basic-info">0000002</td>
                                 <td calss="basic-info"><img class="thumbnail" style="height:5%; width:10%; display:block;"src="../static/icons/games-icon/mistrain.png" data-holder-rendered="true"></td>
                                 <td calss="basic-info">MIS列車でGO!</td>
                                 <td calss="basic-info">やぎ</td>
-                                <td calss="basic-info"><a class="detail" href="./">詳細</a></td>
-                                <td calss="basic-info" style><button class="public" href="\.">公開</button></td>
-                            </tr>
+                                <td calss="basic-info"><a class="detail " href="./">詳細</a></td>
+                                <td calss="basic-info" style><button class="btn btn-primary btn-sm public" href="\.">公開</button></td>
+                            </div>
                             <style>
                                 .col-md-8{
                                     padding:40px
@@ -99,7 +82,6 @@
 
                                 }
                             </style>
-                        </table>
                         <!--
                         <div class="card-body">
                             <img class="card-img-top" style="height: 100%; width: 100%; display: block;" src="../static/icons/games-icon/mistrain.png" data-holder-rendered="true">
