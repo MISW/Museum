@@ -19,6 +19,7 @@
     <div id="navbar" class="navbar">
         <a class="admin" href="./">管理者画面</a>
         <a class="mypage" href="./"><img src="./"></a>
+        <!--
         <button class="navbar-toggle" data-toggle="collapse" data-target="#menu">
         <div id="menu" calss="list-unstyled collapse">
             <ul>
@@ -28,6 +29,7 @@
                 <li ><a id="developer"class="p-3 text-dark text-center" href="./" >開発者一覧</a></li>
             </ul>
         </div>
+        -->
     </div>
     <main role="main">
         <div class="innner right-block text-center">
@@ -40,42 +42,46 @@
                 </ul>
             </div>
         </div>
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-md-offset-1 col-md-9">
+                <div class="col-md-10  offset-md-1">
                     <h2>申請ゲームリスト</h2>
-                    <!--データ入れる場所-->
-                    <div class="card">
-                        <table class=“table  table-hover p-2 text-nowrap overflow-auto “>
-                            <thead class=“thead-light”>
-                                <tr class="title">
-                                    <th class=“d-table-cell” style=“width:15%;” >ゲームID</th>
-                                    <th class=“d-none d-md-table-cell” style=“width:15%;“>写真</th>
-                                    <th class=“d-none d-md-table-cell” style=“width:10%;“>ゲーム名</th>
-                                    <th class=“d-table-cell”　style=“width:20%;“>申請者</th>
-                                    <th class=“d-none d-md-table-cell” style=“width:15%;“></th>
-                                    <th class=“d-table-cell” style=“width:15%;“></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="game-data"> <!-- 1つめ -->
-                                    <td class=“d-table-cell”><span class=“btn btn-primary”>0000001</span></td>
-                                    <td class=“d-none d-md-table-cell align-middle”><img src="../static/icons/games-icon/mistrain.png" width="64" height="32"></td>
-                                    <td class=“d-none d-md-table-cell align-middle ”>MIS列車でGO！</td>
-                                    <td class=“d-table-cell text-wrap align-middle”>やぎ</td><!--overflow-hidden  -->
-                                    <td calss=" d-none d-md-table-cell align-middle active"><a class="detail " href="./">詳細</a></td>
-                                    <td calss="d-none d-md-table-cell align-middle" style><button class="btn btn-primary btn-sm public" href="\.">公開</button></td>
-                                </tr>
-                                <tr class="game-data"> <!-- 1つめ -->
-                                    <td class=“d-table-cell”><span class=“btn btn-primary”>0000001</span></td>
-                                    <td class=“d-none d-md-table-cell align-middle”><img src="../static/icons/games-icon/mistrain.png" width="64" height="32"></td>
-                                    <td class=“d-none d-md-table-cell align-middle ”>MIS列車でGO！</td>
-                                    <td class=“d-table-cell text-wrap align-middle”>やぎ</td><!--overflow-hidden  -->
-                                    <td calss=" d-none d-md-table-cell align-middle active"><a class="detail " href="./">詳細</a></td>
-                                    <td calss="d-none d-md-table-cell align-middle" style><button class="btn btn-primary btn-sm public" href="\.">公開</button></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="row">
+                        <div class="col-md-9 offset-md-1">
+                            <br>
+                            <!--データ入れる場所-->
+                                <table class="list table table-dark  p-2 text-nowrap">
+                                    <thead class="thead-light">
+                                        <tr class="title">
+                                            <th scope="col" scope="col" class="d-table-cell" style="width:15%;">ゲームID</th>
+                                            <th scope="col" class="d-none d-md-table-cell" style="width:15%;">写真</th>
+                                            <th scope="col" class="d-none d-md-table-cell" style="width:10%;">ゲーム名</th>
+                                            <th scope="col" class="d-table-cell"　style="width:20%;">申請者</th>
+                                            <th scope="col" class="d-none d-md-table-cell" style="width:15%;"></th>
+                                            <th scope="col" class="d-table-cell" ></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="game-data"> <!-- 1つめ -->
+                                            <td scope="col" class="d-table-cell" style="width:15%;">0000001</td>
+                                            <td scope="col" class="d-none d-md-table-cell align-center" style="width:15%;"><img src="../static/icons/games-icon/mistrain.png" width="64" height="32"></td>
+                                            <td scope="col" class="d-none d-md-table-cell align-center" style="width:15%;">MIS列車でGO！</td>
+                                            <td scope="col" class="d-table-cell text-wrap align-center"style="width:15%;">やぎ</td><!--overflow-hidden  -->
+                                            <td calss=" d-none d-md-table-cell align-center active"style="width:15%;"><a scope="col" class="detail " href="./">詳細</a>
+                                            <button scope="col" class="btn btn-primary btn-sm public" href="\.">公開</button></td>
+                                        </tr>
+                                        <tr class="game-data"> <!-- 1つめ -->
+                                            <td class="d-table-cell d-md-table-cell align-center" style="width:15%;">0000001</td>
+                                            <td class="d-none d-md-table-cell align-center"style="width:15%;"><img src="../static/icons/games-icon/mistrain.png" width="64" height="32"></td>
+                                            <td class="d-none d-md-table-cell align-center"style="width:15%;">MIS列車でGO！</td>
+                                            <td class="d-table-cell text-wrap align-center"style="width:15%;">やぎ</td><!--overflow-hidden  -->
+                                            <td calss=" d-none d-md-table-cell align-center active"style="width:15%;"><a scope="col" class="detail " href="./">詳細</a>
+                                            <button scope="col" class="btn btn-primary btn-sm public" href="\.">公開</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
