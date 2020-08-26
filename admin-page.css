@@ -1,7 +1,6 @@
 body{
     margin:0;
     padding:0;
-    height:100px;
 }
 
 a{
@@ -9,16 +8,18 @@ a{
     color:black;
 }
 .navbar{
-    width: 100vh;
     color: blue;
     border-bottom:solid 1.5px;
     border-radius:0px;
     background-color:#B1DDF0;
     border-color:#10739E;
-    margin:0px;
-    padding:0px;
+    margin:0;
+    padding:0;
 }
 
+#side{
+    padding:0;
+}
 
 .mypage{
     float:right;
@@ -28,34 +29,42 @@ ul{
     float:left;
     background-color:#F5F5F5;
     border-right:0.5px solid;
-    height: 100vh;
     list-style: none;
 }
 li{
     margin:5px 30px 20px 5px
 }
 
-
-tr {
-    border:0.1px solid;
+table,thead,tr, th, td {
+    border-top:0.5px solid;
+    border-bottom:0.5px solid;
+    }
+table{
+    border:0.5px solid;
 }
+
 thead{
     background-color:#F5F5F5;
-    border:0.1px solid;
 }
+
+.detail{
+    color:gray;
+}
+
 
 
 @media (min-width: 768px) {
     .navbar{
-        width:100vh;
         padding: 30px;
-    }
-    .jumbotron {
-        padding-top: 6rem;
-        padding-bottom: 6rem;
     }
     html {
         font-size: 16px;
+    }
+    #menu-toggle{
+        display:none;
+    }
+    #side{
+        height:100vh;
     }
 }
 
@@ -66,8 +75,14 @@ thead{
         margin:20px 10px 0px 0px
     }
     .navbar{
-        width:100vh;
         padding: 10px 10px 0px 10px;
+        width:100vh;
+    }
+    #side{
+        display:none;
+    }
+    #menu{
+        background-color:white;
     }
 }
 
@@ -89,7 +104,5 @@ html {
 }
 
 
-.container {
-    max-width: 960px;
-}
+
 
