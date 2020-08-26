@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap Sample</title>
+    <title>管理画面　ゲーム詳細</title>
     <!-- BootstrapのCSS読み込み -->
     <link href="../static/css/bootstrap.min.css" rel="stylesheet">
     <link href="../static/css/style.css" rel="stylesheet">
@@ -18,43 +18,54 @@
 </head>
 
 <body >
-    <div class="container-fuluid">
-        <div id="navbar" class="navbar">
-            <a class="admin" href="./">管理者画面</a>
-            <a class="mypage" href="./"><img src="./"></a>
-            <button class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+    <div id="navbar" class="navbar">
+        <a class="admin" href="./">管理者画面</a>
+        <a class="mypage" href="./"><img src="./"></a>
+        <div ID="menu-toggle" class="align-right">
+            <button class="navbar-toggler d-block d-md-none align-right" data-toggle="collapse" data-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="sr-only"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
+            <div id="menu" class="collapse d-md-block text-center">
+                <ul>
+                    <li ><a id="request"class="p-3 text-dark text-center" href="./" >申請ゲーム一覧</a></li>
+                    <li ><a id="public"class="p-3 text-dark text-center" href="./" >公開中ゲーム一覧</a></li>
+                    <li ><a id="private"class="p-3 text-dark text-center" href="./" >非公開ゲーム一覧</a></li>
+                    <li ><a id="developer"class="p-3 text-dark text-center" href="./" >開発者一覧</a></li>
+                </ul>
+            </div>
         </div>
+    </div>
         <main role="main">
-        <div class="innner right-block text-center">
-                <div id="menu" class=" side list-unstyled">
-                    <ul>
-                        <li class="active"><a id="request"class="p-3 text-dark text-center" href="./" >申請ゲーム一覧</a></li>
-                        <li class="active"><a id="public"class="p-3 text-dark text-center" href="./" >公開中ゲーム一覧</a></li>
-                        <li class="active"><a id="private"class="p-3 text-dark text-center" href="./" >非公開ゲーム一覧</a></li>
-                        <li class="active"><a id="developer"class="p-3 text-dark text-center" href="./" >開発者一覧</a></li>
-                    </ul>
-                </div>
-        </div>
-            <div class="row">
-                <div class=" col-md-9">
-                    <h2 class="mr-10 col-md-8">　MIS列車でGO!</h2>
+            <div class="container-fluid">
+                <div class="row no-gutters">
+                    <div class="text-center item-center">
+                            <ul id="side" class="col-sm-3">
+                                <br>
+                                <li class="active"><a id="request"class="p-3 text-dark text-center" href="./" >申請ゲーム一覧</a></li>
+                                <li class="active"><a id="public"class="p-3 text-dark text-center" href="./" >公開中ゲーム一覧</a></li>
+                                <li class="active"><a id="private"class="p-3 text-dark text-center" href="./" >非公開ゲーム一覧</a></li>
+                                <li class="active"><a id="developer"class="p-3 text-dark text-center" href="./" >開発者一覧</a></li>
+                            </ul>
+
+                    </div>
+                <div class="col-sm-8 col-12">
+                    <h2 class="col-sm-8">MIS列車でGO!</h2>
                     <br>
                     <div class="row">
-                        <div class="col-md-11 col-md-offset-1">
+                        <div class="col-sm-11 col-sm-offset-1">
                             <img class="item-center"src="../static/icons/games-icon/mistrain.png" width="512" height="256   " alt="ゲーム画像"  >
-                            <p>　This is a pen.<br>　How are you.<br>　I'm fine, and you?</p>
-                            <p >　作成者: aaa, bbb, ccc, ddd, eee, fff, ggg, hhh, iii, jjj, kkk, lll, mmm, nnn</p>
+                            <p class="col-sm-12">This is a pen.<br>How are you.<br>I'm fine, and you?</p>
+                            <p class="col-sm-12">作成者: aaa, bbb, ccc, ddd, eee, fff, ggg, hhh, iii, jjj, kkk, lll, mmm, nnn</p>
                             <br>
-                            <p>　カテゴリ：RPG,アクション</p>
-                            <p>　対応機種：windows,mac
+                            <p class="col-sm-12">カテゴリ：RPG,アクション</p>
+                            <p class="col-sm-12">対応機種：windows,mac
                             <br>
-                            <p class="col-md-2">ダウンロード:
-                                <div class="col-md-2 ">
+                            <p class="col-sm-2 text-nowrap">ダウンロード:
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-2">
                                     <table class="teble-borderless　text-left item-left ">
                                     <tr>
                                         <td scope="col" class="d-table-cell text-wrap align-left"style="width:5%;">
@@ -82,10 +93,13 @@
                                 </p>
                                 </div>
                             <br>
-                                <div class="col-md-10">
-                            <button class="btn btn-primary col-1 offset-1 ">公開</button>
-                            <button class="btn btn-primary col-3 offset-2 ">非公開</button>
-                            <button class="btn btn-primary col-3 offset-2 ">削除</button>
+                                <div class="col-sm-12">
+                            <button class="btn btn-primary col-sm-3 ">公開</button>
+                            <div class="col-sm-1"></div>
+                            <button class="btn btn-primary col-sm-3">非公開</button>
+                            <div class="col-sm-1"></div>
+                            <button class="btn btn-primary col-sm-3">削除</button>
+                            <div class="col-sm-1"></div>
                             </div>
                         </div>
                     </div>

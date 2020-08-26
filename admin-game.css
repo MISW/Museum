@@ -2,19 +2,12 @@ body{
     margin:0;
     padding:0;
 }
-.container-fluid{
-    padding:0;
-    margin:0;
-
-}
-
 
 a{
     text-decoration:none;
     color:black;
 }
 .navbar{
-    width:100vw;
     color: blue;
     border-bottom:solid 1.5px;
     border-radius:0px;
@@ -24,6 +17,9 @@ a{
     padding:0;
 }
 
+#side{
+    padding:0;
+}
 
 .mypage{
     float:right;
@@ -33,7 +29,6 @@ ul{
     float:left;
     background-color:#F5F5F5;
     border-right:0.5px solid;
-    height:100vh;
     list-style: none;
 }
 li{
@@ -47,6 +42,12 @@ li{
     html {
         font-size: 16px;
     }
+    #menu-toggle{
+        display:none;
+    }
+    #side{
+        height:100vh;
+    }
 }
 
 @media (max-width:760px) {
@@ -59,6 +60,12 @@ li{
     .navbar{
         padding: 10px 10px 0px 10px;
         width:100vh;
+    }
+    #side{
+        display:none;
+    }
+    #menu{
+        background-color:white;
     }
 }
 
