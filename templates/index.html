@@ -44,9 +44,37 @@
                     <p>検索したいキーワードを入力してください。</p>
                     <input type="search" name="search" placeholder="キーワードを入力">
                     <input type="submit" name="submit" value="検索">
+                    <!-- 折り畳み展開ポインタ -->
+                    <div onclick="obj=document.getElementById('open').style; obj.display=(obj.display=='none')?'block':'none';">
+                        <a style="cursor:pointer;"><img src="../static/icons/plus.png" width="20px" height="20px"></a>
+                    </div>
+                    <!--// 折り畳み展開ポインタ -->
+
+                    <!-- 折り畳まれ部分 -->
+                    <div id="open" style="display:none;clear:both;background-color: #eee">
+                        <h4>対象機種</h4>
+                        <p>
+                            <input type="checkbox" name="kisyu" value="1">Windows
+                            <input type="checkbox" name="kisyu" value="2">Mac
+                            <input type="checkbox" name="kisyu" value="3">Android
+                            <input type="checkbox" name="kisyu" value="4">iOS
+                            <input type="checkbox" name="kisyu" value="5">ブラウザ
+                        </p>
+                        
+                        <h4>ゲームカテゴリ</h4>
+                        <p>
+                            <input type="checkbox" name="category" value="1">RPG
+                            <input type="checkbox" name="category" value="2">アクション
+                            <input type="checkbox" name="category" value="3">シミュレーション
+                            <input type="checkbox" name="category" value="4">パズル
+                            <input type="checkbox" name="category" value="5">音ゲー
+                        </p>
+
+                    </div>
+                    <!--// 折り畳まれ部分 -->
                 </form>
 
-                <div class="row">
+                <div class="row" position="relative">
                     <div class="col-md-4">
                         <div class="card mb-4 shadow-sm">
                             <img class="card-img-top" style="height: 100%; width: 100%; display: block;" src="../static/icons/games-icon/mistrain.png" data-holder-rendered="true">
@@ -217,6 +245,7 @@
                                 div#share_field {
                                     width: 100%;
                                 }
+
                             </style>
                             <div id="share_field">
                                 <p style="text-align: center; color: #333; font-weight: bold; font-size: 22px; letter-spacing: 1px;">SHARE</p> <a href="https://www.facebook.com/sharer/sharer.php?u=https://misw.jp" target="_blank" rel="noopener noreferrer"> <img class="snsbutton" src="../static/icons/f-ogo_RGB_HEX-100.png" width="30" height="auto"> </a> <a href="http://twitter.com/share?url=https://misw.jp&amp;text=デジタル創作サークル「MIS.W」&amp;related=misw_info" target="_blank" rel="noopener noreferrer"> <img class="snsbutton" src="../static/icons/Twitter_Social_Icon_Square_Color.png" width="30" height="auto"> </a> <a href="https://social-plugins.line.me/lineit/share?url=https://misw.jp" target="_blank" rel="noopener noreferrer"> <img class="snsbutton" src="../static/icons/LINE_SOCIAL_Square_typeA.png" width="30" height="auto"> </a>
@@ -240,4 +269,6 @@
             </div>
         </div>
     </footer>
-</body></html>
+</body>
+
+</html>
