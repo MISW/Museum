@@ -15,48 +15,41 @@
     <!-- BootstrapのJS読み込み -->
     <script src="../static/js/bootstrap.min.js"></script>
 </head>
-
 <body >
     <div id="navbar" class="navbar">
-        <a class="admin" href="./">管理者画面</a>
-        <a class="mypage" href="./"><img src="./"></a>
-        <div ID="menu-toggle" class="align-right">
-            <button class="navbar-toggler d-block d-md-none align-right" data-toggle="collapse" data-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="sr-only"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <div id="menu" class="collapse d-md-block text-center">
-                <ul>
-                    <li ><a id="request"class="p-3 text-dark text-center" href="./admin-page.html" >申請ゲーム一覧</a></li>
-                    <li ><a id="public"class="p-3 text-dark text-center" href="./admin-page-public.html" >公開中ゲーム一覧</a></li>
-                    <li ><a id="private"class="p-3 text-dark text-center" href="./admin-page-nopublic.html" >非公開ゲーム一覧</a></li>
-                    <li ><a id="developer"class="p-3 text-dark text-center" href="./" >開発者一覧</a></li>
-                </ul>
+        <a class="admin col-xs-3  text-nowrap " href="./">管理者画面</a>
+        <a class="mypage col-xs-1  col-sm-offset-7 col-xs-offset-6 " href="./"><img src="./"></a>
+        <span ID="panel-btn" class=" col-xs-1">
+        <a href="#"  data-toggle="collapse" data-target="#menu" ><span id="panel-btn-icon" ></span></a>
+            <div id="menu" class="collapse text-center text-nowrap">
+            <ul id="menu-toggle">
+                <li ><a id="request"class="p-3 text-dark text-center" href="./admin-page.html" >申請ゲーム一覧</a></li>
+                <li ><a id="public"class="p-3 text-dark text-center" href="./admin-page-public.html" >公開中ゲーム一覧</a></li>
+                <li ><a id="private"class="p-3 text-dark text-center" href="./admin-page-nopublic.html" >非公開ゲーム一覧</a></li>
+                <li ><a id="developer"class="p-3 text-dark text-center" href="./" >開発者一覧</a></li>
+            </ul>
             </div>
-        </div>
+        </span>
     </div>
+
     <main role="main">
         <div class="container-fluid">
             <div class="row no-gutters">
                 <div class="text-center item-center">
-                    <div id="side" class="col-sm-2">
-                        <ul id="side">
-                            <br>
-                            <li ><a id="request"class="p-3 text-dark text-center" href="./admin-page.html" >申請ゲーム一覧</a></li>
-                            <li ><a id="public"class="p-3 text-dark text-center" href="./admin-page-public.html" >公開中ゲーム一覧</a></li>
-                            <li ><a id="private"class="p-3 text-dark text-center" href="./admin-page-nopublic.html" >非公開ゲーム一覧</a></li>
-                            <li ><a id="developer"class="p-3 text-dark text-center" href="./" >開発者一覧</a></li>
-                        </ul>
-                    </div>
+                    <ul id="side" class="col-sm-3">
+                        <br>
+                        <li ><a id="request"class="p-3 text-dark text-center" href="./admin-page.html" >申請ゲーム一覧</a></li>
+                        <li ><a id="public"class="p-3 text-dark text-center" href="./admin-page-public.html" >公開中ゲーム一覧</a></li>
+                        <li ><a id="private"class="p-3 text-dark text-center" href="./admin-page-nopublic.html" >非公開ゲーム一覧</a></li>
+                        <li ><a id="developer"class="p-3 text-dark text-center" href="./" >開発者一覧</a></li>
+                    </ul>
                 </div>
-                <div class="col-sm-10 col-12">
+                <div class="col-sm-8 col-12">
                     <h2>申請ゲームリスト</h2>
                     <div class="row">
-                        <div class="col-sm-12 col-xs-12">
+                        <div class="col-sm-12 col-xs-12 col-8">
                             <br>
-                            <table class="table table-borderless　table-responsive   p-2 text-nowrap ">
+                            <table class="table table-borderless p-2">
                                 <thead>
                                     <tr class="title">
                                         <th scope="col" class="d-table-cell" style="width:20%;">ゲームID</th>

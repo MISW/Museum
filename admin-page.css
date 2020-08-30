@@ -1,35 +1,37 @@
-body{
-    margin:0;
-    padding:0;
-}
-
-a{
-    text-decoration:none;
-    color:black;
-}
+/*ページ設定*/
 .navbar{
     color: blue;
     border-bottom:solid 1.5px;
     border-radius:0px;
     background-color:#B1DDF0;
     border-color:#10739E;
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
+    float:none;
+    display: flex;
+	align-items: center;
 }
+
+.admin{
+}
+.mypage{
+}
+#panel-btn{
+}
+#menu-toggle{
+
+}
+
 
 #side{
     padding:0;
 }
-
-.mypage{
-    float:right;
-}
-
 ul{
     float:left;
     background-color:#F5F5F5;
     border-right:0.5px solid;
     list-style: none;
+    margin:0;
 }
 li{
     margin:5px 30px 20px 5px
@@ -47,18 +49,56 @@ thead{
     background-color:#F5F5F5;
 }
 
+
 .detail{
     color:gray;
 }
 
+/* ハンバーガーメニューアイコン*/
+#panel-btn:hover{
+}
+#panel-btn-icon{
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 14px;
+    height: 2px;
+    margin: -1px 0 0 -7px;
+    background: #2196F3;
+    transition: .2s;
+}
+#panel-btn-icon:before, #panel-btn-icon:after{
+    display: inline-block;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 14px;
+    height: 2px;
+    background: #2196F3;
+    transition: .3s;
+}
+#panel-btn-icon:before{
+    margin-top: -6px;
+}
+#panel-btn-icon:after{
+    margin-top: 4px;
+}
 
-
+/*条件付き設定*/
 @media (min-width: 768px) {
     .navbar{
-        padding: 30px;
+    }
+    .mypage{
+
+        float:right;
     }
     html {
         font-size: 16px;
+    }
+    #panel-btn{
+        display:none;
     }
     #menu-toggle{
         display:none;
@@ -69,14 +109,18 @@ thead{
 }
 
 @media (max-width:760px) {
+    #menu-toggle{
+        padding:0% 2% 2% 2%;
+        border:solid 0px;
+        float:right;
+    }
     li{
         font-size:small;
         text-align:center;
         margin:20px 10px 0px 0px
     }
     .navbar{
-        padding: 10px 10px 0px 10px;
-        width:100vh;
+        width:100%;
     }
     #side{
         display:none;
@@ -86,6 +130,16 @@ thead{
     }
 }
 
+/*基本設定*/
+body{
+    margin:0;
+    padding:0;
+}
+
+a{
+    text-decoration:none;
+    color:black;
+}
 .text-dark {
     color: #343a40 !important;
 }
@@ -101,6 +155,7 @@ thead{
 
 html {
     font-size: 14px;
+    width:100%;
 }
 
 
