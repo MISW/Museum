@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>管理者画面　申請ゲームリスト</title>
+    <title>管理者画面　公開中ゲームリスト</title>
     <!-- BootstrapのCSS読み込み -->
     <link href="../static/css/bootstrap.min.css" rel="stylesheet">
     <link href="../static/css/style.css" rel="stylesheet">
@@ -17,7 +17,7 @@
 </head>
 <body >
     <div id="navbar" class="navbar">
-        <a class="admin col-xs-3  text-nowrap " href="./">管理者画面</a>
+        <span class="admin col-xs-3 col-xs-offset-1　text-dark text-dark p-3  text-nowrap " href="./">管理者画面</span>
         <a class="mypage col-xs-1  col-sm-offset-7 col-xs-offset-6 " href="./"><img src="./"></a>
         <span ID="panel-btn" class=" col-xs-1">
         <a href="#"  data-toggle="collapse" data-target="#menu" ><span id="panel-btn-icon" ></span></a>
@@ -26,7 +26,7 @@
                 <li ><a id="request"class="p-3 text-dark text-center" href="./admin-page.html" >申請ゲーム一覧</a></li>
                 <li ><a id="public"class="p-3 text-dark text-center" href="./admin-page-public.html" >公開中ゲーム一覧</a></li>
                 <li ><a id="private"class="p-3 text-dark text-center" href="./admin-page-nopublic.html" >非公開ゲーム一覧</a></li>
-                <li ><a id="developer"class="p-3 text-dark text-center" href="./" >開発者一覧</a></li>
+                <li ><a id="developer"class="p-3 text-dark text-center" href="../templates/developers.html" >開発者一覧</a></li>
             </ul>
             </div>
         </span>
@@ -41,13 +41,13 @@
                         <li ><a id="request"class="p-3 text-dark text-center" href="./admin-page.html" >申請ゲーム一覧</a></li>
                         <li ><a id="public"class="p-3 text-dark text-center" href="./admin-page-public.html" >公開中ゲーム一覧</a></li>
                         <li ><a id="private"class="p-3 text-dark text-center" href="./admin-page-nopublic.html" >非公開ゲーム一覧</a></li>
-                        <li ><a id="developer"class="p-3 text-dark text-center" href="./" >開発者一覧</a></li>
+                        <li ><a id="developer"class="p-3 text-dark text-center" href="../templates/developers.html" >開発者一覧</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-8 col-12">
                     <h2>公開中ゲーム一覧</h2>
                     <div class="row">
-                        <div class="col-sm-12 col-xs-12 col-8">
+                        <div ID="game-list" class="col-sm-12 col-xs-12 col-8">
                             <br>
                             <table class="table table-borderless p-2">
                                 <thead>
