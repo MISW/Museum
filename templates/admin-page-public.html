@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>管理者画面　公開中ゲームリスト</title>
+    <!-- BootstrapのCSS読み込み -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/style.css" rel="stylesheet">
+    <link href="../static/css/admin-page.css" rel="stylesheet">
+    <!-- jQuery読み込み -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- BootstrapのJS読み込み -->
+    <script src="../static/js/bootstrap.min.js"></script>
+</head>
+<body >
+    <div id="navbar" class="navbar">
+        <span class="admin col-xs-3 col-xs-offset-1　text-dark text-dark p-3  text-nowrap " href="./">管理者画面</span>
+        <a class="mypage col-xs-1  col-sm-offset-7 col-xs-offset-6 " href="./"><img src="./"></a>
+        <span ID="panel-btn" class=" col-xs-1">
+        <a href="#"  data-toggle="collapse" data-target="#menu" ><span id="panel-btn-icon" ></span></a>
+            <div id="menu" class="collapse text-center text-nowrap">
+            <ul id="menu-toggle">
+                <li ><a id="request"class="p-3 text-dark text-center" href="./admin-page.html" >申請ゲーム一覧</a></li>
+                <li ><a id="public"class="p-3 text-dark text-center" href="./admin-page-public.html" >公開中ゲーム一覧</a></li>
+                <li ><a id="private"class="p-3 text-dark text-center" href="./admin-page-nopublic.html" >非公開ゲーム一覧</a></li>
+                <li ><a id="developer"class="p-3 text-dark text-center" href="../templates/developers.html" >開発者一覧</a></li>
+            </ul>
+            </div>
+        </span>
+    </div>
+
+    <main role="main">
+        <div class="container-fluid">
+            <div class="row no-gutters">
+                <div class="text-center item-center">
+                    <ul id="side" class="col-sm-3">
+                        <br>
+                        <li ><a id="request"class="p-3 text-dark text-center" href="./admin-page.html" >申請ゲーム一覧</a></li>
+                        <li ><a id="public"class="p-3 text-dark text-center" href="./admin-page-public.html" >公開中ゲーム一覧</a></li>
+                        <li ><a id="private"class="p-3 text-dark text-center" href="./admin-page-nopublic.html" >非公開ゲーム一覧</a></li>
+                        <li ><a id="developer"class="p-3 text-dark text-center" href="../templates/developers.html" >開発者一覧</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-8 col-12">
+                    <h2>公開中ゲーム一覧</h2>
+                    <div class="row">
+                        <div ID="game-list" class="col-sm-12 col-xs-12 col-8">
+                            <br>
+                            <table class="table table-borderless p-2">
+                                <thead>
+                                    <tr class="title">
+                                        <th scope="col" class="d-table-cell" style="width:20%;">ゲームID</th>
+                                        <th scope="col" class="d-none d-md-table-cell" style="width:20%;">写真</th>
+                                        <th scope="col" class="d-none d-md-table-cell" style="width:20%;">ゲーム名</th>
+                                        <th scope="col" class="d-table-cell"　style="width:20%;">申請者</th>
+                                        <th scope="col" class="d-none d-md-table-cell" style="width:20%;"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr scope="col" class="game-data"> <!-- 1つめ -->
+                                        <td scope="col" class="d-table-cell" style="width:20%;">0000001</td>
+                                        <td scope="col" class="d-none d-md-table-cell align-center" style="width:20%;"><img src="../static/icons/games-icon/mistrain.png" width="64" height="32"></td>
+                                        <td scope="col" class="d-none d-md-table-cell align-center" style="width:20%;">MIS列車でGO！</td>
+                                        <td scope="col" class="d-table-cell text-wrap align-center"style="width:20%;">やぎ</td><!--overflow-hidden  -->
+                                        <td calss=" d-none d-md-table-cell align-center active"style="width:20%;"><div class="text-right">
+                                        <a scope="col" class="detail " href="./admin-public-game-detail.html">詳細</a>
+                                        <button scope="col" class="btn btn-success btn-sm public" href="\.">公開</button>
+                                        </td></div>
+                                    </tr>
+                                    <tr scope="col" class="game-data"> <!-- 1つめ -->
+                                        <td scope="col" class="d-table-cell d-md-table-cell align-center" style="width:20%;">0000001</td>
+                                        <td scope="col" class="d-none d-md-table-cell align-center"style="width:20%;"><img src="../static/icons/games-icon/mistrain.png" width="64" height="32"></td>
+                                        <td scope="col" class="d-none d-md-table-cell align-center"style="width:20%;">MIS列車でGO！</td>
+                                        <td scope="col" class="d-table-cell text-wrap align-center"style="width:20%;">やぎ</td><!--overflow-hidden  -->
+                                        <td calss=" d-none d-md-table-cell align-center active"style="width:20%;"><div class="text-right">
+                                        <a scope="col" class="detail " href="./admin-public-game-detail.html">詳細</a>
+                                        <button scope="col" class="btn btn-success btn-sm public" href="\.">公開</button>
+                                        </td></div>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
