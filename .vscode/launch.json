@@ -1,0 +1,72 @@
+{
+    // IntelliSense を使用して利用可能な属性を学べます。
+    // 既存の属性の説明をホバーして表示します。
+    // 詳細情報は次を確認してください: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Django-runserver",
+            "type": "python",
+            "request": "launch",
+            "stopOnEntry": false,
+            "pythonPath": "${command:python.interpreterPath}",
+            "program": "${workspaceRoot}/manage.py",
+            "cwd": "${workspaceRoot}",
+            "console": "integratedTerminal",
+            "args": [
+                "runserver",
+                "--noreload",
+            ],
+            "env": {},
+            "envFile": "${workspaceFolder}/.venv",
+            "debugOptions": [
+                "WaitOnAbnormalExit",
+                "WaitOnNormalExit",
+                "RedirectOutput",
+                "DjangoDebugging",
+            ]
+        },
+        {
+            "name": "Django-makemigrations",
+            "type": "python",
+            "request": "launch",
+            "stopOnEntry": false,
+            "pythonPath": "${command:python.interpreterPath}",
+            "program": "${workspaceRoot}/manage.py",
+            "cwd": "${workspaceRoot}",
+            "console": "integratedTerminal",
+            "args": [
+                "makemigrations",
+            ],
+            "env": {},
+            "envFile": "${workspaceFolder}/.venv",
+            "debugOptions": [
+                "WaitOnAbnormalExit",
+                "WaitOnNormalExit",
+                "RedirectOutput",
+                "DjangoDebugging",
+            ]
+        },
+        {
+            "name": "Django-migrate",
+            "type": "python",
+            "request": "launch",
+            "stopOnEntry": false,
+            "pythonPath": "${command:python.interpreterPath}",
+            "program": "${workspaceRoot}/manage.py",
+            "cwd": "${workspaceRoot}",
+            "console": "integratedTerminal",
+            "args": [
+                "migrate",
+            ],
+            "env": {},
+            "envFile": "${workspaceFolder}/.venv",
+            "debugOptions": [
+                "WaitOnAbnormalExit",
+                "WaitOnNormalExit",
+                "RedirectOutput",
+                "DjangoDebugging",
+            ]
+        },
+    ]
+}
