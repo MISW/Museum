@@ -24,6 +24,8 @@ from .settings_common import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('backapp.urls')),
+    path('accounts/', include('allauth.urls')),
+    path('accounts/', include('accounts.urls'))
 ]
 
 urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)

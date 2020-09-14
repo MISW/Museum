@@ -32,6 +32,18 @@
         <a class="p-2 text-dark" href="{% url 'backapp:index' %}">ホーム</a>
         <a class="p-2 text-dark" href="{% url 'backapp:index' %}">このサイトについて</a>
         <a class="p-2 text-dark" href="{% url 'backapp:developers' %}">開発者一覧</a>
+        <!-- テスト用 -->
+        <form action="{% url 'slack_login' %}" method="post">
+          {% csrf_token %}
+
+          {% if redirect_field_value %}
+          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}">
+          {% endif %}
+
+          <button class="btn btn-primary" type="submit">ログイン</button>
+
+          
+        </form>
       </nav>
     </div>
   </header>

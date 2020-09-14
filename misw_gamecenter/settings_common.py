@@ -29,12 +29,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # created backapp
-    'backapp',
+    'backapp.apps.BackappConfig',
+    # created accounts app
+    'accounts.apps.AccountsConfig',
     # allauth setting
     'django.contrib.sites',
     'allauth',
     'allauth.account',
-    # # cloudinary setting
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.slack',
+    # cloudinary setting
     #'cloudinary',
     #'cloudinary_storage',
 ]
@@ -118,3 +122,23 @@ STATICFILES_DIRS = (
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+# using oauth
+SITE_ID = 1
+
+# slack oauth scopes
+SOCIALACCOUNT_PROVIDERS = {
+    'slack': {
+        'SCOPE': ['identity.basic', 'identity.email', 'identity.team', 'identity.avatar']
+    }
+}
+
+LOGIN_REDIRECT_URL ='/accounts/mypage_home/'

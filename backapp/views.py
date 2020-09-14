@@ -4,10 +4,12 @@ from django.views import generic
 from .models import *
 
 # Create your views here.
-class IndexView(generic.TemplateView):
+class IndexView(generic.ListView):
+    model = gameInf
     template_name = 'index.html'
 
-class DevelopersView(generic.TemplateView):
+class DevelopersView(generic.ListView):
+    model = developPartInf
     template_name = 'developers.html'
 
 class DeveloperDetailView(generic.DetailView):
