@@ -2,51 +2,48 @@
 <html lang="ja">
 
 
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>管理画面　非公開中ゲーム詳細</title>
-        <!-- BootstrapのCSS読み込み -->
-        <link href="../static/css/bootstrap.min.css" rel="stylesheet">
-        <link href="../static/css/style.css" rel="stylesheet">
-        <link href="../static/css/admin-page.css" rel="stylesheet">
-        <link href="../static/css/admin-game.css" rel="stylesheet">
-        <!-- jQuery読み込み -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <!-- BootstrapのJS読み込み -->
-        <script src="../static/js/bootstrap.min.js"></script>
-    </head>
-
-    <body >
-        <body >
-            <div id="navbar" class="navbar">
-                <span class="admin col-xs-3 col-xs-offset-1　text-dark text-dark p-3  text-nowrap " href="./">管理者画面</span>
-                <a class="mypage col-xs-1  col-sm-offset-7 col-xs-offset-6 " href="./"><img src="./"></a>
-                <span ID="panel-btn" class=" col-xs-1">
-                <a href="#"  data-toggle="collapse" data-target="#menu" ><span id="panel-btn-icon" ></span></a>
-                    <div id="menu" class="collapse text-center text-nowrap">
-                    <ul id="menu-toggle">
-                        <li ><a id="request"class="p-3 text-dark text-center" href="./admin-page.html" >申請ゲーム一覧</a></li>
-                        <li ><a id="public"class="p-3 text-dark text-center" href="./admin-page-public.html" >公開中ゲーム一覧</a></li>
-                        <li ><a id="private"class="p-3 text-dark text-center" href="./admin-page-nopublic.html" >非公開ゲーム一覧</a></li>
-                        <li ><a id="developer"class="p-3 text-dark text-center" href="../templates/developers.html" >開発者一覧</a></li>
-                    </ul>
-                    </div>
-                </span>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>管理画面　非公開ゲーム詳細</title>
+    <!-- BootstrapのCSS読み込み -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/style.css" rel="stylesheet">
+    <link href="../static/css/admin-page.css" rel="stylesheet">
+    <link href="../static/css/admin-game.css" rel="stylesheet">
+    <!-- jQuery読み込み -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- BootstrapのJS読み込み -->
+    <script src="../static/js/bootstrap.min.js"></script>
+</head>
+<body >
+    <header id="navbar" class="navbar">
+        <span class="admin col-xs-3 col-xs-offset-1　text-dark text-dark p-3  text-nowrap " href="./">管理者画面</span>
+        <a class="mypage col-xs-1  col-sm-offset-7 col-xs-offset-6 " href="./"><img src="./"></a>
+        <span ID="panel-btn" class=" col-xs-1">
+        <a href="#"  data-toggle="collapse" data-target="#menu" ><span id="panel-btn-icon" ></span></a>
+            <div id="menu" class="collapse text-center text-nowrap">
+                <ul id="menu-toggle">
+                    <li ><a id="request"class="p-3 text-dark text-center" href="./admin-page.html" >申請ゲーム一覧</a></li>
+                    <li ><a id="public"class="p-3 text-dark text-center" href="./admin-page-public.html" >公開中ゲーム一覧</a></li>
+                    <li ><a id="private"class="p-3 text-dark text-center" href="./admin-page-nopublic.html" >非公開ゲーム一覧</a></li>
+                    <li ><a id="developer"class="p-3 text-dark text-center" href="../templates/developers.html" >開発者一覧</a></li>
+                </ul>
             </div>
-        <main role="main">
-            <div class="container-fluid">
-                <div class="row no-gutters">
-                    <div class="text-center item-center">
-                            <ul id="side" class="col-sm-3">
-                                <br>
-                                <li ><a id="request"class="p-3 text-dark text-center" href="./admin-page.html" >申請ゲーム一覧</a></li>
-                                <li ><a id="public"class="p-3 text-dark text-center" href="./admin-page-public.html" >公開中ゲーム一覧</a></li>
-                                <li ><a id="private"class="p-3 text-dark text-center" href="./admin-page-nopublic.html" >非公開ゲーム一覧</a></li>
-                                <li ><a id="developer"class="p-3 text-dark text-center" href="../templates/developers.html" >開発者一覧</a></li>
-                            </ul>
-
+        </span>
+    </header>
+    <main role="main">
+        <div class="container-fluid">
+            <div class="row no-gutters">
+                <div class="text-center item-center">
+                        <ul id="side" class="col-sm-3">
+                            <br>
+                            <li ><a id="request"class="p-3 text-dark text-center" href="./admin-page.html" >申請ゲーム一覧</a></li>
+                            <li ><a id="public"class="p-3 text-dark text-center" href="./admin-page-public.html" >公開中ゲーム一覧</a></li>
+                            <li ><a id="private"class="p-3 text-dark text-center" href="./admin-page-nopublic.html" >非公開ゲーム一覧</a></li>
+                            <li ><a id="developer"class="p-3 text-dark text-center" href="../templates/developers.html" >開発者一覧</a></li>
+                        </ul>
                     </div>
                 <div class="col-sm-8 col-12">
                     <h2 class="col-sm-8">MIS列車でGO!</h2>
