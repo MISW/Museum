@@ -1,0 +1,214 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+Bootstrap Sample
+{% endblock title %}
+
+{% block main %}
+<main role="main">
+  <section class="jumbotron text-center">
+    <div>
+      <h1 class="jumbotron-heading">みすゲームセンター</h1>
+      <p class="lead text-muted">みすの部員が作ったゲームで遊べる</p>
+    </div>
+  </section>
+
+  <div>
+    <div class="container">
+      <form action="cgi-bin/example.cgi" method="post">
+        <p>検索したいキーワードを入力してください。</p>
+        <input type="search" name="search" placeholder="キーワードを入力">
+        <input type="submit" name="submit" value="検索">
+        <!-- 折り畳み展開ポインタ -->
+        <div onclick="obj=document.getElementById('open').style; obj.display=(obj.display=='none')?'block':'none';">
+          <a style="cursor:pointer;"><img src="../static/icons/plus.png" width="20px" height="20px"></a>
+        </div>
+        <!--// 折り畳み展開ポインタ -->
+
+        <!-- 折り畳まれ部分 -->
+        <div id="open" style="display:none;clear:both;background-color: #eee">
+          <h4>対象機種</h4>
+          <p>
+            <input type="checkbox" name="kisyu" value="1">Windows
+            <input type="checkbox" name="kisyu" value="2">Mac
+            <input type="checkbox" name="kisyu" value="3">Android
+            <input type="checkbox" name="kisyu" value="4">iOS
+            <input type="checkbox" name="kisyu" value="5">ブラウザ
+          </p>
+
+          <h4>ゲームカテゴリ</h4>
+          <p>
+            <input type="checkbox" name="category" value="1">RPG
+            <input type="checkbox" name="category" value="2">アクション
+            <input type="checkbox" name="category" value="3">シミュレーション
+            <input type="checkbox" name="category" value="4">パズル
+            <input type="checkbox" name="category" value="5">音ゲー
+          </p>
+
+        </div>
+        <!--// 折り畳まれ部分 -->
+      </form>
+
+      <div class="row" position="relative">
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img class="card-img-top" style="height: 100%; width: 100%; display: block;"
+              src="../static/icons/games-icon/mistrain.png" data-holder-rendered="true">
+            <div class="card-body">
+              <p class="card-text">
+                <font size="5">MIS列車でGO!</font>
+              </p>
+              <p>作成者：HarrisonKawagoe, yagi, SEED, タコス, okanon</p>
+              <div class="d-flex justify-content-between align-items-center">
+
+                <a href="">詳しく見る</a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img class="card-img-top" style="height: 100%; width: 100%; display: block;"
+              src="../static/icons/games-icon/mistrain.png" data-holder-rendered="true">
+            <div class="card-body">
+              <p class="card-text">
+                <font size="5">MIS列車でGO!</font>
+              </p>
+              <p>作成者：HarrisonKawagoe, yagi, SEED, タコス, okanon</p>
+              <div class="d-flex justify-content-between align-items-center">
+
+                <a href="">詳しく見る</a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img class="card-img-top" style="height: 100%; width: 100%; display: block;"
+              src="../static/icons/games-icon/mistrain.png" data-holder-rendered="true">
+            <div class="card-body">
+              <p class="card-text">
+                <font size="5">MIS列車でGO!</font>
+              </p>
+              <p>作成者：HarrisonKawagoe, yagi, SEED, タコス, okanon</p>
+              <div class="d-flex justify-content-between align-items-center">
+
+                <a href="">詳しく見る</a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img class="card-img-top" style="height: 100%; width: 100%; display: block;"
+              src="../static/icons/games-icon/mistrain.png" data-holder-rendered="true">
+            <div class="card-body">
+              <p class="card-text">
+                <font size="5">MIS列車でGO!</font>
+              </p>
+              <p>作成者：HarrisonKawagoe, yagi, SEED, タコス, okanon</p>
+              <div class="d-flex justify-content-between align-items-center">
+
+                <a href="">詳しく見る</a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img class="card-img-top" style="height: 100%; width: 100%; display: block;"
+              src="../static/icons/games-icon/mistrain.png" data-holder-rendered="true">
+            <div class="card-body">
+              <p class="card-text">
+                <font size="5">MIS列車でGO!</font>
+              </p>
+              <p>作成者：HarrisonKawagoe, yagi, SEED, タコス, okanon</p>
+              <div class="d-flex justify-content-between align-items-center">
+
+                <a href="">詳しく見る</a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img class="card-img-top" style="height: 100%; width: 100%; display: block;"
+              src="../static/icons/games-icon/mistrain.png" data-holder-rendered="true">
+            <div class="card-body">
+              <p class="card-text">
+                <font size="5">MIS列車でGO!</font>
+              </p>
+              <p>作成者：HarrisonKawagoe, yagi, SEED, タコス, okanon</p>
+              <div class="d-flex justify-content-between align-items-center">
+
+                <a href="">詳しく見る</a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img class="card-img-top" style="height: 100%; width: 100%; display: block;"
+              src="../static/icons/games-icon/mistrain.png" data-holder-rendered="true">
+            <div class="card-body">
+              <p class="card-text">
+                <font size="5">MIS列車でGO!</font>
+              </p>
+              <p>作成者：HarrisonKawagoe, yagi, SEED, タコス, okanon</p>
+              <div class="d-flex justify-content-between align-items-center">
+
+                <a href="">詳しく見る</a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img class="card-img-top" style="height: 100%; width: 100%; display: block;"
+              src="../static/icons/games-icon/mistrain.png" data-holder-rendered="true">
+            <div class="card-body">
+              <p class="card-text">
+                <font size="5">MIS列車でGO!</font>
+              </p>
+              <p>作成者：HarrisonKawagoe, yagi, SEED, タコス, okanon</p>
+              <div class="d-flex justify-content-between align-items-center">
+
+                <a href="">詳しく見る</a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img class="card-img-top" style="height: 100%; width: 100%; display: block;"
+              src="../static/icons/games-icon/mistrain.png" data-holder-rendered="true">
+            <div class="card-body">
+              <p class="card-text">
+                <font size="5">MIS列車でGO!</font>
+              </p>
+              <p>作成者：HarrisonKawagoe, yagi, SEED, タコス, okanon</p>
+              <div class="d-flex justify-content-between align-items-center">
+
+                <a href="">詳しく見る</a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock main %}

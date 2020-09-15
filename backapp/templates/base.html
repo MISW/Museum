@@ -1,0 +1,106 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{% block title %}{% endblock title %}</title>
+
+  <!-- BootstrapのCSS読み込み -->
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+  <!-- jQuery読み込み -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+  <!-- BootstrapのJS読み込み -->
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+  {% block head %}{% endblock head %}
+</head>
+
+<body>
+  {% block headerupper %}{% endblock headerupper %}
+
+  <header>
+    <div class="header">
+      <nav>
+        <a class="p-2 text-dark" href="{% url 'backapp:index' %}">ホーム</a>
+        <a class="p-2 text-dark" href="{% url 'backapp:index' %}">このサイトについて</a>
+        <a class="p-2 text-dark" href="{% url 'backapp:developers' %}">開発者一覧</a>
+        <!-- テスト用 -->
+        <form action="{% url 'slack_login' %}" method="post">
+          {% csrf_token %}
+
+          {% if redirect_field_value %}
+          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}">
+          {% endif %}
+
+          <button class="btn btn-primary" type="submit">ログイン</button>
+
+          
+        </form>
+      </nav>
+    </div>
+  </header>
+
+  {% block main %}{% endblock main %}
+
+  <footer id="footer" role="contentinfo"
+    class="site-footer main-footer footer-bottom-vertical site-footer-inverted main-footer-inverted">
+    <div class="foot-container">
+      <div class="footer-widgets">
+        <div class="footer--widgets widget-area widgets--columned-layout widgets--columns-3" role="complementary">
+          <div id="custom_html-2" class="widget_text widget widget_custom_html">
+            <div class="textwidget custom-html-widget">
+              <style>
+                .snsbutton {
+                  margin: 10px 15px -20px;
+                }
+
+                footer a::after {
+                  height: 0px !important;
+                }
+
+                div#share_field {
+                  width: 100%;
+                }
+              </style>
+              <div id="share_field">
+                <p style="text-align: center; color: #333; font-weight: bold; font-size: 22px; letter-spacing: 1px;">
+                  SHARE</p> <a href="https://www.facebook.com/sharer/sharer.php?u=https://misw.jp" target="_blank"
+                  rel="noopener noreferrer"> <img class="snsbutton" src="../static/icons/f-ogo_RGB_HEX-100.png"
+                    width="30" height="auto"> </a> <a
+                  href="http://twitter.com/share?url=https://misw.jp&amp;text=デジタル創作サークル「MIS.W」&amp;related=misw_info"
+                  target="_blank" rel="noopener noreferrer"> <img class="snsbutton"
+                    src="../static/icons/Twitter_Social_Icon_Square_Color.png" width="30" height="auto"> </a> <a
+                  href="https://social-plugins.line.me/lineit/share?url=https://misw.jp" target="_blank"
+                  rel="noopener noreferrer"> <img class="snsbutton" src="../static/icons/LINE_SOCIAL_Square_typeA.png"
+                    width="30" height="auto"> </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="footer-bottom-content">
+
+          <div>
+            <div>
+              <font color="#ffffff">© 2018-2020 MIS.W</font>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
