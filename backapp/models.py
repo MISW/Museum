@@ -22,7 +22,7 @@ class developPartInf(models.Model): #ゲーム開発者テーブル
     partinf = models.TextField()
 
 class developerInf(models.Model): #開発者情報テーブル
-    gameid = models.IntegerField()
+    developerid = models.IntegerField()
     description = models.TextField()
     image = models.ImageField(upload_to='images/developerInf')
 
