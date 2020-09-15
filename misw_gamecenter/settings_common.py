@@ -141,6 +141,9 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
-LOGIN_REDIRECT_URL ='/accounts/mypage_home/'
+LOGIN_REDIRECT_URL ='/accounts/mypage_home'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/'
+
+ACCOUNT_LOGOUT_ON_GET = True
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
