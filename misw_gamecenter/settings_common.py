@@ -142,3 +142,5 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 LOGIN_REDIRECT_URL ='/accounts/mypage_home/'
+
+AUTH_USER_MODEL = 'accounts.CustomUser'
