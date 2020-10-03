@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 """
 Django settings for misw_gamecenter project.
 
@@ -121,3 +122,31 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+=======
+import os
+import django_heroku
+
+from .settings_common import *
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
+
+ALLOWED_HOSTS = ['.herokuapp.com']
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.environ.get('SECRET_KEY')
+
+# It contains database, staticfiles, logging and secret_key setting in heroku
+# https://github.com/heroku/django-heroku
+django_heroku.settings(locals())
+
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True
+
+# default storage: cloudianry_storage
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+# static file: whitenoise
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+>>>>>>> 11302c4c05fa880201ce46afb9e9b8369cfaa17e
