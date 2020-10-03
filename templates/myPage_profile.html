@@ -23,30 +23,31 @@
  
     <header class=""><!--mypage_home.html　をbaseにしてinclude-->
         <div class="container-fluid "> 
+
             <nav class="navbar navbar-expand navbar-light" style="background-color:rgb(195, 215, 252)">
                 <ul class="nav nav-tabs pull-left">
                     <li class="float-left">
                         <a class="nav-item navbar-brand" href="./mypage_home.html">マイページ</a>
                     </li>
                 </ul>
-                
+
                 <ul class="nav nav-tabs pull-right">
                     <li class="nav-item nav-link">
                         <a href="myPage_application_new.html"><button type="button" class="btn btn-primary">新規申請</button></a>
                     </li>
                     <li class="nav-item dropdown pr-2">
                         <button class="dropdown-toggle p-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                           <img src="../static/icons/profile.svg" class="rounded-circle" width="32" height="32"> 
+                           <img src="../static/icons/profile.svg" class="rounded-circle" width="32" height="32">
                         </button>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="./mypage_home.html">マイページトップへ</a>
                             <div role="separator" class="divider"></div>
                             <a class="dropdown-item" href="#">管理者ログイン</a>
                         </div>
-                    </li> 
+                    </li>
                 </ul>
             </nav>
-        </div> 
+        </div>
 
     </header>
 
@@ -63,10 +64,12 @@
                 <div class="container">
                     <div class="row align-items-center mx-auto justify-content-center">
                         <div class="col-xs-12 col-md-4 text-center pb-5"> <!-- col-12 col-md-4 --> <!-- col-4 col-auto-->
+
                             <label for="profileImageInput">
                                 <img id="profileImage" class="img-fluid rounded-circle" src="../static//icons/profile.svg" alt="プロフィール画像" width="200" height="200"> 
                             </label>
                             <input id="profileImageInput" name="profileImageInput" type="file" class="form-control-file center-block" name="profileImageInput" accept="image/*">
+
                         </div>
                         <div class="col-xs-12 col-md-8 text-left "> <!-- col-12 col-md-8 --> <!-- col-8 col-auto-->
                             <div style="overflow-wrap: break-word; word-wrap: break-word;" ></div>
@@ -90,7 +93,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </section>
@@ -101,8 +104,8 @@
             </div>
 
         </form>
-        
-       
+
+
     </main>
 
     <script>
@@ -112,7 +115,7 @@
                 $("#profileImage").attr('src',"");
                 return;
             }
-            
+
             var reader = new FileReader();
             reader.onload = function (e) {
                 $("#profileImage").attr('src', e.target.result);
@@ -146,10 +149,11 @@
 
 
 
-        $('form').submit(           
+        $('form').submit(
             function(){
                 alert("「ひとこと」を「"+$('#shortCommentInput').val()+"」、\n「代」を"+$('#generationInput').val()+"に変更します。");
             } 
+
         );
     </script>
 

@@ -1,0 +1,182 @@
+
+/*基本設定*/
+body{
+    margin:0;
+    padding:0;
+}
+
+a{
+    text-decoration:none;
+    color:black;
+}
+
+.text-dark {
+    color: #343a40 !important;
+}
+
+.p-2 {
+    padding: .5rem !important;
+}
+
+.mb-4,
+.my-4 {
+    margin-bottom: 1.5rem !important;
+}
+
+html {
+    font-size: 14px;
+    width:100%;
+}
+
+/*ページ設定*/
+.navbar{
+    color: blue;
+    border-bottom:solid 1.5px;
+    border-radius:0px;
+    background-color:#B1DDF0;
+    border-color:#10739E;
+    margin:0;
+}
+
+.admin{
+    position: relative;
+}
+.mypage{
+    position: relative;
+
+}
+#panel-btn{
+    position: relative;
+
+}
+#menu-toggle{
+
+}
+
+
+#side{
+    padding:0;
+}
+ul{
+    float:left;
+    background-color:#F5F5F5;
+    border-right:0.5px solid;
+    list-style: none;
+    margin:0;
+}
+li{
+    margin:5px 30px 20px 5px
+}
+
+table,thead,tr, th, td {
+    border-top:0.5px solid;
+    border-bottom:0.5px solid;
+    }
+table{
+    border:0.5px solid;
+}
+
+thead{
+    background-color:#F5F5F5;
+}
+
+
+.detail{
+    color:gray;
+}
+
+/* ハンバーガーメニューアイコン*/
+#panel-btn:hover{
+}
+#panel-btn-icon{
+    display: inline-block;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width: 14px;
+    height: 2px;
+    margin: -1px 0 0 -7px;
+    background: #2196F3;
+    transition: .2s;
+    margin-bottom:3%;
+}
+#panel-btn-icon:before, #panel-btn-icon:after{
+    display: inline-block;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 14px;
+    height: 2px;
+    background: #2196F3;
+    transition: .3s;
+}
+#panel-btn-icon:before{
+    margin-top: -6px;
+}
+#panel-btn-icon:after{
+    margin-top: 4px;
+}
+
+/*条件付き設定*/
+@media (min-width: 768px) {
+    .navbar{
+        display:flex;
+        float:none;
+        align-items: center;
+        padding:0;
+
+    }
+    .mypage{
+
+        float:right;
+    }
+    html {
+        font-size: 16px;
+    }
+    table{
+        margin-left:5%;
+    }
+    #panel-btn{
+        display:none;
+    }
+    #menu-toggle{
+        display:none;
+    }
+    #side{
+        height:100vh;
+    }
+}
+
+@media (max-width:760px) {
+    #menu-toggle{
+        padding:0% 2% 2% 2%;
+        border:solid 0px;
+        float:right;
+    }
+    li{
+        font-size:small;
+        text-align:center;
+        margin:20px 10px 0px 0px
+    }
+    table{
+        margin:0;
+        padding:0;
+    }
+    .navbar{
+        width:100%;
+        padding: 5% 0% 5%;
+    }
+    #side{
+        display:none;
+    }
+    #menu{
+        background-color:white;
+    }
+    table{
+        font-size:10px;
+    }
+    #game-list{
+        padding:0;
+    }
+}
