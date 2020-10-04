@@ -47,12 +47,7 @@ html {
 }
 #panel-btn{
     position: relative;
-
 }
-#menu-toggle{
-
-}
-
 
 #side{
     padding:0;
@@ -86,8 +81,6 @@ thead{
 }
 
 /* ハンバーガーメニューアイコン*/
-#panel-btn:hover{
-}
 #panel-btn-icon{
     display: inline-block;
     position: relative;
