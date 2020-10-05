@@ -17,16 +17,35 @@
 
 <body>
 
+
     <header>
-        <div class="header">
-            <nav>
-                <a class="p-2 text-dark" href="./">ホーム</a>
-                <a class="p-2 text-dark" href="./">このサイトについて</a>
-                <a class="p-2 text-dark" href="./developers.html">開発者一覧</a>
-            </nav>
-        </div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="./index.html">みすゲームセンター</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./index.html">ホーム</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./developers.html">開発者一覧</a>
+                    </li>
+                </ul>
+                
+                <ul class="nav nav-tabs pull-right">
+                    <li class="nav-item">
+                        <a href=""><button type="button" class="btn btn-primary">ログイン</button></a>
+                    </li>
+                </ul>
+                   
+            </div>
+        </nav>
 
     </header>
+
 
     <main role="main">
 
@@ -245,7 +264,6 @@
                                 div#share_field {
                                     width: 100%;
                                 }
-
                             </style>
                             <div id="share_field">
                                 <p style="text-align: center; color: #333; font-weight: bold; font-size: 22px; letter-spacing: 1px;">SHARE</p> <a href="https://www.facebook.com/sharer/sharer.php?u=https://misw.jp" target="_blank" rel="noopener noreferrer"> <img class="snsbutton" src="../static/icons/f-ogo_RGB_HEX-100.png" width="30" height="auto"> </a> <a href="http://twitter.com/share?url=https://misw.jp&amp;text=デジタル創作サークル「MIS.W」&amp;related=misw_info" target="_blank" rel="noopener noreferrer"> <img class="snsbutton" src="../static/icons/Twitter_Social_Icon_Square_Color.png" width="30" height="auto"> </a> <a href="https://social-plugins.line.me/lineit/share?url=https://misw.jp" target="_blank" rel="noopener noreferrer"> <img class="snsbutton" src="../static/icons/LINE_SOCIAL_Square_typeA.png" width="30" height="auto"> </a>
@@ -269,6 +287,4 @@
             </div>
         </div>
     </footer>
-</body>
-
-</html>
+</body></html>
