@@ -1,11 +1,14 @@
 from django.db import models
 
+from accounts.models import CustomUser
+
 # Create your models here.
+"""
 class gameInf(models.Model): #ゲーム情報テーブル
     gameid = models.IntegerField()
     title = models.TextField()
     description = models.TextField()
-    userid = models.IntegerField()
+    user = models.ForeignKey(CustomUser, verbose_name='User', on_delete=models.PROTECT)
     status = models.IntegerField()
     image = models.ImageField(upload_to='images/gameInf')
     submittedtime = models.DateTimeField()
@@ -18,18 +21,15 @@ class gameScore(models.Model): #ゲームスコアテーブル
 
 class developPartInf(models.Model): #ゲーム開発者テーブル
     gameid = models.IntegerField()
-    developerid = models.IntegerField()
+    user = models.ForeignKey(CustomUser, verbose_name='User', on_delete=models.PROTECT)
     partinf = models.TextField()
 
 class developerInf(models.Model): #開発者情報テーブル
-    developerid = models.IntegerField()
+    user = models.ForeignKey(CustomUser, verbose_name='User', on_delete=models.PROTECT)
     description = models.TextField()
-    image = models.ImageField(upload_to='images/developerInf')
 
 class developPartInf(models.Model): #開発者マスタ
-    developerid = models.IntegerField()
-    developername = models.TextField()
-    generation = models.IntegerField()
+    user = models.ForeignKey(CustomUser, verbose_name='User', on_delete=models.PROTECT)
 
 class statusInf(models.Model): #状態マスタ
     statusid = models.IntegerField()
@@ -51,3 +51,4 @@ class GameCategoryInf(models.Model): #カテゴリテーブル
 class categoryInf(models.Model): #カテゴリマスタ
     categoryid = models.IntegerField()
     categoryname = models.TextField()
+"""
