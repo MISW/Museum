@@ -8,7 +8,6 @@ class IndexView(generic.TemplateView):
     #model = gameInf
     template_name = 'index.html'
 
-"""
 class DevelopersView(generic.ListView):
     #model = developPartInf
     template_name = 'developers.html'
@@ -20,4 +19,3 @@ class DeveloperDetailView(generic.DetailView):
 class GameDetalView(generic.DetailView):
     #model = gameInf
     template_name = 'game-detail.html'
-"""
