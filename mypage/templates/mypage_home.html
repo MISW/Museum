@@ -24,16 +24,16 @@
           <div style="overflow-wrap: break-word; word-wrap: break-word;">
             <div class="row p-2">
               <span class="col-6 col-md-5">ハンドルネーム: </span>
-              <span class="col-6 col-md-5">NAME</span>
+              <span class="col-6 col-md-5">{{ user.username }}</span>
             </div>
             <div class="row p-2">
               <span class="col-6 col-md-5">代: </span>
-              <span class="col-6 col-md-5">00</span>
+              <span class="col-6 col-md-5">{{ user.generation }}</span>
             </div>
             <div class="row p-2">
               <span class="col-6 col-md-5">ひとこと: </span>
               <span class="col-6 col-md-5">
-                <p>何か適当な一言をここに入力します。少し長め場合も考えてみます。さらに長い場合も以下同文。</p>
+                <p>{{description}}</p>
               </span>
             </div>
           </div>
@@ -147,4 +147,3 @@
 
 </main>
 {% endblock main %}
-
