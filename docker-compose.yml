@@ -22,7 +22,8 @@ services:
     db:
         image: postgres:12
         volumes: 
-            - postgres_data:/var/lib/postgresql/data
+            - dbdata:/var/lib/postgresql/dbdata
+            - ./initdb:/docker-entrypoint-initdb.d
         environment: 
             - POSTGRES_USER=django_db_user
             - POSTGRES_PASSWORD=django_db_password
@@ -30,4 +31,5 @@ services:
 
 
 volumes: 
-    postgres_data:
+    dbdata:
+        driver: local
