@@ -10,12 +10,17 @@ class GameInf(models.Model): #ゲーム情報テーブル
     user = models.ForeignKey(CustomUser, verbose_name='User', on_delete=models.PROTECT)
     status = models.IntegerField()
     image = models.ImageField(upload_to='images/GameInf')
-    submittedtime = models.DateTimeField()
-    updatedtime = models.DateTimeField()
+    submittedtime = models.DateTimeField(blank=True, null=True)
+    updatedtime = models.DateTimeField(blank=True, null=True)
+    link_browser = models.TextField(blank=True, null=True)
+    link_Windows = models.TextField(blank=True, null=True)
+    link_Mac = models.TextField(blank=True, null=True)
+    link_Android = models.TextField(blank=True, null=True)
+    link_iOS = models.TextField(blank=True, null=True)
 
     class Meta:
         verbose_name_plural = 'GameInf'
-    
+
     def __str__(self):
         return self.title
 
@@ -26,7 +31,7 @@ class GameScore(models.Model): #ゲームスコアテーブル
 
     class Meta:
         verbose_name_plural = 'GameScore'
-    
+
     def __str__(self):
         return self.title
 
@@ -37,7 +42,7 @@ class DevelopPartInf(models.Model): #ゲーム開発者テーブル
 
     class Meta:
         verbose_name_plural = 'DevelopPartInf'
-    
+
     def __str__(self):
         return self.title
 
@@ -47,7 +52,7 @@ class DeveloperInf(models.Model): #開発者情報テーブル
 
     class Meta:
         verbose_name_plural = 'DeveloperInf'
-    
+
     def __str__(self):
         return self.title
 
@@ -57,7 +62,7 @@ class StatusInf(models.Model): #状態マスタ
 
     class Meta:
         verbose_name_plural = 'StatusInf'
-    
+
     def __str__(self):
         return self.title
 
@@ -68,7 +73,7 @@ class DownloadLinkInf(models.Model): #ダウンロードリンクテーブル
 
     class Meta:
         verbose_name_plural = 'DownloadLinkInf'
-    
+
     def __str__(self):
         return self.title
 
@@ -78,7 +83,7 @@ class MachineInf(models.Model): #機種マスタ
 
     class Meta:
         verbose_name_plural = 'MachineInf'
-    
+
     def __str__(self):
         return self.title
 
@@ -88,7 +93,7 @@ class GameCategoryInf(models.Model): #カテゴリテーブル
 
     class Meta:
         verbose_name_plural = 'GameCategoryInf'
-    
+
     def __str__(self):
         return self.title
 
@@ -98,6 +103,6 @@ class CategoryInf(models.Model): #カテゴリマスタ
 
     class Meta:
         verbose_name_plural = 'CategoryInf'
-    
+
     def __str__(self):
         return self.title

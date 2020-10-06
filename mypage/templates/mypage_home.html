@@ -64,31 +64,21 @@
             </tr>
           </thead>
           <tbody>
+            {% for app in applications %}
             <tr>
-              <!-- 1つめ -->
-              <td class="d-table-cell"><span class="btn btn-primary status_public">公開中</span></td>
-              <td class="d-none d-md-table-cell align-middle">0000000</td>
-              <td class="d-none d-md-table-cell align-middle"><img src="../static/image/game_image.jpeg" width="32"
-                  height="32"></td>
-              <td class="d-table-cell  text-wrap align-middle">ゲーム名</td>
-              <!--overflow-hidden  -->
-              <td class="d-none d-md-table-cell align-middle"></td>
-              <td class="d-table-cell align-middle"><a href="mypage_game_detail.html"><button
-                    class="btn btn-outline-dark">詳細</button></a><a href="myPage_application_change.html"><button
-                    class="btn btn-success">変更</button></a></td>
-            </tr>
-            <tr>
-              <!-- 2つめ -->
-              <td class="d-table-cell align-middle"><span class="btn btn-primary status_application">申請中</span></td>
-              <td class="d-none d-md-table-cell align-middle">0000000</td>
-              <td class="d-none d-md-table-cell align-middle"><img src="../static/image/game_image.jpeg" width="32"
-                  height="32"></td>
-              <td class="d-table-cell  text-wrap align-middle">ゲーム名</td>
-              <td class="d-none d-md-table-cell align-middle"></td>
-              <td class="d-table-cell align-middle"><a href="mypage_game_detail.html"><button
-                    class="btn btn-outline-dark">詳細</button></a><a href="myPage_application_change.html"><button
-                    class="btn btn-success">変更</button></a></td>
-            </tr>
+            <td class="d-table-cell"><span class="btn btn-primary status_public">{{　app.status　|yesno:'公開中,申請中'}}</span></td>
+            <td class="d-none d-md-table-cell align-middle">{{app.id}}</td>
+            <td class="d-none d-md-table-cell align-middle"><img src="../static/image/game_image.jpeg" width="32"
+                height="32"></td>
+            <td class="d-table-cell  text-wrap align-middle">{{app.title}}</td>
+            <!--overflow-hidden  -->
+            <td class="d-none d-md-table-cell align-middle"></td>
+            <td class="d-table-cell align-middle"><a href="mypage_game_detail.html"><button
+                  class="btn btn-outline-dark">詳細</button></a><a href="myPage_application_change.html"><button
+                  class="btn btn-success">変更</button></a></td>
+                  </tr>
+            {% endfor %}
+
           </tbody>
         </table>
       </div>
