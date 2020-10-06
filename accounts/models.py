@@ -20,6 +20,7 @@ class CustomUser(AbstractUser):
     )
 
     user_image = models.ImageField(upload_to='images/profiles', blank=True)
+    isadmin = models.IntegerField(blank=True, null=True)
 
     class Meta:
         verbose_name_plural = 'CustomUser'
