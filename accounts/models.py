@@ -20,3 +20,6 @@ class CustomUser(AbstractUser):
     )
 
     user_image = models.ImageField(upload_to='images/profiles', blank=True)
+
+    class Meta:
+        verbose_name_plural = 'CustomUser'

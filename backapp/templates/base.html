@@ -31,7 +31,7 @@
       <nav>
         <a class="p-2 text-dark" href="{% url 'backapp:index' %}">ホーム</a>
         <a class="p-2 text-dark" href="{% url 'backapp:index' %}">このサイトについて</a>
-        <a class="p-2 text-dark" href="{% url 'backapp:developers' %}">開発者一覧</a>
+        <a class="p-2 text-dark" href="">開発者一覧</a>
         <!-- テスト用 -->
         {% if user.is_authenticated %}
         <a href="{% url 'account_logout' %}">logout</a>
