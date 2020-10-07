@@ -15,7 +15,7 @@
         <div class="col-12 col-md-4 text-center">
           <!-- col-12 col-md-4 -->
           <!-- col-4 col-auto-->
-          <img class="img-fluid rounded-circle" src="../static/icons/profile.svg" width="200" height="200">
+          <img class="img-fluid rounded-circle" src="{% static 'icons/profile.svg' %}" width="200" height="200">
         </div>
         <div class="d-md-none p-4"></div>
         <div class="col-12 col-md-8 text-left">
@@ -24,7 +24,7 @@
           <div style="overflow-wrap: break-word; word-wrap: break-word;">
             <div class="row p-2">
               <span class="col-6 col-md-5">ハンドルネーム: </span>
-              <span class="col-6 col-md-5">{{ user.username }}</span>
+              <span class="col-6 col-md-5">{{ user.first_name }}</span>
             </div>
             <div class="row p-2">
               <span class="col-6 col-md-5">代: </span>
@@ -69,7 +69,7 @@
               <td class="d-table-cell"><span
                   class="btn btn-primary status_public">{{　app.status　|yesno:'公開中,申請中'}}</span></td>
               <td class="d-none d-md-table-cell align-middle">{{app.id}}</td>
-              <td class="d-none d-md-table-cell align-middle"><img src="../static/image/game_image.jpeg" width="32"
+              <td class="d-none d-md-table-cell align-middle"><img src="{% static 'image/game_image.jpeg' %}" width="32"
                   height="32"></td>
               <td class="d-table-cell  text-wrap align-middle">{{app.title}}</td>
               <!--overflow-hidden  -->

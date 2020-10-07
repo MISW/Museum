@@ -20,7 +20,7 @@
             <!-- col-4 col-auto-->
 
             <label for="profileImageInput">
-              <img id="profileImage" class="img-fluid rounded-circle" src="../static//icons/profile.svg" alt="プロフィール画像"
+              <img id="profileImage" class="img-fluid rounded-circle" src="{% static 'icons/profile.svg' %}" alt="プロフィール画像"
                 width="200" height="200">
             </label>
             <input id="profileImageInput" name="profileImageInput" type="file" class="form-control-file center-block"
@@ -33,7 +33,7 @@
             <div style="overflow-wrap: break-word; word-wrap: break-word;"></div>
             <div class="row form-group">
               <span class="col-6 col-md-5">ハンドルネーム: </span>
-              <span class="col-6 col-md-5">{{user.username}}</span>
+              <span class="col-6 col-md-5">{{user.first_name}}</span>
             </div>
             <div class="row form-group">
               <p class="col-6 col-md-5">
@@ -60,7 +60,7 @@
 
     <div class="text-center p-5">
       <button id="changeButton" type="submit" class="btn btn-primary pr-3 pl-3 m-3">変更保存</button>
-      <a href="./mypage_home.html"><button type="button" class="btn btn-outline-danger pr-3 pl-3 m-3">戻る</button> </a>
+      <a href="{% url 'mypage:mypage_home' %}"><button type="button" class="btn btn-outline-danger pr-3 pl-3 m-3">戻る</button> </a>
     </div>
 
   </form>
