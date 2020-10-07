@@ -17,6 +17,7 @@ def GetDescription(request):
         u.save()
     return str
 
+
 class MypageHomeView(generic.TemplateView):
     template_name = 'mypage_home.html'
     def get(self, request, **kwargs):
