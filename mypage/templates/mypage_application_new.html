@@ -178,7 +178,7 @@
     });
 
 
-    //linkの必要不必要管理  見たらわかるようにele→label→div↓input　という厳密な順番でないと使えない
+    //linkの必要不必要管理  見たらわかるようにele→label→div↓input という厳密な順番でないと使えない
     function link_required_prop(ele) {
       ele.on('change', function () {
         if ($(this).prop('checked')) {
@@ -226,7 +226,7 @@
           message += $(this).next("label").text() + ",  ";
         });
 
-        message += "\nゲームカテゴリ：　" + $('#gameCategory option:selected').text();
+        message += "\nゲームカテゴリ： " + $('#gameCategory option:selected').text();
 
         //message+="\nイメージ画像: "+$("#gameImage").val();
 
