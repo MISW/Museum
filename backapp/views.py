@@ -13,15 +13,16 @@ class IndexView(generic.TemplateView):
     #model = gameInf
     template_name = 'index.html'
 
-class DevelopersView(generic.ListView):
-    #model = developPartInf
+class DevelopersView(generic.TemplateView):
+    #model = DevelopPartInf
     template_name = 'developers.html'
 
 class DeveloperDetailView(generic.DetailView):
-    #model = developerInf
+    #model = DeveloperInf
     template_name = 'developer-detail.html'
 
 class GameDetalView(generic.DetailView):
+<<<<<<< HEAD
 <<<<<<< HEAD
     model = gameInf
     template_name = 'game-detail.html'
@@ -30,3 +31,7 @@ class GameDetalView(generic.DetailView):
     #model = gameInf
     template_name = 'game-detail.html'
 >>>>>>> 5f2b82838761ce19a1bc93c8f7e1370b93850a7a
+=======
+    #model = GameInf
+    template_name = 'game-detail.html'
+>>>>>>> bd3ef387cd4e82b22e2d08c12ea1b4e585302fa7
