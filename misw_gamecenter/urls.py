@@ -49,7 +49,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('backapp.urls')),
     path('accounts/', include('allauth.urls')),
-    path('accounts/', include('accounts.urls')),
     path('mypage/', include('mypage.urls')),
 ]
 
