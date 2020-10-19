@@ -60,9 +60,11 @@
                             <a class="dropdown-item" href="{% url 'account_logout' %}">ログアウト</a>
                         </div>
                         <div role="separator" class="divider"></div>
+                        {% if user.isadmin %}
                         <div class="py-2">
                             <a class="dropdown-item" href="#">管理者ログイン</a>
                         </div>
+                        {% endif %}
                     </div>
                 </li>
             </ul>
