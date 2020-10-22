@@ -33,7 +33,7 @@ class GameScore(models.Model): #ゲームスコアテーブル
         verbose_name_plural = 'GameScore'
 
     def __str__(self):
-        return self.title
+        return '{}_{}'.format(self.gameid, self.player)
 
 class DevelopPartInf(models.Model): #ゲーム開発者テーブル
     gameid = models.IntegerField(blank=True, null=True)
@@ -44,7 +44,7 @@ class DevelopPartInf(models.Model): #ゲーム開発者テーブル
         verbose_name_plural = 'DevelopPartInf'
 
     def __str__(self):
-        return self.title
+        return self.user
 
 class DeveloperInf(models.Model): #開発者情報テーブル
     user = models.ForeignKey(CustomUser, verbose_name='User', on_delete=models.PROTECT)
@@ -54,7 +54,7 @@ class DeveloperInf(models.Model): #開発者情報テーブル
         verbose_name_plural = 'DeveloperInf'
 
     def __str__(self):
-        return self.title
+        return self.user.username
 
 class StatusInf(models.Model): #状態マスタ
     statusid = models.IntegerField(blank=True, null=True)
@@ -64,7 +64,7 @@ class StatusInf(models.Model): #状態マスタ
         verbose_name_plural = 'StatusInf'
 
     def __str__(self):
-        return self.title
+        return self.statusname
 
 class DownloadLinkInf(models.Model): #ダウンロードリンクテーブル
     gameid = models.IntegerField(blank=True, null=True)
@@ -75,7 +75,7 @@ class DownloadLinkInf(models.Model): #ダウンロードリンクテーブル
         verbose_name_plural = 'DownloadLinkInf'
 
     def __str__(self):
-        return self.title
+        return self.link
 
 class MachineInf(models.Model): #機種マスタ
     machineid = models.IntegerField(blank=True, null=True)
@@ -85,7 +85,7 @@ class MachineInf(models.Model): #機種マスタ
         verbose_name_plural = 'MachineInf'
 
     def __str__(self):
-        return self.title
+        return self.machinename
 
 class GameCategoryInf(models.Model): #カテゴリテーブル
     gameid = models.IntegerField(blank=True, null=True)
@@ -95,7 +95,7 @@ class GameCategoryInf(models.Model): #カテゴリテーブル
         verbose_name_plural = 'GameCategoryInf'
 
     def __str__(self):
-        return self.title
+        return str(self.categoryid)
 
 class CategoryInf(models.Model): #カテゴリマスタ
     categoryid = models.IntegerField(blank=True, null=True)
@@ -105,4 +105,4 @@ class CategoryInf(models.Model): #カテゴリマスタ
         verbose_name_plural = 'CategoryInf'
 
     def __str__(self):
-        return self.title
+        return self.categoryname

@@ -20,7 +20,11 @@ class CustomUser(AbstractUser):
     )
 
     user_image = models.ImageField(upload_to='images/profiles', blank=True)
-    isadmin = models.IntegerField(blank=True, null=True)
+    isadmin = models.BooleanField(
+        _('isadmin'),
+        help_text=('administrative authority for this user.'),
+        default=False,
+    )
 
     class Meta:
         verbose_name_plural = 'CustomUser'
