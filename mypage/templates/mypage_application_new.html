@@ -3,11 +3,17 @@
 {% load static %}
 
 {% block title %}
-マイページ
+マイページ | 新規申請
 {% endblock title %}
 
-{% block main %}
+{% block head %}
+<!-- css link -->
+<link href="{% static 'css/myPage.css' %}" rel="stylesheet">
+<!-- js link -->
+<script type="text/javascript" src="{% static 'js/mypage_application.js' %} "></script>
+{% endblock head %}
 
+{% block main %}
 <main role="main">
 
   <div class="container">

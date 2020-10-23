@@ -6,8 +6,14 @@
 マイページ
 {% endblock title %}
 
-{% block main %}
+{% block head %}
+<!-- css link -->
+<link href="{% static 'css/myPage.css' %}" rel="stylesheet">
+<!-- js link -->
+<script type="text/javascript" src="{% static 'js/mypage_profile.js' %}"></script>
+{% endblock head %}
 
+{% block main %}
 <main role="main">
   <form action="/mypage/update_profile" method="post">
     {% csrf_token %}
