@@ -7,6 +7,7 @@
 {% endblock title %}
 
 {% block head %}
+<!-- css link -->
 <link href="{% static 'css/myPage.css' %}" rel="stylesheet">
 {% endblock head %}
 
@@ -37,7 +38,7 @@
             <div class="row p-2">
               <span class="col-6 col-md-5">ひとこと: </span>
               <span class="col-6 col-md-5">
-                <p>{{description}}</p>
+                <p>{{ description }}</p>
               </span>
             </div>
           </div>
@@ -45,8 +46,6 @@
       </div>
     </div>
   </section>
-
-
 
   <div class="container ">
     <!-- 作成したゲーム一覧 -->
@@ -134,11 +133,7 @@
           </tbody>
         </table>
       </div>
-
-
     </div>
   </div>
-
-
 </main>
 {% endblock main %}
