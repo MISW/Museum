@@ -108,6 +108,11 @@ html {
     padding-right: 15px;
 }
 
+.error{
+    width: 100%;
+    height: 500px;
+}
+
 footer {
     padding-top: 3rem;
 }
