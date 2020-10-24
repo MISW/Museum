@@ -32,6 +32,8 @@ INSTALLED_APPS = [
     'backapp.apps.BackappConfig',
     # created accounts app
     'accounts.apps.AccountsConfig',
+    # created mypage app
+    'mypage.apps.MypageConfig',
     # allauth setting
     'django.contrib.sites',
     'allauth',
@@ -141,7 +143,7 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
-LOGIN_REDIRECT_URL ='/accounts/mypage_home'
+LOGIN_REDIRECT_URL ='mypage:mypage_home'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 
 ACCOUNT_LOGOUT_ON_GET = True
