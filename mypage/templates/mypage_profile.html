@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+マイページ | プロフィール変更
+{% endblock title %}
+
+{% block head %}
+<!-- css link -->
+<link href="{% static 'css/myPage.css' %}" rel="stylesheet">
+<!-- js link -->
+<script type="text/javascript" src="{% static 'js/mypage_profile.js' %}"></script>
+{% endblock head %}
+
+{% block main %}
+<main role="main">
+  <form action="/mypage/update_profile" method="post">
+    {% csrf_token %}
+    <!-- profile  -->
+    <section class="p-5" style="background-color: rgb(238, 237, 237);">
+      <div class="container">
+        <div class="row align-items-center mx-auto justify-content-center">
+          <div class="col-12 col-md-4 text-center pb-5">
+            <!-- col-12 col-md-4 -->
+            <!-- col-4 col-auto-->
+
+            <label for="profileImageInput">
+              <img id="profileImage" class="img-fluid rounded-circle" src="{% static 'icons/profile.svg' %}" alt="プロフィール画像"
+                width="200" height="200">
+            </label>
+            <input id="profileImageInput" name="profileImageInput" type="file" class="form-control-file center-block"
+              name="profileImageInput" accept="image/*">
+
+          </div>
+          <div class="col-12 col-md-8 text-left ">
+            <!-- col-12 col-md-8 -->
+            <!-- col-8 col-auto-->
+            <div style="overflow-wrap: break-word; word-wrap: break-word;"></div>
+            <div class="row form-group">
+              <span class="col-6 col-md-5">ハンドルネーム: </span>
+              <span class="col-6 col-md-5">{{ user.first_name }}</span>
+            </div>
+            <div class="row form-group">
+              <p class="col-6 col-md-5">
+                <label for="generationInput">代: </label>
+              </p>
+              <p class="col-6 col-md-5">
+                <input type="number" id="generationInput" name="generationInput" min="0" max="300"
+                  value="{{ user.generation }}">
+              </p>
+            </div>
+            <div class="row form-group">
+              <p class="col-6 col-md-5">
+                <label for="shortCommentInput">ひとこと: </label>
+              </p>
+              <textarea class="col-6 col-md-5" id="shortCommentInput" name="shortCommentInput" rows="5"
+                placeholder="自己紹介など">{{ description }}</textarea>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      </div>
+    </section>
+
+    <div class="text-center p-5">
+      <button id="changeButton" type="submit" class="btn btn-primary pr-3 pl-3 m-3">変更保存</button>
+      <a href="{% url 'mypage:mypage_home' %}"><button type="button" class="btn btn-outline-danger pr-3 pl-3 m-3">戻る</button> </a>
+    </div>
+
+  </form>
+
+</main>
+{% endblock main %}

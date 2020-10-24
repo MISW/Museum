@@ -6,6 +6,11 @@
 マイページ
 {% endblock title %}
 
+{% block head %}
+<!-- css link -->
+<link href="{% static 'css/myPage.css' %}" rel="stylesheet">
+{% endblock head %}
+
 {% block main %}
 <main role="main">
   <!-- profile  -->
@@ -15,7 +20,7 @@
         <div class="col-12 col-md-4 text-center">
           <!-- col-12 col-md-4 -->
           <!-- col-4 col-auto-->
-          <img class="img-fluid rounded-circle" src="../static/icons/profile.svg" width="200" height="200">
+          <img class="img-fluid rounded-circle" src="{% static 'icons/profile.svg' %}" width="200" height="200">
         </div>
         <div class="d-md-none p-4"></div>
         <div class="col-12 col-md-8 text-left">
@@ -24,7 +29,7 @@
           <div style="overflow-wrap: break-word; word-wrap: break-word;">
             <div class="row p-2">
               <span class="col-6 col-md-5">ハンドルネーム: </span>
-              <span class="col-6 col-md-5">{{ user.username }}</span>
+              <span class="col-6 col-md-5">{{ user.first_name }}</span>
             </div>
             <div class="row p-2">
               <span class="col-6 col-md-5">代: </span>
@@ -33,7 +38,7 @@
             <div class="row p-2">
               <span class="col-6 col-md-5">ひとこと: </span>
               <span class="col-6 col-md-5">
-                <p>{{description}}</p>
+                <p>{{ description }}</p>
               </span>
             </div>
           </div>
@@ -41,8 +46,6 @@
       </div>
     </div>
   </section>
-
-
 
   <div class="container ">
     <!-- 作成したゲーム一覧 -->
@@ -58,7 +61,7 @@
               <th class="d-table-cell" style="width:15%;">状態</th>
               <th class="d-none d-md-table-cell" style="width:15%;">ゲームID</th>
               <th class="d-none d-md-table-cell" style="width:10%;">写真</th>
-              <th class="d-table-cell" 　style="width:20%;">ゲーム名</th>
+              <th class="d-table-cell" style="width:20%;">ゲーム名</th>
               <th class="d-none d-md-table-cell" style="width:15%;"></th>
               <th class="d-table-cell" style="width:15%;"></th>
             </tr>
@@ -66,17 +69,18 @@
           <tbody>
             {% for app in applications %}
             <tr>
-            <td class="d-table-cell"><span class="btn btn-primary status_public">{{　app.status　|yesno:'公開中,申請中'}}</span></td>
-            <td class="d-none d-md-table-cell align-middle">{{app.id}}</td>
-            <td class="d-none d-md-table-cell align-middle"><img src="../static/image/game_image.jpeg" width="32"
-                height="32"></td>
-            <td class="d-table-cell  text-wrap align-middle">{{app.title}}</td>
-            <!--overflow-hidden  -->
-            <td class="d-none d-md-table-cell align-middle"></td>
-            <td class="d-table-cell align-middle"><a href="mypage_game_detail.html"><button
-                  class="btn btn-outline-dark">詳細</button></a><a href="myPage_application_change.html"><button
-                  class="btn btn-success">変更</button></a></td>
-                  </tr>
+              <td class="d-table-cell"><span
+                  class="btn btn-primary status_public">{{ app.status |yesno:'公開中,申請中'}}</span></td>
+              <td class="d-none d-md-table-cell align-middle">{{app.id}}</td>
+              <td class="d-none d-md-table-cell align-middle"><img src="{% static 'image/game_image.jpeg' %}" width="32"
+                  height="32"></td>
+              <td class="d-table-cell  text-wrap align-middle">{{app.title}}</td>
+              <!--overflow-hidden  -->
+              <td class="d-none d-md-table-cell align-middle"></td>
+              <td class="d-table-cell align-middle"><a href="mypage_game_detail.html"><button
+                    class="btn btn-outline-dark">詳細</button></a><a href="myPage_application_change.html"><button
+                    class="btn btn-success">変更</button></a></td>
+            </tr>
             {% endfor %}
 
           </tbody>
@@ -86,7 +90,7 @@
       <div class="p-4 col-12">
         <!-- 複数人作成ゲーム -->
         <span class="h2">複数人作成</span>
-        <small>　注）変更できるのは「申請者」のみ</small>
+        <small> 注）変更できるのは「申請者」のみ</small>
         <table class="table table-hover p-2 text-nowrap overflow-auto">
           <!--table-responsive-->
           <thead class="thead-light">
@@ -94,7 +98,7 @@
               <th class="d-table-cell" style="width:15%;">状態</th>
               <th class="d-none d-md-table-cell" style="width:15%;">ゲームID</th>
               <th class="d-none d-md-table-cell" style="width:10%;">写真</th>
-              <th class="d-table-cell  text-wrap align-middle" 　style="width:20%;">ゲーム名</th>
+              <th class="d-table-cell text-wrap align-middle"  style="width:20%;">ゲーム名</th>
               <th class="d-none d-md-table-cell align-middle" style="width:15%;">申請者</th>
               <th class="d-table-cell align-middle" style="width:15%;"></th>
 
@@ -108,7 +112,7 @@
               <td class="d-none d-md-table-cell align-middle">0000000</td>
               <td class="d-none d-md-table-cell align-middle"><img src="../static/image/game_image.jpeg" width="32"
                   height="32"></td>
-              <td class="d-table-cell  text-wrap align-middle">ゲーム名あいうえおかきくけこさしすせそ多阿智伝となにぬねのはhihhuhe</td>
+              <td class="d-table-cell text-wrap align-middle">ゲーム名あいうえおかきくけこさしすせそ多阿智伝となにぬねのはhihhuhe</td>
               <td class="d-none d-md-table-cell align-middle">SELF</td>
               <td class="d-table-cell align-middle"><a href="mypage_game_detail.html"><button
                     class="btn btn-outline-dark">詳細</button></a><a href="myPage_application_change.html"><button
@@ -121,7 +125,7 @@
               <td class="d-none d-md-table-cell align-middle">0000000</td>
               <td class="d-none d-md-table-cell align-middle"><img src="../static/image/game_image.jpeg" width="32"
                   height="32"></td>
-              <td class="d-table-cell  text-wrap align-middle">ゲーム名</td>
+              <td class="d-table-cell text-wrap align-middle">ゲーム名</td>
               <td class="d-none d-md-table-cell align-middle">自分以外</td>
               <td class="d-table-cell align-middle"><a href="mypage_game_detail.html"><button
                     class="btn btn-outline-dark">詳細</button></a></td>
@@ -129,11 +133,7 @@
           </tbody>
         </table>
       </div>
-
-
     </div>
   </div>
-
-
 </main>
 {% endblock main %}
