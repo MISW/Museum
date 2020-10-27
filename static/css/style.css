@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .header {
     padding: 30px;
     color: blue
@@ -129,3 +130,141 @@ footer#footer {
 }
 
 
+=======
+.header {
+    padding: 30px;
+    color: blue
+}
+
+.jumbotron {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    margin-bottom: 0;
+    background-color: ;
+}
+
+@media (min-width: 768px) {
+    .jumbotron {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+    }
+}
+
+.jumbotron p:last-child {
+    margin-bottom: 0;
+}
+
+.jumbotron-heading {
+    font-weight: 300;
+}
+
+
+.jumbotron .container .container-1{
+    max-width: 40rem;
+}
+
+form{
+    margin-left: 8px;
+    margin-bottom: 16px
+}
+
+.text-dark {
+    color: #343a40 !important;
+}
+
+.p-2 {
+    padding: .5rem !important;
+}
+
+.mb-4,
+.my-4 {
+    margin-bottom: 1.5rem !important;
+}
+
+.shadow-sm {
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+}
+
+.card {
+    width: 25%
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+}
+
+.card-body {
+    margin: 15px
+}
+
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.pricing-header {
+    max-width: 700px;
+}
+
+.card-deck .card {
+    min-width: 220px;
+}
+
+.container {
+    max-width: auto;
+    margin-top: 20px;
+}
+
+.container-1 {
+    max-width: auto;
+}
+
+.col-sm-12 {
+    width: 100%;
+    padding-left: 15px;
+    padding-top: 15px;
+}
+
+.share{
+    padding-right: 15px;
+}
+
+.error{
+    width: 100%;
+    height: 500px;
+}
+
+footer {
+    padding-top: 3rem;
+}
+
+footer p {
+    margin-bottom: .25rem;
+}
+
+footer#footer {
+    background-color: #eee !important;
+}
+.site-footer.footer-bottom-vertical {
+    text-align: center;
+}
+
+.footer-bottom {
+    background-color: #1b62e5 !important;
+    padding-bottom: 3rem
+}
+
+
+>>>>>>> 4af2d55b65e7e8fa04344c41da87260a0a2b32a7
