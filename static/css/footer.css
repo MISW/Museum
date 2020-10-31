@@ -1,0 +1,11 @@
+.snsbutton {
+  margin: 10px 15px -20px;
+}
+
+footer a::after {
+  height: 0px !important;
+}
+
+div#share_field {
+  width: 100%;
+}
