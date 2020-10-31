@@ -13,6 +13,7 @@
   <!-- BootstrapのCSS読み込み -->
   <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
   <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  <link href="{% static 'css/footer.css' %}" rel="stylesheet">
 
   <!-- jQuery読み込み -->
   <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
@@ -29,71 +30,74 @@
   <header>
     {% if user.is_authenticated %}
     <div class="container-fluid p-0">
-        <nav class="navbar navbar-expand navbar-light" style="background-color:rgb(195, 215, 252)">
-            <ul class="nav nav-tabs mr-auto">
-                <li class="float-left">
-                    <a href="{% url 'backapp:index' %}" class="nav-item navbar-brand">みすゲームセンター</a>
-                    <a href="{% url 'mypage:mypage_home' %}" class="nav-item navbar-link text-secondary d-none d-sm-inline-block">マイページ</a>
-                </li>
+      <nav class="navbar navbar-expand navbar-light" style="background-color:rgb(195, 215, 252)">
+        <ul class="nav nav-tabs mr-auto">
+          <li class="float-left">
+            <a href="{% url 'backapp:index' %}" class="nav-item navbar-brand">みすゲームセンター</a>
+            <a href="{% url 'mypage:mypage_home' %}"
+              class="nav-item navbar-link text-secondary d-none d-sm-inline-block">マイページ</a>
+          </li>
 
-            </ul>
+        </ul>
 
-            <ul class="nav nav-tabs">
-                <li class="nav-item nav-link d-none d-sm-inline-block">
-                    <a href="{% url 'mypage:new' %}"><button type="button" class="btn btn-primary">新規申請</button></a>
-                </li>
-                <li class="nav-item dropdown pr-2">
-                    <button class="dropdown-toggle p-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                       <img src="{% static 'icons/profile.svg' %}" class="rounded-circle" width="32" height="32">
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <div class="d-sm-none text-center py-2">
-                            <a href="{% url 'mypage:new' %}"><button type="button" class="btn btn-primary">新規申請</button></a>
-                        </div>
-                        <div class="py-2">
-                            <a class="dropdown-item" href="{% url 'mypage:mypage_home' %}">マイページトップへ</a>
-                        </div>
-                        <div class="py-2">
-                            <a class="dropdown-item" href="{% url 'mypage:profile' %}">プロフィール変更</a>
-                        </div>
-                        <div class="py-2">
-                            <a class="dropdown-item" href="{% url 'account_logout' %}">ログアウト</a>
-                        </div>
-                        <div role="separator" class="divider"></div>
-                        {% if user.isadmin %}
-                        <div class="py-2">
-                            <a class="dropdown-item" href="#">管理者ログイン</a>
-                        </div>
-                        {% endif %}
-                    </div>
-                </li>
-            </ul>
-        </nav>
+        <ul class="nav nav-tabs">
+          <li class="nav-item nav-link d-none d-sm-inline-block">
+            <a href="{% url 'mypage:new' %}"><button type="button" class="btn btn-primary">新規申請</button></a>
+          </li>
+          <li class="nav-item dropdown pr-2">
+            <button class="dropdown-toggle p-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <img src="{% static 'icons/profile.svg' %}" class="rounded-circle" width="32" height="32">
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <div class="d-sm-none text-center py-2">
+                <a href="{% url 'mypage:new' %}"><button type="button" class="btn btn-primary">新規申請</button></a>
+              </div>
+              <div class="py-2">
+                <a class="dropdown-item" href="{% url 'mypage:mypage_home' %}">マイページトップへ</a>
+              </div>
+              <div class="py-2">
+                <a class="dropdown-item" href="{% url 'mypage:profile' %}">プロフィール変更</a>
+              </div>
+              <div class="py-2">
+                <a class="dropdown-item" href="{% url 'account_logout' %}">ログアウト</a>
+              </div>
+              <div role="separator" class="divider"></div>
+              {% if user.isadmin %}
+              <div class="py-2">
+                <a class="dropdown-item" href="#">管理者ログイン</a>
+              </div>
+              {% endif %}
+            </div>
+          </li>
+        </ul>
+      </nav>
     </div>
     {% else %}
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="{% url 'backapp:index' %}">みすゲームセンター</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+      <a class="navbar-brand" href="{% url 'backapp:index' %}">みすゲームセンター</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'backapp:index' %}">ホーム</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'backapp:developers' %}">開発者一覧</a>
-                </li>
-            </ul>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'backapp:index' %}">ホーム</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'backapp:developers' %}">開発者一覧</a>
+          </li>
+        </ul>
 
-            <ul class="nav nav-tabs pull-right">
-                <li class="nav-item">
-                  <a href="{% url 'slack_login' %}"><button type="button" class="btn btn-primary">ログイン</button></a>
-                </li>
-            </ul>
+        <ul class="nav nav-tabs pull-right">
+          <li class="nav-item">
+            <a href="{% url 'slack_login' %}"><button type="button" class="btn btn-primary">ログイン</button></a>
+          </li>
+        </ul>
 
-        </div>
+      </div>
     </nav>
     {% endif %}
   </header>
@@ -107,30 +111,23 @@
         <div class="footer--widgets widget-area widgets--columned-layout widgets--columns-3" role="complementary">
           <div id="custom_html-2" class="widget_text widget widget_custom_html">
             <div class="textwidget custom-html-widget">
-              <style>
-                .snsbutton {
-                  margin: 10px 15px -20px;
-                }
-
-                footer a::after {
-                  height: 0px !important;
-                }
-
-                div#share_field {
-                  width: 100%;
-                }
-              </style>
               <div id="share_field">
                 <p style="text-align: center; color: #333; font-weight: bold; font-size: 22px; letter-spacing: 1px;">
-                  SHARE</p> <a href="https://www.facebook.com/sharer/sharer.php?u=https://misw.jp" target="_blank"
-                  rel="noopener noreferrer"> <img class="snsbutton" src="../static/icons/f-ogo_RGB_HEX-100.png"
-                    width="30" height="auto"> </a> <a
-                  href="http://twitter.com/share?url=https://misw.jp&amp;text=デジタル創作サークル「MIS.W」&amp;related=misw_info"
-                  target="_blank" rel="noopener noreferrer"> <img class="snsbutton"
-                    src="../static/icons/Twitter_Social_Icon_Square_Color.png" width="30" height="auto"> </a> <a
-                  href="https://social-plugins.line.me/lineit/share?url=https://misw.jp" target="_blank"
-                  rel="noopener noreferrer"> <img class="snsbutton" src="../static/icons/LINE_SOCIAL_Square_typeA.png"
-                    width="30" height="auto"> </a>
+                  SHARE
+                </p>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://misw.jp" target="_blank"
+                  rel="noopener noreferrer">
+                  <img class="snsbutton" src="../static/icons/f-ogo_RGB_HEX-100.png" width="30" height="auto">
+                </a>
+                <a href="http://twitter.com/share?url=https://misw.jp&amp;text=デジタル創作サークル「MIS.W」&amp;related=misw_info"
+                  target="_blank" rel="noopener noreferrer">
+                  <img class="snsbutton" src="../static/icons/Twitter_Social_Icon_Square_Color.png" width="30"
+                    height="auto">
+                </a>
+                <a href="https://social-plugins.line.me/lineit/share?url=https://misw.jp" target="_blank"
+                  rel="noopener noreferrer">
+                  <img class="snsbutton" src="../static/icons/LINE_SOCIAL_Square_typeA.png" width="30" height="auto">
+                </a>
               </div>
             </div>
           </div>
@@ -141,7 +138,6 @@
     <div class="footer-bottom">
       <div class="container">
         <div class="footer-bottom-content">
-
           <div>
             <div>
               <font color="#ffffff">© 2018-2020 MIS.W</font>
