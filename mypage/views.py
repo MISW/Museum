@@ -43,6 +43,12 @@ class MypageProfileView(generic.TemplateView):
         }
         return self.render_to_response(context)
 
+class MypageGameDetailView(generic.DetailView):
+    model = GameInf
+    template_name = 'mypage_game_detail.html'
+
+
+
 class UpdateProfile(generic.TemplateView):
     def post(self, request, *args, **kwargs):
         CustomUser.objects.filter(userid=request.user.userid).update(generation=request.POST["generationInput"])

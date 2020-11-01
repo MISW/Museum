@@ -77,9 +77,14 @@
               <td class="d-table-cell  text-wrap align-middle">{{app.title}}</td>
               <!--overflow-hidden  -->
               <td class="d-none d-md-table-cell align-middle"></td>
-              <td class="d-table-cell align-middle"><a href="mypage_game_detail.html"><button
-                    class="btn btn-outline-dark">詳細</button></a><a href="myPage_application_change.html"><button
-                    class="btn btn-success">変更</button></a></td>
+              <td class="d-table-cell align-middle">
+                <a href="{% url 'mypage:game_detail' app.pk %}">
+                  <button class="btn btn-outline-dark">詳細</button>
+                </a>
+                <a href="myPage_application_change.html">
+                  <button class="btn btn-success">変更</button>
+                </a>
+              </td>
             </tr>
             {% endfor %}
 
@@ -98,7 +103,7 @@
               <th class="d-table-cell" style="width:15%;">状態</th>
               <th class="d-none d-md-table-cell" style="width:15%;">ゲームID</th>
               <th class="d-none d-md-table-cell" style="width:10%;">写真</th>
-              <th class="d-table-cell text-wrap align-middle"  style="width:20%;">ゲーム名</th>
+              <th class="d-table-cell text-wrap align-middle" style="width:20%;">ゲーム名</th>
               <th class="d-none d-md-table-cell align-middle" style="width:15%;">申請者</th>
               <th class="d-table-cell align-middle" style="width:15%;"></th>
 
