@@ -19,12 +19,12 @@
     <div class="single-portfolio-holder portfolio-type-2 alt-four">
       <!-- added div -->
       <div class="p-3 mb-5 row">
-        <p class="col-md-3">状態：　<span>公開中</span></p>
-        <p class="col-md-3">ゲームID:　<span>0000000</span> </p>
-        <p class="col-md-3">申請者:　<span>NAME</span></p>
+        <p class="col-md-3">状態：　<span>{{ object.status |yesno:'公開中,申請中'}}</span></p>
+        <p class="col-md-3">ゲームID:　<span>{{ object.gameid }}</span> </p>
+        <p class="col-md-3">申請者:　<span>{{ object.user.first_name }}</span></p>
       </div>
       <div class="title section-title">
-        <h1>MIS列車でGO!(東上線編)</h1>
+        <h1>{{ object.title }}</h1>
       </div>
 
       <div class="col-sm-12">
@@ -34,7 +34,7 @@
               <div class="photo wow fadeInLab" style="visibility: visible; animation-name: fadeInLab;">
                 <img style="height: 100%; width: 100%; display: block;"
                   class="attachment-portfolio-single-img-1 size-portfolio-single-img-1 img-2814 lazyloaded"
-                  role="presentation" src="../static/icons/games-icon/longSizeGame.jpeg">
+                  role="presentation" src="{# {{ object.image.url }} #}">
               </div>
             </div>
           </div>
@@ -45,15 +45,15 @@
         <div class="col-sm-12">
           <div class="project-description">
             <div class="post-formatting">
-              <p>電車の運転を体験できるゲームです。<br>時間通りに、正しい停車位置に止められるか！<br>君の挑戦を待っている！</p>
+              <p>{{ object.description }}</p>
 
             </div>
           </div>
 
           <div>
-            <p>作成者：HarrisonKwasgoe、やぎ、SEED、タコス、okanon</p>
-            <p>カテゴリ：シミュレーション</p>
-            <p>対応機種：Windows,Mac</p>
+            <p>作成者: {{ object.user.first_name }}</p>
+            <p>カテゴリ: {{ categoryname }}</p>
+            <p>対応機種: {{ machinename }}</p>
             <p><a href="【googleplayリンクを挿入】"><img alt="Google Play で手に入れよう"
                   src="https://play.google.com/intl/en_us/badges/static/images/badges/ja_badge_web_generic.png"
                   width="180px" height="auto" style='margin-top:-42px;'></a><a href="【AppStoreリンクを挿入】"
