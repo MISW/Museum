@@ -1,14 +1,13 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+ゲーム詳細
+{% endblock title %}
+
 {% block headerupper %}
-<script>
-  (function (d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s);
-    js.id = id;
-    js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.4";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-</script>
+<script src="{% static 'js/facebook.js' %}"></script>
 {% endblock headerupper %}
 
 {% block main %}
@@ -16,23 +15,12 @@
   <div class="page-container">
     <div class="single-portfolio-holder portfolio-type-2 alt-four">
       <div class="title section-title">
-        <h1>MIS列車でGO!(東上線編)</h1>
+        <h1>{{ object.title }}</h1>
         <div class="share" align="right">
           <a href="https://twitter.com/share" class="twitter-share-button" data-url="【ページのURL】" data-text="【ツイート本文】"
             data-via="【ユーザ名】" data-size="【ボタンのサイズ】" data-related="【ユーザ名】" data-count="【カウント表示の種類】"
             data-hashtags="【ハッシュタグ】">Tweet</a>
-          <script>
-            ! function (d, s, id) {
-              var js, fjs = d.getElementsByTagName(s)[0],
-                p = /^http:/.test(d.location) ? 'http' : 'https';
-              if (!d.getElementById(id)) {
-                js = d.createElement(s);
-                js.id = id;
-                js.src = p + '://platform.twitter.com/widgets.js';
-                fjs.parentNode.insertBefore(js, fjs);
-              }
-            }(document, 'script', 'twitter-wjs');
-          </script>
+          <script src="{% static 'js/twitter.js' %}"></script>
 
           <div class="fb-like" data-href="【URL】" data-layout="button_count"></div>
 
@@ -46,7 +34,7 @@
               <div class="photo wow fadeInLab" style="visibility: visible; animation-name: fadeInLab;">
                 <img style="height: 100%; width: 100%; display: block;"
                   class="attachment-portfolio-single-img-1 size-portfolio-single-img-1 img-2814 lazyloaded"
-                  role="presentation" src="../static/icons/games-icon/mistrain.png">
+                  role="presentation" src="{# {{ object.image.url }} #}">
               </div>
             </div>
           </div>
@@ -57,26 +45,34 @@
         <div class="col-sm-12">
           <div class="project-description">
             <div class="post-formatting">
-              <p>電車の運転を体験できるゲームです。<br>時間通りに、正しい停車位置に止められるか！<br>君の挑戦を待っている！</p>
+              <p>{{ object.description }}</p>
               <br>
-              <p>作成者：HarrisonKwasgoe、やぎ、SEED、タコス、okanon</p>
+              <p>作成者： {{ object.user.first_name }}</p>
               <p>カテゴリ：シミュレーション</p>
               <p>対応機種：Windows,Mac</p>
-              <p><a href="【googleplayリンクを挿入】"><img alt="Google Play で手に入れよう"
+              <p>
+                <a href="【googleplayリンクを挿入】">
+                  <img alt="Google Play で手に入れよう"
                     src="https://play.google.com/intl/en_us/badges/static/images/badges/ja_badge_web_generic.png"
-                    width="180px" height="auto" style='margin-top:-42px;'></a><a href="【AppStoreリンクを挿入】"
-                  style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2013-09-18&kind=iossoftware&bubble=ios_apps) no-repeat;width:160px;height: 48px;background-size: contain;"></a>
-                <button type="button" class="btn btn-dark"><a href="【windows版ダウンロードリンクを挿入】" class="button"><svg
-                      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"
-                      class="WindowsDownload__WindowsIcon-sc-1kde27u-0 cntDpG" width="5%">
-                      <path fill="currentColor"
-                        d="M27.98 33.8H9.7V18.67l18.27-2.52zm0 19.68L9.7 50.96V36.05h18.27zm26.3-19.68h-24.3V15.88l24.3-3.34zm0 23.3l-24.3-3.35v-17.7h24.3z">
-                      </path>
-                    </svg>Windows</a></button>
-                <button type="button" class="btn btn-dark"><a href="【macos版ダウンロードリンクを挿入】"
-                    class="button">Macos</a></button>
-                <button type="button" class="btn btn-dark"><a href="【ブラウザ版ダウンロードリンクを挿入】"
-                    class="button">ブラウザ</a></button></p>
+                    width="180px" height="auto" style='margin-top:-42px;'>
+                </a>
+                <a href="【AppStoreリンクを挿入】"
+                  style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2013-09-18&kind=iossoftware&bubble=ios_apps) no-repeat;width:160px;height: 48px;background-size: contain;">
+                </a>
+                <button type="button" class="btn btn-dark">
+                  <a href="【windows版ダウンロードリンクを挿入】" class="button">
+                    <img src="{% static 'icons/windows.svg' %}" alt="">
+                    Windows
+                  </a>
+                </button>
+                <button type="button" class="btn btn-dark">
+                  <img src="{% static 'icons/apple.svg' %}" alt="">
+                  <a href="【macos版ダウンロードリンクを挿入】" class="button">Macos</a>
+                </button>
+                <button type="button" class="btn btn-dark">
+                  <a href="【ブラウザ版ダウンロードリンクを挿入】" class="button">ブラウザ</a>
+                </button>
+              </p>
             </div>
           </div>
         </div>
