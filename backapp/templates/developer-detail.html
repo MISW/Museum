@@ -47,6 +47,7 @@
     <h2>個人作成</h2>
 
     {% for app in applications %}
+    {% if object.user.userid == app.user.userid %}
     <div class="col-md-4">
       <div class="card mb-4 shadow-sm">
         <img class="card-img-top" style="height: 100%; width: 100%; display: block;"
@@ -64,6 +65,7 @@
         </div>
       </div>
     </div>
+    {% endif %}
     {% endfor %}
   </div>
 

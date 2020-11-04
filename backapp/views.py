@@ -27,5 +27,5 @@ class DeveloperDetailView(generic.DetailView):
         return self.render_to_response(context)
 
 class GameDetalView(generic.DetailView):
-    #model = GameInf
+    model = GameInf
     template_name = 'game-detail.html'
