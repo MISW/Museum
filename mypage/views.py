@@ -53,7 +53,7 @@ class UpdateProfile(generic.TemplateView):
     def post(self, request, *args, **kwargs):
         CustomUser.objects.filter(userid=request.user.userid).update(generation=request.POST["generationInput"])
         DeveloperInf.objects.filter(user=request.user).update(description=request.POST["shortCommentInput"])
-        return redirect('/mypage/profile')
+        return redirect('/mypage')
 
 class NewApplication(generic.TemplateView):
     def post(self, request, *args, **kwargs):

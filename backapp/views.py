@@ -8,12 +8,12 @@ class IndexView(generic.ListView):
     model = GameInf
     template_name = 'index.html'
 
-class DevelopersView(generic.TemplateView):
-    #model = DevelopPartInf
+class DevelopersView(generic.ListView):
+    model = DeveloperInf
     template_name = 'developers.html'
 
 class DeveloperDetailView(generic.DetailView):
-    #model = DeveloperInf
+    model = DeveloperInf
     template_name = 'developer-detail.html'
 
 class GameDetalView(generic.DetailView):
