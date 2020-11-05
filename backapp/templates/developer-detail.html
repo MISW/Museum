@@ -15,7 +15,11 @@
         <div class="col-12 col-md-4 text-center">
           <!-- col-12 col-md-4 -->
           <!-- col-4 col-auto-->
-          <img class="img-fluid rounded-circle" src="../static/icons/creaters-icon/yagi.jpg" width="200" height="200">
+          {% if object.image.url != None %}
+          <img class="img-fluid rounded-circle" src="{{ object.user.image.url }}" width="200" height="200">
+          {% else %}
+          <img class="img-fluid rounded-circle" src="{% static 'icons/profile.svg' %}" width="200" height="200">
+          {% endif %}
         </div>
         <div class="d-md-none p-4"></div>
         <div class="col-12 col-md-8 text-left">
@@ -50,8 +54,13 @@
     {% if object.user.userid == app.user.userid %}
     <div class="col-md-4">
       <div class="card mb-4 shadow-sm">
+      {% if app.image.url != None %}
         <img class="card-img-top" style="height: 100%; width: 100%; display: block;"
-          src="{#  {{ app.image.url }}#} " data-holder-rendered="true">
+          src="{{ app.image.url }}" data-holder-rendered="true">
+          {% else %}
+          <img class="card-img-top" style="height: 100%; width: 100%; display: block;"
+          src="{% static 'icons/profile.svg' %}" data-holder-rendered="true">
+          {% endif %}
         <div class="card-body">
           <p class="card-text">
             <font size="5">{{ app.title }}</font>
@@ -69,7 +78,7 @@
     {% endfor %}
   </div>
 
-  <div class="container">
+  {% comment %} <div class="container">
 
     <h2>複数人作成</h2>
 
@@ -90,6 +99,6 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> {% endcomment %}
 </main>
 {% endblock main %}
