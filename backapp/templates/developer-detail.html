@@ -48,10 +48,10 @@
 
   <div class="container">
 
-    <h2>個人作成</h2>
+    {% comment %} <h2>個人作成</h2> {% endcomment %}
 
     {% for app in applications %}
-    {% if object.user.userid == app.user.userid %}
+    {% if object.user.userid == app.user.userid and app.status %}
     <div class="col-md-4">
       <div class="card mb-4 shadow-sm">
       {% if app.image.url != None %}
