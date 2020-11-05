@@ -15,7 +15,7 @@
 
 {% block main %}
 <main role="main">
-  <form action="/mypage/update_profile" method="post">
+  <form action="{% url 'mypage:update_profile' %}" method="post">
     {% csrf_token %}
     <!-- profile  -->
     <section class="p-5" style="background-color: rgb(238, 237, 237);">
