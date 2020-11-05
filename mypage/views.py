@@ -64,15 +64,7 @@ class NewApplication(generic.TemplateView):
             g = GameInf(user=request.user,title=request.POST["gameTitle"],description=request.POST["introduction"],status=False,submittedtime=timezone.datetime.now(),link_Windows=request.POST["link_Windows"],link_Mac=request.POST["link_Mac"],link_Android=request.POST["link_Android"],link_iOS=request.POST["link_iOS"])
         g.gameid = g.id
         g.save()
-        ca = None
-        try:
-            ca = CategoryInf.objects.get(categoryname=request.POST["gameCategory"])
-        except Exception as e:
-            ca = CategoryInf(categoryname=request.POST["gameCategory"])
-            ca.categoryid = ca.id
-            ca.save()
-        c = GameCategoryInf(gameid = g.gameid,categoryid=ca.categoryid)
-        c.save()
+        
         return redirect('/mypage')
 
 class UpdateApplication(generic.TemplateView):
