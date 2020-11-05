@@ -18,7 +18,7 @@
 
   <div class="container">
     <h1 class="">新規ゲーム申請</h1>
-    <form id="myform" class="px-4" action="/mypage/new_application" method="post">
+    <form id="myform" class="px-4" action="{% url 'mypage:new_application' %}" method="post" enctype="multipart/form-data">
       <!--class="was-validated"-->
       {% csrf_token %}
       <div class="row form-group py-4">
@@ -87,10 +87,8 @@
       <div class="row form-group py-3">
         <label class="col-xs-12 col-sm-4 col-form-label" for="gameImageInput">イメージ画像</label>
         <div class="col-xs-12 col-sm-8">
-          <input type="file" class="form-control-file d-none hidden" id="gameImageInput" name="gameImageInput"
-            accept="image/*" required>
           <label class="bor" for="gameImageInput"><img src="../static/icons/plus.svg" width="25" alt="画像追加"></label>
-          <img class="img-fluid" id="gameImage" alt="画像を追加してください">
+          <input type="file" name="gameImage" accept="image/*" class="img-fluid" id="gameImage" alt="画像を追加してください">
         </div>
 
       </div>

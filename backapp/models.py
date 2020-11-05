@@ -9,7 +9,7 @@ class GameInf(models.Model): #ゲーム情報テーブル
     description = models.TextField()
     user = models.ForeignKey(CustomUser, verbose_name='User', on_delete=models.PROTECT)
     status = models.IntegerField()
-    image = models.ImageField(upload_to='images/GameInf')
+    image = models.ImageField(upload_to='images/GameInf',blank=True, null=True)
     submittedtime = models.DateTimeField(blank=True, null=True)
     updatedtime = models.DateTimeField(blank=True, null=True)
     link_browser = models.TextField(blank=True, null=True)
