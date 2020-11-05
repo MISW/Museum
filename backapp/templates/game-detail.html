@@ -32,9 +32,15 @@
           <div class="row nivo">
             <div class="col-xs-12">
               <div class="photo wow fadeInLab" style="visibility: visible; animation-name: fadeInLab;">
+                {% if object.image.url != None %}
                 <img style="height: 100%; width: 100%; display: block;"
                   class="attachment-portfolio-single-img-1 size-portfolio-single-img-1 img-2814 lazyloaded"
-                  role="presentation" src="{# {{ object.image.url }} #}">
+                  role="presentation" src="{{ object.image.url }}">
+                {% else %}
+                <img style="height: 100%; width: 100%; display: block;"
+                  class="attachment-portfolio-single-img-1 size-portfolio-single-img-1 img-2814 lazyloaded"
+                  role="presentation" src="{% static 'icons/profile.svg' %}">
+                {% endif %}
               </div>
             </div>
           </div>
@@ -76,7 +82,7 @@
             </div>
           </div>
         </div>
-        <table class="table table-hover table-bordered">
+        {% comment %} <table class="table table-hover table-bordered">
           <caption>ランキング</caption>
           <thead>
             <tr>
@@ -90,25 +96,25 @@
               <th>1</th>
               <td>Harrisonkawagoe</td>
               <td>
-                <div class="text-right">114514</div>
+                <div class="text-right"></div>
               </td>
             </tr>
             <tr>
               <th>2</th>
               <td>biraki</td>
               <td>
-                <div class="text-right">810</div>
+                <div class="text-right"></div>
               </td>
             </tr>
             <tr>
               <th>3</th>
               <td>nysyo</td>
               <td>
-                <div class="text-right">334</div>
+                <div class="text-right"></div>
               </td>
             </tr>
           </tbody>
-        </table>
+        </table> {% endcomment %}
       </div>
 
     </div>
