@@ -51,7 +51,10 @@ class MypageGameDetailView(generic.DetailView):
 
 class UpdateProfile(generic.TemplateView):
     def post(self, request, *args, **kwargs):
-        CustomUser.objects.filter(userid=request.user.userid).update(generation=request.POST["generationInput"])
+        try:
+            CustomUser.objects.filter(userid=request.user.userid).update(generation=request.POST["generationInput"],user_image=request.FILES["profileImageInput"])
+        except Exception:
+            CustomUser.objects.filter(userid=request.user.userid).update(generation=request.POST["generationInput"])
         DeveloperInf.objects.filter(user=request.user).update(description=request.POST["shortCommentInput"])
         return redirect('/mypage')
 
