@@ -20,7 +20,7 @@
       <!-- added div -->
       <div class="p-3 mb-5 row">
         <p class="col-md-3">状態：　<span>{{ object.status |yesno:'公開中,申請中'}}</span></p>
-        <p class="col-md-3">ゲームID:　<span>{{ object.gameid }}</span> </p>
+        <p class="col-md-3">ゲームID:　<span>{{ object.id }}</span> </p>
         <p class="col-md-3">申請者:　<span>{{ object.user.first_name }}</span></p>
       </div>
       <div class="title section-title">
@@ -32,9 +32,15 @@
           <div class="row nivo">
             <div class="col-12">
               <div class="photo wow fadeInLab" style="visibility: visible; animation-name: fadeInLab;">
+                {% if object.image.url != None %}
                 <img style="height: 100%; width: 100%; display: block;"
                   class="attachment-portfolio-single-img-1 size-portfolio-single-img-1 img-2814 lazyloaded"
-                  role="presentation" src="{# {{ object.image.url }} #}">
+                  role="presentation" src=" {{ object.image.url }} ">
+                {% else %}
+                <img style="height: 100%; width: 100%; display: block;"
+                  class="attachment-portfolio-single-img-1 size-portfolio-single-img-1 img-2814 lazyloaded"
+                  role="presentation" src=" {% static 'icons/profile.svg' %} ">
+                {% endif %}
               </div>
             </div>
           </div>
@@ -76,21 +82,21 @@
               <th>1</th>
               <td>Harrisonkawagoe</td>
               <td>
-                <div class="text-right">114514</div>
+                <div class="text-right"></div>
               </td>
             </tr>
             <tr>
               <th>2</th>
               <td>biraki</td>
               <td>
-                <div class="text-right">810</div>
+                <div class="text-right"></div>
               </td>
             </tr>
             <tr>
               <th>3</th>
               <td>nysyo</td>
               <td>
-                <div class="text-right">334</div>
+                <div class="text-right"></div>
               </td>
             </tr>
           </tbody>
