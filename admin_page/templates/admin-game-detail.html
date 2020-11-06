@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+管理画面　申請中ゲーム詳細
+{% endblock title %}
+
+{% block head %}
+<!-- css link -->
+<link href="{% static 'css/admin.css' %}" rel="stylesheet">
+{% endblock head %}
+
+{% block main %}
+    <main role="main">
+        <div class="container-fluid">
+            <div class="row no-gutters">
+                <div class="col-sm-3 col-1">
+                    <ul id="side" class="text-center item-center col-10" >
+                        <br>
+                        <li id="side-content"><a class="p-3 text-dark text-center text-nowrap" href="./admin-page.html" >申請ゲーム一覧</a></li>
+                        <li id="side-content"><a class="p-3 text-dark text-center text-nowrap" href="./admin-page-public.html" >公開中ゲーム一覧</a></li>
+                        <li id="side-content"><a class="p-3 text-dark text-center text-nowrap" href="./admin-page-nopublic.html" >非公開ゲーム一覧</a></li>
+                        <li id="side-content"><a class="p-3 text-dark text-center text-nowrap" href="../templates/developers.html" >開発者一覧</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-8 col-12">
+                    <h2 class="col-sm-8 mt-3">MIS列車でGO!</h2>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-11 col-sm-offset-1">
+                            <img ID="game-img" class="item-center"src="../static/icons/games-icon/mistrain.png" alt="ゲーム画像"  >
+                            <p class="col-sm-12">This is a pen.<br>How are you.<br>I'm fine, and you?</p>
+                            <p class="col-sm-12">作成者: aaa, bbb, ccc, ddd, eee, fff, ggg, hhh, iii, jjj, kkk, lll, mmm, nnn</p>
+                            <p class="col-sm-12">カテゴリ：RPG,アクション</p>
+                            <p class="col-sm-12">対応機種：windows,mac
+                            <p class="col-sm-2 text-nowrap">ダウンロード:</p>
+                            <ul class="">
+                                <li class=" list-inline-item mr-auto ">
+                                    <img  alt="Windows で手に入れよう" src="../static/icons/windows.svg"width="32" height="32">
+                                </li>
+                                <li class=" list-inline-item mr-auto ">
+                                <img  alt="Mac で手に入れよう" src="../static/icons/apple.svg"width="32" height="32">
+                                </li>
+                             </ul>
+                            <br>
+                            <div class="col-sm-12">
+                            <button class="btn btn-primary col-sm-3 col-xs-3 ">公開</button>
+                            <button class="btn btn-success col-sm-3 col-xs-3 mr-auto">非公開</button>
+                            <button class="btn btn-danger col-sm-3 col-xs-3 mr-auto">削除</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock main %}
+

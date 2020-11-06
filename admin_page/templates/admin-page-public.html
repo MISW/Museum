@@ -1,51 +1,18 @@
-<!DOCTYPE html>
-<html lang="ja">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>管理者画面　公開中ゲームリスト</title>
-     <!-- BootstrapのCSS読み込み -->
-    <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../static/css/style.css" rel="stylesheet">
-    <link href="../static/css/admin-page.css" rel="stylesheet">
+{% load static %}
 
-    <!-- jQuery読み込み -->
-    <script src="../static/vendor/jquery/jquery.min.js"></script>
-    <!-- BootstrapのJS読み込み -->
-    <script src="../static/vendor/bootstrap/js/bootstrap.min.js"></script>
-</head>
-<body>
-    <header>
-        <nav id="navbar" class="navbar navbar-expand-md ">
-            <a class="navbar-brand mx-1" href="./index.html">みすゲームセンター</a>
-            <ul id="nav-text"class="navbar-nav mr-auto mt-2 mt-xs-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="./admin-page.html">管理者画面<span class="sr-only">(current)</span></a>
-                </li>
-            </ul>
-            <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbars01" aria-controls="navbars01" aria-haspopup="true" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="dropdown">
-                <button class="nav-link btn-sm  dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../static/icons/profile.svg" class="rounded-circle" width="32" height="32">
-                </button>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="./admin-page.html">管理者画面</a>
-                    <a class="dropdown-item" href="./myPage_profile.html">プロフィール変更</a>
-                    <a class="dropdown-item" href="#">管理者ログアウト</a>
-                </div>
-            </div>
-        </nav>
-        <div class="collapse navbar-collapse" id="navbars01">
-            <ul class="">
-                <li class="p-1 text-dark text-right "><a class="nav-link" href="./admin-page.html" >申請ゲーム一覧</a></li>
-                <li class="p-1 text-dark text-right"><a class="nav-link" href="./admin-page-public.html" >公開中ゲーム一覧</a></li>
-                <li class="p-1 text-dark text-right"><a class="nav-link" href="./admin-page-nopublic.html" >非公開ゲーム一覧</a></li>
-                <li class="p-1 text-dark text-right"><a class="nav-link" href="../templates/developers.html" >開発者一覧</a></li>
-            </ul>
-        </div>
-    </header>
+{% block title %}
+管理画面　公開中ゲームリスト
+{% endblock title %}
+
+{% block head %}
+<!-- css link -->
+<link href="{% static 'css/admin.css' %}" rel="stylesheet">
+{% endblock head %}
+
+{% block main %}
+
     <main role="main">
         <div class="container-fluid">
             <div class="row no-gutters">
@@ -102,6 +69,4 @@
             </div>
         </div>
     </main>
-</body>
-
-</html>
+{% endblock main %}
