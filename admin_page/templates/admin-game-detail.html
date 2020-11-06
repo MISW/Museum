@@ -12,71 +12,80 @@
 {% endblock head %}
 
 {% block main %}
-    <main role="main">
-        <div class="container-fluid">
-            <div class="row no-gutters">
-                <div class="col-sm-3 col-1">
-                    <ul id="side" class="text-center item-center col-10" >
-                        <br>
-                        <li id="side-content"><a class="p-3 text-dark text-center text-nowrap" href="{% url 'admin_page:admin_home' %}" >申請ゲーム一覧</a></li>
-                        <li id="side-content"><a class="p-3 text-dark text-center text-nowrap" href="{% url 'admin_page:public' %}" >公開中ゲーム一覧</a></li>
-                        <li id="side-content"><a class="p-3 text-dark text-center text-nowrap" href="{% url 'admin_page:nonpublic' %}" >非公開ゲーム一覧</a></li>
-                        <li id="side-content"><a class="p-3 text-dark text-center text-nowrap" href="{% url 'backapp:developers' %}" >開発者一覧</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-8 col-12">
-                    <h2 class="col-sm-8 mt-3">{{app.title}}</h2>
-                    <br>
-                    <div class="row">
-                        <div class="col-sm-11 col-sm-offset-1">
-                            <img ID="game-img" class="item-center"src="{%if app.image %}{{app.image.url}}{% endif %}" alt="ゲーム画像"  >
-                            <p class="col-sm-12">{{app.description}}</p>
-                            <p class="col-sm-12">作成者: {{app.user}}</p>
-                            <p class="col-sm-12">カテゴリ：{{app.categoryname}}</p>
-                            <p class="col-sm-12">対応機種：{{ app.link_browser |yesno:'Web,'}} {{ app.link_Windows |yesno:'Windows,'}} {{ app.link_Mac |yesno:'Mac,'}} {{ app.link_Android  |yesno:'Android,'}} {{ app.link_iOS  |yesno:'iOS,'}}
-                            </p>
-                            <p class="col-sm-2 text-nowrap">ダウンロード:</p>
-                            {% if app.link_browser %}
-                            <button type="button" class="btn btn-dark">
-                              <a href="{{ app.link_browser }}" class="button">ブラウザ</a>
-                            </button>
-                            {% endif %}
-                            {% if app.link_Windows %}
-                            <button type="button" class="btn btn-dark">
-                              <a href="{{ app.link_Windows }}" class="button">
-                                <img src="{% static 'icons/windows.svg' %}" alt="">
-                                Windows
-                              </a>
-                            </button>
-                            {% endif %}
-                            {% if app.link_Mac %}
-                            <button type="button" class="btn btn-dark">
-                              <img src="{% static 'icons/apple.svg' %}" alt="">
-                              <a href="{{ app.link_Mac }}" class="button">MacOS</a>
-                            </button>
-                            {% endif %}
-                            {% if app.link_Android %}
-                            <a href="{{ app.link_Android }}">
-                              <img alt="Google Play で手に入れよう"
-                                src="https://play.google.com/intl/en_us/badges/static/images/badges/ja_badge_web_generic.png"
-                                width="180px" height="auto" style='margin-top:-42px;'>
-                            </a>
-                            {% endif %}
-                            {% if app.link_iOS %}
-                            <a href="{{ app.link_iOS }}"
-                              style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2013-09-18&kind=iossoftware&bubble=ios_apps) no-repeat;width:160px;height: 48px;background-size: contain;">
-                            </a>
-                            {% endif %}
-                            <br>
-                            <div class="col-sm-12">
-                            <a href="{% url 'admin_page:publish' app.id %}" class="btn btn-primary col-sm-3 col-xs-3 ">公開</a>
-                            <a href="{% url 'admin_page:hide' app.id %}" class="btn btn-success col-sm-3 col-xs-3 mr-auto">非公開</a>
-                            <a href="{% url 'admin_page:delete' app.id %}" class="btn btn-danger col-sm-3 col-xs-3 mr-auto">削除</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<main role="main">
+  <div class="container-fluid">
+    <div class="row no-gutters">
+      <div class="col-sm-3 col-1">
+        <ul id="side" class="text-center item-center col-10">
+          <br>
+          <li id="side-content">
+            <a class="p-3 text-dark text-center text-nowrap" href="{% url 'admin_page:admin_home' %}">申請ゲーム一覧</a>
+          </li>
+          <li id="side-content">
+            <a class="p-3 text-dark text-center text-nowrap" href="{% url 'admin_page:public' %}">公開中ゲーム一覧</a>
+          </li>
+          <li id="side-content">
+            <a class="p-3 text-dark text-center text-nowrap" href="{% url 'admin_page:nonpublic' %}">非公開ゲーム一覧</a>
+          </li>
+          <li id="side-content">
+            <a class="p-3 text-dark text-center text-nowrap" href="{% url 'backapp:developers' %}">開発者一覧</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-8 col-12">
+        <h2 class="col-sm-8 mt-3">{{app.title}}</h2>
+        <br>
+        <div class="row">
+          <div class="col-sm-11 col-sm-offset-1">
+            <img ID="game-img" class="item-center" src="{%if app.image %}{{app.image.url}}{% endif %}" alt="ゲーム画像">
+            <p class="col-sm-12">{{app.description}}</p>
+            <p class="col-sm-12">作成者: {{app.user}}</p>
+            <p class="col-sm-12">カテゴリ：{{app.categoryname}}</p>
+            <p class="col-sm-12">対応機種：{{ app.link_browser |yesno:'Web,'}} {{ app.link_Windows |yesno:'Windows,'}}
+              {{ app.link_Mac |yesno:'Mac,'}} {{ app.link_Android  |yesno:'Android,'}} {{ app.link_iOS  |yesno:'iOS,'}}
+            </p>
+            <p class="col-sm-2 text-nowrap">ダウンロード:</p>
+            {% if app.link_browser %}
+            <button type="button" class="btn btn-dark">
+              <a href="{{ app.link_browser }}" class="button">ブラウザ</a>
+            </button>
+            {% endif %}
+            {% if app.link_Windows %}
+            <button type="button" class="btn btn-dark">
+              <a href="{{ app.link_Windows }}" class="button">
+                <img src="{% static 'icons/windows.svg' %}" alt="">
+                Windows
+              </a>
+            </button>
+            {% endif %}
+            {% if app.link_Mac %}
+            <button type="button" class="btn btn-dark">
+              <img src="{% static 'icons/apple.svg' %}" alt="">
+              <a href="{{ app.link_Mac }}" class="button">MacOS</a>
+            </button>
+            {% endif %}
+            {% if app.link_Android %}
+            <a href="{{ app.link_Android }}">
+              <img alt="Google Play で手に入れよう"
+                src="https://play.google.com/intl/en_us/badges/static/images/badges/ja_badge_web_generic.png"
+                width="180px" height="auto" style='margin-top:-42px;'>
+            </a>
+            {% endif %}
+            {% if app.link_iOS %}
+            <a href="{{ app.link_iOS }}"
+              style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2013-09-18&kind=iossoftware&bubble=ios_apps) no-repeat;width:160px;height: 48px;background-size: contain;">
+            </a>
+            {% endif %}
+            <br>
+            <div class="col-sm-12">
+              <a href="{% url 'admin_page:publish' app.id %}" class="btn btn-primary col-sm-3 col-xs-3 ">公開</a>
+              <a href="{% url 'admin_page:hide' app.id %}" class="btn btn-success col-sm-3 col-xs-3 mr-auto">非公開</a>
+              <a href="{% url 'admin_page:delete' app.id %}" class="btn btn-danger col-sm-3 col-xs-3 mr-auto">削除</a>
             </div>
+          </div>
         </div>
-    </main>
+      </div>
+    </div>
+  </div>
+</main>
 {% endblock main %}

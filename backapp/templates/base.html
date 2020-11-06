@@ -110,7 +110,7 @@
               {% if user.isadmin %}
               <hr>
               <div class="py-2">
-                <a class="dropdown-item" href="/adminpage">管理者ログイン</a>
+                <a class="dropdown-item" href="{% url 'admin_page:admin_home' %}">管理者ログイン</a>
               </div>
               {% endif %}
             </div>
