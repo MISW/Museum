@@ -9,6 +9,10 @@ class IndexView(generic.ListView):
     model = GameInf
     template_name = 'index.html'
 
+class SearchView(generic.ListView):
+    model = GameInf
+    template_name = 'index.html'
+
 class AboutView(generic.TemplateView):
     template_name = 'about.html'
 
