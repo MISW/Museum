@@ -15,10 +15,10 @@
         <div class="col-12 col-md-4 text-center">
           <!-- col-12 col-md-4 -->
           <!-- col-4 col-auto-->
-          {% if object.image.url != None %}
-          <img class="img-fluid rounded-circle" src="{{ object.user.image.url }}" width="200" height="200">
+          {% if object.user.user_image %}
+          <img class="rounded-circle" src="{{ object.user.user_image.url }}" width="200" height="200">
           {% else %}
-          <img class="img-fluid rounded-circle" src="{% static 'icons/profile.svg' %}" width="200" height="200">
+          <img class="rounded-circle" src="{% static 'icons/profile.svg' %}" width="200" height="200">
           {% endif %}
         </div>
         <div class="d-md-none p-4"></div>
@@ -55,11 +55,11 @@
     <div class="col-md-4">
       <div class="card mb-4 shadow-sm">
       {% if app.image.url != None %}
-        <img class="card-img-top" style="height: 100%; width: 100%; display: block;"
+        <img class="card-img-top" style="height: 200px; width: 100%; display: block;"
           src="{{ app.image.url }}" data-holder-rendered="true">
           {% else %}
-          <img class="card-img-top" style="height: 100%; width: 100%; display: block;"
-          src="{% static 'icons/profile.svg' %}" data-holder-rendered="true">
+          <img class="card-img-top" style="height: 200px; width: 100%; display: block;"
+          src="{% static 'icons/noimage.png' %}" data-holder-rendered="true">
           {% endif %}
         <div class="card-body">
           <p class="card-text">

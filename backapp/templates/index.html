@@ -58,11 +58,11 @@ misw-gamecenter
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
             {% if app.image.url != None %}
-            <img class="card-img-top" style="height: 100%; width: 100%; display: block;" src={{ app.image.url }}
+            <img class="card-img-top" style="height: 200px; width: 100%; display: block;" src={{ app.image.url }}
               data-holder-rendered="true">
             {% else %}
-            <img class="card-img-top" style="height: 100%; width: 100%; display: block;"
-              src={% static 'icons/profile.svg' %} data-holder-rendered="true">
+            <img class="card-img-top" style="height: 200px; width: 100%; display: block;"
+              src={% static 'icons/noimage.png' %} data-holder-rendered="true">
             {% endif %}
             <div class="card-body">
               <p class="card-text">
