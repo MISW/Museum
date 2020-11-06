@@ -15,8 +15,8 @@
         <div class="col-12 col-md-4 text-center">
           <!-- col-12 col-md-4 -->
           <!-- col-4 col-auto-->
-          {% if object.image.url != None %}
-          <img class="img-fluid rounded-circle" src="{{ object.user.image.url }}" width="200" height="200">
+          {% if object.user.user_image %}
+          <img class="img-fluid rounded-circle" src="{{ object.user.user_image.url }}" width="200" height="200">
           {% else %}
           <img class="img-fluid rounded-circle" src="{% static 'icons/profile.svg' %}" width="200" height="200">
           {% endif %}

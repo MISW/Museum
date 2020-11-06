@@ -21,9 +21,9 @@
         {% if not developer.user.is_staff %}
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
-            {% if developer.user.image.url != None %}
+            {% if developer.user.user_image %}
             <img class="card-img-top" style="height: 100%; width: 100%; display: block;"
-              src="{{ developer.user.image.url }}" data-holder-rendered="true">
+              src="{{ developer.user.user_image.url }}" data-holder-rendered="true">
             {% else %}
             <img class="card-img-top" style="height: 100%; width: 100%; display: block;"
               src="{% static 'icons/profile.svg' %}" data-holder-rendered="true">
