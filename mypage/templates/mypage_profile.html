@@ -15,7 +15,7 @@
 
 {% block main %}
 <main role="main">
-  <form action="{% url 'mypage:update_profile' %}" method="post">
+  <form action="{% url 'mypage:update_profile' %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <!-- profile  -->
     <section class="p-5" style="background-color: rgb(238, 237, 237);">
@@ -26,8 +26,11 @@
             <!-- col-4 col-auto-->
 
             <label for="profileImageInput">
-              <img id="profileImage" class="img-fluid rounded-circle" src="{% static 'icons/profile.svg' %}" alt="プロフィール画像"
-                width="200" height="200">
+              {% if user.user_image  %}
+              <img class="img-fluid rounded-circle" src="{{user.user_image.url}}" width="200" height="200">
+              {% else %}
+              <img class="img-fluid rounded-circle" src="{% static 'icons/profile.svg' %}" width="200" height="200">
+              {% endif %}
             </label>
             <input id="profileImageInput" name="profileImageInput" type="file" class="form-control-file center-block"
               name="profileImageInput" accept="image/*">

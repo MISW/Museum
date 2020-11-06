@@ -20,7 +20,12 @@
         <div class="col-12 col-md-4 text-center">
           <!-- col-12 col-md-4 -->
           <!-- col-4 col-auto-->
+
+          {% if user.user_image  %}
+          <img class="img-fluid rounded-circle" src="{{user.user_image.url}}" width="200" height="200">
+          {% else %}
           <img class="img-fluid rounded-circle" src="{% static 'icons/profile.svg' %}" width="200" height="200">
+          {% endif %}
         </div>
         <div class="d-md-none p-4"></div>
         <div class="col-12 col-md-8 text-left">
@@ -72,8 +77,14 @@
               <td class="d-table-cell"><span
                   class="btn btn-primary status_public">{{ app.status |yesno:'公開中,申請中'}}</span></td>
               <td class="d-none d-md-table-cell align-middle">{{app.id}}</td>
-              <td class="d-none d-md-table-cell align-middle"><img src="{% static 'image/game_image.jpeg' %}" width="32"
+              {% if app.image %}
+              <td class="d-none d-md-table-cell align-middle"><img src="{{ app.image.url }}" width="32"
                   height="32"></td>
+              {% else %}
+              <td class="d-none d-md-table-cell align-middle"><img src="{ static 'image/game_image.jpeg' %}" width="32"
+                  height="32"></td>
+              {% endif %}
+
               <td class="d-table-cell  text-wrap align-middle">{{app.title}}</td>
               <!--overflow-hidden  -->
               <td class="d-none d-md-table-cell align-middle"></td>
@@ -82,7 +93,7 @@
                   <button class="btn btn-outline-dark">詳細</button>
                 </a>
                 <a href="myPage_application_change.html">
-                  <button class="btn btn-success">変更</button>
+                  <a href="{% url 'mypage:change' app.id %}" class="btn btn-success">変更</a>
                 </a>
               </td>
             </tr>
@@ -94,6 +105,7 @@
 
       <div class="p-4 col-12">
         <!-- 複数人作成ゲーム -->
+        {% comment %}
         <span class="h2">複数人作成</span>
         <small> 注）変更できるのは「申請者」のみ</small>
         <table class="table table-hover p-2 text-nowrap overflow-auto">
@@ -137,6 +149,7 @@
             </tr>
           </tbody>
         </table>
+        {% endcomment %}
       </div>
     </div>
   </div>

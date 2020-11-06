@@ -33,6 +33,11 @@ class MypageNewView(generic.TemplateView):
 
 class MypageChangeView(generic.TemplateView):
     template_name = 'mypage_application_change.html'
+    def get(self, request, **kwargs):
+        context = {
+            'app':  GameInf.objects.filter(id=self.kwargs['pk'])[0]
+        }
+        return self.render_to_response(context)
 
 class MypageProfileView(generic.TemplateView):
     template_name = 'mypage_profile.html'
@@ -51,7 +56,13 @@ class MypageGameDetailView(generic.DetailView):
 
 class UpdateProfile(generic.TemplateView):
     def post(self, request, *args, **kwargs):
-        CustomUser.objects.filter(userid=request.user.userid).update(generation=request.POST["generationInput"])
+        c = CustomUser.objects.filter(userid=request.user.userid)[0]
+        c.generation = request.POST["generationInput"]
+        try:
+            c.user_image = request.FILES["profileImageInput"]
+        except Exception:
+            print("")
+        c.save()
         DeveloperInf.objects.filter(user=request.user).update(description=request.POST["shortCommentInput"])
         return redirect('/mypage')
 
@@ -59,16 +70,29 @@ class NewApplication(generic.TemplateView):
     def post(self, request, *args, **kwargs):
         g = None
         try:
-            g = GameInf(image=request.FILES["gameImage"],user=request.user,title=request.POST["gameTitle"],description=request.POST["introduction"],status=False,submittedtime=timezone.datetime.now(),link_Windows=request.POST["link_Windows"],link_Mac=request.POST["link_Mac"],link_Android=request.POST["link_Android"],link_iOS=request.POST["link_iOS"])
+            g = GameInf(image=request.FILES["gameImage"],user=request.user,title=request.POST["gameTitle"],description=request.POST["introduction"],status=0,submittedtime=timezone.datetime.now(),link_Windows=request.POST["link_Windows"],link_Mac=request.POST["link_Mac"],link_Android=request.POST["link_Android"],link_iOS=request.POST["link_iOS"],categoryname=request.POST["gameCategory"])
         except Exception:
-            g = GameInf(user=request.user,title=request.POST["gameTitle"],description=request.POST["introduction"],status=False,submittedtime=timezone.datetime.now(),link_Windows=request.POST["link_Windows"],link_Mac=request.POST["link_Mac"],link_Android=request.POST["link_Android"],link_iOS=request.POST["link_iOS"])
-        g.gameid = g.id
+            g = GameInf(user=request.user,title=request.POST["gameTitle"],description=request.POST["introduction"],status=0,submittedtime=timezone.datetime.now(),link_Windows=request.POST["link_Windows"],link_Mac=request.POST["link_Mac"],link_Android=request.POST["link_Android"],link_iOS=request.POST["link_iOS"],categoryname=request.POST["gameCategory"])
         g.save()
-        
         return redirect('/mypage')
 
 class UpdateApplication(generic.TemplateView):
     def post(self, request, *args, **kwargs):
-        CustomUser.objects.filter(userid=request.user.userid).update(generation=request.POST["generationInput"])
-        DeveloperInf.objects.filter(user=request.user).update(description=request.POST["shortCommentInput"])
+        g = GameInf.objects.filter(id=self.kwargs['id'])[0]
+        g.user=request.user
+        g.title=request.POST["gameTitle"]
+        g.description=request.POST["introduction"]
+        g.status=False
+        g.submittedtime=timezone.datetime.now()
+        g.link_Windows=request.POST["link_Windows"]
+        g.link_Mac=request.POST["link_Mac"]
+        g.link_Android=request.POST["link_Android"]
+        g.link_iOS=request.POST["link_iOS"]
+        g.categoryname=request.POST["gameCategory"]
+        g.image = request.FILES["gameImage"]
+        g.save()
         return redirect('/mypage')
+
+def DeleteApplication(request,id):
+    GameInf.objects.get(id=id).delete()
+    return redirect('/mypage')

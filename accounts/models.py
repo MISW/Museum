@@ -19,7 +19,7 @@ class CustomUser(AbstractUser):
         blank=True,
     )
 
-    user_image = models.ImageField(upload_to='images/profiles', blank=True)
+    user_image = models.ImageField(upload_to='images/profiles', blank=True, null=True)
     isadmin = models.BooleanField(
         _('isadmin'),
         help_text=('administrative authority for this user.'),
