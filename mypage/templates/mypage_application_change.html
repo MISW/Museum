@@ -50,7 +50,7 @@
         <div class="col-xs-12 col-sm-7">
           <input type="text" id="createdBy" name="createdBy" value="your name" disabled></input>
           <p class="" data-toggle="collapse" href="#developer_div" aria-expanded="false" aria-controls="developer_div">
-            <img src="../static/icons/plus.svg" width="25" alt="作成者追加">
+            <img src="{% static 'icons/plus.svg' %}" width="25" alt="作成者追加">
             <span id="co_createdBy" class="bg-white pt-1 pb-1"></span>
           </p>
           <div class="collapse bg-light" id="developer_div">
@@ -97,7 +97,7 @@
         <div class="col-xs-12 col-sm-7">
           <input type="file" class="form-control-file d-none hidden" id="gameImageInput" name="gameImageInput"
             accept="image/*" required>
-          <label class="bor" for="gameImageInput"><img src="../static/icons/plus.svg" width="25" alt="画像追加"></label>
+          <label class="bor" for="gameImageInput"><img src="{% static 'icons/plus.svg' %}" width="25" alt="画像追加"></label>
           <label for="gameImageInput" class="text-danger"><img class="img-fluid" id="gameImage" alt="ゲーム画像"></p>
         </div>
 
