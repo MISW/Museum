@@ -43,8 +43,10 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.slack',
     # cloudinary setting
-    #'cloudinary',
-    #'cloudinary_storage',
+    'cloudinary',
+    'cloudinary_storage',
+    # django-cleanup
+    'django_cleanup.apps.CleanupConfig'
 ]
 
 MIDDLEWARE = [
@@ -151,3 +153,10 @@ ACCOUNT_LOGOUT_REDIRECT_URL = 'backapp:index'
 ACCOUNT_LOGOUT_ON_GET = True
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
+
+# cloudinary_storage setting
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET')
+}
