@@ -33,11 +33,11 @@
             <div class="col-xs-12">
               <div class="photo wow fadeInLab" style="visibility: visible; animation-name: fadeInLab;">
                 {% if object.image.url != None %}
-                <img style="height: 200px; width: 100%; display: block;"
+                <img style="height: 100%; width: 100%; display: block;"
                   class="attachment-portfolio-single-img-1 size-portfolio-single-img-1 img-2814 lazyloaded"
                   role="presentation" src="{{ object.image.url }}">
                 {% else %}
-                <img style="height: 200px; width: 100%; display: block;"
+                <img style="height: 100%; width: 100%; display: block;"
                   class="attachment-portfolio-single-img-1 size-portfolio-single-img-1 img-2814 lazyloaded"
                   role="presentation" src="{% static 'icons/noimage.png' %}">
                 {% endif %}

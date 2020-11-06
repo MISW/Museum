@@ -22,10 +22,10 @@
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
             {% if developer.user.user_image %}
-            <img class="card-img-top" style="height: 100%; width: 100%; display: block;"
+            <img class="card-img-top" style="height: 300px; width: 100%; display: block;"
               src="{{ developer.user.user_image.url }}" data-holder-rendered="true">
             {% else %}
-            <img class="card-img-top" style="height: 100%; width: 100%; display: block;"
+            <img class="card-img-top" style="height: 300px; width: 100%; display: block;"
               src="{% static 'icons/profile.svg' %}" data-holder-rendered="true">
             {% endif %}
             <div class="card-body">
