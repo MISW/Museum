@@ -77,8 +77,14 @@
               <td class="d-table-cell"><span
                   class="btn btn-primary status_public">{{ app.status |yesno:'公開中,申請中'}}</span></td>
               <td class="d-none d-md-table-cell align-middle">{{app.id}}</td>
-              <td class="d-none d-md-table-cell align-middle"><img src="{% static 'image/game_image.jpeg' %}" width="32"
+              {% if app.image %}
+              <td class="d-none d-md-table-cell align-middle"><img src="{{ app.image.url }}" width="32"
                   height="32"></td>
+              {% else %}
+              <td class="d-none d-md-table-cell align-middle"><img src="{ static 'image/game_image.jpeg' %}" width="32"
+                  height="32"></td>
+              {% endif %}
+
               <td class="d-table-cell  text-wrap align-middle">{{app.title}}</td>
               <!--overflow-hidden  -->
               <td class="d-none d-md-table-cell align-middle"></td>
@@ -87,7 +93,7 @@
                   <button class="btn btn-outline-dark">詳細</button>
                 </a>
                 <a href="myPage_application_change.html">
-                  <button class="btn btn-success">変更</button>
+                  <a href="{% url 'mypage:change' app.id %}" class="btn btn-success">変更</a>
                 </a>
               </td>
             </tr>
