@@ -20,9 +20,6 @@ class SearchView(generic.TemplateView):
         if category:
             list = list.filter(categoryname=category)
         kisyu = request.POST.getlist('kisyu[]')
-        print("/////////////////////////////")
-        print(kisyu)
-        print("/////////////////////////////")
         my_filter_qs = Q()
         for k in kisyu:
             if k == "Windows":
