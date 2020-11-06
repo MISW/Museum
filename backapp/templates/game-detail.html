@@ -16,7 +16,7 @@
     <div class="single-portfolio-holder portfolio-type-2 alt-four">
       <div class="title section-title">
         <h1>{{ object.title }}</h1>
-        <div class="share" align="right">
+        {% comment %} <div class="share" align="right">
           <a href="https://twitter.com/share" class="twitter-share-button" data-url="【ページのURL】" data-text="【ツイート本文】"
             data-via="【ユーザ名】" data-size="【ボタンのサイズ】" data-related="【ユーザ名】" data-count="【カウント表示の種類】"
             data-hashtags="【ハッシュタグ】">Tweet</a>
@@ -24,7 +24,7 @@
 
           <div class="fb-like" data-href="【URL】" data-layout="button_count"></div>
 
-        </div>
+        </div> {% endcomment %}
       </div>
 
       <div class="col-sm-12">
@@ -54,30 +54,46 @@
               <p>{{ object.description }}</p>
               <br>
               <p>作成者： {{ object.user.first_name }}</p>
-              <p>カテゴリ：シミュレーション</p>
-              <p>対応機種：Windows,Mac</p>
+              <p>カテゴリ： {{ object.categoryname }}</p>
+              <p>対応機種：
+                {% if object.link_browser %} ブラウザ {% endif %}
+                {% if object.link_Windows %} Windows {% endif %}
+                {% if object.link_Mac %} Mac {% endif %}
+                {% if object.link_Android %} Android {% endif %}
+                {% if object.link_iOS %} iOS {% endif %}
+              </p>
               <p>
-                <a href="【googleplayリンクを挿入】">
-                  <img alt="Google Play で手に入れよう"
-                    src="https://play.google.com/intl/en_us/badges/static/images/badges/ja_badge_web_generic.png"
-                    width="180px" height="auto" style='margin-top:-42px;'>
-                </a>
-                <a href="【AppStoreリンクを挿入】"
-                  style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2013-09-18&kind=iossoftware&bubble=ios_apps) no-repeat;width:160px;height: 48px;background-size: contain;">
-                </a>
+                {% if object.link_browser %}
                 <button type="button" class="btn btn-dark">
-                  <a href="【windows版ダウンロードリンクを挿入】" class="button">
+                  <a href="{{ object.link_browser }}" class="button">ブラウザ</a>
+                </button>
+                {% endif %}
+                {% if object.link_Windows %}
+                <button type="button" class="btn btn-dark">
+                  <a href="{{ object.link_Windows }}" class="button">
                     <img src="{% static 'icons/windows.svg' %}" alt="">
                     Windows
                   </a>
                 </button>
+                {% endif %}
+                {% if object.link_Mac %}
                 <button type="button" class="btn btn-dark">
                   <img src="{% static 'icons/apple.svg' %}" alt="">
-                  <a href="【macos版ダウンロードリンクを挿入】" class="button">Macos</a>
+                  <a href="{{ object.link_Mac }}" class="button">MacOS</a>
                 </button>
-                <button type="button" class="btn btn-dark">
-                  <a href="【ブラウザ版ダウンロードリンクを挿入】" class="button">ブラウザ</a>
-                </button>
+                {% endif %}
+                {% if object.link_Android %}
+                <a href="{{ object.link_Android }}">
+                  <img alt="Google Play で手に入れよう"
+                    src="https://play.google.com/intl/en_us/badges/static/images/badges/ja_badge_web_generic.png"
+                    width="180px" height="auto" style='margin-top:-42px;'>
+                </a>
+                {% endif %}
+                {% if object.link_iOS %}
+                <a href="{{ object.link_iOS }}"
+                  style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2013-09-18&kind=iossoftware&bubble=ios_apps) no-repeat;width:160px;height: 48px;background-size: contain;">
+                </a>
+                {% endif %}
               </p>
             </div>
           </div>
