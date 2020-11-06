@@ -12,9 +12,10 @@ class GameInf(models.Model): #ゲーム情報テーブル
 
     # Foreign key
     user = models.ForeignKey(CustomUser, verbose_name='User', on_delete=models.PROTECT)
-    # False: 申請中
-    # True: 公開中
-    status = models.BooleanField(default=False, help_text=('false: not publish, true: publish.'))
+    # 0: 申請中
+    # 1: 公開中
+    # 2: 非公開
+    status = models.IntegerField()
     # game image
     image = models.ImageField(upload_to='images/GameInf',blank=True, null=True)
     # times

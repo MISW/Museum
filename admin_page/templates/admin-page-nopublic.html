@@ -18,10 +18,10 @@
                 <div class="col-sm-3 col-1">
                     <ul id="side" class="text-center item-center col-10" >
                         <br>
-                        <li id="side-content"><a class="p-3 text-dark text-center text-nowrap" href="./admin-page.html" >申請ゲーム一覧</a></li>
-                        <li id="side-content"><a class="p-3 text-dark text-center text-nowrap" href="./admin-page-public.html" >公開中ゲーム一覧</a></li>
-                        <li id="side-content"><a class="p-3 text-dark text-center text-nowrap" href="./admin-page-nopublic.html" >非公開ゲーム一覧</a></li>
-                        <li id="side-content"><a class="p-3 text-dark text-center text-nowrap" href="../templates/developers.html" >開発者一覧</a></li>
+                        <li id="side-content"><a class="p-3 text-dark text-center text-nowrap" href="{% url 'admin_page:admin_home' %}" >申請ゲーム一覧</a></li>
+                        <li id="side-content"><a class="p-3 text-dark text-center text-nowrap" href="{% url 'admin_page:public' %}" >公開中ゲーム一覧</a></li>
+                        <li id="side-content"><a class="p-3 text-dark text-center text-nowrap" href="{% url 'admin_page:nonpublic' %}" >非公開ゲーム一覧</a></li>
+                        <li id="side-content"><a class="p-3 text-dark text-center text-nowrap" href="{% url 'backapp:developers' %}" >開発者一覧</a></li>
                     </ul>
                 </div>
                 <div class="col-9">
@@ -40,26 +40,26 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr scope="col" class="game-data"> <!-- 1つめ -->
-                                        <td scope="col" class="d-table-cell" style="width:20%;">0000001</td>
-                                        <td scope="col" class="d-md-table-cell align-center" style="width:20%;"><img src="../static/icons/games-icon/mistrain.png" width="64" height="32"></td>
-                                        <td scope="col" class="d-md-table-cell align-center" style="width:20%;">MIS列車でGO！</td>
-                                        <td scope="col" class="d-table-cell text-wrap align-center"style="width:20%;">やぎ</td><!--overflow-hidden  -->
-                                        <td calss=" d-md-table-cell align-center active"style="width:20%;"><div class="text-right">
-                                        <a scope="col" class="detail " href="./admin-nopublic-game-detail.html">詳細</a>
-                                        <button scope="col" class="btn btn-primary btn-sm public" href="\.">公開</button>
-                                        </td></div>
-                                    </tr>
-                                    <tr scope="col" class="game-data"> <!-- 2つめ -->
-                                        <td scope="col" class="d-table-cell d-md-table-cell align-center" style="width:20%;">0000001</td>
-                                        <td scope="col" class="d-md-table-cell align-center"style="width:20%;"><img src="../static/icons/games-icon/mistrain.png" width="64" height="32"></td>
-                                        <td scope="col" class="d-md-table-cell align-center"style="width:20%;">MIS列車でGO！</td>
-                                        <td scope="col" class="d-table-cell text-wrap align-center"style="width:20%;">やぎ</td><!--overflow-hidden  -->
-                                        <td calss=" d-md-table-cell align-center active"style="width:20%;"><div class="text-right">
-                                        <a scope="col" class="detail " href="./admin-nopublic-game-detail.html">詳細</a>
-                                        <button scope="col" class="btn btn-primary btn-sm public" href="\.">公開</button>
-                                        </td></div>
-                                    </tr>
+                                  {% for app in apps %}
+                                  <tr scope="col" class="game-data"> <!-- 1つめ -->
+                                      <td scope="col" class="d-table-cell" style="width:20%;">{{app.id}}</td>
+                                      <td scope="col" class="d-md-table-cell align-center" style="width:20%;"><img src="{%if app.image %}{{app.image.url}}{% endif %}" width="64" height="32"></td>
+                                      <td scope="col" class="d-md-table-cell align-center" style="width:20%;">{{app.title}}</td>
+                                      <td scope="col" class="d-table-cell text-wrap align-center"style="width:20%;">{{app.user}}</td><!--overflow-hidden  -->
+                                      <td calss=" d-md-table-cell align-center active"style="width:20%;"><div class="text-right">
+                                      {% if app.status == 1 %}
+                                      <a scope="col" class="detail " href="{% url 'admin_page:public_game_detail' app.id %}">詳細</a>
+                                      <button scope="col" class="btn btn-primary btn-sm public" href="\.">公開</button>
+                                      {% elif app.status == 2 %}
+                                      <a scope="col" class="detail " href="{% url 'admin_page:nonpublic_game_detail' app.id %}">詳細</a>
+                                      <button scope="col" class="btn btn-success btn-sm public" href="\.">非公開</button>
+                                      {% else %}
+                                      <a scope="col" class="detail " href="{% url 'admin_page:game_detail' app.id %}">詳細</a>
+                                      <button scope="col" class="btn btn-info btn-sm public" href="\.">申請中</button>
+                                      {% endif %}
+                                      </td></div>
+                                  </tr>
+                                  {% endfor %}
                                 </tbody>
                             </table>
                         </div>
@@ -69,4 +69,3 @@
         </div>
     </main>
 {% endblock main %}
-

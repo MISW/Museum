@@ -74,8 +74,14 @@
           <tbody>
             {% for app in applications %}
             <tr>
-              <td class="d-table-cell"><span
-                  class="btn btn-primary status_public">{{ app.status |yesno:'公開中,申請中'}}</span></td>
+              <td class="d-table-cell">
+                {% if app.staus == 1 %}
+                <span class="btn btn-primary status_public" href="\.">公開</span>
+                {% elif app.status == 2 %}
+                <span class="btn btn-success btn-sm" href="\.">非公開</span>
+                {% else %}
+                <span class="btn btn-info btn-sm" href="\.">申請中</span>
+                {% endif %}
               <td class="d-none d-md-table-cell align-middle">{{app.id}}</td>
               {% if app.image %}
               <td class="d-none d-md-table-cell align-middle"><img src="{{ app.image.url }}" width="32"

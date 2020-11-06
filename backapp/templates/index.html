@@ -54,7 +54,7 @@ misw-gamecenter
 
       <div class="row" position="relative">
         {% for app in object_list %}
-        {% if app.status %}
+        {% if app.status == 1 %}
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
             {% if app.image.url != None %}
