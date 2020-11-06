@@ -8,9 +8,6 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['.herokuapp.com']
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
-
 # It contains database, staticfiles, logging and secret_key setting in heroku
 # https://github.com/heroku/django-heroku
 django_heroku.settings(locals())

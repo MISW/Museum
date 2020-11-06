@@ -13,6 +13,9 @@ pillow = "*"
 gunicorn = "*"
 django-heroku = "*"
 selenium = "*"
+whitenoise = "*"
+django-cloudinary-storage = "*"
+django-cleanup = "*"
 
 [requires]
 python_version = "3.8"
