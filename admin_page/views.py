@@ -6,17 +6,23 @@ from backapp.models import *
 from django.shortcuts import redirect
 from django.utils import timezone
 # Create your views here.
+
+
 class AdminHomeView(generic.TemplateView):
     template_name = 'admin-page.html'
     def get(self, request, **kwargs):
+        if request.user.isadmin == False:
+            return redirect('/')
         context = {
-            'apps':  GameInf.objects.all()
+            'apps':  GameInf.objects.filter(status=0)
         }
         return self.render_to_response(context)
 
 class AdminGameDetailView(generic.TemplateView):
     template_name = 'admin-game-detail.html'
     def get(self, request, **kwargs):
+        if request.user.isadmin == False:
+            return redirect('/')
         context = {
             'app':  GameInf.objects.filter(id=self.kwargs['pk'])[0]
         }
@@ -25,6 +31,8 @@ class AdminGameDetailView(generic.TemplateView):
 class AdminNonPublicGameDetailView(generic.TemplateView):
     template_name = 'admin-nopublic-game-detail.html'
     def get(self, request, **kwargs):
+        if request.user.isadmin == False:
+            return redirect('/')
         context = {
             'app':  GameInf.objects.filter(id=self.kwargs['pk'])[0]
         }
@@ -33,6 +41,8 @@ class AdminNonPublicGameDetailView(generic.TemplateView):
 class AdminPublicGameDetailView(generic.TemplateView):
     template_name = 'admin-public-game-detail.html'
     def get(self, request, **kwargs):
+        if request.user.isadmin == False:
+            return redirect('/')
         context = {
             'app':  GameInf.objects.filter(id=self.kwargs['pk'])[0]
         }
@@ -41,6 +51,8 @@ class AdminPublicGameDetailView(generic.TemplateView):
 class AdminNonPublicView(generic.TemplateView):
     template_name = 'admin-page-nopublic.html'
     def get(self, request, **kwargs):
+        if request.user.isadmin == False:
+            return redirect('/')
         context = {
             'apps':  GameInf.objects.filter(status=2)
         }
@@ -49,19 +61,27 @@ class AdminNonPublicView(generic.TemplateView):
 class AdminPublicView(generic.TemplateView):
     template_name = 'admin-page-public.html'
     def get(self, request, **kwargs):
+        if request.user.isadmin == False:
+            return redirect('/')
         context = {
             'apps':  GameInf.objects.filter(status=1)
         }
         return self.render_to_response(context)
 
 def DeleteApplication(request,id):
+    if request.user.isadmin == False:
+        return redirect('/')
     GameInf.objects.get(id=id).delete()
     return redirect('/adminpage')
 
 def PublishApplication(request,id):
+    if request.user.isadmin == False:
+        return redirect('/')
     GameInf.objects.filter(id=id).update(status=1)
     return redirect('/adminpage')
 
 def HideApplication(request,id):
+    if request.user.isadmin == False:
+        return redirect('/')
     GameInf.objects.filter(id=id).update(status=2)
     return redirect('/adminpage')

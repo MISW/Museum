@@ -6,6 +6,7 @@ from . import views
 app_name = 'backapp'
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
+    path('search/', views.IndexView.as_view(), name='search'),
     path('about/', views.AboutView.as_view(), name='about'),
     path('developers/', views.DevelopersView.as_view(), name='developers'),
     path('developer-detail/<int:pk>/', views.DeveloperDetailView.as_view(), name='developer-detail'),
