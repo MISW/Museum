@@ -110,7 +110,7 @@
 
       <a href="{% url 'mypage:change' object.id %}" class=""><button class="btn btn-primary">内容変更</button>
         <a href="{% url 'mypage:delete_application' object.id %}" class="px-2"><button class="btn btn-danger">削除申請</button>
-          <a href="/mypage" class="pl-5"><button class="btn btn-secondary">戻る</button></a>
+          <a href="{% url 'mypage:mypage_home' %}" class="pl-5"><button class="btn btn-secondary">戻る</button></a>
 
     </div>
 

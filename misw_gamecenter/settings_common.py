@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     # created mypage app
     'mypage.apps.MypageConfig',
+    #created adminpage app
+    'admin_page.apps.AdminPageConfig',
     # allauth setting
     'django.contrib.sites',
     'allauth',
@@ -49,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     # whitenoise setting
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',

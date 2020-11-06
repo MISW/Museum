@@ -82,14 +82,17 @@ class UpdateApplication(generic.TemplateView):
         g.user=request.user
         g.title=request.POST["gameTitle"]
         g.description=request.POST["introduction"]
-        g.status=False
+        g.status=0
         g.submittedtime=timezone.datetime.now()
         g.link_Windows=request.POST["link_Windows"]
         g.link_Mac=request.POST["link_Mac"]
         g.link_Android=request.POST["link_Android"]
         g.link_iOS=request.POST["link_iOS"]
         g.categoryname=request.POST["gameCategory"]
-        g.image = request.FILES["gameImage"]
+        try:
+            g.image = request.FILES["gameImage"]
+        except Exception:
+            print("noimage")
         g.save()
         return redirect('/mypage')
 

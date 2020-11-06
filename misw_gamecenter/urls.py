@@ -26,6 +26,7 @@ urlpatterns = [
     path('', include('backapp.urls')),
     path('accounts/', include('allauth.urls')),
     path('mypage/', include('mypage.urls')),
+    path('adminpage/', include('admin_page.urls')),
 ]
 
 urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)
