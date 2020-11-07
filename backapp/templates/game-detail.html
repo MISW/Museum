@@ -55,10 +55,7 @@
               <br>
               <p>作成者： {{ object.user.first_name }}</p>
               <p>カテゴリ： {{ object.categoryname }}</p>
-              <p>対応機種： {{ object.link_browser |yesno:'Web,'}} {{ object.link_Windows |yesno:'Windows,'}}
-                {{ object.link_Mac |yesno:'Mac,'}} {{ object.link_Android |yesno:'Android,'}}
-                {{ object.link_iOS |yesno:'iOS,'}}
-              </p>
+              <p>対応機種： {{ object.link_browser |yesno:'Web,'}} {{ object.link_Windows |yesno:'Windows,'}} {{ object.link_Mac |yesno:'Mac,'}} {{ object.link_Android |yesno:'Android,'}} {{ object.link_iOS |yesno:'iOS,'}}</p>
               <div style="padding: 20px;">
                 <p>
                   {% if object.link_browser %}
