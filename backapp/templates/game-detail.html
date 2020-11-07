@@ -55,41 +55,42 @@
               <br>
               <p>作成者： {{ object.user.first_name }}</p>
               <p>カテゴリ： {{ object.categoryname }}</p>
-              <p>対応機種： {{ object.link_browser |yesno:'Web,'}} {{ object.link_Windows |yesno:'Windows,'}} {{ object.link_Mac |yesno:'Mac,'}} {{ object.link_Android |yesno:'Android,'}} {{ object.link_iOS |yesno:'iOS,'}}
-              </p>
-              <p>
-                {% if object.link_browser %}
-                <button type="button" class="btn btn-dark">
-                  <a href="{{ object.link_browser }}" class="button">ブラウザ</a>
-                </button>
-                {% endif %}
-                {% if object.link_Windows %}
-                <button type="button" class="btn btn-dark">
-                  <a href="{{ object.link_Windows }}" class="button">
-                    <img src="{% static 'icons/windows.svg' %}" alt="">
-                    Windows
+              <p>対応機種： {{ object.link_browser |yesno:'Web,'}} {{ object.link_Windows |yesno:'Windows,'}} {{ object.link_Mac |yesno:'Mac,'}} {{ object.link_Android |yesno:'Android,'}} {{ object.link_iOS |yesno:'iOS,'}}</p>
+              <div style="padding: 20px">
+                <p>
+                  {% if object.link_browser %}
+                  <button type="button" class="btn btn-dark">
+                    <a href="{{ object.link_browser }}" class="button">ブラウザ</a>
+                  </button>
+                  {% endif %}
+                  {% if object.link_Windows %}
+                  <button type="button" class="btn btn-dark">
+                    <a href="{{ object.link_Windows }}" class="button">
+                      <img src="{% static 'icons/windows.svg' %}" alt="">
+                      Windows
+                    </a>
+                  </button>
+                  {% endif %}
+                  {% if object.link_Mac %}
+                  <button type="button" class="btn btn-dark">
+                    <img src="{% static 'icons/apple.svg' %}" alt="">
+                    <a href="{{ object.link_Mac }}" class="button">MacOS</a>
+                  </button>
+                  {% endif %}
+                  {% if object.link_Android %}
+                  <a href="{{ object.link_Android }}">
+                    <img alt="Google Play で手に入れよう"
+                      src="https://play.google.com/intl/en_us/badges/static/images/badges/ja_badge_web_generic.png"
+                      width="180px" height="auto" style='margin-top:-42px;'>
                   </a>
-                </button>
-                {% endif %}
-                {% if object.link_Mac %}
-                <button type="button" class="btn btn-dark">
-                  <img src="{% static 'icons/apple.svg' %}" alt="">
-                  <a href="{{ object.link_Mac }}" class="button">MacOS</a>
-                </button>
-                {% endif %}
-                {% if object.link_Android %}
-                <a href="{{ object.link_Android }}">
-                  <img alt="Google Play で手に入れよう"
-                    src="https://play.google.com/intl/en_us/badges/static/images/badges/ja_badge_web_generic.png"
-                    width="180px" height="auto" style='margin-top:-42px;'>
-                </a>
-                {% endif %}
-                {% if object.link_iOS %}
-                <a href="{{ object.link_iOS }}"
-                  style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2013-09-18&kind=iossoftware&bubble=ios_apps) no-repeat;width:160px;height: 48px;background-size: contain;">
-                </a>
-                {% endif %}
-              </p>
+                  {% endif %}
+                  {% if object.link_iOS %}
+                  <a href="{{ object.link_iOS }}"
+                    style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2013-09-18&kind=iossoftware&bubble=ios_apps) no-repeat;width:160px;height: 48px;background-size: contain;">
+                  </a>
+                  {% endif %}
+                </p>
+              </div>
             </div>
           </div>
         </div>
