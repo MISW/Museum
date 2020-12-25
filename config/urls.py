@@ -1,7 +1,7 @@
-"""misw_gamecenter URL Configuration
+"""config URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/3.0/topics/http/urls/
+    https://docs.djangoproject.com/en/3.1/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -14,18 +14,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, re_path, include
+from django.urls import path
+from django.urls.conf import include
 from django.conf.urls.static import static
 
 from .settings_common import *
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('backapp.urls')),
-    path('accounts/', include('allauth.urls')),
-    path('mypage/', include('mypage.urls')),
-    path('adminpage/', include('admin_page.urls')),
+    path('', include('social_django.urls')),
+    path('', include('backend.home.urls')),
+    path('', include('backend.auth0.urls')),
+    path('mypage/', include('backend.mypage.urls')),
 ]
 
 urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)
