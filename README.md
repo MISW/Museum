@@ -66,7 +66,7 @@ $ git checkout -b <my branch name>
 
 ```bash
 $ git add -A
-$ git commit <my commit message>
+$ git commit -m <my commit message>
 $ git pull origin develop
 $ git push origin <my branch name>
 ```
