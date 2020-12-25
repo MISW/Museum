@@ -1,5 +1,7 @@
 # misw-gamecenter
 
+みすミュージアム。サークル内の個人成果物を公開するWebアプリケーションです。
+
 ## Install
 
 - docker
@@ -54,6 +56,20 @@ $ docker exec misw-museum_web python manage.py migrate
 $ docker exec misw-museum_web python manage.py createsuperuser
 ```
 
+## Git setup
+
+```bash
+$ git checkout -b <my branch name>
+```
+
+## Git usage
+
+```bash
+$ git add -A
+$ git commit <my commit message>
+$ git pull origin develop
+$ git push origin <my branch name>
+```
 
 ## Document
 
