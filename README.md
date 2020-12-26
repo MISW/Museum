@@ -1,4 +1,4 @@
-# misw-gamecenter
+# misw-museum
 
 みすミュージアム。サークル内の個人成果物を公開するWebアプリケーションです。
 
