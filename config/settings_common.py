@@ -32,10 +32,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # backend apps
-    'backapp.apps.BackappConfig',
-    'accounts.apps.AccountsConfig',
-    'mypage.apps.MypageConfig',
-    'admin_page.apps.AdminPageConfig',
+    'backend.backapp.apps.BackappConfig',
+    'backend.accounts.apps.AccountsConfig',
+    'backend.mypage.apps.MypageConfig',
+    'backend.admin_page.apps.AdminPageConfig',
     # auth0 app
     'social_django',
     # cloudinary setting
@@ -127,8 +127,7 @@ STATICFILES_DIRS = (
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-#AUTH_USER_MODEL = 'users.User'
-AUTH_USER_MODEL = 'accounts.CustomUser'
+AUTH_USER_MODEL = 'users.User'
 
 # Auth0 settings
 SOCIAL_AUTH_TRAILING_SLASH = False  # Remove trailing slash from routes
@@ -141,10 +140,10 @@ SOCIAL_AUTH_AUTH0_SCOPE = [
     'email'
 ]
 
-# AUTHENTICATION_BACKENDS = {
-#     'backend.auth0.auth0backend.Auth0',
-#     'django.contrib.auth.backends.ModelBackend'
-# }
+AUTHENTICATION_BACKENDS = {
+    'backend.oauth.auth0backend.Auth0',
+    'django.contrib.auth.backends.ModelBackend'
+}
 
 LOGIN_URL = '/login/auth0/'
 LOGIN_REDIRECT_URL = '/mypage/'

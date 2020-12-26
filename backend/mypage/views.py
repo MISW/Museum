@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views import generic
 from django.http import HttpResponse
 from django.template import loader
-from backapp.models import *
+from backend.backapp.models import *
 from django.shortcuts import redirect
 from django.utils import timezone
 # Create your views here.

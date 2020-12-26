@@ -2,7 +2,7 @@ from django.urls import path
 
 from . import views
 
-app_name = 'mypage'
+app_name = 'backend.mypage'
 urlpatterns = [
     path('', views.MypageHomeView.as_view(), name='mypage_home'),
     path('new/', views.MypageNewView.as_view(), name='new'),

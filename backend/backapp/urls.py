@@ -1,9 +1,9 @@
-from backapp.views import AboutView
+from backend.backapp.views import AboutView
 from django.urls import path
 
 from . import views
 
-app_name = 'backapp'
+app_name = 'backend.backapp'
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
     path('search/', views.SearchView.as_view(), name='search'),
