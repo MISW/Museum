@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class Auth0Config(AppConfig):
+class OauthConfig(AppConfig):
     name = 'backend.oauth'

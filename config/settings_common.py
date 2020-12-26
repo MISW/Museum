@@ -32,8 +32,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # backend apps
+    'backend.users.apps.UsersConfig',
     'backend.backapp.apps.BackappConfig',
-    'backend.accounts.apps.AccountsConfig',
+    'backend.oauth.apps.OauthConfig',
     'backend.mypage.apps.MypageConfig',
     'backend.admin_page.apps.AdminPageConfig',
     # auth0 app

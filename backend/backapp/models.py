@@ -1,6 +1,6 @@
 from django.db import models
 
-from accounts.models import CustomUser
+from backend.users.models import User
 
 # Create your models here.
 class GameInf(models.Model): #ゲーム情報テーブル
@@ -11,7 +11,7 @@ class GameInf(models.Model): #ゲーム情報テーブル
     description = models.TextField()
 
     # Foreign key
-    user = models.ForeignKey(CustomUser, verbose_name='User', on_delete=models.PROTECT)
+    user = models.ForeignKey(User, verbose_name='User', on_delete=models.PROTECT)
     # 0: 申請中
     # 1: 公開中
     # 2: 非公開
@@ -42,7 +42,7 @@ class GameInf(models.Model): #ゲーム情報テーブル
 
 
 class DeveloperInf(models.Model): #開発者情報テーブル
-    user = models.ForeignKey(CustomUser, verbose_name='User', on_delete=models.PROTECT)
+    user = models.ForeignKey(User, verbose_name='User', on_delete=models.PROTECT)
     description = models.TextField()
 
     class Meta:
@@ -66,7 +66,7 @@ class GameScore(models.Model): #ゲームスコアテーブル
 
 class DevelopPartInf(models.Model): #ゲーム開発者テーブル
     gameid = models.IntegerField(blank=True, null=True)
-    user = models.ForeignKey(CustomUser, verbose_name='User', on_delete=models.PROTECT)
+    user = models.ForeignKey(User, verbose_name='User', on_delete=models.PROTECT)
     partinf = models.TextField()
 
     class Meta:
