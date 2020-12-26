@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'backend.backapp.apps.BackappConfig',
     'backend.oauth.apps.OauthConfig',
     'backend.mypage.apps.MypageConfig',
-    'backend.admin_page.apps.AdminPageConfig',
+    'backend.manage.apps.ManageConfig',
     # auth0 app
     'social_django',
     # cloudinary setting
