@@ -3,7 +3,7 @@ version: '3'
 services: 
     web:
         build: ./
-        container_name: misw-meseum_web
+        container_name: misw-museum_web
         command: python manage.py runserver 0.0.0.0:8000
         volumes: 
             - ./:/app/
@@ -22,7 +22,7 @@ services:
     
     db:
         image: postgres:12
-        container_name: misw-meseum_db
+        container_name: misw-museum_db
         volumes: 
             - dbdata:/var/lib/postgresql/dbdata
         environment: 

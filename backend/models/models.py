@@ -5,6 +5,7 @@ from django.utils.translation import gettext_lazy as _
 from backend.users.models import User
 from backend.users.models import Association
 
+
 LINK_CHOICES = (
     (1, '画像'),
     (2, '音声'),
@@ -45,11 +46,14 @@ class DevelopmentInf(models.Model): #ゲーム情報テーブル
     title = models.TextField()
     description = models.TextField()
 
-    user_id = models.ForeignKey(User.id, verbose_name='UserId', on_delete=models.PROTECT)
+    user = models.ForeignKey(User, verbose_name='User', on_delete=models.PROTECT, related_name='developmentinf_user')
     # 共同開発者
-    user_ids = models.ManyToManyField(User)
+    users = models.ManyToManyField(User, related_name='developmentinf_users')
 
-    association = models.ManyToManyField(Association)
+    associations = models.ManyToManyField(
+        Association,
+        related_name='developmentinf_associations',
+    )
 
     status = models.IntegerField(
         _('status'),

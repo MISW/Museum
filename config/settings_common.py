@@ -33,7 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # backend apps
     'backend.users.apps.UsersConfig',
-    'backend.models.apps.ModelsappConfig',
+    'backend.models.apps.ModelsConfig',
     'backend.oauth.apps.OauthConfig',
     'backend.mypage.apps.MypageConfig',
     'backend.manage.apps.ManageConfig',

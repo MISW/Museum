@@ -24,9 +24,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('social_django.urls')),
     path('', include('backend.oauth.urls')),
-    path('', include('backend.backapp.urls')),
-    path('mypage/', include('backend.mypage.urls')),
-    path('manage/', include('backend.manage.urls')),
+    #path('mypage/', include('backend.mypage.urls')),
+    #path('manage/', include('backend.manage.urls')),
 ]
 
 urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)

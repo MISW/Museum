@@ -14,7 +14,7 @@ ASSOCIATION_CHOICES = (
 class Association(models.Model):
     association = models.IntegerField(
         choices=ASSOCIATION_CHOICES,
-        help_text=('1: programming, 2: CG, 3: MIDI')
+        help_text=('1: programming, 2: CG, 3: MIDI'),
     )
 
 class User(AbstractUser):
@@ -30,11 +30,9 @@ class User(AbstractUser):
         null=True
     )
 
-    association = models.ManyToManyField(
-        _('association'),
+    associations = models.ManyToManyField(
         Association,
-        blank=True,
-        null=True
+        _('associations')
     )
 
     image = models.ImageField(
