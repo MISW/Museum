@@ -17,6 +17,9 @@ class Association(models.Model):
         help_text=('1: programming, 2: CG, 3: MIDI'),
     )
 
+    def __str__(self):
+        return self.get_association_display()
+
 class User(AbstractUser):
     """Extended User Model"""
 
@@ -32,7 +35,8 @@ class User(AbstractUser):
 
     associations = models.ManyToManyField(
         Association,
-        _('associations')
+        _('associations'),
+        blank=True
     )
 
     image = models.ImageField(
@@ -45,7 +49,8 @@ class User(AbstractUser):
     description = models.TextField(
         _('description'),
         help_text=('User\'s description. Editable.'),
-        default=''
+        blank=True,
+        null=True
     )
 
     is_admin = models.BooleanField(

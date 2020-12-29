@@ -31,13 +31,17 @@ class LinkInf(models.Model):
 
     link = models.URLField(blank=True, null=True)
 
-    file = models.FileField(upload_to='files/DeveloperInf')
+    file = models.FileField(
+        upload_to='files/DeveloperInf',
+        blank=True,
+        null=True
+    )
 
     class Meta:
         verbose_name_plural = 'LinkInf'
     
     def __str__(self):
-        return self.type.get_type_display()
+        return self.get_type_display()
 
 
 class DevelopmentInf(models.Model): #ゲーム情報テーブル
@@ -57,7 +61,7 @@ class DevelopmentInf(models.Model): #ゲーム情報テーブル
 
     status = models.IntegerField(
         _('status'),
-        help_text='0: 申請中, 1: 公開中, 2: 非公開',
+        help_text=('0: 申請中, 1: 公開中, 2: 非公開'),
         default=0,
     )
     
@@ -67,7 +71,19 @@ class DevelopmentInf(models.Model): #ゲーム情報テーブル
         help_text=('Open only within misw or not')
     )
 
-    links = models.ManyToManyField(LinkInf)
+    top_image = models.ImageField(
+        _('top_image'),
+        upload_to='images/DevelopmentInf',
+        help_text=('top image to be listed to home'),
+        blank=True,
+        null=True
+    )
+
+    links = models.ManyToManyField(
+        LinkInf,
+        _('links'),
+        blank=True
+    )
 
     # times
     submitted_at = models.DateTimeField(blank=True, null=True)

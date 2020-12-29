@@ -55,6 +55,17 @@ $ docker exec misw-museum_web python manage.py migrate
 ```bash
 $ docker exec misw-museum_web python manage.py createsuperuser
 ```
+もし，
+```
+Superuser creation skipped due to not running in a TTY. You can run `manage.py createsuperuser` in your project to create one manually.
+```
+とエラーがでる場合は
+```
+$ docker exec -it misw-museum_web bash
+root@************:/app# python manage.py createsuperuser
+root@************:/app# exit
+```
+でお願いします．
 
 ## Git setup
 
@@ -71,6 +82,8 @@ $ git pull origin develop
 $ git push origin <my branch name>
 ```
 
-## Document
+## Documentation
 
-`docs/` 下に置いていきたい．
+### モデル設計
+
+- [/docs/specification.md](https://github.com/MISW/misw-museum/docs/specification.md)

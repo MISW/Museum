@@ -8,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>{% block title %}{% endblock title %}</title>
+  <title>{% block title %}{% endblock %}</title>
 
   <!-- BootstrapのCSS読み込み -->
   <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -21,11 +21,11 @@
   <!-- BootstrapのJS読み込み -->
   <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
 
-  {% block head %}{% endblock head %}
+  {% block head %}{% endblock %}
 </head>
 
 <body>
-  {% block headerupper %}{% endblock headerupper %}
+  {% block headerupper %}{% endblock %}
 
   <header>
     {% if user.is_authenticated %}
@@ -33,26 +33,26 @@
       <link href="{% static 'css/admin-page.css' %}" rel="stylesheet">
     <div class="container-fluid p-0">
       <nav id="navbar" class="navbar navbar-expand-md ">
-          <a class="navbar-brand mx-1" href="{% url 'backapp:index' %}">みすゲームセンター</a>
+          <a class="navbar-brand mx-1" href="/">みすゲームセンター</a>
           <ul id="nav-text"class="navbar-nav mr-auto mt-2 mt-xs-0">
               <li class="nav-item">
-                  <a class="nav-link" href="{% url 'admin_page:admin_home' %}">管理者画面<span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="">管理者画面<span class="sr-only">(current)</span></a>
               </li>
           </ul>
           <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbars01" aria-controls="navbars01" aria-haspopup="true" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
           </button>
           <div class="dropdown">
               <button class="nav-link btn-sm  dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {% if user.user_image  %}
-                <img src="{{user.user_image.url}}" class="rounded-circle" width="32" height="32">
+                {% if user.image  %}
+                <img src="{{ user.image.url }}" class="rounded-circle" width="32" height="32">
                 {% else %}
                 <img src="{% static 'icons/profile.svg' %}" class="rounded-circle" width="32" height="32">
                 {% endif %}
               </button>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="{% url 'admin_page:admin_home' %}">管理者画面</a>
-                  <a class="dropdown-item" href="{% url 'mypage:profile' %}">プロフィール変更</a>
-                  <a class="dropdown-item" href="{% url 'mypage:mypage_home' %}">管理者ログアウト</a>
+                  <a class="dropdown-item" href="">管理者画面</a>
+                  <a class="dropdown-item" href="">プロフィール変更</a>
+                  <a class="dropdown-item" href="">管理者ログアウト</a>
               </div>
           </div>
       </nav>
@@ -62,10 +62,10 @@
       <nav class="navbar navbar-expand navbar-light" style="background-color:rgb(195, 215, 252)">
         <ul class="nav nav-tabs mr-auto">
           <li class="float-left">
-            <a href="{% url 'backapp:index' %}" class="nav-item navbar-brand">みすゲームセンター</a>
-            <a href="{% url 'backapp:developers' %}"
+            <a href="/" class="nav-item navbar-brand">みすゲームセンター</a>
+            <a href=""
               class="nav-item navbar-link text-secondary d-none d-sm-inline-block">開発者一覧&nbsp;</a>
-            <a href="{% url 'backapp:about' %}"
+            <a href=""
               class="nav-item navbar-link text-secondary d-none d-sm-inline-block">このサイトについて</a>
           </li>
 
@@ -73,13 +73,13 @@
 
         <ul class="nav nav-tabs">
           <li class="nav-item nav-link d-none d-sm-inline-block">
-            <a href="{% url 'mypage:new' %}"><button type="button" class="btn btn-primary">新規申請</button></a>
+            <a href=""><button type="button" class="btn btn-primary">新規申請</button></a>
           </li>
           <li class="nav-item dropdown pr-2">
             <button class="dropdown-toggle p-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
-              {% if user.user_image  %}
-              <img src="{{user.user_image.url}}" class="rounded-circle" width="32" height="32">
+              {% if user.image  %}
+              <img src="{{ user.image.url }}" class="rounded-circle" width="32" height="32">
               {% else %}
               <img src="{% static 'icons/profile.svg' %}" class="rounded-circle" width="32" height="32">
               {% endif %}
@@ -87,30 +87,30 @@
             </button>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <div class="d-sm-none text-center py-2">
-                <a href="{% url 'mypage:new' %}"><button type="button" class="btn btn-primary">新規申請</button></a>
+                <a href=""><button type="button" class="btn btn-primary">新規申請</button></a>
               </div>
               <div class="py-2">
-                <a class="dropdown-item" href="{% url 'mypage:mypage_home' %}">マイページトップへ</a>
+                <a class="dropdown-item" href="">マイページトップへ</a>
               </div>
               <div class="py-2">
-                <a class="dropdown-item" href="{% url 'mypage:profile' %}">プロフィール変更</a>
-              </div>
-              <hr>
-              <div class="py-2">
-                <a class="dropdown-item" href="{% url 'backapp:developers' %}">開発者一覧</a>
-              </div>
-              <div class="py-2">
-                <a class="dropdown-item" href="{% url 'backapp:about' %}">このサイトについて</a>
+                <a class="dropdown-item" href="">プロフィール変更</a>
               </div>
               <hr>
               <div class="py-2">
-                <a class="dropdown-item" href="{% url 'account_logout' %}">ログアウト</a>
+                <a class="dropdown-item" href="">開発者一覧</a>
+              </div>
+              <div class="py-2">
+                <a class="dropdown-item" href="">このサイトについて</a>
+              </div>
+              <hr>
+              <div class="py-2">
+                <a class="dropdown-item" href="/logout/">ログアウト</a>
               </div>
               <div role="separator" class="divider"></div>
-              {% if user.isadmin %}
+              {% if user.is_admin %}
               <hr>
               <div class="py-2">
-                <a class="dropdown-item" href="{% url 'admin_page:admin_home' %}">管理者ログイン</a>
+                <a class="dropdown-item" href="/">管理者ログイン</a>
               </div>
               {% endif %}
             </div>
@@ -121,7 +121,7 @@
     {% endif %}
     {% else %}
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="{% url 'backapp:index' %}">みすゲームセンター</a>
+      <a class="navbar-brand" href="/">みすゲームセンター</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -130,16 +130,16 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'backapp:developers' %}">開発者一覧</a>
+            <a class="nav-link" href="">開発者一覧</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'backapp:about' %}">このサイトについて</a>
+            <a class="nav-link" href="">このサイトについて</a>
           </li>
         </ul>
 
         <ul class="nav nav-tabs pull-right">
           <li class="nav-item">
-            <a href="{% url 'slack_login' %}"><button type="button" class="btn btn-primary">ログイン</button></a>
+            <a href="/login/auth0"><button type="button" class="btn btn-primary">ログイン</button></a>
           </li>
         </ul>
 
@@ -148,7 +148,7 @@
     {% endif %}
   </header>
 
-  {% block main %}{% endblock main %}
+  {% block main %}{% endblock %}
 
   <footer id="footer" role="contentinfo"
     class="site-footer main-footer footer-bottom-vertical site-footer-inverted main-footer-inverted">

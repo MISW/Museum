@@ -2,7 +2,9 @@ version: '3'
 
 services: 
     web:
-        build: ./
+        build:
+            context: ./
+            dockerfile: ./Dockerfile
         container_name: misw-museum_web
         command: python manage.py runserver 0.0.0.0:8000
         volumes: 
@@ -24,7 +26,10 @@ services:
         image: postgres:12
         container_name: misw-museum_db
         volumes: 
-            - dbdata:/var/lib/postgresql/dbdata
+            - ./db/initdb.d:/docker-entrypoint-initdb.d
+            - postgresql:/var/lib/postgresql/data
+        ports:
+            - 5432:5432
         environment: 
             - POSTGRES_USER=root
             - POSTGRES_PASSWORD=password
@@ -32,5 +37,4 @@ services:
 
 
 volumes: 
-    dbdata:
-        driver: local
+    postgresql:

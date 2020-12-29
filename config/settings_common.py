@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     # backend apps
     'backend.users.apps.UsersConfig',
     'backend.models.apps.ModelsConfig',
+    'backend.home.apps.HomeConfig',
     'backend.oauth.apps.OauthConfig',
     'backend.mypage.apps.MypageConfig',
     'backend.manage.apps.ManageConfig',
@@ -146,8 +147,8 @@ AUTHENTICATION_BACKENDS = {
     'django.contrib.auth.backends.ModelBackend'
 }
 
-LOGIN_URL = '/login/auth0/'
-LOGIN_REDIRECT_URL = '/mypage/'
+LOGIN_URL = '/login/auth0'
+LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_ON_GET = True
 

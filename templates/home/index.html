@@ -3,14 +3,14 @@
 {% load static %}
 
 {% block title %}
-misw-gamecenter
-{% endblock title %}
+misw-museum
+{% endblock %}
 
 {% block main %}
 <main role="main">
   <div class="jumbotron text-center" style="background-image: url({% static 'icons/eyecatch.png' %})">
     <div>
-      <h1 class="jumbotron-heading">みすゲームセンター</h1>
+      <h1 class="jumbotron-heading">みすミュージアム</h1>
       <p class="lead text-muted">
         <font color="white">みすの部員が作ったゲームで遊べる</font>
       </p>
@@ -20,7 +20,7 @@ misw-gamecenter
   <div>
     <div class="container">
 
-      <form action="{% url 'backapp:search' %}" method="post">
+      {% comment %} <form action="{% url 'backapp:search' %}" method="post">
         {% csrf_token %}
         <p>検索したいキーワードを入力してください。</p>
         <input type="search" name="search" placeholder="キーワードを入力" value="{{keyword}}">
@@ -53,15 +53,14 @@ misw-gamecenter
 
         </div>
         <!--// 折り畳まれ部分 -->
-      </form>
+      </form> {% endcomment %}
 
       <div class="row" position="relative">
-        {% for app in object_list %}
-        {% if app.status == 1 %}
+        {% for app in apps %}
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
-            {% if app.image.url != None %}
-            <img class="card-img-top" style="height: 200px; width: 100%; display: block;" src={{ app.image.url }}
+            {% if app.top_image %}
+            <img class="card-img-top" style="height: 200px; width: 100%; display: block;" src={{ app.top_image.url }}
               data-holder-rendered="true">
             {% else %}
             <img class="card-img-top" style="height: 200px; width: 100%; display: block;"
@@ -74,16 +73,15 @@ misw-gamecenter
               <p>作成者： {{ app.user.first_name }}</p>
               <div class="d-flex justify-content-between align-items-center">
 
-                <a href="{% url 'backapp:game-detail' app.pk %}">詳しく見る</a>
+                <a href="">詳しく見る</a>
 
               </div>
             </div>
           </div>
         </div>
-        {% endif %}
         {% endfor %}
       </div>
     </div>
   </div>
 </main>
-{% endblock main %}
+{% endblock %}
