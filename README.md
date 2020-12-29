@@ -86,4 +86,4 @@ $ git push origin <my branch name>
 
 ### モデル設計
 
-- [/docs/specification.md](https://github.com/MISW/misw-museum/docs/specification.md)
+- [/docs/specification.md](./docs/specification.md)
