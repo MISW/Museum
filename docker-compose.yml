@@ -1,40 +1,40 @@
 version: '3'
 
-services: 
+services:
     web:
         build:
             context: ./
             dockerfile: ./Dockerfile
         container_name: misw-museum_web
         command: python manage.py runserver 0.0.0.0:8000
-        volumes: 
+        volumes:
             - ./:/app/
-        ports: 
+        ports:
             - 8000:8000
-        environment: 
+        environment:
             - DATABASE_ENGINE=django.db.backends.postgresql
             - DATABASE_DB=django_db
-            - DATABASE_USER=root
+            - DATABASE_USER=postgres
             - DATABASE_PASSWORD=password
             - DATABASE_HOST=db
             - DATABASE_PORT=5432
         env_file: ./.env
-        depends_on: 
+        depends_on:
             - db
-    
+
     db:
         image: postgres:12
         container_name: misw-museum_db
-        volumes: 
+        volumes:
             - ./db/initdb.d:/docker-entrypoint-initdb.d
             - postgresql:/var/lib/postgresql/data
         ports:
             - 5432:5432
-        environment: 
-            - POSTGRES_USER=root
+        environment:
+            - POSTGRES_USER=postgres
             - POSTGRES_PASSWORD=password
             - POSTGRES_DB=django_db
 
 
-volumes: 
+volumes:
     postgresql:
