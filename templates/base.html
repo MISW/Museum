@@ -1,0 +1,199 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{% block title %}{% endblock %}</title>
+
+  <!-- BootstrapのCSS読み込み -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  <link href="{% static 'css/footer.css' %}" rel="stylesheet">
+
+  <!-- jQuery読み込み -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+
+  <!-- BootstrapのJS読み込み -->
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+  {% block head %}{% endblock %}
+</head>
+
+<body>
+  {% block headerupper %}{% endblock %}
+
+  <header>
+    {% if user.is_authenticated %}
+    {% if 'adminpage' in request.path %}
+      <link href="{% static 'css/admin-page.css' %}" rel="stylesheet">
+    <div class="container-fluid p-0">
+      <nav id="navbar" class="navbar navbar-expand-md ">
+          <a class="navbar-brand mx-1" href="/">みすゲームセンター</a>
+          <ul id="nav-text"class="navbar-nav mr-auto mt-2 mt-xs-0">
+              <li class="nav-item">
+                  <a class="nav-link" href="">管理者画面<span class="sr-only">(current)</span></a>
+              </li>
+          </ul>
+          <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbars01" aria-controls="navbars01" aria-haspopup="true" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="dropdown">
+              <button class="nav-link btn-sm  dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {% if user.image  %}
+                <img src="{{ user.image.url }}" class="rounded-circle" width="32" height="32">
+                {% else %}
+                <img src="{% static 'icons/profile.svg' %}" class="rounded-circle" width="32" height="32">
+                {% endif %}
+              </button>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="">管理者画面</a>
+                  <a class="dropdown-item" href="">プロフィール変更</a>
+                  <a class="dropdown-item" href="">管理者ログアウト</a>
+              </div>
+          </div>
+      </nav>
+    </div>
+    {% else %}
+    <div class="container-fluid p-0">
+      <nav class="navbar navbar-expand navbar-light" style="background-color:rgb(195, 215, 252)">
+        <ul class="nav nav-tabs mr-auto">
+          <li class="float-left">
+            <a href="/" class="nav-item navbar-brand">みすゲームセンター</a>
+            <a href=""
+              class="nav-item navbar-link text-secondary d-none d-sm-inline-block">開発者一覧&nbsp;</a>
+            <a href=""
+              class="nav-item navbar-link text-secondary d-none d-sm-inline-block">このサイトについて</a>
+          </li>
+
+        </ul>
+
+        <ul class="nav nav-tabs">
+          <li class="nav-item nav-link d-none d-sm-inline-block">
+            <a href=""><button type="button" class="btn btn-primary">新規申請</button></a>
+          </li>
+          <li class="nav-item dropdown pr-2">
+            <button class="dropdown-toggle p-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              {% if user.image  %}
+              <img src="{{ user.image.url }}" class="rounded-circle" width="32" height="32">
+              {% else %}
+              <img src="{% static 'icons/profile.svg' %}" class="rounded-circle" width="32" height="32">
+              {% endif %}
+
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <div class="d-sm-none text-center py-2">
+                <a href=""><button type="button" class="btn btn-primary">新規申請</button></a>
+              </div>
+              <div class="py-2">
+                <a class="dropdown-item" href="">マイページトップへ</a>
+              </div>
+              <div class="py-2">
+                <a class="dropdown-item" href="">プロフィール変更</a>
+              </div>
+              <hr>
+              <div class="py-2">
+                <a class="dropdown-item" href="">開発者一覧</a>
+              </div>
+              <div class="py-2">
+                <a class="dropdown-item" href="">このサイトについて</a>
+              </div>
+              <hr>
+              <div class="py-2">
+                <a class="dropdown-item" href="/logout/">ログアウト</a>
+              </div>
+              <div role="separator" class="divider"></div>
+              {% if user.is_admin %}
+              <hr>
+              <div class="py-2">
+                <a class="dropdown-item" href="/">管理者ログイン</a>
+              </div>
+              {% endif %}
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    {% endif %}
+    {% else %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/">みすゲームセンター</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="">開発者一覧</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">このサイトについて</a>
+          </li>
+        </ul>
+
+        <ul class="nav nav-tabs pull-right">
+          <li class="nav-item">
+            <a href="/login/auth0"><button type="button" class="btn btn-primary">ログイン</button></a>
+          </li>
+        </ul>
+
+      </div>
+    </nav>
+    {% endif %}
+  </header>
+
+  {% block main %}{% endblock %}
+
+  <footer id="footer" role="contentinfo"
+    class="site-footer main-footer footer-bottom-vertical site-footer-inverted main-footer-inverted">
+    <div class="foot-container">
+      <div class="footer-widgets">
+        <div class="footer--widgets widget-area widgets--columned-layout widgets--columns-3" role="complementary">
+          <div id="custom_html-2" class="widget_text widget widget_custom_html">
+            <div class="textwidget custom-html-widget">
+              <div id="share_field">
+                <p style="text-align: center; color: #333; font-weight: bold; font-size: 22px; letter-spacing: 1px;">
+                  SHARE
+                </p>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://misw.jp" target="_blank"
+                  rel="noopener noreferrer">
+                  <img class="snsbutton" src="{% static 'icons/f-ogo_RGB_HEX-100.png' %}" width="30" height="auto">
+                </a>
+                <a href="http://twitter.com/share?url=https://misw.jp&amp;text=デジタル創作サークル「MIS.W」&amp;related=misw_info"
+                  target="_blank" rel="noopener noreferrer">
+                  <img class="snsbutton" src="{% static 'icons/Twitter_Social_Icon_Square_Color.png' %}" width="30"
+                    height="auto">
+                </a>
+                <a href="https://social-plugins.line.me/lineit/share?url=https://misw.jp" target="_blank"
+                  rel="noopener noreferrer">
+                  <img class="snsbutton" src="{% static 'icons/LINE_SOCIAL_Square_typeA.png' %}" width="30"
+                    height="auto">
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="footer-bottom-content">
+          <div>
+            <div>
+              <font color="#ffffff">© 2018-2020 MIS.W</font>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

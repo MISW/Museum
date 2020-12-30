@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+misw-museum
+{% endblock %}
+
+{% block main %}
+<main role="main">
+  <div class="jumbotron text-center" style="background-image: url({% static 'icons/eyecatch.png' %})">
+    <div>
+      <h1 class="jumbotron-heading">みすミュージアム</h1>
+      <p class="lead text-muted">
+        <font color="white">みすの部員が作ったゲームで遊べる</font>
+      </p>
+    </div>
+  </div>
+
+  <div>
+    <div class="container">
+
+      {% comment %} <form action="{% url 'backapp:search' %}" method="post">
+        {% csrf_token %}
+        <p>検索したいキーワードを入力してください。</p>
+        <input type="search" name="search" placeholder="キーワードを入力" value="{{keyword}}">
+        <input type="submit" name="submit" value="検索">
+        <!-- 折り畳み展開ポインタ -->
+        <div onclick="obj=document.getElementById('open').style; obj.display=(obj.display=='none')?'block':'none';">
+          <a style="cursor:pointer;"><img src="{% static 'icons/plus.png' %}" width="20px" height="20px"></a>
+        </div>
+        <!--// 折り畳み展開ポインタ -->
+
+        <!-- 折り畳まれ部分 -->
+        <div id="open" style="display:none;clear:both;background-color: #eee">
+          <h4>対象機種</h4>
+          <p>
+            <input type="checkbox" name="kisyu[]" value="Windows">Windows
+            <input type="checkbox" name="kisyu[]" value="Mac">Mac
+            <input type="checkbox" name="kisyu[]" value="Android">Android
+            <input type="checkbox" name="kisyu[]" value="iOS">iOS
+            <input type="checkbox" name="kisyu[]" value="Browser">Browser
+          </p>
+
+          <h4>ゲームカテゴリ</h4>
+          <p>
+            <input type="radio" name="category" value="RPG">RPG
+            <input type="radio" name="category" value="アクション">アクション
+            <input type="radio" name="category" value="シミュレーション">シミュレーション
+            <input type="radio" name="category" value="パズル">パズル
+            <input type="radio" name="category" value="音ゲー">音ゲー
+          </p>
+
+        </div>
+        <!--// 折り畳まれ部分 -->
+      </form> {% endcomment %}
+
+      <div class="row" position="relative">
+        {% for app in apps %}
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            {% if app.top_image %}
+            <img class="card-img-top" style="height: 200px; width: 100%; display: block;" src={{ app.top_image.url }}
+              data-holder-rendered="true">
+            {% else %}
+            <img class="card-img-top" style="height: 200px; width: 100%; display: block;"
+              src={% static 'icons/noimage.png' %} data-holder-rendered="true">
+            {% endif %}
+            <div class="card-body">
+              <p class="card-text">
+                <font size="5">{{ app.title }}</font>
+              </p>
+              <p>作成者： {{ app.user.first_name }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+
+                <a href="">詳しく見る</a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

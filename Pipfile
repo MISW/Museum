@@ -8,7 +8,6 @@ verify_ssl = true
 [packages]
 django = "*"
 psycopg2-binary = "*"
-django-allauth = "*"
 pillow = "*"
 gunicorn = "*"
 django-heroku = "*"
@@ -16,6 +15,8 @@ selenium = "*"
 whitenoise = "*"
 django-cloudinary-storage = "*"
 django-cleanup = "*"
+python-jose = "*"
+social-auth-app-django = "*"
 
 [requires]
 python_version = "3.8"
