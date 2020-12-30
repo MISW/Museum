@@ -62,6 +62,7 @@ Superuser creation skipped due to not running in a TTY. You can run `manage.py c
 とエラーがでる場合は
 ```
 $ docker exec -it misw-museum_web bash
+($ docker exec -it misw-museum_web /bin/sh) # Macの場合
 root@************:/app# python manage.py createsuperuser
 root@************:/app# exit
 ```

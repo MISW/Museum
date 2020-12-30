@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block title %}
-開発者詳細
+misw-museum | 開発者詳細
 {% endblock title %}
 
 
@@ -15,8 +15,8 @@
         <div class="col-12 col-md-4 text-center">
           <!-- col-12 col-md-4 -->
           <!-- col-4 col-auto-->
-          {% if object.user.user_image %}
-          <img class="rounded-circle" src="{{ object.user.user_image.url }}" width="200" height="200">
+          {% if developer.image %}
+          <img class="rounded-circle" src="{{ developer.image.url }}" width="200" height="200">
           {% else %}
           <img class="rounded-circle" src="{% static 'icons/profile.svg' %}" width="200" height="200">
           {% endif %}
@@ -28,16 +28,20 @@
           <div style="overflow-wrap: break-word; word-wrap: break-word;">
             <div class="row p-2">
               <span class="col-6 col-md-5">ハンドルネーム: </span>
-              <span class="col-6 col-md-5">{{ object.user.first_name }}</span>
+              <span class="col-6 col-md-5">{{ developer.first_name }}</span>
             </div>
             <div class="row p-2">
               <span class="col-6 col-md-5">代: </span>
-              <span class="col-6 col-md-5">{{ object.user.generation }}</span>
+              {% if developer.generation %}
+              <span class="col-6 col-md-5">{{ developer.generation }}</span>
+              {% else %}
+              <span class="col-6 col-md-5">-</span>
+              {% endif %}
             </div>
             <div class="row p-2">
               <span class="col-6 col-md-5">ひとこと: </span>
               <span class="col-6 col-md-5">
-                <p>{{ object.description }}</p>
+                <p>{{ developer.description }}</p>
               </span>
             </div>
           </div>
@@ -50,8 +54,7 @@
 
     {% comment %} <h2>個人作成</h2> {% endcomment %}
 
-    {% for app in applications %}
-    {% if object.user.userid == app.user.userid and app.status %}
+    {% for app in apps%}
     <div class="col-md-4">
       <div class="card mb-4 shadow-sm">
       {% if app.image.url != None %}
@@ -68,13 +71,12 @@
           <p>作成者： {{ app.user.first_name }}</p>
           <div class="d-flex justify-content-between align-items-center">
 
-            <a href="{% url 'backapp:game-detail' app.pk %}">詳しく見る</a>
+            <a href="">詳しく見る</a>
 
           </div>
         </div>
       </div>
     </div>
-    {% endif %}
     {% endfor %}
   </div>
 
