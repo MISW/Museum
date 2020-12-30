@@ -63,7 +63,7 @@
         <ul class="nav nav-tabs mr-auto">
           <li class="float-left">
             <a href="/" class="nav-item navbar-brand">みすゲームセンター</a>
-            <a href=""
+            <a href="{% url 'backend.developers:home' %}"
               class="nav-item navbar-link text-secondary d-none d-sm-inline-block">開発者一覧&nbsp;</a>
             <a href=""
               class="nav-item navbar-link text-secondary d-none d-sm-inline-block">このサイトについて</a>
@@ -97,7 +97,7 @@
               </div>
               <hr>
               <div class="py-2">
-                <a class="dropdown-item" href="">開発者一覧</a>
+                <a class="dropdown-item" href="{% url 'backend.developers:home' %}">開発者一覧</a>
               </div>
               <div class="py-2">
                 <a class="dropdown-item" href="">このサイトについて</a>
@@ -130,7 +130,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="">開発者一覧</a>
+            <a class="nav-link" href="{% url 'backend.developers:home' %}">開発者一覧</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="">このサイトについて</a>

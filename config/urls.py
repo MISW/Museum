@@ -25,6 +25,7 @@ urlpatterns = [
     path('', include('social_django.urls')),
     path('', include('backend.oauth.urls')),
     path('', include('backend.home.urls')),
+    path('developers/', include('backend.developers.urls')),
     #path('mypage/', include('backend.mypage.urls')),
     #path('manage/', include('backend.manage.urls')),
 ]

@@ -14,7 +14,7 @@ services:
         environment: 
             - DATABASE_ENGINE=django.db.backends.postgresql
             - DATABASE_DB=django_db
-            - DATABASE_USER=root
+            - DATABASE_USER=postgres
             - DATABASE_PASSWORD=password
             - DATABASE_HOST=db
             - DATABASE_PORT=5432
@@ -31,7 +31,7 @@ services:
         ports:
             - 5432:5432
         environment: 
-            - POSTGRES_USER=root
+            - POSTGRES_USER=postgres
             - POSTGRES_PASSWORD=password
             - POSTGRES_DB=django_db
 
