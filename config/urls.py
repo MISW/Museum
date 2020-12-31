@@ -26,6 +26,7 @@ urlpatterns = [
     path('', include('backend.oauth.urls')),
     path('', include('backend.home.urls')),
     path('developers/', include('backend.developers.urls')),
+    path('', include('backend.development.urls')),
     #path('mypage/', include('backend.mypage.urls')),
     #path('manage/', include('backend.manage.urls')),
 ]

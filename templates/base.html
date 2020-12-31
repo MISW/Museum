@@ -33,8 +33,8 @@
       <nav class="navbar navbar-expand navbar-light" style="background-color:rgb(195, 215, 252)">
         <ul class="nav nav-tabs mr-auto">
           <li class="float-left">
-            <a href="/" class="nav-item navbar-brand">みすゲームセンター</a>
-            <a href="{% url 'backend.developers:home' %}"
+            <a href="{% url 'home:home' %}" class="nav-item navbar-brand">みすゲームセンター</a>
+            <a href="{% url 'developers:home' %}"
                class="nav-item navbar-link text-secondary d-none d-sm-inline-block">開発者一覧&nbsp;</a>
             <a href=""
                class="nav-item navbar-link text-secondary d-none d-sm-inline-block">このサイトについて</a>
@@ -72,7 +72,7 @@
               </div>
               <hr>
               <div class="py-2">
-                <a class="dropdown-item" href="{% url 'backend.developers:home' %}">開発者一覧</a>
+                <a class="dropdown-item" href="{% url 'developers:home' %}">開発者一覧</a>
               </div>
               <div class="py-2">
                 <a class="dropdown-item" href="">このサイトについて</a>
@@ -163,7 +163,7 @@
       <div class="footer-bottom-content">
         <div>
           <div>
-            <font color="#ffffff">© 2018-2020 MIS.W</font>
+            <span style="color: #ffffff; ">© 2018-2020 MIS.W</span>
           </div>
         </div>
       </div>

@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'backend.home.apps.HomeConfig',
     'backend.oauth.apps.OauthConfig',
     'backend.developers.apps.DevelopersConfig',
+    'backend.development.apps.DevelopmentConfig',
     'backend.mypage.apps.MypageConfig',
     'backend.manage.apps.ManageConfig',
     # auth0 app

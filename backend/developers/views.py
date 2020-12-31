@@ -16,7 +16,7 @@ class DevelopersView(generic.TemplateView):
 
         return self.render_to_response(context)
 
-class DeveloperDetailView(generic.TemplateView):
+class DevelopersDetailView(generic.TemplateView):
     template_name = 'developers/detail.html'
     model = User
 
