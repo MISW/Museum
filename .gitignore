@@ -150,4 +150,5 @@ dmypy.json
 
 .vscode
 *.code-workspace
-initdb
+db/
+.idea/

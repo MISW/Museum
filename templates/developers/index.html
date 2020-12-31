@@ -3,48 +3,48 @@
 {% load static %}
 
 {% block title %}
-misw-museum | 開発者一覧
+  misw-museum | 開発者一覧
 {% endblock title %}
 
 {% block main %}
-<main role="main">
-  <section class="jumbotron text-center">
-    <div>
-      <h2 class="jumbotron-heading2">開発者一覧</h2>
-    </div>
-  </section>
+  <main role="main">
+    <section class="jumbotron text-center">
+      <div>
+        <h2 class="jumbotron-heading2">開発者一覧</h2>
+      </div>
+    </section>
 
-  <div>
-    <div class="container">
-      <div class="row">
-        {% for developer in developers %}
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            {% if developer.image %}
-            <img class="card-img-top" style="height: 300px; width: 100%; display: block;"
-              src="{{ developer.image.url }}" data-holder-rendered="true">
-            {% else %}
-            <img class="card-img-top" style="height: 300px; width: 100%; display: block;"
-              src="{% static 'icons/profile.svg' %}" data-holder-rendered="true">
-            {% endif %}
-            <div class="card-body">
-              <p class="card-text">
-                <font size="5">{{ developer.first_name }}</font>
-              </p>
-              {% if developer.generation %}
-              <p>{{ developer.generation }}代</p>
-              {% else %}
-              <p>-代</p>
-              {% endif %}
-              <div class="d-flex justify-content-between align-items-center">
-                <a href="{% url 'backend.developers:detail' developer.pk %}">詳しく見る</a>
+    <div>
+      <div class="container">
+        <div class="row">
+          {% for developer in developers %}
+            <div class="col-md-4">
+              <div class="card mb-4 shadow-sm">
+                {% if developer.image %}
+                  <img class="card-img-top" style="height: 300px; width: 100%; display: block;"
+                       src="{{ developer.image.url }}" data-holder-rendered="true">
+                {% else %}
+                  <img class="card-img-top" style="height: 300px; width: 100%; display: block;"
+                       src="{% static 'icons/profile.svg' %}" data-holder-rendered="true">
+                {% endif %}
+                <div class="card-body">
+                  <p class="card-text">
+                    <font size="5">{{ developer.first_name }}</font>
+                  </p>
+                  {% if developer.generation %}
+                    <p>{{ developer.generation }}代</p>
+                  {% else %}
+                    <p>-代</p>
+                  {% endif %}
+                  <div class="d-flex justify-content-between align-items-center">
+                    <a href="{% url 'backend.developers:detail' developer.pk %}">詳しく見る</a>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
+          {% endfor %}
         </div>
-        {% endfor %}
       </div>
     </div>
-  </div>
-</main>
+  </main>
 {% endblock main %}

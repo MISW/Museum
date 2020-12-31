@@ -3,82 +3,84 @@
 {% load static %}
 
 {% block title %}
-マイページ | ゲーム詳細
+  マイページ | ゲーム詳細
 {% endblock title %}
 
 {% block head %}
-<!-- css link -->
-<link href="{% static 'css/myPage.css' %}" rel="stylesheet">
+  <!-- css link -->
+  <link href="{% static 'css/myPage.css' %}" rel="stylesheet">
 {% endblock head %}
 
 {% block main %}
-<html lang="ja">
+  <html lang="ja">
 
-<div class="container">
-  <div class="page-container">
-    <div class="single-portfolio-holder portfolio-type-2 alt-four">
-      <!-- added div -->
-      <div class="p-3 mb-5 row">
-        <p class="col-md-3">状態：　<span>{{ object.status |yesno:'公開中,申請中'}}</span></p>
-        <p class="col-md-3">ゲームID:　<span>{{ object.id }}</span> </p>
-        <p class="col-md-3">申請者:　<span>{{ object.user.first_name }}</span></p>
-      </div>
-      <div class="title section-title">
-        <h1>{{ object.title }}</h1>
-      </div>
+  <div class="container">
+    <div class="page-container">
+      <div class="single-portfolio-holder portfolio-type-2 alt-four">
+        <!-- added div -->
+        <div class="p-3 mb-5 row">
+          <p class="col-md-3">状態：　<span>{{ object.status |yesno:'公開中,申請中' }}</span></p>
+          <p class="col-md-3">ゲームID:　<span>{{ object.id }}</span></p>
+          <p class="col-md-3">申請者:　<span>{{ object.user.first_name }}</span></p>
+        </div>
+        <div class="title section-title">
+          <h1>{{ object.title }}</h1>
+        </div>
 
-      <div class="col-sm-12">
-        <div class="gallery">
-          <div class="row nivo">
-            <div class="col-12">
-              <div class="photo wow fadeInLab" style="visibility: visible; animation-name: fadeInLab;">
-                {% if object.image.url != None %}
-                <img style="height: 100%; width: 100%; display: block;"
-                  class="attachment-portfolio-single-img-1 size-portfolio-single-img-1 img-2814 lazyloaded"
-                  role="presentation" src=" {{ object.image.url }} ">
-                {% else %}
-                <img style="height: 100%; width: 100%; display: block;"
-                  class="attachment-portfolio-single-img-1 size-portfolio-single-img-1 img-2814 lazyloaded"
-                  role="presentation" src=" {% static 'icons/noimage.png' %} ">
-                {% endif %}
+        <div class="col-sm-12">
+          <div class="gallery">
+            <div class="row nivo">
+              <div class="col-12">
+                <div class="photo wow fadeInLab" style="visibility: visible; animation-name: fadeInLab;">
+                  {% if object.image.url != None %}
+                    <img style="height: 100%; width: 100%; display: block;"
+                         class="attachment-portfolio-single-img-1 size-portfolio-single-img-1 img-2814 lazyloaded"
+                         role="presentation" src=" {{ object.image.url }} ">
+                  {% else %}
+                    <img style="height: 100%; width: 100%; display: block;"
+                         class="attachment-portfolio-single-img-1 size-portfolio-single-img-1 img-2814 lazyloaded"
+                         role="presentation" src=" {% static 'icons/noimage.png' %} ">
+                  {% endif %}
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div>
-        <div class="col-sm-12">
-          <div class="project-description">
-            <div class="post-formatting">
-              <p>{{ object.description }}</p>
+        <div>
+          <div class="col-sm-12">
+            <div class="project-description">
+              <div class="post-formatting">
+                <p>{{ object.description }}</p>
 
+              </div>
+            </div>
+
+            <div>
+              <p>作成者: {{ object.user.first_name }}</p>
+              <p>カテゴリ: {{ object.categoryname }}</p>
+              <p>
+                対応機種: {{ object.link_browser |yesno:'Web,' }} {{ object.link_Windows |yesno:'Windows,' }} {{ object.link_Mac |yesno:'Mac,' }} {{ object.link_Android  |yesno:'Android,' }} {{ object.link_iOS  |yesno:'iOS,' }}
+              </p>
+              <p><a href="【googleplayリンクを挿入】"><img alt="Google Play で手に入れよう"
+                                                   src="https://play.google.com/intl/en_us/badges/static/images/badges/ja_badge_web_generic.png"
+                                                   width="180px" height="auto" style='margin-top:-42px;'></a><a
+                  href="【AppStoreリンクを挿入】"
+                  style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2013-09-18&kind=iossoftware&bubble=ios_apps) no-repeat;width:160px;height: 48px;background-size: contain;"></a>
+              </p>
+              <p><a href="【windows版ダウンロードリンクを挿入】" class="button"></a></p>
             </div>
           </div>
-
-          <div>
-            <p>作成者: {{ object.user.first_name }}</p>
-            <p>カテゴリ: {{ object.categoryname }}</p>
-            <p>対応機種: {{ object.link_browser |yesno:'Web,'}} {{ object.link_Windows |yesno:'Windows,'}} {{ object.link_Mac |yesno:'Mac,'}} {{ object.link_Android  |yesno:'Android,'}} {{ object.link_iOS  |yesno:'iOS,'}}
-            </p>
-            <p><a href="【googleplayリンクを挿入】"><img alt="Google Play で手に入れよう"
-                  src="https://play.google.com/intl/en_us/badges/static/images/badges/ja_badge_web_generic.png"
-                  width="180px" height="auto" style='margin-top:-42px;'></a><a href="【AppStoreリンクを挿入】"
-                style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2013-09-18&kind=iossoftware&bubble=ios_apps) no-repeat;width:160px;height: 48px;background-size: contain;"></a>
-            </p>
-            <p><a href="【windows版ダウンロードリンクを挿入】" class="button"></a></p>
-          </div>
-        </div>
-        <table class="table table-hover table-bordered">
-          <caption>ランキング</caption>
-          <thead>
+          <table class="table table-hover table-bordered">
+            <caption>ランキング</caption>
+            <thead>
             <tr>
               <th>順位</th>
               <th>名前</th>
               <th>スコア</th>
             </tr>
-          </thead>
-          <tbody>
+            </thead>
+            <tbody>
             <tr>
               <th>1</th>
               <td>Harrisonkawagoe</td>
@@ -100,20 +102,24 @@
                 <div class="text-right"></div>
               </td>
             </tr>
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+      <div class="col-12 p-4 text-center text-break">
+
+        <a href="{% url 'mypage:change' object.id %}" class="">
+          <button class="btn btn-primary">内容変更</button>
+          <a href="{% url 'mypage:delete_application' object.id %}" class="px-2">
+            <button class="btn btn-danger">削除申請</button>
+            <a href="{% url 'mypage:mypage_home' %}" class="pl-5">
+              <button class="btn btn-secondary">戻る</button>
+            </a>
+
       </div>
 
     </div>
-
-    <div class="col-12 p-4 text-center text-break">
-
-      <a href="{% url 'mypage:change' object.id %}" class=""><button class="btn btn-primary">内容変更</button>
-        <a href="{% url 'mypage:delete_application' object.id %}" class="px-2"><button class="btn btn-danger">削除申請</button>
-          <a href="{% url 'mypage:mypage_home' %}" class="pl-5"><button class="btn btn-secondary">戻る</button></a>
-
-    </div>
-
   </div>
-</div>
 {% endblock main %}

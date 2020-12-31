@@ -1,5 +1,4 @@
 from django.db import models
-from django.db.models.fields import BigAutoField
 from django.utils.translation import gettext_lazy as _
 
 from backend.users.models import User
@@ -47,7 +46,7 @@ class LinkInf(models.Model):
 class DevelopmentInf(models.Model): #ゲーム情報テーブル
     id = models.BigAutoField(primary_key=True, editable=False)
 
-    title = models.TextField()
+    title = models.CharField(max_length=30)
     description = models.TextField()
 
     user = models.ForeignKey(User, verbose_name='User', on_delete=models.PROTECT, related_name='developmentinf_user')
@@ -57,6 +56,7 @@ class DevelopmentInf(models.Model): #ゲーム情報テーブル
     associations = models.ManyToManyField(
         Association,
         related_name='developmentinf_associations',
+        blank=True
     )
 
     status = models.IntegerField(
