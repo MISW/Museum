@@ -27,6 +27,7 @@ urlpatterns = [
     path('', include('backend.home.urls')),
     path('developers/', include('backend.developers.urls')),
     path('', include('backend.development.urls')),
+    path('', include('backend.contact.urls')),
     #path('mypage/', include('backend.mypage.urls')),
     #path('manage/', include('backend.manage.urls')),
 ]
