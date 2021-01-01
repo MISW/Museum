@@ -15,7 +15,7 @@
 
 {% block main %}
   <main role="main">
-    <form action="{% url 'mypage:update_profile' %}" method="post" enctype="multipart/form-data">
+    <form action="" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       <!-- profile  -->
       <section class="p-5" style="background-color: rgb(238, 237, 237);">
@@ -25,15 +25,16 @@
               <!-- col-12 col-md-4 -->
               <!-- col-4 col-auto-->
 
-              <label for="profileImageInput">
-                {% if user.user_image %}
-                  <img class="rounded-circle" src="{{ user.user_image.url }}" width="200" height="200">
+              <label for="image">
+                {% if user.image %}
+                  <img class="rounded-circle" src="{{ user.image.url }}" width="200" height="200">
                 {% else %}
                   <img class="rounded-circle" src="{% static 'icons/profile.svg' %}" width="200" height="200">
                 {% endif %}
               </label>
-              <input id="profileImageInput" name="profileImageInput" type="file" class="form-control-file center-block"
-                     name="profileImageInput" accept="image/*">
+              <div class="form-control-file center-block" accept="image/*">
+                {{ form.image }}
+              </div>
 
             </div>
             <div class="col-12 col-md-8 text-left ">
@@ -45,20 +46,18 @@
                 <span class="col-6 col-md-5">{{ user.first_name }}</span>
               </div>
               <div class="row form-group">
-                <p class="col-6 col-md-5">
-                  <label for="generationInput">代: </label>
-                </p>
-                <p class="col-6 col-md-5">
-                  <input type="number" id="generationInput" name="generationInput" min="0" max="300"
-                         value="{{ user.generation }}">
-                </p>
+                <span class="col-6 col-md-5">
+                  <label for="generation">代: </label>
+                </span>
+                <span class="col-6 col-md-5">{{ form.generation }}</span>
               </div>
               <div class="row form-group">
-                <p class="col-6 col-md-5">
+                <span class="col-6 col-md-5">
                   <label for="shortCommentInput">ひとこと: </label>
-                </p>
-                <textarea class="col-6 col-md-5" id="shortCommentInput" name="shortCommentInput" rows="5"
-                          placeholder="自己紹介など">{{ description }}</textarea>
+                </span>
+                <span>
+                  {{ form.description }}
+                </span>
               </div>
             </div>
           </div>
@@ -69,7 +68,7 @@
 
       <div class="text-center p-5">
         <button id="changeButton" type="submit" class="btn btn-primary pr-3 pl-3 m-3">変更保存</button>
-        <a href="{% url 'mypage:mypage_home' %}">
+        <a href="{% url 'mypage:home' user.pk %}">
           <button type="button" class="btn btn-outline-danger pr-3 pl-3 m-3">戻る</button>
         </a>
       </div>

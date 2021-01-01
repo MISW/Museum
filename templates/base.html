@@ -65,10 +65,10 @@
                 </a>
               </div>
               <div class="py-2">
-                <a class="dropdown-item" href="">マイページトップへ</a>
+                <a class="dropdown-item" href="{% url 'mypage:home' user.pk %}">マイページトップへ</a>
               </div>
               <div class="py-2">
-                <a class="dropdown-item" href="">プロフィール変更</a>
+                <a class="dropdown-item" href="{% url 'mypage:profile_update' %}">プロフィール変更</a>
               </div>
               <hr>
               <div class="py-2">
