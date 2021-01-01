@@ -18,4 +18,16 @@ class ProfileUpdateForm(forms.ModelForm):
         )
 
 class ApplicationCreateFrom(forms.ModelForm):
-    tilte = forms.CharField(required=True)
+    title = forms.CharField(required=True, max_length=30)
+    description = forms.CharField(required=False, widget=forms.Textarea)
+    top_image = forms.FileField(required=False)
+    is_public = forms.BooleanField(required=False)
+
+    class Meta:
+        model = DevelopmentInf
+        fields = (
+            'title',
+            'description',
+            'top_image',
+            'is_public'
+        )

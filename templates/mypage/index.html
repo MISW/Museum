@@ -88,9 +88,9 @@
                     <span class="btn btn-info btn-sm">申請中</span>
                   {% endif %}
                 <td class="d-none d-md-table-cell align-middle">{{ app.id }}</td>
-                {% if app.image %}
+                {% if app.top_image %}
                   <td class="d-none d-md-table-cell align-middle">
-                    <img src="{{ app.image.url }}" width="32" height="32">
+                    <img src="{{ app.top_image.url }}" width="32" height="32">
                   </td>
                 {% else %}
                   <td class="d-none d-md-table-cell align-middle">

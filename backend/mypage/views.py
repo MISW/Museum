@@ -6,9 +6,8 @@ from django.shortcuts import redirect
 from django.utils import timezone
 
 from django.http import request
-from .forms import ProfileUpdateForm
-from backend.users.models import User
-from django.urls import reverse_lazy
+
+from .forms import ProfileUpdateForm, ApplicationCreateFrom
 
 from backend.users.models import User
 from backend.models.models import DevelopmentInf
@@ -52,12 +51,38 @@ class ProfileUpdateView(generic.TemplateView):
         else:
             form = ProfileUpdateForm()
 
-        return redirect('mypage:profile_update', request.user.pk)
+        return redirect('mypage:profile_update')
 
-class MypageNewView(generic.TemplateView):
-    template_name = 'mypage/application/new.html'
+class ApplicationNewView(generic.TemplateView):
+    template_name = 'mypage/app/new.html'
 
+    def get(self, *args, **kwargs):
+        form = ApplicationCreateFrom
+        context = dict(form=form)
+        return self.render_to_response(context)
 
+    def post(self, request, *args, **kwargs):
+        if request.method == 'POST':
+            form = ApplicationCreateFrom(request.POST, request.FILES)
+            if form.is_valid():
+                user = User.objects.get(pk=request.user.pk)
+                cleaned_data = form.cleaned_data
+                app = DevelopmentInf()
+                app.title = cleaned_data['title']
+                app.description = cleaned_data['description']
+                app.user = request.user
+                if cleaned_data['top_image']:
+                    app.top_image = cleaned_data['top_image']
+                app.is_public = cleaned_data['is_public']
+                app.submitted_at = timezone.now()
+                app.updated_at = timezone.now()
+                app.save()
+
+                return redirect('mypage:home', request.user.pk)
+        else:
+            form = ProfileUpdateForm()
+
+        return redirect('mypage:app_new')
 
 # class MypageChangeView(generic.TemplateView):
 #     template_name = 'mypage_application_change.html'
