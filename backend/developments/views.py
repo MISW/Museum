@@ -9,7 +9,7 @@ class DevelopmentDetailView(generic.TemplateView):
 
     def get(self, *args, **kwargs):
         context = {
-            'app': Development.objects.get(pk=self.kwargs['pk'], status=1)
+            'development': Development.objects.get(pk=self.kwargs['pk'], status=1)
         }
 
         return self.render_to_response(context)

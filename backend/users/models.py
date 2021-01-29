@@ -30,8 +30,7 @@ class User(AbstractUser):
     associations = models.CharField(
         _('associations'),
         validators=[validate_comma_separated_integer_list],
-        max_length=200,
-        choices=ASSOCIATION_CHOICES,
+        max_length=6,
         help_text='0: programming, 1: CG, 2: MIDI',
         blank=True,
         null=True,
@@ -40,7 +39,7 @@ class User(AbstractUser):
 
     image = models.ImageField(
         _('image'),
-        upload_to='images/profiles',
+        upload_to='images/User',
         blank=True,
         null=True
     )
@@ -60,3 +59,16 @@ class User(AbstractUser):
 
     class Meta:
         verbose_name_plural = 'User'
+
+    def get_associations(self) -> list:
+        associations = self.associations
+        associations_int_list = associations.split(',')
+        associations_str_list = []
+        for association in associations_int_list:
+            for choice in ASSOCIATION_CHOICES:
+                num = choice[0]
+                name = choice[1]
+                if association == num:
+                    association.append(name)
+
+        return associations_str_list

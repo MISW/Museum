@@ -18,7 +18,7 @@
 
     <div class="container">
       <h1 class="">新規ゲーム申請</h1>
-      <form id="myform" class="px-4" a method="post" enctype="multipart/form-data">
+      <form id="myform" class="px-4" method="post" enctype="multipart/form-data">
         <!--class="was-validated"-->
         {% csrf_token %}
         <div class="row form-group py-4">
@@ -58,7 +58,7 @@
         </div>
 
         <div class="row form-group py-3">
-          <label class="col-xs-12 col-sm-4 col-form-label" for="gameImageInput">イメージ画像</label>
+          <label class="col-xs-12 col-sm-4 col-form-label" for="gameImageInput">トップ画像</label>
           <div class="col-xs-12 col-sm-8">
             <label class="bor" for="gameImageInput">
               <img src="{% static 'icons/plus.svg' %}" width="25" alt="画像追加">
@@ -80,7 +80,5 @@
 
       </form>
     </div>
-
-
   </main>
 {% endblock main %}

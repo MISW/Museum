@@ -56,12 +56,12 @@
       </form> {% endcomment %}
 
         <div class="row" position="relative">
-          {% for app in apps %}
+          {% for development in developments %}
             <div class="col-md-4">
               <div class="card mb-4 shadow-sm">
-                {% if app.top_image %}
+                {% if development.top_image %}
                   <img class="card-img-top" style="height: 200px; width: 100%; display: block;"
-                       src={{ app.top_image.url }}
+                       src={{ development.top_image.url }}
                            data-holder-rendered="true">
                 {% else %}
                   <img class="card-img-top" style="height: 200px; width: 100%; display: block;"
@@ -69,13 +69,11 @@
                 {% endif %}
                 <div class="card-body">
                   <p class="card-text">
-                    <span style="font-size: large; ">{{ app.title }}</span>
+                    <span style="font-size: large; ">{{ development.title }}</span>
                   </p>
-                  <p>作成者： {{ app.user.first_name }}</p>
+                  <p>作成者： {{ development.user.first_name }}</p>
                   <div class="d-flex justify-content-between align-items-center">
-
-                    <a href="{% url 'developments:detail' app.pk %}">詳しく見る</a>
-
+                    <a href="{% url 'developments:detail' development.pk %}">詳しく見る</a>
                   </div>
                 </div>
               </div>

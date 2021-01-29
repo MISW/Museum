@@ -18,11 +18,24 @@ class ProfileUpdateForm(forms.ModelForm):
         )
 
 
-class ApplicationCreateFrom(forms.ModelForm):
+class DevelopmentCreateForm(forms.ModelForm):
     title = forms.CharField(required=True, max_length=30)
     description = forms.CharField(required=False, widget=forms.Textarea)
     top_image = forms.FileField(required=False)
     is_private = forms.BooleanField(required=False)
+
+    class Meta:
+        model = Development
+        fields = (
+            'title',
+            'description',
+            'top_image',
+            'is_private'
+        )
+
+
+class DevelopmentUpdateForm(DevelopmentCreateForm):
+    title = forms.CharField(required=False, max_length=30)
 
     class Meta:
         model = Development

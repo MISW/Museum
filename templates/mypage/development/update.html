@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+  マイページ | 内容変更申請
+{% endblock title %}
+
+{% block head %}
+  <!-- css link -->
+  <link href="{% static 'css/myPage.css' %}" rel="stylesheet">
+  <!-- js link -->
+  <script type="text/javascript" src="{% static 'js/mypage_application.js' %} "></script>
+{% endblock head %}
+
+{% block main %}
+  <main role="main">
+    <div class="container">
+      <h2 class="">内容変更申請</h2>
+      <form id="myform" class="px-4" method="post" enctype="multipart/form-data">
+        <!--class="was-validated"-->
+        {% csrf_token %}
+        <div class="row form-group py-4">
+          <label class="col-xs-12 col-sm-5 col-form-label" for="gameTitle">ゲームタイトル</label>
+          <div class="col-xs-12 col-sm-7">
+            {{ form.title }}
+          </div>
+        </div>
+
+        <div class="row form-group py-3">
+          <label class="col-xs-12 col-sm-5 col-form-label" for="introduction">ゲームの説明</label>
+          <div class="col-xs-12 col-sm-7">
+            {{ form.description }}
+          </div>
+        </div>
+
+        <div class="row form-group py-3">
+          <label class="col-xs-12 col-sm-5 col-form-label">作成者</label>
+          <div class="col-xs-12 col-sm-7">
+            <input type="text" id="createdBy" name="createdBy" value="{{ user.first_name }}" disabled></input>
+            <p class="" data-toggle="collapse" href="#developer_div" aria-expanded="false"
+               aria-controls="developer_div">
+              <img src="{% static 'icons/plus.svg' %}" width="25" alt="作成者追加">
+              <span id="co_createdBy" class="bg-white pt-1 pb-1"></span>
+            </p>
+            <div class="collapse bg-light" id="developer_div">
+              <p>申請者(あなた)以外の作成者:</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row form-group py-3">
+          <label class="col-xs-12 col-sm-5 col-form-label" for="introduction">みす内のみに公開</label>
+          <div class="col-xs-12 col-sm-7">
+            {{ form.is_private }}
+          </div>
+        </div>
+
+        <div class="row form-group py-3">
+          <div class="col-xs-12 col-sm-7">
+            <label class="bor" for="gameImageInput">
+              {% if development.top_image %}
+                <img src="{{ development.top_image.url }}" width="25" alt="画像追加">
+              {% else %}
+                <img src="{% static 'icons/plus.svg' %}" width="25" alt="画像追加">
+              {% endif %}
+            </label>
+            {{ form.top_image }}
+          </div>
+
+        </div>
+
+        <div class="row form-group py-3">
+          <div class="col-xs-12 col-sm-5">
+            <label class="col-form-label">対応機種</label>
+          </div>
+        </div>
+
+        <div class="col-12 p-4 text-center text-break">
+          <a class="px-3">
+            <button type="submit" class="btn btn-primary">変更申請</button>
+          </a>
+          <a href="{% url 'mypage:development_delete' development.pk %}" class="btn btn-danger">削除</a>
+          <span class="pl-5">
+            <a href="{% url 'mypage:home' user.pk %}" class="btn btn-secondary">戻る</a>
+          </span>
+        </div>
+      </form>
+    </div>
+  </main>
+{% endblock main %}

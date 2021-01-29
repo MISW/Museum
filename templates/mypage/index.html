@@ -48,7 +48,7 @@
               <div class="row p-2">
                 <span class="col-6 col-md-5">ひとこと: </span>
                 <span class="col-6 col-md-5">
-                <p>{{ user.description }}</p>
+                <p>{{ user.description | linebreaksbr }}</p>
               </span>
               </div>
             </div>
@@ -77,20 +77,20 @@
             </tr>
             </thead>
             <tbody>
-            {% for app in apps %}
+            {% for development in developments %}
               <tr>
                 <td class="d-table-cell">
-                  {% if app.status == 1 %}
+                  {% if development.status == 1 %}
                     <span class="btn btn-primary status_public">公開</span>
-                  {% elif app.status == 2 %}
+                  {% elif development.status == 2 %}
                     <span class="btn btn-success btn-sm">非公開</span>
                   {% else %}
                     <span class="btn btn-info btn-sm">申請中</span>
                   {% endif %}
-                <td class="d-none d-md-table-cell align-middle">{{ app.id }}</td>
-                {% if app.top_image %}
+                <td class="d-none d-md-table-cell align-middle">{{ development.id }}</td>
+                {% if development.top_image %}
                   <td class="d-none d-md-table-cell align-middle">
-                    <img src="{{ app.top_image.url }}" width="32" height="32">
+                    <img src="{{ development.top_image.url }}" width="32" height="32">
                   </td>
                 {% else %}
                   <td class="d-none d-md-table-cell align-middle">
@@ -98,14 +98,14 @@
                   </td>
                 {% endif %}
 
-                <td class="d-table-cell  text-wrap align-middle">{{ app.title }}</td>
+                <td class="d-table-cell  text-wrap align-middle">{{ development.title }}</td>
                 <!--overflow-hidden  -->
                 <td class="d-none d-md-table-cell align-middle"></td>
                 <td class="d-table-cell align-middle">
-                  <a href="">
+                  <a href="{% url 'mypage:development_detail' development.pk %}">
                     <button class="btn btn-outline-dark">詳細</button>
                   </a>
-                  <a href="">
+                  <a href="{% url 'mypage:development_update' development.pk %}">
                     <button  class="btn btn-success">変更</button>
                   </a>
                 </td>
@@ -114,55 +114,6 @@
 
             </tbody>
           </table>
-        </div>
-
-        <div class="p-4 col-12">
-          <!-- 複数人作成ゲーム -->
-          {% comment %}
-        <span class="h2">複数人作成</span>
-        <small> 注）変更できるのは「申請者」のみ</small>
-        <table class="table table-hover p-2 text-nowrap overflow-auto">
-          <!--table-responsive-->
-          <thead class="thead-light">
-            <tr>
-              <th class="d-table-cell" style="width:15%;">状態</th>
-              <th class="d-none d-md-table-cell" style="width:15%;">ゲームID</th>
-              <th class="d-none d-md-table-cell" style="width:10%;">写真</th>
-              <th class="d-table-cell text-wrap align-middle" style="width:20%;">ゲーム名</th>
-              <th class="d-none d-md-table-cell align-middle" style="width:15%;">申請者</th>
-              <th class="d-table-cell align-middle" style="width:15%;"></th>
-
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <!-- 1つめ -->
-              <td class="d-table-cell align-middle"><span class="btn btn-primary status_private"
-                  id="status_public">非公開</span></td>
-              <td class="d-none d-md-table-cell align-middle">0000000</td>
-              <td class="d-none d-md-table-cell align-middle"><img src="../static/image/game_image.jpeg" width="32"
-                  height="32"></td>
-              <td class="d-table-cell text-wrap align-middle">ゲーム名あいうえおかきくけこさしすせそ多阿智伝となにぬねのはhihhuhe</td>
-              <td class="d-none d-md-table-cell align-middle">SELF</td>
-              <td class="d-table-cell align-middle"><a href="mypage_game_detail.html"><button
-                    class="btn btn-outline-dark">詳細</button></a><a href="myPage_application_change.html"><button
-                    class="btn btn-success">変更</button></a></td>
-            </tr>
-            <tr>
-              <!-- 2つめ -->
-              <td class="d-table-cell align-middle"><span class="btn btn-primary status_public">公開中</span>
-              </td>
-              <td class="d-none d-md-table-cell align-middle">0000000</td>
-              <td class="d-none d-md-table-cell align-middle"><img src="../static/image/game_image.jpeg" width="32"
-                  height="32"></td>
-              <td class="d-table-cell text-wrap align-middle">ゲーム名</td>
-              <td class="d-none d-md-table-cell align-middle">自分以外</td>
-              <td class="d-table-cell align-middle"><a href="mypage_game_detail.html"><button
-                    class="btn btn-outline-dark">詳細</button></a></td>
-            </tr>
-          </tbody>
-        </table>
-        {% endcomment %}
         </div>
       </div>
     </div>

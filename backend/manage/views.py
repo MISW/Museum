@@ -25,7 +25,7 @@ class ManageGameDetailView(generic.TemplateView):
         if request.user.isadmin == False:
             return redirect('/')
         context = {
-            'app': GameInf.objects.filter(id=self.kwargs['pk'])[0]
+            'development': GameInf.objects.filter(id=self.kwargs['pk'])[0]
         }
         return self.render_to_response(context)
 
@@ -37,7 +37,7 @@ class ManageNonPublicGameDetailView(generic.TemplateView):
         if request.user.isadmin == False:
             return redirect('/')
         context = {
-            'app': GameInf.objects.filter(id=self.kwargs['pk'])[0]
+            'development': GameInf.objects.filter(id=self.kwargs['pk'])[0]
         }
         return self.render_to_response(context)
 
@@ -49,7 +49,7 @@ class ManagePublicGameDetailView(generic.TemplateView):
         if request.user.isadmin == False:
             return redirect('/')
         context = {
-            'app': GameInf.objects.filter(id=self.kwargs['pk'])[0]
+            'development': GameInf.objects.filter(id=self.kwargs['pk'])[0]
         }
         return self.render_to_response(context)
 

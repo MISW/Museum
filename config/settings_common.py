@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'backend.contact.apps.ContactConfig',
     'backend.mypage.apps.MypageConfig',
     'backend.manage.apps.ManageConfig',
-    # auth0 app
+    # auth0 development
     'social_django',
     # cloudinary setting
     'cloudinary',

@@ -1,10 +1,17 @@
+from django.shortcuts import render
+from django.http import HttpResponse
+
 from django.shortcuts import redirect
 from django.utils import timezone
 from django.views import generic
 
 from backend.developments.models import Development
 from backend.users.models import User
-from .forms import ProfileUpdateForm, ApplicationCreateFrom
+from .forms import (
+    ProfileUpdateForm,
+    DevelopmentCreateForm,
+    DevelopmentUpdateForm,
+)
 
 
 class MypageHomeView(generic.TemplateView):
@@ -13,7 +20,7 @@ class MypageHomeView(generic.TemplateView):
 
     def get(self, *args, **kwargs):
         context = {
-            'apps': Development.objects.filter(user__id=self.kwargs['pk'])
+            'developments': Development.objects.filter(user__id=self.kwargs['pk'])
         }
         return self.render_to_response(context)
 
@@ -50,42 +57,113 @@ class ProfileUpdateView(generic.TemplateView):
         return redirect('mypage:profile_update')
 
 
-class ApplicationNewView(generic.TemplateView):
-    template_name = 'mypage/app/new.html'
+class DevelopmentNewView(generic.TemplateView):
+    template_name = 'mypage/development/new.html'
 
     def get(self, *args, **kwargs):
-        form = ApplicationCreateFrom
+        form = DevelopmentCreateForm()
         context = dict(form=form)
         return self.render_to_response(context)
 
     def post(self, request, *args, **kwargs):
         if request.method == 'POST':
-            form = ApplicationCreateFrom(request.POST, request.FILES)
+            form = DevelopmentCreateForm(request.POST, request.FILES)
             if form.is_valid():
                 user = User.objects.get(pk=request.user.pk)
                 cleaned_data = form.cleaned_data
-                app = Development()
-                app.title = cleaned_data['title']
-                app.description = cleaned_data['description']
-                app.user = request.user
+                development = Development()
+                development.title = cleaned_data['title']
+                development.description = cleaned_data['description']
+                development.user = request.user
                 if cleaned_data['top_image']:
-                    app.top_image = cleaned_data['top_image']
-                app.is_private = cleaned_data['is_private']
-                app.submitted_at = timezone.now()
-                app.updated_at = timezone.now()
-                app.save()
+                    development.top_image = cleaned_data['top_image']
+                development.is_private = cleaned_data['is_private']
+                development.submitted_at = timezone.now()
+                development.updated_at = timezone.now()
+                development.save()
 
                 return redirect('mypage:home', request.user.pk)
         else:
-            form = ProfileUpdateForm()
+            form = DevelopmentCreateForm
 
-        return redirect('mypage:app_new')
+        return redirect('mypage:devlopment_new')
+
+
+class DevelopmentUpdateView(generic.TemplateView):
+    template_name = 'mypage/development/update.html'
+
+    def get(self, *args, **kwargs):
+        form = DevelopmentUpdateForm()
+
+        development = Development.objects.get(pk=self.kwargs['pk'])
+        form.fields['title'].initial = development.title
+        form.fields['description'].initial = development.description
+
+        context = dict(form=form)
+        context['development'] = development
+
+        return self.render_to_response(context)
+
+    def post(self, request, *args, **kwargs):
+        development = Development.objects.get(pk=self.kwargs['pk'])
+
+        if request.method == 'POST':
+            form = DevelopmentUpdateForm(request.POST, request.FILES)
+            if form.is_valid():
+                cleaned_data = form.cleaned_data
+                development.title = cleaned_data['title']
+                development.description = cleaned_data['description']
+                development.user = request.user
+                if cleaned_data['top_image']:
+                    development.top_image = cleaned_data['top_image']
+                development.is_private = cleaned_data['is_private']
+                development.updated_at = timezone.now()
+                development.save()
+
+                return redirect('mypage:home', request.user.pk)
+        else:
+            form = DevelopmentUpdateForm()
+
+        return redirect('mypage:devlopment_update', development.pk)
+
+
+class DevelopmentDeleteView(generic.TemplateView):
+    template_name = 'mypage/development/delete.html'
+
+    def get(self, *args, **kwargs):
+        context = {
+            'development': Development.objects.get(pk=self.kwargs['pk'])
+        }
+
+        return self.render_to_response(context)
+
+    def post(self, request, *args, **kwargs):
+        development = Development.objects.get(pk=self.kwargs['pk'])
+
+        if request.method == 'POST':
+            development.delete()
+            print('delete')
+            return redirect('mypage:home', request.user.pk)
+
+        return redirect('mypage:development_update', development.pk)
+
+
+class DevelopmentDetailView(generic.TemplateView):
+    template_name = 'mypage/development/detail.html'
+
+    def get(self, *args, **kwargs):
+        context = {
+            'development': Development.objects.get(pk=self.kwargs['pk'])
+        }
+
+        return self.render_to_response(context)
+
 
 # class MypageChangeView(generic.TemplateView):
 #     template_name = 'mypage_application_change.html'
 #     def get(self, request, **kwargs):
 #         context = {
-#             'app':  GameInf.objects.filter(id=self.kwargs['pk'])[0]
+#             'development':  GameInf.objects.filter(id=self.kwargs['pk'])[0]
 #         }
 #         return self.render_to_response(context)
 

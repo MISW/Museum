@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+  マイページ | 削除
+{% endblock title %}
+
+{% block main %}
+  <main role="main">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 p-4 text-center text-break">
+          <form action="" method="post">
+            {% csrf_token %}
+            <input type="hidden" value="delete_development">
+            <p>本当に削除しますか？</p>
+            <button class="btn btn-danger mt-5" type="submit">削除</button>
+            <a href="{% url 'mypage:home' user.pk %}" class="btn btn-secondary mt-5 ml-2">キャンセル</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock main %}
+

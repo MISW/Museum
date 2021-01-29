@@ -105,7 +105,7 @@ class Development(models.Model):  # ゲーム情報テーブル
 
     top_image = models.ImageField(
         _('top_image'),
-        upload_to='images/Development',
+        upload_to='images/development',
         help_text='top image to be listed to home',
         blank=True,
         null=True
