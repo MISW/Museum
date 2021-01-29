@@ -1,6 +1,6 @@
 from django import forms
 
-from backend.models.models import DevelopmentInf
+from backend.developments.models import Development
 from backend.users.models import User
 
 
@@ -22,13 +22,13 @@ class ApplicationCreateFrom(forms.ModelForm):
     title = forms.CharField(required=True, max_length=30)
     description = forms.CharField(required=False, widget=forms.Textarea)
     top_image = forms.FileField(required=False)
-    is_public = forms.BooleanField(required=False)
+    is_private = forms.BooleanField(required=False)
 
     class Meta:
-        model = DevelopmentInf
+        model = Development
         fields = (
             'title',
             'description',
             'top_image',
-            'is_public'
+            'is_private'
         )

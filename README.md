@@ -66,11 +66,12 @@ $ docker exec -it misw-museum_web bash
 root@************:/app# python manage.py createsuperuser
 root@************:/app# exit
 ```
-でお願いします．
+を実行．
 
 ## Git setup
 
 ```bash
+$ git checkout develop
 $ git checkout -b <my branch name>
 ```
 

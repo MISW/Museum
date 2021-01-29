@@ -2,7 +2,7 @@ from django.shortcuts import redirect
 from django.utils import timezone
 from django.views import generic
 
-from backend.models.models import DevelopmentInf
+from backend.developments.models import Development
 from backend.users.models import User
 from .forms import ProfileUpdateForm, ApplicationCreateFrom
 
@@ -13,7 +13,7 @@ class MypageHomeView(generic.TemplateView):
 
     def get(self, *args, **kwargs):
         context = {
-            'apps': DevelopmentInf.objects.filter(user__id=self.kwargs['pk'])
+            'apps': Development.objects.filter(user__id=self.kwargs['pk'])
         }
         return self.render_to_response(context)
 
@@ -64,13 +64,13 @@ class ApplicationNewView(generic.TemplateView):
             if form.is_valid():
                 user = User.objects.get(pk=request.user.pk)
                 cleaned_data = form.cleaned_data
-                app = DevelopmentInf()
+                app = Development()
                 app.title = cleaned_data['title']
                 app.description = cleaned_data['description']
                 app.user = request.user
                 if cleaned_data['top_image']:
                     app.top_image = cleaned_data['top_image']
-                app.is_public = cleaned_data['is_public']
+                app.is_private = cleaned_data['is_private']
                 app.submitted_at = timezone.now()
                 app.updated_at = timezone.now()
                 app.save()

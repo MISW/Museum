@@ -1,6 +1,6 @@
 from django.views import generic
 
-from backend.models.models import DevelopmentInf
+from backend.developments.models import Development
 
 
 class HomeView(generic.TemplateView):
@@ -9,11 +9,11 @@ class HomeView(generic.TemplateView):
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             context = {
-                'apps': DevelopmentInf.objects.order_by('title').filter(status=1, user__is_staff=False)
+                'apps': Development.objects.order_by('title').filter(status=1, user__is_staff=False)
             }
         else:
             context = {
-                'apps': DevelopmentInf.objects.order_by('title').filter(status=1, user__is_staff=False, is_public=True)
+                'apps': Development.objects.order_by('title').filter(status=1, user__is_staff=False, is_private=False)
             }
 
         return self.render_to_response(context)

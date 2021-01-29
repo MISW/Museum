@@ -1,6 +1,6 @@
 from django.views import generic
 
-from backend.models.models import DevelopmentInf
+from backend.developments.models import Development
 from backend.users.models import User
 
 
@@ -22,7 +22,7 @@ class DevelopersDetailView(generic.TemplateView):
     def get(self, *args, **kwargs):
         context = {
             'developer': self.model.objects.get(pk=self.kwargs['pk']),
-            'apps': DevelopmentInf.objects.filter(user__id=self.kwargs['pk'], status=1)
+            'apps': Development.objects.filter(user__id=self.kwargs['pk'], status=1)
         }
 
         return self.render_to_response(context)
