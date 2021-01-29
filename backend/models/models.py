@@ -1,24 +1,24 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from backend.users.models import User
 from backend.users.models import Association
-
+from backend.users.models import User
 
 LINK_CHOICES = (
     (1, '画像'),
     (2, '音声'),
     (3, '動画'),
     ('URL', (
-            (41, 'Windows'),
-            (42, 'iOS'),
-            (43, 'Android'),
-            (44, 'browser'),
-            (45, 'others')
-        )
+        (41, 'Windows'),
+        (42, 'iOS'),
+        (43, 'Android'),
+        (44, 'browser'),
+        (45, 'others')
     )
+     )
 
 )
+
 
 class LinkInf(models.Model):
     id = models.BigAutoField(primary_key=True, editable=False)
@@ -38,12 +38,12 @@ class LinkInf(models.Model):
 
     class Meta:
         verbose_name_plural = 'LinkInf'
-    
+
     def __str__(self):
         return self.get_type_display()
 
 
-class DevelopmentInf(models.Model): #ゲーム情報テーブル
+class DevelopmentInf(models.Model):  # ゲーム情報テーブル
     id = models.BigAutoField(primary_key=True, editable=False)
 
     title = models.CharField(max_length=30)
@@ -64,7 +64,7 @@ class DevelopmentInf(models.Model): #ゲーム情報テーブル
         help_text=('0: 申請中, 1: 公開中, 2: 非公開'),
         default=0,
     )
-    
+
     # みす限定公開か否か
     is_public = models.BooleanField(
         default=False,
@@ -94,5 +94,3 @@ class DevelopmentInf(models.Model): #ゲーム情報テーブル
 
     def __str__(self):
         return self.title
-
-

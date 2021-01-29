@@ -1,16 +1,11 @@
-from django.shortcuts import render
-from django.views import generic
-from django.http import HttpResponse
-from django.template import loader
 from django.shortcuts import redirect
 from django.utils import timezone
+from django.views import generic
 
-from django.http import request
-
+from backend.models.models import DevelopmentInf
+from backend.users.models import User
 from .forms import ProfileUpdateForm, ApplicationCreateFrom
 
-from backend.users.models import User
-from backend.models.models import DevelopmentInf
 
 class MypageHomeView(generic.TemplateView):
     template_name = 'mypage/index.html'
@@ -18,9 +13,10 @@ class MypageHomeView(generic.TemplateView):
 
     def get(self, *args, **kwargs):
         context = {
-            'apps':  DevelopmentInf.objects.filter(user__id=self.kwargs['pk'])
+            'apps': DevelopmentInf.objects.filter(user__id=self.kwargs['pk'])
         }
         return self.render_to_response(context)
+
 
 class ProfileUpdateView(generic.TemplateView):
     template_name = 'mypage/profile/update.html'
@@ -52,6 +48,7 @@ class ProfileUpdateView(generic.TemplateView):
             form = ProfileUpdateForm()
 
         return redirect('mypage:profile_update')
+
 
 class ApplicationNewView(generic.TemplateView):
     template_name = 'mypage/app/new.html'

@@ -1,8 +1,8 @@
 from django import forms
-from django.http import request
 
-from backend.users.models import User
 from backend.models.models import DevelopmentInf
+from backend.users.models import User
+
 
 class ProfileUpdateForm(forms.ModelForm):
     generation = forms.IntegerField(required=False, max_value=999, min_value=0)
@@ -16,6 +16,7 @@ class ProfileUpdateForm(forms.ModelForm):
             'description',
             'image'
         )
+
 
 class ApplicationCreateFrom(forms.ModelForm):
     title = forms.CharField(required=True, max_length=30)

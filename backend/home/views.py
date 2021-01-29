@@ -1,8 +1,7 @@
-from django.shortcuts import render
-from django.http import request
 from django.views import generic
 
 from backend.models.models import DevelopmentInf
+
 
 class HomeView(generic.TemplateView):
     template_name = 'home/index.html'

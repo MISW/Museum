@@ -1,15 +1,17 @@
 # https://github.com/django/django/blob/master/django/contrib/auth/models.py
 
-from django.db import models
-from django.contrib.auth.models import AbstractUser
-from django.utils.translation import gettext_lazy as _
 import uuid
+
+from django.contrib.auth.models import AbstractUser
+from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 ASSOCIATION_CHOICES = (
     (1, 'プログラミング'),
     (2, 'CG'),
     (3, 'MIDI')
 )
+
 
 class Association(models.Model):
     association = models.IntegerField(
@@ -19,6 +21,7 @@ class Association(models.Model):
 
     def __str__(self):
         return self.get_association_display()
+
 
 class User(AbstractUser):
     """Extended User Model"""
