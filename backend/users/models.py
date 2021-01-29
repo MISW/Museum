@@ -5,23 +5,14 @@ import uuid
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.core.validators import validate_comma_separated_integer_list
+
 
 ASSOCIATION_CHOICES = (
-    (1, 'プログラミング'),
-    (2, 'CG'),
-    (3, 'MIDI')
+    (0, 'プログラミング'),
+    (1, 'CG'),
+    (2, 'MIDI')
 )
-
-
-class Association(models.Model):
-    association = models.IntegerField(
-        choices=ASSOCIATION_CHOICES,
-        help_text=('1: programming, 2: CG, 3: MIDI'),
-    )
-
-    def __str__(self):
-        return self.get_association_display()
-
 
 class User(AbstractUser):
     """Extended User Model"""
@@ -31,15 +22,20 @@ class User(AbstractUser):
     # user's generation is here
     generation = models.IntegerField(
         _('generation'),
-        help_text=('Specific Generation for this user.'),
+        help_text='Specific Generation for this user.',
         blank=True,
         null=True
     )
 
-    associations = models.ManyToManyField(
-        Association,
+    associations = models.CharField(
         _('associations'),
-        blank=True
+        validators=[validate_comma_separated_integer_list],
+        max_length=200,
+        choices=ASSOCIATION_CHOICES,
+        help_text='0: programming, 1: CG, 2: MIDI',
+        blank=True,
+        null=True,
+        default=''
     )
 
     image = models.ImageField(
@@ -51,14 +47,14 @@ class User(AbstractUser):
 
     description = models.TextField(
         _('description'),
-        help_text=('User\'s description. Editable.'),
+        help_text='User\'s description. Editable.',
         blank=True,
         null=True
     )
 
     is_admin = models.BooleanField(
         _('is_admin'),
-        help_text=('administrative authority for this user.'),
+        help_text='administrative authority for this user.',
         default=False
     )
 

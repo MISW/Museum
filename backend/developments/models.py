@@ -1,21 +1,33 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.core.validators import validate_comma_separated_integer_list
 
-from backend.users.models import Association
 from backend.users.models import User
 
 MEDIA_CHOICES = (
-    (1, '画像'),
-    (2, '音声'),
-    (3, '動画')
+    (0, '画像'),
+    (1, '音声'),
+    (2, '動画')
 )
 
 LINK_CHOICES = (
-    (1, 'Windows'),
-    (2, 'iOS'),
-    (3, 'Android'),
-    (4, 'ブラウザ'),
-    (5, 'その他')
+    (0, 'Windows'),
+    (1, 'iOS'),
+    (2, 'Android'),
+    (3, 'ブラウザ'),
+    (4, 'その他')
+)
+
+ASSOCIATION_CHOICES = (
+    (0, 'プログラミング'),
+    (1, 'CG'),
+    (2, 'MIDI')
+)
+
+STATUS_CHOICES = (
+    (0, '申請中'),
+    (1, '公開中'),
+    (2, '非公開')
 )
 
 class Media(models.Model):
@@ -23,7 +35,7 @@ class Media(models.Model):
 
     type = models.IntegerField(
         choices=MEDIA_CHOICES,
-        help_text='1: image, 2: sound, 3: video'
+        help_text='0: image, 1: sound, 2: video'
     )
 
     file = models.FileField(
@@ -41,7 +53,7 @@ class Link(models.Model):
 
     type = models.IntegerField(
         choices=LINK_CHOICES,
-        help_text='1: Windows, 2: iOS, 3: Android, 4: browser, 5: others'
+        help_text='0: Windows, 1: iOS, 2: Android, 3: browser, 4: others'
     )
 
     link = models.URLField(blank=True, null=True)
@@ -59,18 +71,28 @@ class Development(models.Model):  # ゲーム情報テーブル
     title = models.CharField(max_length=30)
     description = models.TextField()
 
-    user = models.ForeignKey(User, verbose_name='User', on_delete=models.PROTECT, related_name='development_user')
+    user = models.ForeignKey(
+        User,
+        verbose_name='User',
+        on_delete=models.PROTECT,
+        related_name='development_user'
+    )
     # 共同開発者
-    users = models.ManyToManyField(User, related_name='development_users')
+    users = models.ManyToManyField(User, related_name='development_users', blank=True)
 
-    associations = models.ManyToManyField(
-        Association,
-        related_name='development_associations',
-        blank=True
+    associations = models.CharField(
+        _('associations'),
+        validators=[validate_comma_separated_integer_list],
+        max_length=6,
+        help_text='0: programming, 1: CG, 2: MIDI',
+        blank=True,
+        null=True,
+        default=''
     )
 
     status = models.IntegerField(
         _('status'),
+        choices=STATUS_CHOICES,
         help_text='0: 申請中, 1: 公開中, 2: 非公開',
         default=0,
     )
@@ -89,9 +111,9 @@ class Development(models.Model):  # ゲーム情報テーブル
         null=True
     )
 
-    medias = models.ManyToManyField(Media, _('Medias'))
+    medias = models.ManyToManyField(Media, _('Medias'), blank=True)
 
-    links = models.ManyToManyField(Link, _('links'))
+    links = models.ManyToManyField(Link, _('links'), blank=True)
 
     # times
     submitted_at = models.DateTimeField(blank=True, null=True)
@@ -102,3 +124,19 @@ class Development(models.Model):  # ゲーム情報テーブル
 
     def __str__(self):
         return self.title
+
+    def get_associations(self) -> list:
+        associations = self.associations
+        associations_int_list = associations.split(',')
+        associations_str_list = []
+        for association in associations_int_list:
+            for choice in ASSOCIATION_CHOICES:
+                num = choice[0]
+                name = choice[1]
+                if association == num:
+                    association.append(name)
+
+        return associations_str_list
+
+
+
