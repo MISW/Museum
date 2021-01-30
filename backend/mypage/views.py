@@ -1,6 +1,3 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-
 from django.shortcuts import redirect
 from django.utils import timezone
 from django.views import generic
@@ -142,7 +139,6 @@ class DevelopmentDeleteView(generic.TemplateView):
 
         if request.method == 'POST':
             development.delete()
-            print('delete')
             return redirect('mypage:home', request.user.pk)
 
         return redirect('mypage:development_update', development.pk)

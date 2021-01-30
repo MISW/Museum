@@ -1,9 +1,39 @@
 from django.shortcuts import redirect
 from django.views import generic
 
+from backend.developments.models import Development
 
-class
+class DevelopmentPendingHomeView(generic.TemplateView):
+    template_name = 'manage/development/pending/index.html'
 
+    def get(self, *args, **kwargs):
+        context = {
+            'developments': Development.objects.filter(status=0)
+        }
+
+        return self.render_to_response(context)
+
+
+class DevelopmentPublicHomeView(generic.TemplateView):
+    template_name = 'manage/development/public/index.html'
+
+    def get(self, *args, **kwargs):
+        context = {
+            'developments': Development.objects.filter(status=1)
+        }
+
+        return self.render_to_response(context)
+
+
+class DevelopmentClosedHomeView(generic.TemplateView):
+    template_name = 'manage/development/closed/index.html'
+
+    def get(self, *args, **kwargs):
+        context = {
+            'developments': Development.objects.filter(status=2)
+        }
+
+        return self.render_to_response(context)
 
 # class ManageHomeView(generic.TemplateView):
 #     template_name = 'admin-page.html'
