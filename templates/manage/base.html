@@ -30,7 +30,7 @@
     <a class="navbar-brand mx-1" href="{% url 'home:home' %}">みすミュージアム</a>
     <ul id="nav-text" class="navbar-nav mr-auto mt-2 mt-xs-0">
       <li class="nav-item">
-        <a class="nav-link" href="">管理者画面<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{% url 'manage_developments:home' %}">管理者画面<span class="sr-only">(current)</span></a>
       </li>
     </ul>
     <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbars01"
@@ -60,7 +60,10 @@
         <ul id="side" class="text-center item-center col-10">
           <br>
           <li id="side-content">
-            <a class="p-3 text-dark text-center text-nowrap" href="{% url 'manage_developments:closed_home' %}">申請中成果物一覧</a>
+            <a class="p-3 text-dark text-center text-nowrap" href="{% url 'manage_developments:home' %}">成果物一覧</a>
+          </li>
+          <li id="side-content">
+            <a class="p-3 text-dark text-center text-nowrap" href="{% url 'manage_developments:pending_home' %}">申請中成果物一覧</a>
           </li>
           <li id="side-content">
             <a class="p-3 text-dark text-center text-nowrap" href="{% url 'manage_developments:public_home' %}">公開中成果物一覧</a>

@@ -40,7 +40,7 @@
               <!--overflow-hidden  -->
               <td calss=" d-md-table-cell align-center active" style="width:20%;">
                 <div class="text-right">
-                  <a scope="col" class="detail " href="">詳細</a>
+                  <a scope="col" class="detail" href="{% url 'manage_developments:detail' development.pk %}">詳細</a>
                   <button scope="col" class="btn btn-success btn-sm public">非公開</button>
                 </div>
             </tr>

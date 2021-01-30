@@ -1,0 +1,38 @@
+{% extends 'manage/base.html' %}
+
+{% load static %}
+
+{% block title %}
+  管理画面 | {{ development.get_status_display }}成果物詳細
+{% endblock title %}
+
+{% block main %}
+
+  <div class="col-sm-8 col-12">
+    <h2 class="col-sm-8 mt-3">{{ development.title }}</h2>
+    <br>
+    <div class="row">
+      <div class="col-sm-11 col-sm-offset-1">
+        {% if development.top_image %}
+          <img ID="game-img" class="item-center" src="{{ development.top_image.url }}" alt="画像">
+        {% else %}
+          <img src="{% static 'icons/noimage.png' %}" alt="">
+        {% endif %}
+        <p class="col-sm-12">{{ development.description }}</p>
+        <p class="col-sm-12">作成者: {{ development.user }}</p>
+        <br>
+        <form id="myform" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="col-sm-12">
+            {{ form.status }}
+          </div>
+          <div class="pt-5 pr-5 pb-5">
+            <a class="px-3">
+              <button type="submit" class="btn btn-primary">決定</button>
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock main %}

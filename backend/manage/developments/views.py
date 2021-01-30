@@ -2,13 +2,26 @@ from django.shortcuts import redirect
 from django.views import generic
 
 from backend.developments.models import Development
+from .forms import StatusUpdateForm
+
+
+class DevelopmentHomeView(generic.TemplateView):
+    template_name = 'manage/developments/index.html'
+
+    def get(self, *args, **kwargs):
+        context = {
+            'developments': Development.objects.all().order_by('updated_at')
+        }
+
+        return self.render_to_response(context)
+
 
 class PendingHomeView(generic.TemplateView):
     template_name = 'manage/developments/pending/index.html'
 
     def get(self, *args, **kwargs):
         context = {
-            'developments': Development.objects.filter(status=0)
+            'developments': Development.objects.filter(status=0).order_by('updated_at')
         }
 
         return self.render_to_response(context)
@@ -19,7 +32,7 @@ class PublicHomeView(generic.TemplateView):
 
     def get(self, *args, **kwargs):
         context = {
-            'developments': Development.objects.filter(status=1)
+            'developments': Development.objects.filter(status=1).order_by('updated_at')
         }
 
         return self.render_to_response(context)
@@ -30,99 +43,47 @@ class ClosedHomeView(generic.TemplateView):
 
     def get(self, *args, **kwargs):
         context = {
-            'developments': Development.objects.filter(status=2)
+            'developments': Development.objects.filter(status=2).order_by('updated_at')
         }
 
         return self.render_to_response(context)
 
-# class ManageHomeView(generic.TemplateView):
-#     template_name = 'admin-page.html'
-#
-#     def get(self, request, **kwargs):
-#         if request.user.isadmin == False:
-#             return redirect('/')
-#         context = {
-#             'apps': GameInf.objects.filter(status=0)
-#         }
-#         return self.render_to_response(context)
-#
-#
-# class ManageGameDetailView(generic.TemplateView):
-#     template_name = 'admin-game-detail.html'
-#
-#     def get(self, request, **kwargs):
-#         if request.user.isadmin == False:
-#             return redirect('/')
-#         context = {
-#             'development': GameInf.objects.filter(id=self.kwargs['pk'])[0]
-#         }
-#         return self.render_to_response(context)
-#
-#
-# class ManageNonPublicGameDetailView(generic.TemplateView):
-#     template_name = 'admin-nopublic-game-detail.html'
-#
-#     def get(self, request, **kwargs):
-#         if request.user.isadmin == False:
-#             return redirect('/')
-#         context = {
-#             'development': GameInf.objects.filter(id=self.kwargs['pk'])[0]
-#         }
-#         return self.render_to_response(context)
-#
-#
-# class ManagePublicGameDetailView(generic.TemplateView):
-#     template_name = 'admin-public-game-detail.html'
-#
-#     def get(self, request, **kwargs):
-#         if request.user.isadmin == False:
-#             return redirect('/')
-#         context = {
-#             'development': GameInf.objects.filter(id=self.kwargs['pk'])[0]
-#         }
-#         return self.render_to_response(context)
-#
-#
-# class ManageNonPublicView(generic.TemplateView):
-#     template_name = 'admin-page-nopublic.html'
-#
-#     def get(self, request, **kwargs):
-#         if request.user.isadmin == False:
-#             return redirect('/')
-#         context = {
-#             'apps': GameInf.objects.filter(status=2)
-#         }
-#         return self.render_to_response(context)
-#
-#
-# class ManagePublicView(generic.TemplateView):
-#     template_name = 'admin-page-public.html'
-#
-#     def get(self, request, **kwargs):
-#         if request.user.isadmin == False:
-#             return redirect('/')
-#         context = {
-#             'apps': GameInf.objects.filter(status=1)
-#         }
-#         return self.render_to_response(context)
-#
-#
-# def DeleteApplication(request, id):
-#     if request.user.isadmin == False:
-#         return redirect('/')
-#     GameInf.objects.get(id=id).delete()
-#     return redirect('/manage')
-#
-#
-# def PublishApplication(request, id):
-#     if request.user.isadmin == False:
-#         return redirect('/')
-#     GameInf.objects.filter(id=id).update(status=1)
-#     return redirect('/manage')
-#
-#
-# def HideApplication(request, id):
-#     if request.user.isadmin == False:
-#         return redirect('/')
-#     GameInf.objects.filter(id=id).update(status=2)
-#     return redirect('/manage')
+
+class DetailView(generic.TemplateView):
+    template_name = 'manage/developments/detail.html'
+
+    def get(self, *args, **kwargs):
+        development = Development.objects.get(pk=self.kwargs['pk'])
+
+        form = StatusUpdateForm(initial={
+            'status': development.status
+        })
+
+        context = dict(form=form)
+
+        context['development'] = development
+
+        return self.render_to_response(context)
+
+    def post(self, request, *args, **kwargs):
+        development = Development.objects.get(pk=self.kwargs['pk'])
+        previous_status = development.status
+        print(type(previous_status))
+
+        if request.method == 'POST':
+            form = StatusUpdateForm(request.POST)
+            if form.is_valid():
+                cleaned_data = form.cleaned_data
+                development.status = cleaned_data['status']
+                development.save()
+
+                if previous_status == 0:
+                    return redirect('manage_developments:pending_home')
+                elif previous_status == 1:
+                    return redirect('manage_developments:public_home')
+                elif previous_status == 2:
+                    return redirect('manage_developments:closed_home')
+        else:
+            form = StatusUpdateForm()
+
+        return redirect('manage_developments:detail', development.pk)
