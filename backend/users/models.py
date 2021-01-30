@@ -48,7 +48,8 @@ class User(AbstractUser):
         _('description'),
         help_text='User\'s description. Editable.',
         blank=True,
-        null=True
+        null=True,
+        default=''
     )
 
     is_admin = models.BooleanField(

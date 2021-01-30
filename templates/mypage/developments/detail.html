@@ -61,10 +61,10 @@
       </div>
 
       <div class="col-12 p-4 text-center text-break">
-        <a href="{% url 'mypage:development_update' development.pk %}" class="">
+        <a href="{% url 'mypage:developments_update' development.pk %}" class="">
           <button class="btn btn-primary">内容変更</button>
         </a>
-        <a href="{% url 'mypage:development_delete' development.pk %}" class="px-2">
+        <a href="{% url 'mypage:developments_delete' development.pk %}" class="px-2">
           <button class="btn btn-danger">削除</button>
         </a>
         <a href="{% url 'mypage:home' user.pk %}" class="pl-5">

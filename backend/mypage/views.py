@@ -55,7 +55,7 @@ class ProfileUpdateView(generic.TemplateView):
 
 
 class DevelopmentNewView(generic.TemplateView):
-    template_name = 'mypage/development/new.html'
+    template_name = 'mypage/developments/new.html'
 
     def get(self, *args, **kwargs):
         form = DevelopmentCreateForm()
@@ -83,11 +83,11 @@ class DevelopmentNewView(generic.TemplateView):
         else:
             form = DevelopmentCreateForm
 
-        return redirect('mypage:devlopment_new')
+        return redirect('mypage:devlopments_new')
 
 
 class DevelopmentUpdateView(generic.TemplateView):
-    template_name = 'mypage/development/update.html'
+    template_name = 'mypage/developments/update.html'
 
     def get(self, *args, **kwargs):
         form = DevelopmentUpdateForm()
@@ -121,11 +121,11 @@ class DevelopmentUpdateView(generic.TemplateView):
         else:
             form = DevelopmentUpdateForm()
 
-        return redirect('mypage:devlopment_update', development.pk)
+        return redirect('mypage:devlopments_update', development.pk)
 
 
 class DevelopmentDeleteView(generic.TemplateView):
-    template_name = 'mypage/development/delete.html'
+    template_name = 'mypage/developments/delete.html'
 
     def get(self, *args, **kwargs):
         context = {
@@ -141,11 +141,11 @@ class DevelopmentDeleteView(generic.TemplateView):
             development.delete()
             return redirect('mypage:home', request.user.pk)
 
-        return redirect('mypage:development_update', development.pk)
+        return redirect('mypage:developments_update', development.pk)
 
 
 class DevelopmentDetailView(generic.TemplateView):
-    template_name = 'mypage/development/detail.html'
+    template_name = 'mypage/developments/detail.html'
 
     def get(self, *args, **kwargs):
         context = {
