@@ -60,7 +60,7 @@ $ docker exec misw-museum_web python manage.py createsuperuser
 Superuser creation skipped due to not running in a TTY. You can run `manage.py createsuperuser` in your project to create one manually.
 ```
 とエラーがでる場合は
-```
+```bash
 $ docker exec -it misw-museum_web bash
 ($ docker exec -it misw-museum_web /bin/sh) # Macの場合
 root@************:/app# python manage.py createsuperuser
