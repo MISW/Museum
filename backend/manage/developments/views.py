@@ -3,9 +3,10 @@ from django.views import generic
 
 from backend.developments.models import Development
 from .forms import StatusUpdateForm
+from ..views import OnlyAdminMixin
 
 
-class DevelopmentHomeView(generic.TemplateView):
+class DevelopmentHomeView(OnlyAdminMixin, generic.TemplateView):
     template_name = 'manage/developments/index.html'
 
     def get(self, *args, **kwargs):
@@ -16,7 +17,7 @@ class DevelopmentHomeView(generic.TemplateView):
         return self.render_to_response(context)
 
 
-class PendingHomeView(generic.TemplateView):
+class PendingHomeView(OnlyAdminMixin, generic.TemplateView):
     template_name = 'manage/developments/pending/index.html'
 
     def get(self, *args, **kwargs):
@@ -27,7 +28,7 @@ class PendingHomeView(generic.TemplateView):
         return self.render_to_response(context)
 
 
-class PublicHomeView(generic.TemplateView):
+class PublicHomeView(OnlyAdminMixin, generic.TemplateView):
     template_name = 'manage/developments/public/index.html'
 
     def get(self, *args, **kwargs):
@@ -38,7 +39,7 @@ class PublicHomeView(generic.TemplateView):
         return self.render_to_response(context)
 
 
-class ClosedHomeView(generic.TemplateView):
+class ClosedHomeView(OnlyAdminMixin, generic.TemplateView):
     template_name = 'manage/developments/closed/index.html'
 
     def get(self, *args, **kwargs):
@@ -49,7 +50,7 @@ class ClosedHomeView(generic.TemplateView):
         return self.render_to_response(context)
 
 
-class DetailView(generic.TemplateView):
+class DetailView(OnlyAdminMixin, generic.TemplateView):
     template_name = 'manage/developments/detail.html'
 
     def get(self, *args, **kwargs):

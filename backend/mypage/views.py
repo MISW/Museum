@@ -1,6 +1,7 @@
 from django.shortcuts import redirect
 from django.utils import timezone
 from django.views import generic
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from backend.developments.models import Development
 from backend.users.models import User
@@ -11,7 +12,7 @@ from .forms import (
 )
 
 
-class MypageHomeView(generic.TemplateView):
+class MypageHomeView(LoginRequiredMixin, generic.TemplateView):
     template_name = 'mypage/index.html'
     model = User
 
@@ -22,7 +23,7 @@ class MypageHomeView(generic.TemplateView):
         return self.render_to_response(context)
 
 
-class ProfileUpdateView(generic.TemplateView):
+class ProfileUpdateView(LoginRequiredMixin, generic.TemplateView):
     template_name = 'mypage/profile/update.html'
 
     def get(self, request, *args, **kwargs):
@@ -54,7 +55,7 @@ class ProfileUpdateView(generic.TemplateView):
         return redirect('mypage:profile_update')
 
 
-class DevelopmentNewView(generic.TemplateView):
+class DevelopmentNewView(LoginRequiredMixin, generic.TemplateView):
     template_name = 'mypage/developments/new.html'
 
     def get(self, *args, **kwargs):
@@ -86,7 +87,7 @@ class DevelopmentNewView(generic.TemplateView):
         return redirect('mypage:devlopments_new')
 
 
-class DevelopmentUpdateView(generic.TemplateView):
+class DevelopmentUpdateView(LoginRequiredMixin, generic.TemplateView):
     template_name = 'mypage/developments/update.html'
 
     def get(self, *args, **kwargs):
@@ -124,7 +125,7 @@ class DevelopmentUpdateView(generic.TemplateView):
         return redirect('mypage:devlopments_update', development.pk)
 
 
-class DevelopmentDeleteView(generic.TemplateView):
+class DevelopmentDeleteView(LoginRequiredMixin, generic.TemplateView):
     template_name = 'mypage/developments/delete.html'
 
     def get(self, *args, **kwargs):
@@ -144,7 +145,7 @@ class DevelopmentDeleteView(generic.TemplateView):
         return redirect('mypage:developments_update', development.pk)
 
 
-class DevelopmentDetailView(generic.TemplateView):
+class DevelopmentDetailView(LoginRequiredMixin, generic.TemplateView):
     template_name = 'mypage/developments/detail.html'
 
     def get(self, *args, **kwargs):
