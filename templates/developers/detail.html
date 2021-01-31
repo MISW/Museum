@@ -55,27 +55,24 @@
     </section>
 
     <div class="container">
-
-      {% comment %} <h2>個人作成</h2> {% endcomment %}
-
-      {% for app in apps %}
+      {% for development in developments %}
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
-            {% if app.top_image %}
+            {% if development.top_image %}
               <img class="card-img-top" style="height: 200px; width: 100%; display: block;"
-                   src="{{ app.top_image.url }}" data-holder-rendered="true">
+                   src="{{ development.top_image.url }}" data-holder-rendered="true">
             {% else %}
               <img class="card-img-top" style="height: 200px; width: 100%; display: block;"
                    src="{% static 'icons/noimage.png' %}" data-holder-rendered="true">
             {% endif %}
             <div class="card-body">
               <p class="card-text">
-                <span style="font-size: large; ">{{ app.title }}</span>
+                <span style="font-size: large; ">{{ development.title }}</span>
               </p>
-              <p>作成者： {{ app.user.first_name }}</p>
+              <p>作成者： {{ development.user.first_name }}</p>
               <div class="d-flex justify-content-between align-items-center">
 
-                <a href="{% url 'developments:detail' app.pk %}">詳しく見る</a>
+                <a href="{% url 'developments:detail' development.pk %}">詳しく見る</a>
 
               </div>
             </div>
@@ -83,28 +80,5 @@
         </div>
       {% endfor %}
     </div>
-
-    {% comment %} <div class="container">
-
-    <h2>複数人作成</h2>
-
-    <div class="col-md-4">
-      <div class="card mb-4 shadow-sm">
-        <img class="card-img-top" style="height: 100%; width: 100%; display: block;"
-          src="../static/icons/games-icon/mistrain.png" data-holder-rendered="true">
-        <div class="card-body">
-          <p class="card-text">
-            <font size="5">MIS列車でGO!</font>
-          </p>
-          <p>作成者：HarrisonKawagoe, yagi, SEED, タコス, okanon</p>
-          <div class="d-flex justify-content-between align-items-center">
-
-            <a href="">詳しく見る</a>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> {% endcomment %}
   </main>
 {% endblock main %}

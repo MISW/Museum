@@ -53,7 +53,7 @@ class User(AbstractUser):
         _('description'),
         help_text='User\'s description. Editable.',
         blank=True,
-        null=True,
+        null=False,
         default=''
     )
 

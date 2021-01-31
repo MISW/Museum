@@ -9,7 +9,7 @@ class DevelopersView(generic.TemplateView):
 
     def get(self, *args, **kwargs):
         context = {
-            'developers': User.objects.filter(is_staff=False).order_by('generation', 'username')
+            'developers': User.objects.filter(is_superuser=False).order_by('generation', 'username')
         }
 
         return self.render_to_response(context)
@@ -22,7 +22,7 @@ class DevelopersDetailView(generic.TemplateView):
     def get(self, *args, **kwargs):
         context = {
             'developer': self.model.objects.get(pk=self.kwargs['pk']),
-            'apps': Development.objects.filter(user__id=self.kwargs['pk'], status=1).order_by('updated_at')
+            'developments': Development.objects.filter(user_id=self.kwargs['pk'], status=1).order_by('updated_at')
         }
 
         return self.render_to_response(context)
