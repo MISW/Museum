@@ -6,7 +6,8 @@ class OnlyAdminMixin(UserPassesTestMixin):
     def test_func(self):
         user = self.request.user
         if user.is_authenticated:
-            return user.is_admin
-        else:
-            return False
+            if user.role == 0:
+                return True
+
+        return False
 

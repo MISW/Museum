@@ -14,6 +14,11 @@ ASSOCIATION_CHOICES = (
     (2, 'MIDI')
 )
 
+ROLE_CHOICES = (
+    (0, 'admin'),
+    (1, 'member')
+)
+
 class User(AbstractUser):
     """Extended User Model"""
 
@@ -52,10 +57,11 @@ class User(AbstractUser):
         default=''
     )
 
-    is_admin = models.BooleanField(
-        _('is_admin'),
-        help_text='administrative authority for this user.',
-        default=False
+    role = models.IntegerField(
+        _('role'),
+        choices=ROLE_CHOICES,
+        help_text='0: admin, 1: member',
+        default=1
     )
 
     class Meta:
