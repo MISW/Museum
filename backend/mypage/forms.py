@@ -27,6 +27,11 @@ class ProfileUpdateForm(forms.ModelForm):
 class DevelopmentCreateForm(forms.ModelForm):
     title = forms.CharField(required=True, max_length=30)
     description = forms.CharField(required=False, widget=forms.Textarea)
+    users = forms.ModelMultipleChoiceField(
+        queryset=User.objects.all(),
+        required=False,
+        widget=forms.CheckboxSelectMultiple
+    )
     top_image = forms.FileField(required=False)
     is_private = forms.BooleanField(required=False)
 

@@ -127,16 +127,14 @@ class Development(models.Model):  # ゲーム情報テーブル
 
     def get_associations(self) -> list:
         associations = self.associations
-        associations_int_list = associations.split(',')
-        associations_str_list = []
-        for association in associations_int_list:
-            for choice in ASSOCIATION_CHOICES:
-                num = choice[0]
-                name = choice[1]
-                if association == num:
-                    association.append(name)
+        if not associations:
+            return []
+        return associations.split(',')
 
-        return associations_str_list
+    def get_associations_display(self) -> str:
+        return ', '.join(
+            [ASSOCIATION_CHOICES[int(data)][1] for data in self.get_associations()]
+        )
 
 
 

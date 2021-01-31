@@ -65,6 +65,8 @@ class DevelopmentNewView(LoginRequiredMixin, generic.TemplateView):
 
     def get(self, *args, **kwargs):
         form = DevelopmentCreateForm()
+        form.fields['users'].queryset = User.objects.filter(is_superuser=False).exclude(pk=self.request.user.pk)
+
         context = dict(form=form)
         return self.render_to_response(context)
 

@@ -74,7 +74,7 @@ class User(AbstractUser):
             return []
         return associations.split(',')
 
-    def get_associations_display(self) -> list:
+    def get_associations_display(self) -> str:
         return ', '.join(
             [ASSOCIATION_CHOICES[int(data)][1] for data in self.get_associations()]
         )
