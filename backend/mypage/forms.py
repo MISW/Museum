@@ -1,13 +1,19 @@
 from django import forms
 
-from backend.developments.models import Development
+from backend.developments.models import Development, ASSOCIATION_CHOICES
 from backend.users.models import User
 
 
 class ProfileUpdateForm(forms.ModelForm):
     generation = forms.IntegerField(required=False, max_value=999, min_value=0)
+    associations = forms.MultipleChoiceField(
+        choices=ASSOCIATION_CHOICES,
+        required=False,
+        widget=forms.CheckboxSelectMultiple
+    )
     description = forms.CharField(required=False, widget=forms.Textarea)
     image = forms.FileField(required=False)
+
 
     class Meta:
         model = User

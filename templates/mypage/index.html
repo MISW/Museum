@@ -47,7 +47,14 @@
                 {% else %}
                   <span class="col-6 col-md-5">-</span>
                 {% endif %}
-
+              </div>
+              <div class="row p-2">
+                <span class="col-6 col-md-5">研究会: </span>
+                {% if user.get_associations_display %}
+                  <span class="col-6 col-md-5">{{ user.get_associations_display }}</span>
+                {% else %}
+                  <span class="col-6 col-md-5">-</span>
+                {% endif %}
               </div>
               <div class="row p-2">
                 <span class="col-6 col-md-5">ひとこと: </span>

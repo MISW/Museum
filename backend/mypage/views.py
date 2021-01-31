@@ -27,7 +27,11 @@ class ProfileUpdateView(LoginRequiredMixin, generic.TemplateView):
     template_name = 'mypage/profile/update.html'
 
     def get(self, request, *args, **kwargs):
-        form = ProfileUpdateForm()
+        form = ProfileUpdateForm(
+            initial={
+                'associations': request.user.get_associations()
+            }
+        )
 
         user = User.objects.get(pk=request.user.pk)
         form.fields['generation'].widget.attrs['value'] = user.generation
@@ -43,6 +47,7 @@ class ProfileUpdateView(LoginRequiredMixin, generic.TemplateView):
                 user = User.objects.get(pk=request.user.pk)
                 cleaned_data = form.cleaned_data
                 user.generation = cleaned_data['generation']
+                user.associations = ','.join(cleaned_data['associations'])
                 user.description = cleaned_data['description']
                 if cleaned_data['image']:
                     user.image = cleaned_data['image']
