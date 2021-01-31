@@ -33,6 +33,10 @@
             <!-- col-8 col-auto-->
             <div style="overflow-wrap: break-word; word-wrap: break-word;">
               <div class="row p-2">
+                <span class="col-6 col-md-5">ユーザーネーム: </span>
+                <span class="col-6 col-md-5">{{ user.username }}</span>
+              </div>
+              <div class="row p-2">
                 <span class="col-6 col-md-5">ハンドルネーム: </span>
                 <span class="col-6 col-md-5">{{ user.first_name }}</span>
               </div>
@@ -69,9 +73,9 @@
             <thead class="thead-light">
             <tr>
               <th class="d-table-cell" style="width:15%;">状態</th>
-              <th class="d-none d-md-table-cell" style="width:15%;">ゲームID</th>
-              <th class="d-none d-md-table-cell" style="width:10%;">写真</th>
-              <th class="d-table-cell" style="width:20%;">ゲーム名</th>
+              <th class="d-none d-md-table-cell" style="width:15%;">ID</th>
+              <th class="d-none d-md-table-cell" style="width:10%;">トップ画像</th>
+              <th class="d-table-cell" style="width:20%;">タイトル</th>
               <th class="d-none d-md-table-cell" style="width:15%;"></th>
               <th class="d-table-cell" style="width:15%;"></th>
             </tr>

@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block title %}
-  マイページ | ゲーム詳細
+  マイページ | 成果物詳細
 {% endblock title %}
 
 {% block head %}
@@ -20,7 +20,7 @@
         <!-- added div -->
         <div class="p-3 mb-5 row">
           <p class="col-md-3">状態：　<span>{{ development.get_status_display }}</span></p>
-          <p class="col-md-3">ゲームID:　<span>{{ development.id }}</span></p>
+          <p class="col-md-3">ID:　<span>{{ development.id }}</span></p>
           <p class="col-md-3">申請者:　<span>{{ development.user.first_name }}</span></p>
         </div>
         <div class="title section-title">

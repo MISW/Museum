@@ -33,7 +33,7 @@
       <nav class="navbar navbar-expand navbar-light" style="background-color:rgb(195, 215, 252)">
         <ul class="nav nav-tabs mr-auto">
           <li class="float-left">
-            <a href="{% url 'home:home' %}" class="nav-item navbar-brand">みすゲームセンター</a>
+            <a href="{% url 'home:home' %}" class="nav-item navbar-brand">みすミュージアム</a>
             <a href="{% url 'developers:home' %}"
                class="nav-item navbar-link text-secondary d-none d-sm-inline-block">開発者一覧&nbsp;</a>
             <a href="{% url 'contact:about' %}"
@@ -95,7 +95,7 @@
     </div>
   {% else %}
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="/">みすゲームセンター</a>
+      <a class="navbar-brand" href="{% url 'home:home' %}">みすミュージアム</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

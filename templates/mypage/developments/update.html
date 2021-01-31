@@ -21,14 +21,14 @@
         <!--class="was-validated"-->
         {% csrf_token %}
         <div class="row form-group py-4">
-          <label class="col-xs-12 col-sm-5 col-form-label" for="gameTitle">ゲームタイトル</label>
+          <label class="col-xs-12 col-sm-5 col-form-label" for="gameTitle">タイトル</label>
           <div class="col-xs-12 col-sm-7">
             {{ form.title }}
           </div>
         </div>
 
         <div class="row form-group py-3">
-          <label class="col-xs-12 col-sm-5 col-form-label" for="introduction">ゲームの説明</label>
+          <label class="col-xs-12 col-sm-5 col-form-label" for="introduction">説明</label>
           <div class="col-xs-12 col-sm-7">
             {{ form.description }}
           </div>
