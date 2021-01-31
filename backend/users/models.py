@@ -75,14 +75,8 @@ class User(AbstractUser):
         return associations.split(',')
 
     def get_associations_display(self) -> list:
-        res = []
-        for data in self.get_associations():
-            if data == '0':
-                res.append('プログラミング')
-            elif data == '1':
-                res.append('CG')
-            elif data == '2':
-                res.append('MIDI')
-        return ', '.join(res)
+        return ', '.join(
+            [ASSOCIATION_CHOICES[int(data)][1] for data in self.get_associations()]
+        )
 
 

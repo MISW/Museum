@@ -69,7 +69,6 @@ class DetailView(OnlyAdminMixin, generic.TemplateView):
     def post(self, request, *args, **kwargs):
         development = Development.objects.get(pk=self.kwargs['pk'])
         previous_status = development.status
-        print(type(previous_status))
 
         if request.method == 'POST':
             form = StatusUpdateForm(request.POST)
