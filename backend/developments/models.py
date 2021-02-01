@@ -71,14 +71,17 @@ class Development(models.Model):  # ゲーム情報テーブル
     title = models.CharField(max_length=30)
     description = models.TextField()
 
-    user = models.ForeignKey(
+    developer = models.ForeignKey(
         User,
-        verbose_name='User',
-        on_delete=models.PROTECT,
-        related_name='development_user'
+        related_name='development_developer',
+        on_delete=models.PROTECT
     )
     # 共同開発者
-    users = models.ManyToManyField(User, related_name='development_users', blank=True)
+    co_developers = models.ManyToManyField(
+        User,
+        related_name='development_co_developers',
+        blank=True
+    )
 
     associations = models.CharField(
         _('associations'),

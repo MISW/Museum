@@ -18,7 +18,7 @@ class MypageHomeView(LoginRequiredMixin, generic.TemplateView):
 
     def get(self, *args, **kwargs):
         context = {
-            'developments': Development.objects.filter(user__id=self.kwargs['pk'])
+            'developments': Development.objects.filter(developer_id=self.kwargs['pk'])
         }
         return self.render_to_response(context)
 
@@ -33,7 +33,7 @@ class ProfileUpdateView(LoginRequiredMixin, generic.TemplateView):
             }
         )
 
-        user = User.objects.get(pk=request.user.pk)
+        user = self.request.user
         form.fields['generation'].widget.attrs['value'] = user.generation
         form.fields['description'].initial = user.description
 
@@ -44,7 +44,7 @@ class ProfileUpdateView(LoginRequiredMixin, generic.TemplateView):
         if request.method == 'POST':
             form = ProfileUpdateForm(request.POST, request.FILES)
             if form.is_valid():
-                user = User.objects.get(pk=request.user.pk)
+                user = self.request.user
                 cleaned_data = form.cleaned_data
                 user.generation = cleaned_data['generation']
                 user.associations = ','.join(cleaned_data['associations'])

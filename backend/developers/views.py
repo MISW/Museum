@@ -22,7 +22,7 @@ class DevelopersDetailView(generic.TemplateView):
     def get(self, *args, **kwargs):
         context = {
             'developer': self.model.objects.get(pk=self.kwargs['pk']),
-            'developments': Development.objects.filter(user_id=self.kwargs['pk'], status=1).order_by('updated_at')
+            'developments': Development.objects.filter(developer_id=self.kwargs['pk'], status=1).order_by('updated_at')
         }
 
         return self.render_to_response(context)
