@@ -39,6 +39,11 @@ class DevelopmentCreateForm(forms.ModelForm):
         required=False,
         widget=forms.CheckboxSelectMultiple
     )
+    associations = forms.MultipleChoiceField(
+        choices=ASSOCIATION_CHOICES,
+        required=False,
+        widget=forms.CheckboxSelectMultiple
+    )
     top_image = forms.FileField(required=False)
     is_private = forms.BooleanField(required=False)
 

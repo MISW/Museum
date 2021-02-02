@@ -58,6 +58,19 @@
         </div>
 
         <div class="row form-group py-3">
+          <label class="col-xs-12 col-sm-4 col-form-label" for="is_private">研究会</label>
+          <div class="col-xs-12 col-sm-8">
+            {% for checkbox in development_form.associations %}
+              <div class="checkbox">
+                <label for="associations">
+                  {{ checkbox.tag }} {{ checkbox.choice_label }}
+                </label>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="row form-group py-3">
           <label class="col-xs-12 col-sm-4 col-form-label" for="is_private">みす内のみに公開</label>
           <div class="col-xs-12 col-sm-8">
             {{ development_form.is_private }}

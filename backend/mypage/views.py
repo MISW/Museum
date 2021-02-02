@@ -74,7 +74,8 @@ class DevelopmentNewView(LoginRequiredMixin, generic.TemplateView):
         media_form = MediaCreateForm()
         link_form = LinkCreateForm()
         development_form.fields['co_developers'].queryset = (
-            User.objects.all()
+            User.objects.filter(is_superuser=False)
+                .exclude(pk=self.request.user.pk)
         )
 
         context = {
@@ -118,6 +119,7 @@ class DevelopmentNewView(LoginRequiredMixin, generic.TemplateView):
                 development.developer = request.user
                 if cleaned_data['top_image']:
                     development.top_image = cleaned_data['top_image']
+                development.associations = ','.join(cleaned_data['associations'])
                 development.is_private = cleaned_data['is_private']
                 development.save()
 
