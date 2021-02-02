@@ -24,14 +24,14 @@
         <div class="row form-group py-4">
           <label class="col-xs-12 col-sm-4 col-form-label" for="title">タイトル</label>
           <div class="col-xs-12 col-sm-8">
-            {{ form.title }}
+            {{ development_form.title }}
           </div>
         </div>
 
         <div class="row form-group py-3">
           <label class="col-xs-12 col-sm-4 col-form-label" for="introduction">説明</label>
           <div class="col-xs-12 col-sm-8">
-            {{ form.description }}
+            {{ development_form.description }}
           </div>
         </div>
 
@@ -46,7 +46,7 @@
             </p>
             <div class="collapse bg-light" id="developer_div">
               <p>共同作成者:</p>
-                {% for checkbox in form.users %}
+                {% for checkbox in development_form.co_developers %}
                   <div class="checkbox">
                     <label for="users">
                       {{ checkbox.tag }} {{ checkbox.choice_label }}
@@ -60,24 +60,30 @@
         <div class="row form-group py-3">
           <label class="col-xs-12 col-sm-4 col-form-label" for="is_private">みす内のみに公開</label>
           <div class="col-xs-12 col-sm-8">
-            {{ form.is_private }}
+            {{ development_form.is_private }}
           </div>
         </div>
 
         <div class="row form-group py-3">
           <label class="col-xs-12 col-sm-4 col-form-label" for="gameImageInput">トップ画像</label>
           <div class="col-xs-12 col-sm-8">
-            <label class="bor" for="gameImageInput">
-              <img src="{% static 'icons/plus.svg' %}" width="25" alt="画像追加">
-            </label>
-            {{ form.top_image }}
+            {{ development_form.top_image }}
           </div>
         </div>
 
+        <hr>
         <div class="row form-group py-3">
           <label class="col-xs-12 col-sm-4 col-form-label" for="is_private">メディアファイル</label>
           <div class="col-xs-12 col-sm-8">
-            {{ form.medias }}
+            {{ media_form.as_p }}
+          </div>
+        </div>
+
+        <hr>
+        <div class="row form-group py-3">
+          <label class="col-xs-12 col-sm-4 col-form-label" for="is_private">リンク</label>
+          <div class="col-xs-12 col-sm-8">
+            {{ link_form.as_p }}
           </div>
         </div>
 

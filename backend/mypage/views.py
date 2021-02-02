@@ -3,12 +3,18 @@ from django.utils import timezone
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from backend.developments.models import Development
+from backend.developments.models import (
+    Development,
+    Media,
+    Link
+)
 from backend.users.models import User
 from .forms import (
     ProfileUpdateForm,
     DevelopmentCreateForm,
     DevelopmentUpdateForm,
+    MediaCreateForm,
+    LinkCreateForm
 )
 
 
@@ -64,25 +70,63 @@ class DevelopmentNewView(LoginRequiredMixin, generic.TemplateView):
     template_name = 'mypage/developments/new.html'
 
     def get(self, *args, **kwargs):
-        form = DevelopmentCreateForm()
-        form.fields['users'].queryset = User.objects.filter(is_superuser=False).exclude(pk=self.request.user.pk)
+        development_form = DevelopmentCreateForm()
+        media_form = MediaCreateForm()
+        link_form = LinkCreateForm()
+        development_form.fields['co_developers'].queryset = (
+            User.objects.filter(is_superuser=False)
+                .exclude(pk=self.request.user.pk)
+        )
 
-        context = dict(form=form)
+        context = {
+            'development_form': development_form,
+            'media_form': media_form,
+            'link_form': link_form
+        }
         return self.render_to_response(context)
 
     def post(self, request, *args, **kwargs):
         if request.method == 'POST':
-            form = DevelopmentCreateForm(request.POST, request.FILES)
-            if form.is_valid():
-                user = User.objects.get(pk=request.user.pk)
-                cleaned_data = form.cleaned_data
+            development_form = DevelopmentCreateForm(request.POST, request.FILES)
+            media_form = MediaCreateForm(request.POST, request.FILES)
+            link_form = LinkCreateForm(request.POST)
+
+            media_flag = False
+            if media_form.is_valid():
+                cleaned_data = media_form.cleaned_data
+                if cleaned_data['type'] and cleaned_data['file']:
+                    media_flag = True
+                    media = Media()
+                    media.type = cleaned_data['type']
+                    media.file = cleaned_data['file']
+                    media.save()
+
+            link_flag = False
+            if link_form.is_valid():
+                cleaned_data = link_form.cleaned_data
+                if cleaned_data['type'] and cleaned_data['link']:
+                    link_flag = True
+                    link = Link()
+                    link.type = cleaned_data['type']
+                    link.link = cleaned_data['link']
+                    link.save()
+
+            if development_form.is_valid():
+                cleaned_data = development_form.cleaned_data
                 development = Development()
                 development.title = cleaned_data['title']
                 development.description = cleaned_data['description']
-                development.user = request.user
+                development.developer = request.user
                 if cleaned_data['top_image']:
                     development.top_image = cleaned_data['top_image']
                 development.is_private = cleaned_data['is_private']
+                development.save()
+
+                if media_flag:
+                    development.medias.add(media)
+                if link_flag:
+                    development.links.add(link)
+
                 development.submitted_at = timezone.now()
                 development.updated_at = timezone.now()
                 development.save()
@@ -161,60 +205,3 @@ class DevelopmentDetailView(LoginRequiredMixin, generic.TemplateView):
         }
 
         return self.render_to_response(context)
-
-
-# class MypageChangeView(generic.TemplateView):
-#     template_name = 'mypage_application_change.html'
-#     def get(self, request, **kwargs):
-#         context = {
-#             'development':  GameInf.objects.filter(id=self.kwargs['pk'])[0]
-#         }
-#         return self.render_to_response(context)
-
-# class MypageProfileView(generic.TemplateView):
-#     template_name = 'mypage_profile.html'
-#     def get(self, request, **kwargs):
-
-#         context = {
-#             'description': GetDescription(request)
-#         }
-#         return self.render_to_response(context)
-
-# class MypageGameDetailView(generic.DetailView):
-#     model = GameInf
-#     template_name = 'mypage_game_detail.html'
-
-# class NewApplication(generic.TemplateView):
-#     def post(self, request, *args, **kwargs):
-#         g = None
-#         try:
-#             g = GameInf(image=request.FILES["gameImage"],user=request.user,title=request.POST["gameTitle"],description=request.POST["introduction"],status=0,submittedtime=timezone.datetime.now(),link_browser=request.POST["link_browser"],link_Windows=request.POST["link_Windows"],link_Mac=request.POST["link_Mac"],link_Android=request.POST["link_Android"],link_iOS=request.POST["link_iOS"],categoryname=request.POST["gameCategory"])
-#         except Exception:
-#             g = GameInf(user=request.user,title=request.POST["gameTitle"],description=request.POST["introduction"],status=0,submittedtime=timezone.datetime.now(),link_Windows=request.POST["link_Windows"],link_browser=request.POST["link_browser"],link_Mac=request.POST["link_Mac"],link_Android=request.POST["link_Android"],link_iOS=request.POST["link_iOS"],categoryname=request.POST["gameCategory"])
-#         g.save()
-#         return redirect('/mypage')
-
-# class UpdateApplication(generic.TemplateView):
-#     def post(self, request, *args, **kwargs):
-#         g = GameInf.objects.filter(id=self.kwargs['id'])[0]
-#         g.user=request.user
-#         g.title=request.POST["gameTitle"]
-#         g.description=request.POST["introduction"]
-#         g.status=0
-#         g.submittedtime=timezone.datetime.now()
-#         g.link_browser=request.POST["link_browser"]
-#         g.link_Windows=request.POST["link_Windows"]
-#         g.link_Mac=request.POST["link_Mac"]
-#         g.link_Android=request.POST["link_Android"]
-#         g.link_iOS=request.POST["link_iOS"]
-#         g.categoryname=request.POST["gameCategory"]
-#         try:
-#             g.image = request.FILES["gameImage"]
-#         except Exception:
-#             print("noimage")
-#         g.save()
-#         return redirect('/mypage')
-
-# def DeleteApplication(request,id):
-#     GameInf.objects.get(id=id).delete()
-#     return redirect('/mypage')

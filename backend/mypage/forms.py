@@ -1,6 +1,13 @@
 from django import forms
 
-from backend.developments.models import Development, ASSOCIATION_CHOICES
+from backend.developments.models import (
+    Development,
+    Media,
+    Link,
+    ASSOCIATION_CHOICES,
+    MEDIA_CHOICES,
+    LINK_CHOICES
+)
 from backend.users.models import User
 
 
@@ -27,7 +34,7 @@ class ProfileUpdateForm(forms.ModelForm):
 class DevelopmentCreateForm(forms.ModelForm):
     title = forms.CharField(required=True, max_length=30)
     description = forms.CharField(required=False, widget=forms.Textarea)
-    users = forms.ModelMultipleChoiceField(
+    co_developers = forms.ModelMultipleChoiceField(
         queryset=User.objects.all(),
         required=False,
         widget=forms.CheckboxSelectMultiple
@@ -44,6 +51,32 @@ class DevelopmentCreateForm(forms.ModelForm):
             'is_private'
         )
 
+
+class MediaCreateForm(forms.ModelForm):
+    MEDIA_CHOICES_WITH_EMPTY = [(None, '----')] + list(MEDIA_CHOICES)
+
+    type = forms.ChoiceField(choices=MEDIA_CHOICES_WITH_EMPTY, required=False)
+    file = forms.FileField(required=False)
+
+    class Meta:
+        model = Media
+        fields = (
+            'type',
+            'file'
+        )
+
+class LinkCreateForm(forms.ModelForm):
+    LINK_CHOICES_WITH_EMPTY = [(None, '----')] + list(LINK_CHOICES)
+
+    type = forms.ChoiceField(choices=LINK_CHOICES_WITH_EMPTY, required=False)
+    link = forms.URLField(required=False, )
+
+    class Meta:
+        model = Link
+        fields = (
+            'type',
+            'link'
+        )
 
 class DevelopmentUpdateForm(DevelopmentCreateForm):
     title = forms.CharField(required=False, max_length=30)
