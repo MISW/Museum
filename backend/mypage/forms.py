@@ -69,7 +69,7 @@ class LinkCreateForm(forms.ModelForm):
     LINK_CHOICES_WITH_EMPTY = [(None, '----')] + list(LINK_CHOICES)
 
     type = forms.ChoiceField(choices=LINK_CHOICES_WITH_EMPTY, required=False)
-    link = forms.URLField(required=False, )
+    link = forms.URLField(required=False)
 
     class Meta:
         model = Link
