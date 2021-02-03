@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block title %}
-  misw-museum
+  MISW Museum
 {% endblock %}
 
 {% block main %}
@@ -68,7 +68,7 @@
                   <p class="card-text">
                     <span style="font-size: large; ">{{ development.title }}</span>
                   </p>
-                  <p>作成者： {{ development.user.first_name }}</p>
+                  <p>作成者： {{ development.developer.first_name }}</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <a href="{% url 'developments:detail' development.pk %}">詳しく見る</a>
                   </div>
