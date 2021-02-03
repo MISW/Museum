@@ -1,3 +1,6 @@
+import os
+import re
+import mimetypes
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.core.validators import validate_comma_separated_integer_list
@@ -30,19 +33,40 @@ STATUS_CHOICES = (
     (2, '非公開')
 )
 
+MEDIA_MATCH_PATTERN = {
+    'image': '^image/.*$',
+    'audio': '^audio/.*$',
+    'video': '^video/.*$'
+}
+
+
+def get_media_path(instance, filename):
+    root_path = 'developments/medias'
+    content = mimetypes.guess_type(filename)[0]
+
+    for key, value in MEDIA_MATCH_PATTERN.items():
+        if re.match(value, content):
+            return os.path.join(root_path, key, filename)
+
+    return os.path.join(root_path, 'others', filename)
+
+
 class Media(models.Model):
     id = models.BigAutoField(primary_key=True, editable=False)
 
     type = models.IntegerField(
         choices=MEDIA_CHOICES,
-        help_text='0: image, 1: sound, 2: video'
+        help_text='0: image, 1: audio, 2: video'
     )
 
     file = models.FileField(
-        upload_to='files/Development',
+        upload_to=get_media_path,
         blank=True,
         null=True
     )
+
+    class Meta:
+        verbose_name_plural = 'Media'
 
     def __str__(self):
         return self.get_type_display()
@@ -108,7 +132,7 @@ class Development(models.Model):  # ゲーム情報テーブル
 
     top_image = models.ImageField(
         _('top_image'),
-        upload_to='images/development',
+        upload_to='developments/images',
         help_text='top image to be listed to home',
         blank=True,
         null=True

@@ -19,6 +19,7 @@ ROLE_CHOICES = (
     (1, 'member')
 )
 
+
 class User(AbstractUser):
     """Extended User Model"""
 
@@ -44,7 +45,7 @@ class User(AbstractUser):
 
     image = models.ImageField(
         _('image'),
-        upload_to='images/User',
+        upload_to='users/images',
         blank=True,
         null=True
     )
