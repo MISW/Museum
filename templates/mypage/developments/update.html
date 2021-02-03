@@ -46,13 +46,13 @@
             </p>
             <div class="collapse bg-light" id="developer_div">
               <p>共同作成者:</p>
-                {% for checkbox in development_form.co_developers %}
-                  <div class="checkbox">
-                    <label for="users">
-                      {{ checkbox.tag }} {{ checkbox.choice_label }}
-                    </label>
-                  </div>
-                {% endfor %}
+              {% for checkbox in development_form.co_developers %}
+                <div class="checkbox">
+                  <label for="users">
+                    {{ checkbox.tag }} {{ checkbox.choice_label }}
+                  </label>
+                </div>
+              {% endfor %}
             </div>
           </div>
         </div>
@@ -87,7 +87,7 @@
               <label for="top_image-clear_id">クリア</label>
               <br>
               変更:
-            {% endif %} 
+            {% endif %}
             {{ development_form.top_image }}
           </div>
         </div>

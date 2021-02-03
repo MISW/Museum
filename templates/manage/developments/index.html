@@ -44,9 +44,11 @@
                   {% if development.status == 0 %}
                     <button scope="col" class="btn btn-info btn-sm public">{{ development.get_status_display }}</button>
                   {% elif development.status == 1 %}
-                    <button scope="col" class="btn btn-primary btn-sm public">{{ development.get_status_display }}</button>
+                    <button scope="col"
+                            class="btn btn-primary btn-sm public">{{ development.get_status_display }}</button>
                   {% elif development.status == 2 %}
-                    <button scope="col" class="btn btn-success btn-sm public">{{ development.get_status_display }}</button>
+                    <button scope="col"
+                            class="btn btn-success btn-sm public">{{ development.get_status_display }}</button>
                   {% endif %}
                 </div>
             </tr>

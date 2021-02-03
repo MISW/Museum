@@ -42,12 +42,12 @@
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         {% if user.image %}
           <img src="{{ user.image.url }}"
-             class="rounded-circle" width="32"
-             height="32">
+               class="rounded-circle" width="32"
+               height="32">
         {% else %}
           <img src="{% static 'icons/profile.svg' %}"
-             class="rounded-circle" width="32"
-             height="32">
+               class="rounded-circle" width="32"
+               height="32">
         {% endif %}
 
       </button>
@@ -73,10 +73,12 @@
             <a class="p-3 text-dark text-center text-nowrap" href="{% url 'manage_developments:pending_home' %}">申請中成果物一覧</a>
           </li>
           <li id="side-content">
-            <a class="p-3 text-dark text-center text-nowrap" href="{% url 'manage_developments:public_home' %}">公開中成果物一覧</a>
+            <a class="p-3 text-dark text-center text-nowrap"
+               href="{% url 'manage_developments:public_home' %}">公開中成果物一覧</a>
           </li>
           <li id="side-content">
-            <a class="p-3 text-dark text-center text-nowrap" href="{% url 'manage_developments:closed_home' %}">非公開成果物一覧</a>
+            <a class="p-3 text-dark text-center text-nowrap"
+               href="{% url 'manage_developments:closed_home' %}">非公開成果物一覧</a>
           </li>
           <li id="side-content">
             <a class="p-3 text-dark text-center text-nowrap" href="">開発者一覧</a>

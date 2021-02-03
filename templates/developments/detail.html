@@ -85,22 +85,22 @@
             </div>
             <div>
               <p>メディアファイル:
-                <div class="pl-5">
-                  {% for media in development.medias.all %}
-                    <p>ファイルタイプ: {{ media.get_type_display }}</p>
-                    <a href="{{ media.file.url }}">{{ media.file }}</a>
-                  {% endfor %}
-                </div>
+              <div class="pl-5">
+                {% for media in development.medias.all %}
+                  <p>ファイルタイプ: {{ media.get_type_display }}</p>
+                  <a href="{{ media.file.url }}">{{ media.file }}</a>
+                {% endfor %}
+              </div>
               </p>
             </div>
             <div>
               <p>リンク:
-                <div class="pl-5">
-                  {% for link in development.links.all %}
-                    <p>リンクタイプ: {{ link.get_type_display }}</p>
-                    <a href="{{ link.link }}">{{ link.link }}</a>
-                  {% endfor %}
-                </div>
+              <div class="pl-5">
+                {% for link in development.links.all %}
+                  <p>リンクタイプ: {{ link.get_type_display }}</p>
+                  <a href="{{ link.link }}">{{ link.link }}</a>
+                {% endfor %}
+              </div>
               </p>
             </div>
           </div>
