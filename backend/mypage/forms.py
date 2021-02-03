@@ -60,26 +60,28 @@ class DevelopmentCreateForm(forms.ModelForm):
 class MediaCreateForm(forms.ModelForm):
     MEDIA_CHOICES_WITH_EMPTY = [(None, '----')] + list(MEDIA_CHOICES)
 
-    type = forms.ChoiceField(choices=MEDIA_CHOICES_WITH_EMPTY, required=False)
+    # link form とのid衝突回避のため
+    media_type = forms.ChoiceField(choices=MEDIA_CHOICES_WITH_EMPTY, label='type', required=False)
     file = forms.FileField(required=False)
 
     class Meta:
         model = Media
         fields = (
-            'type',
+            'media_type',
             'file'
         )
 
 class LinkCreateForm(forms.ModelForm):
     LINK_CHOICES_WITH_EMPTY = [(None, '----')] + list(LINK_CHOICES)
 
-    type = forms.ChoiceField(choices=LINK_CHOICES_WITH_EMPTY, required=False)
+    # media form とのid衝突回避のため
+    link_type = forms.ChoiceField(choices=LINK_CHOICES_WITH_EMPTY, label='type', required=False)
     link = forms.URLField(required=False)
 
     class Meta:
         model = Link
         fields = (
-            'type',
+            'link_type',
             'link'
         )
 

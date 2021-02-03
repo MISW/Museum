@@ -94,20 +94,20 @@ class DevelopmentNewView(LoginRequiredMixin, generic.TemplateView):
             media_flag = False
             if media_form.is_valid():
                 cleaned_data = media_form.cleaned_data
-                if cleaned_data['type'] and cleaned_data['file']:
+                if cleaned_data['media_type'] and cleaned_data['file']:
                     media_flag = True
                     media = Media()
-                    media.type = cleaned_data['type']
+                    media.type = cleaned_data['media_type']
                     media.file = cleaned_data['file']
                     media.save()
 
             link_flag = False
             if link_form.is_valid():
                 cleaned_data = link_form.cleaned_data
-                if cleaned_data['type'] and cleaned_data['link']:
+                if cleaned_data['link_type'] and cleaned_data['link']:
                     link_flag = True
                     link = Link()
-                    link.type = cleaned_data['type']
+                    link.type = cleaned_data['link_type']
                     link.link = cleaned_data['link']
                     link.save()
 
@@ -160,7 +160,7 @@ class DevelopmentUpdateView(LoginRequiredMixin, generic.TemplateView):
         }
         if media_flag:
             media_form_initial = {
-                'type': media.type,
+                'media_type': media.type,
                 'file': media.file
             }
         else:
@@ -168,7 +168,7 @@ class DevelopmentUpdateView(LoginRequiredMixin, generic.TemplateView):
 
         if link_flag:
             link_form_initial = {
-                'type': link.type,
+                'link_type': link.type,
                 'link': link.link
             }
         else:
@@ -196,8 +196,13 @@ class DevelopmentUpdateView(LoginRequiredMixin, generic.TemplateView):
 
     def post(self, request, *args, **kwargs):
         development = Development.objects.get(pk=self.kwargs['pk'])
-        media = development.medias.first()
-        link = development.links.first()
+        media_exists = False
+        if development.medias.exists():
+            media_exists = True
+            media = development.medias.first()
+        link_exists = False
+        if development.links.exists():
+            link = development.links.first()
 
         if request.method == 'POST':
             development_form = DevelopmentCreateForm(request.POST, request.FILES)
@@ -207,21 +212,24 @@ class DevelopmentUpdateView(LoginRequiredMixin, generic.TemplateView):
             media_flag = False
             if media_form.is_valid():
                 cleaned_data = media_form.cleaned_data
-                media_file = cleaned_data['file']
-                if str(media_file) == 'False':
+                if str(cleaned_data['file']) == 'False':
                     media.delete()
-                elif cleaned_data['type'] and media_file:
+                elif cleaned_data['media_type'] and cleaned_data['file']:
+                    if not media_exists:
+                        media = Media()
                     media_flag = True
-                    media.type = cleaned_data['type']
-                    media.file = media_file
+                    media.type = cleaned_data['media_type']
+                    media.file = cleaned_data['file']
                     media.save()
 
             link_flag = False
             if link_form.is_valid():
                 cleaned_data = link_form.cleaned_data
-                if cleaned_data['type'] and cleaned_data['link']:
+                if cleaned_data['link_type'] and cleaned_data['link']:
+                    if not link_exists:
+                        link = Link()
                     link_flag = True
-                    link.type = cleaned_data['type']
+                    link.type = cleaned_data['link_type']
                     link.link = cleaned_data['link']
                     link.save()
 
@@ -229,11 +237,10 @@ class DevelopmentUpdateView(LoginRequiredMixin, generic.TemplateView):
                 cleaned_data = development_form.cleaned_data
                 development.title = cleaned_data['title']
                 development.description = cleaned_data['description']
-                development_top_image = cleaned_data['top_image']
-                if str(development_top_image) == 'False':
+                if str(cleaned_data['top_image']) == 'False':
                     development.top_image.delete()
-                elif development_top_image:
-                    development.top_image = development_top_image
+                elif cleaned_data['top_image']:
+                    development.top_image = cleaned_data['top_image']
                 development.associations = ','.join(cleaned_data['associations'])
                 development.is_private = cleaned_data['is_private']
                 development.save()
