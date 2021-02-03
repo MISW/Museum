@@ -21,7 +21,7 @@
         <div class="p-3 mb-5 row">
           <p class="col-md-3">状態：　<span>{{ development.get_status_display }}</span></p>
           <p class="col-md-3">ID:　<span>{{ development.id }}</span></p>
-          <p class="col-md-3">申請者:　<span>{{ development.user.first_name }}</span></p>
+          <p class="col-md-3">申請者:　<span>{{ development.developer.first_name }}</span></p>
         </div>
         <div class="title section-title">
           <h1>{{ development.title }}</h1>
@@ -56,8 +56,55 @@
             </div>
 
             <div>
-              <p>作成者: {{ development.user.first_name }}</p>
-        </div>
+              <p>作成者: {{ development.developer.first_name }}</p>
+            </div>
+            <div>
+              <p>共同作成者:</p>
+              <div class="pl-5">
+                {% for co_developer in development.co_developers.all %}
+                  <p>{{ co_developer.first_name }}</p>
+                {% endfor %}
+              </div>
+            </div>
+            <div>
+              <p>研究会:
+                {% if development.get_associations_display %}
+                  {{ development.get_associations_display }}
+                {% else %}
+                  -
+                {% endif %}
+              </p>
+            </div>
+            <div>
+              <p>みす内にのみ公開:
+                {% if development.is_private %}
+                  True
+                {% else %}
+                  False
+                {% endif %}
+              </p>
+            </div>
+            <div>
+              <p>メディアファイル:
+                <div class="pl-5">
+                  {% for media in development.medias.all %}
+                    <p>ファイルタイプ: {{ media.get_type_display }}</p>
+                    <a href="{{ media.file.url }}">{{ media.file }}</a>
+                  {% endfor %}
+                </div>
+              </p>
+            </div>
+            <div>
+              <p>リンク:
+                <div class="pl-5">
+                  {% for link in development.links.all %}
+                    <p>リンクタイプ: {{ link.get_type_display }}</p>
+                    <a href="{{ link.link }}">{{ link.link }}</a>
+                  {% endfor %}
+                </div>
+              </p>
+            </div>
+          </div>
       </div>
 
       <div class="col-12 p-4 text-center text-break">
