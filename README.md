@@ -1,4 +1,4 @@
-# misw-museum
+# MISW Museum
 
 みすミュージアム。サークル内の個人成果物を公開するWebアプリケーションです。
 
@@ -12,16 +12,16 @@
 ### 1. Clone
 
 ```bash
-$ git clone https://github.com/MISW/misw-museum.git
-$ cd misw-meseum
+git clone https://github.com/MISW/Museum.git
+cd misw-meseum
 ```
 
-### 2. Edit `.env` from `.env.example`
+### 2. Edit `dev.env` from `dev.env.example`
 
 ### 3. docker build
 
 ```bash
-$ docker-compose build
+docker-compose build
 ```
 
 ## Usage
@@ -29,59 +29,46 @@ $ docker-compose build
 ### Start container
 
 ```bash
-$ docker-compose up -d
+docker-compose up -d
 ```
 
 ### Stop container
 
 ```bash
-$ docker-compose down
+docker-compose down
 ```
 
 ### Logging
 
 ```bash
-$ docker-compose logs -f
+docker-compose logs -f
 ```
 
 ### Migration
 
 ```bash
-$ docker exec misw-museum_web python manage.py migrate
+docker-compose exec backend python manage.py migrate
 ```
 
 ### Create superuser
 
 ```bash
-$ docker exec misw-museum_web python manage.py createsuperuser
+docker-compose exec backend python manage.py createsuperuser
 ```
-もし，
-```
-Superuser creation skipped due to not running in a TTY. You can run `manage.py createsuperuser` in your project to create one manually.
-```
-とエラーがでる場合は
-```bash
-$ docker exec -it misw-museum_web bash
-($ docker exec -it misw-museum_web /bin/sh) # Macの場合
-root@************:/app# python manage.py createsuperuser
-root@************:/app# exit
-```
-を実行．
 
 ## Git setup
 
 ```bash
-$ git checkout develop
-$ git checkout -b <my branch name>
+git checkout -b <my branch name> develop
 ```
 
 ## Git usage
 
 ```bash
-$ git add -A
-$ git commit -m <my commit message>
-$ git pull origin develop
-$ git push origin <my branch name>
+git add -A
+git commit -m <my commit message>
+git pull origin develop
+git push origin <my branch name>
 ```
 
 ## Documentation
@@ -89,3 +76,8 @@ $ git push origin <my branch name>
 ### モデル設計
 
 - [/docs/specification.md](./docs/specification.md)
+
+
+## For Interal developers
+
+[dev.env for internal developers](https://misw.kibe.la/notes/4248)
