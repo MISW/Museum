@@ -44,7 +44,7 @@ docker-compose down
 docker-compose logs -f
 ```
 
-### Migration
+### Migrate
 
 ```bash
 docker-compose exec backend python manage.py migrate
