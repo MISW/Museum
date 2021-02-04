@@ -2,9 +2,6 @@ import django_heroku
 
 from .settings_common import *
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
 ALLOWED_HOSTS = ['.herokuapp.com']
 
 # It contains database, staticfiles, logging and secret_key setting in heroku
