@@ -1,16 +1,15 @@
 FROM python:3.8-buster
 
-WORKDIR /app
-
 ENV PYTHONDONTWRITEBITECOTE 1
 ENV PYTHONUNBUFFERED 1
 
-RUN pip install --upgrade pip \
-    && pip install pipenv
+RUN mkdir /app
+
+WORKDIR /app
 
 RUN apt-get update \
     && pip install --upgrade pip \
-    && pip install psycopg2
+    && pip install pipenv
 
 COPY ./Pipfile /app/Pipfile
 
