@@ -1,4 +1,5 @@
 import django_heroku
+import dj_database_url
 
 from .settings_common import *
 
@@ -6,7 +7,9 @@ ALLOWED_HOSTS = ['.herokuapp.com']
 
 # It contains database, staticfiles, logging and secret_key setting in heroku
 # https://github.com/heroku/django-heroku
-django_heroku.settings(locals(), logging=False, secret_key=False, allowed_hosts=False)
+django_heroku.settings(locals(), logging=False, secret_key=False, allowed_hosts=False, databases=False)
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 
 LOGGING = {
