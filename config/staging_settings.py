@@ -1,19 +1,24 @@
+import dj_database_url
+
 from .common_settings import *
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.herokuapp.com']
 
-# Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+INSTALLED_APPS += [
+    # cloudinary setting
+    'cloudinary',
+    'cloudinary_storage',
+]
 
+MIDDLEWARE.insert(1,
+    # whitenoise setting
+    'whitenoise.middleware.WhiteNoiseMiddleware'
+)
+
+# It contains database, staticfiles, logging and secret_key setting in heroku
+# https://github.com/heroku/django-heroku
 DATABASES = {
-    'default': {
-        'ENGINE': os.environ.get('DATABASE_ENGINE'),
-        'NAME': os.environ.get('DATABASE_DB'),
-        'USER': os.environ.get('DATABASE_USER'),
-        'PASSWORD': os.environ.get('DATABASE_PASSWORD'),
-        'HOST': os.environ.get('DATABASE_HOST'),
-        'PORT': os.environ.get('DATABASE_PORT'),
-    }
+    'default': dj_database_url.config(conn_max_age=600)
 }
 
 LOGGING = {
@@ -67,8 +72,25 @@ LOGGING = {
         },
         '': {
             'handlers': ['console'],
-            'level': 'DEBUG',
+            'level': 'INFO',
             'propagate': False,
         },
     }
 }
+
+# cloudinary_storage setting
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET')
+}
+
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True
+
+# default storage: cloudianry_storage
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+# static file: whitenoise
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

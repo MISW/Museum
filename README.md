@@ -13,7 +13,7 @@
 
 ```bash
 git clone https://github.com/MISW/Museum.git
-cd misw-meseum
+cd Museum
 ```
 
 ### 2. Edit `dev.env` from `dev.env.example`
