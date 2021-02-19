@@ -18,12 +18,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start developments settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
-if os.environ.get('DEBUG') == '1':
+if os.environ.get('DEBUG_TYPE') == '1':
     DEBUG = True
-elif os.environ.get('DEBUG') == '0':
+elif os.environ.get('DEBUG_TYPE') == '0':
     DEBUG = False
 else:
-    raise Exception('Error in the "DEBUG" environment variable!')
+    raise Exception('Error in the "DEBUG_TYPE" environment variable!')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
@@ -48,19 +48,12 @@ INSTALLED_APPS = [
     'backend.manage.apps.ManageConfig',
     # auth0 development
     'social_django',
-    # cloudinary setting
-    'cloudinary',
-    'cloudinary_storage',
     # django-cleanup
     'django_cleanup.apps.CleanupConfig'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-
-    # whitenoise setting
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -125,8 +118,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+STATIC_ROOT = '/static'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
@@ -156,10 +149,3 @@ LOGIN_URL = '/login/auth0'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_ON_GET = True
-
-# cloudinary_storage setting
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
-    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
-    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET')
-}
