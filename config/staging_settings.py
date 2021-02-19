@@ -1,4 +1,3 @@
-import django_heroku
 import dj_database_url
 
 from .common_settings import *
@@ -11,17 +10,16 @@ INSTALLED_APPS += [
     'cloudinary_storage',
 ]
 
-MIDDLEWARE.insert(1, [
+MIDDLEWARE.insert(1,
     # whitenoise setting
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-])
+    'whitenoise.middleware.WhiteNoiseMiddleware'
+)
 
 # It contains database, staticfiles, logging and secret_key setting in heroku
 # https://github.com/heroku/django-heroku
-django_heroku.settings(locals(), logging=False, secret_key=False, allowed_hosts=False, databases=False)
-DATABASES = {}
-DATABASES['default'] = dj_database_url.config(conn_max_age=600)
-
+DATABASES = {
+    'default': dj_database_url.config(conn_max_age=600)
+}
 
 LOGGING = {
     'version': 1,
