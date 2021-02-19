@@ -1,4 +1,4 @@
-from .settings_common import *
+from .common_settings import *
 
 ALLOWED_HOSTS = []
 
