@@ -18,12 +18,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start developments settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
-if os.environ.get('DEBUG') == '1':
+if os.environ.get('DEBUG_TYPE') == '1':
     DEBUG = True
-elif os.environ.get('DEBUG') == '0':
+elif os.environ.get('DEBUG_TYPE') == '0':
     DEBUG = False
 else:
-    raise Exception('Error in the "DEBUG" environment variable!')
+    raise Exception('Error in the "DEBUG_TYPE" environment variable!')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
