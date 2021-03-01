@@ -91,7 +91,7 @@ thead{
         padding-left:5%;
     }
     #side{
-        height:100vh;
+        height:100%;
     }
 }
 
@@ -101,8 +101,6 @@ thead{
     }
     #nav-button{
         display:none;
-    }
-    #navbars01{;
     }
     #side-content{
         font-size:small;
