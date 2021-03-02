@@ -16,6 +16,7 @@ django-cleanup = "*"
 python-jose = "*"
 social-auth-app-django = "*"
 mysqlclient = "*"
+slackweb = "*"
 
 [requires]
 python_version = "3.8"
