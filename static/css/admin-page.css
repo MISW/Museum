@@ -49,8 +49,6 @@ html {
 }
 #side{
     padding:0;
-}
-#side{
     float:left;
     background-color:#F5F5F5;
     border-right:0.5px solid;
@@ -80,10 +78,6 @@ thead{
 
 /*条件付き設定*/
 @media (min-width: 768px) {
-    .navbar{
-        align-items: center;
-        padding:0% 0% 0% 0%;
-    }
     html {
         font-size: 16px;
     }
@@ -95,7 +89,7 @@ thead{
     }
 }
 
-@media (max-width:767px) {
+@media (max-width:768px) {
     #nav-text{
         display:none;
     }
