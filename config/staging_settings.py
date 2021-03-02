@@ -70,11 +70,16 @@ LOGGING = {
             'level': 'INFO',
             'propagate': False,
         },
-        '': {
+        'app': {
             'handlers': ['console'],
             'level': 'INFO',
             'propagate': False,
         },
+        'webhook': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': False,
+        }
     }
 }
 

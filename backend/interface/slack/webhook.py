@@ -1,7 +1,10 @@
 import slackweb
 import datetime
+import logging
 from django.conf import settings
 
+
+logger = logging.getLogger('webhook')
 
 ALERT_CHANNELS = [
     "inquiry",
@@ -45,6 +48,7 @@ def send_alert_to_channel(channel: str, mode: str, variable_attachment: dict):
     # パラメータが正確に設定されているか
     for value in ALERT_URL.values():
         if not value:
+            logger.warning('Slack webhook has been killed.!')
             return
 
     url = None
@@ -52,6 +56,7 @@ def send_alert_to_channel(channel: str, mode: str, variable_attachment: dict):
         if channel == base_channel:
             url = ALERT_URL[channel]
     if not url:
+        logger.warning('Slack webhook has been killed.!')
         return
 
 
@@ -60,9 +65,10 @@ def send_alert_to_channel(channel: str, mode: str, variable_attachment: dict):
     attachment = {
         "fallback": ALERT_FALLBACK[channel],
         "color": ALERT_COLOR[channel] if not mode else ALERT_COLOR[channel][mode],
-        "footer": "send by MISW Museum",
+        "footer": "sent by MISW Museum",
     }
     attachment.update(variable_attachment)
 
     slack.notify(attachments=[attachment,])
+    logger.info('Notified successfully by slack webhook!')
 
