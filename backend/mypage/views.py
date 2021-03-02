@@ -12,7 +12,6 @@ from backend.users.models import User
 from .forms import (
     ProfileUpdateForm,
     DevelopmentCreateForm,
-    DevelopmentUpdateForm,
     MediaCreateForm,
     LinkCreateForm
 )
@@ -202,6 +201,7 @@ class DevelopmentUpdateView(LoginRequiredMixin, generic.TemplateView):
             media = development.medias.first()
         link_exists = False
         if development.links.exists():
+            link_exists = True
             link = development.links.first()
 
         if request.method == 'POST':
@@ -259,7 +259,7 @@ class DevelopmentUpdateView(LoginRequiredMixin, generic.TemplateView):
 
                 return redirect('mypage:home', request.user.pk)
         else:
-            form = DevelopmentUpdateForm()
+            form = DevelopmentCreateForm()
 
         return redirect('mypage:devlopments_update', development.pk)
 
