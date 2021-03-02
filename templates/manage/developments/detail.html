@@ -21,7 +21,7 @@
           {% endif %}
         </div>
         <div class="col-sm-12">
-          <p>{{ development.description }}</p>
+          <p>{{ development.description | linebreaksbr }}</p>
         </div>
         <div class="col-sm-12">
           <p>作成者: {{ development.developer.first_name }}</p>
