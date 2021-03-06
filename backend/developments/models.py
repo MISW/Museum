@@ -14,11 +14,10 @@ MEDIA_CHOICES = (
 )
 
 LINK_CHOICES = (
-    (0, 'Windows'),
-    (1, 'iOS'),
-    (2, 'Android'),
-    (3, 'ブラウザ'),
-    (4, 'その他')
+    (0, 'Microsoft Store'),
+    (1, 'Apple Store'),
+    (2, 'Google Play'),
+    (3, 'その他')
 )
 
 ASSOCIATION_CHOICES = (

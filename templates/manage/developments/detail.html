@@ -17,11 +17,11 @@
           {% if development.top_image %}
             <img ID="game-img" class="item-center" src="{{ development.top_image.url }}" alt="トップ画像">
           {% else %}
-            <img src="{% static 'icons/noimage.png' %}" alt="">
+            <img ID="game-img" class="item-center" src="{% static 'icons/noimage.png' %}"  alt="">
           {% endif %}
         </div>
         <div class="col-sm-12">
-          <p>{{ development.description }}</p>
+          <p>{{ development.description | linebreaksbr }}</p>
         </div>
         <div class="col-sm-12">
           <p>作成者: {{ development.developer.first_name }}</p>
@@ -66,9 +66,23 @@
           <p>リンク:
           <div class="pl-5">
             {% for link in development.links.all %}
-              <p>リンクタイプ: {{ link.get_type_display }}</p>
-              <a href="{{ link.link }}">{{ link.link }}</a>
+            {% if link.get_type_display == 'Microsoft Store' %}
+            <a href="{{ link.link }}" title="{{ link.get_type_display }}"><img src="{% static 'images/microsoftstore.svg' %}" width="120rem" height="60rem"></a>
+            {% elif link.get_type_display == 'Apple Store' %}
+            <a href="{{ link.link }}" title="{{ link.get_type_display }}"><img src="{% static 'icons/apple.svg' %}" width="120rem" height="60rem"></a>
+            {% elif link.get_type_display == 'Google Play' %}
+            <a href="{{ link.link }}" title="{{ link.get_type_display }}"><img src="{% static 'images/googleplay.svg' %}" width="120rem" height="60rem"></a>
+            {% else %}
+            {% endif %}
             {% endfor %}
+          </div>
+          <div class="pl-5">
+            {% for link in development.links.all %}
+              {% if link.get_type_display == 'その他' %}
+                <a href="{{ link.link }}" title="{{ link.get_type_display }}">{{ link.link }}</a>
+              {% endif %}
+            {% endfor %}
+
           </div>
           </p>
         </div>
