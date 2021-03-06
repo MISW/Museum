@@ -1,38 +1,17 @@
 
 /*基本設定*/
-body{
-    margin:0;
-    padding:0;
-}
-
 a{
     text-decoration:none;
     color:black;
 }
 ul {
     list-style: none;
-  }
-.text-dark {
-    color: #343a40 !important;
-}
-
-.p-2 {
-    padding: .5rem !important;
-}
-
-.mb-4,
-.my-4 {
-    margin-bottom: 1.5rem !important;
 }
 .container-fluid{
-    padding:0;
-    margin:0;
+    padding: 0;
+    margin: 0;
 }
 
-html {
-    font-size: 14px;
-    width:100%;
-}
 
 /*ページ設定*/
 #navbar{
@@ -48,12 +27,13 @@ html {
     border-color: rgba(0,0,0,0);
 }
 #side{
-    padding:0;
-    float:left;
     background-color:#F5F5F5;
     border-right:0.5px solid;
-    list-style: none;
+    padding-left: 0;
+    padding-bottom: 5rem;
+    float:left;
     margin:0;
+    height:100%;
 }
 #side-content{
     margin-top:10%;
@@ -68,6 +48,7 @@ table{
 thead{
     background-color:#F5F5F5;
 }
+
 .detail{
     color:gray;
 }
@@ -78,14 +59,8 @@ thead{
 
 /*条件付き設定*/
 @media (min-width: 768px) {
-    html {
-        font-size: 16px;
-    }
     table{
         padding-left:5%;
-    }
-    #side{
-        height:100%;
     }
 }
 
@@ -96,21 +71,21 @@ thead{
     #nav-button{
         display:none;
     }
+    #navbar{
+        width:100%;
+        padding:0;
+    }
     #side-content{
         font-size:small;
         text-align:center;
         margin:20px 10px 0px 0px
     }
+    #side{
+        display:none;
+    }
     table{
         margin:0;
         padding:0;
-    }
-    #navbar{
-        width:100%;
-        padding:0;
-    }
-    #side{
-        display:none;
     }
     #menu{
         background-color:white;
