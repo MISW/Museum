@@ -17,7 +17,8 @@ LINK_CHOICES = (
     (0, 'Microsoft Store'),
     (1, 'Apple Store'),
     (2, 'Google Play'),
-    (3, 'その他')
+    (3, 'その他'),
+    (4, 'bugfix')
 )
 
 ASSOCIATION_CHOICES = (
