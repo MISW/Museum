@@ -28,13 +28,5 @@
 - side-content
 - game-img
 - game-list
-
-###　画面とファイル
-成果物一覧
-HMTL
-- templates/manage/base.html
-CSS
-- admin-page.css
-- style.css
-- footer.css
-
+### アイコン
+https://icon-icons.com/ja/

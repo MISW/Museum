@@ -17,7 +17,7 @@
           {% if development.top_image %}
             <img ID="game-img" class="item-center" src="{{ development.top_image.url }}" alt="トップ画像">
           {% else %}
-            <img src="{% static 'icons/noimage.png' %}" alt="">
+            <img ID="game-img" class="item-center" src="{% static 'icons/noimage.png' %}"  alt="">
           {% endif %}
         </div>
         <div class="col-sm-12">
@@ -66,20 +66,23 @@
           <p>リンク:
           <div class="pl-5">
             {% for link in development.links.all %}
-            <p>リンクタイプ: {{ link.get_type_display }}</p>
-              {% if link.get_type_display === 0 %}
-                <img src="{% static 'icons/windows.svg' %}"  href="{{ link.link }}">
-              {% elif link.get_type_display === 1 %}
-                <img src="{% static 'icons/windows.svg' %}" href="{{ link.link }}">
-              {% elif link.get_type_display === 2 %}
-                <img src="{% static 'icons/windows.svg' %}" href="{{ link.link }}">
-              {% else %}
-                <a href="{{ link.link }}">{{ link.link }}</a>
-              {% endif %}
-
-            <p>リンクタイプ: {{ link.get_type_display }}</p>
-              <a href="{{ link.link }}">{{ link.link }}</a>
+            {% if link.get_type_display == 'Microsoft Store' %}
+            <a href="{{ link.link }}" title="{{ link.get_type_display }}"><img src="{% static 'icons/microsoftstore.svg' %}" width="120rem" height="60rem"></a>
+            {% elif link.get_type_display == 'Apple Store' %}
+            <a href="{{ link.link }}" title="{{ link.get_type_display }}"><img src="{% static 'icons/apple.svg' %}" width="120rem" height="60rem"></a>
+            {% elif link.get_type_display == 'Google Play' %}
+            <a href="{{ link.link }}" title="{{ link.get_type_display }}"><img src="{% static 'icons/googleplay.svg' %}" width="120rem" height="60rem"></a>
+            {% else %}
+            {% endif %}
             {% endfor %}
+          </div>
+          <div class="pl-5">
+            {% for link in development.links.all %}
+              {% if link.get_type_display == 'その他' %}
+                <a href="{{ link.link }}" title="{{ link.get_type_display }}">{{ link.link }}</a>
+              {% endif %}
+            {% endfor %}
+
           </div>
           </p>
         </div>
