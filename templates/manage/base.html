@@ -37,10 +37,10 @@
         </li>
       </ul>
 
-      <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbars01"
-              aria-controls="navbars01" aria-haspopup="true" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <!-- aria-haspopup="true" -->
 
       <button class="dropdown-toggle p-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
       aria-haspopup="true" aria-expanded="false">
@@ -57,14 +57,46 @@
       </div>
     </nav>
   </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-end" id="navbarToggle">
+    <ul class="navbar-nav">
+      <li id="toggleContent">
+        <a class="p-3 text-dark text-nowrap" href="{% url 'manage_developments:home' %}">成果物一覧</a>
+      </li>
+      <li id="toggleContent">
+        <a class="p-3 text-dark text-nowrap" href="{% url 'manage_developments:pending_home' %}">申請中成果物一覧</a>
+      </li>
+      <li id="toggleContent">
+        <a class="p-3 text-dark text-nowrap"
+            href="{% url 'manage_developments:public_home' %}">公開中成果物一覧</a>
+      </li>
+      <li id="toggleContent">
+        <a class="p-3 text-dark text-nowrap"
+            href="{% url 'manage_developments:closed_home' %}">非公開成果物一覧</a>
+      </li>
+      <li id="toggleContent">
+        <a class="p-3 text-dark text-nowrap" href="">開発者一覧</a>
+      </li>
+      <li id="toggleContent">
+        <a class="p-3 text-dark text-nowrap" href="">変更ログ</a>
+      </li>
+
+  </ul>
+</div>
+</nav>
 </header>
+
 
 
 <main role="main">
   <div class="container-fluid">
     <div class="row no-gutters">
       <!-- side bar -->
-      <div class="col-sm-3 col-1" id="navbars01">
+      <div class="col-sm-3 col-1" id="side navbarToggle">
         <ul id="side" class="text-center item-center col-10">
           <br>
           <li id="side-content">

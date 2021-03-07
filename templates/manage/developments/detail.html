@@ -57,7 +57,21 @@
           <div class="pl-5">
             {% for media in development.medias.all %}
               <p>ファイルタイプ: {{ media.get_type_display }}</p>
-              <a href="{{ media.file.url }}">{{ media.file }}</a>
+              {% if media.get_type_display == '画像' %}
+                <a href="{{ media.file }}" title="{{ media.get_type_display }}"><img id="game-img" src="{{ media.file.url }}" max-width="50%"></a>
+                {% elif media.get_type_display == '音声' %}
+                <a href="{{ media.file.url }}">{{ media.file }}</a>
+                <audio controls preload="metadata" >
+                  <source src="{{ media.file.url }}">
+                </audio>
+              {% elif media.get_type_display == '動画' %}
+                <a href="{{ media.file.url }}">{{ media.file }}</a>
+                <video controls preload="metadata" >
+                  <source src="{{ media.file.url }}">
+                </video>
+              {% elif media.get_type_display == 'zip' %}
+                <a href="{{ media.file.url }}" download="{{ media.file.url }}">{{ media.file }}</a>
+              {% endif %}
             {% endfor %}
           </div>
           </p>
@@ -66,14 +80,14 @@
           <p>リンク:
           <div class="pl-5">
             {% for link in development.links.all %}
-            {% if link.get_type_display == 'Microsoft Store' %}
-            <a href="{{ link.link }}" title="{{ link.get_type_display }}"><img src="{% static 'images/microsoftstore.svg' %}" width="120rem" height="60rem"></a>
-            {% elif link.get_type_display == 'Apple Store' %}
-            <a href="{{ link.link }}" title="{{ link.get_type_display }}"><img src="{% static 'icons/apple.svg' %}" width="120rem" height="60rem"></a>
-            {% elif link.get_type_display == 'Google Play' %}
-            <a href="{{ link.link }}" title="{{ link.get_type_display }}"><img src="{% static 'images/googleplay.svg' %}" width="120rem" height="60rem"></a>
-            {% else %}
-            {% endif %}
+              {% if link.get_type_display == 'Microsoft Store' %}
+                <a href="{{ link.link }}" title="{{ link.get_type_display }}"><img src="{% static 'images/microsoftstore.svg' %}" width="120rem" height="60rem"></a>
+              {% elif link.get_type_display == 'Apple Store' %}
+                <a href="{{ link.link }}" title="{{ link.get_type_display }}"><img src="{% static 'icons/apple.svg' %}" width="120rem" height="60rem"></a>
+              {% elif link.get_type_display == 'Google Play' %}
+                <a href="{{ link.link }}" title="{{ link.get_type_display }}"><img src="{% static 'images/googleplay.svg' %}" width="120rem" height="60rem"></a>
+              {% else %}
+              {% endif %}
             {% endfor %}
           </div>
           <div class="pl-5">

@@ -37,8 +37,8 @@ ul {
     min-height: 100vh;
     height:100%;
 }
-#side-content{
-    margin-top:10%;
+#toggleContent{
+    margin:20px 10px 0px 0px
 }
 table,thead,tr, th, td {
     border-top:0.5px solid;

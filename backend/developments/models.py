@@ -10,7 +10,8 @@ from backend.users.models import User
 MEDIA_CHOICES = (
     (0, '画像'),
     (1, '音声'),
-    (2, '動画')
+    (2, '動画'),
+    (3, 'zip')
 )
 
 LINK_CHOICES = (
