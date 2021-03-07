@@ -22,14 +22,14 @@
         {% csrf_token %}
         {% csrf_token %}
         <div class="row form-group py-4">
-          <label class="col-xs-12 col-sm-4 col-form-label" for="title">タイトル</label>
+          <label class="col-xs-12 col-sm-4 col-form-label" for="id_title">タイトル</label>
           <div class="col-xs-12 col-sm-8">
             {{ development_form.title }}
           </div>
         </div>
 
         <div class="row form-group py-3">
-          <label class="col-xs-12 col-sm-4 col-form-label" for="introduction">説明</label>
+          <label class="col-xs-12 col-sm-4 col-form-label" for="id_description">説明</label>
           <div class="col-xs-12 col-sm-8">
             {{ development_form.description }}
           </div>
@@ -39,17 +39,27 @@
           <label class="col-xs-12 col-sm-4 col-form-label">作成者</label>
           <div class="col-xs-12 col-sm-8">
             <input type="text" id="createdBy" name="createdBy" value="{{ user.first_name }}" disabled></input>
-            <p class="" data-toggle="collapse" href="#developer_div" aria-expanded="false"
-               aria-controls="developer_div">
-              <img src="{% static 'icons/plus.svg' %}" width="25" alt="作成者追加">
-              <span id="co_createdBy" class="bg-white pt-1 pb-1"></span>
+          </div>
+        </div>
+
+        <div class="row form-group py-3">
+          <label class="col-xs-12 col-sm-4 col-form-label">共同作成者</label>
+          <div class="col-xs-12 col-sm-8">
+            <div id="co_developers_output">
+            </div>
+            <p>
+                <input type="text" id="co_developer_input" placeholder="名前">
+                <button type="button" class="btn px-1">
+                  <img id="co_developer_add_button" src="{% static 'icons/plus.svg' %}" width="25" alt="共同作成者追加">
+                </button>
             </p>
-            <div class="collapse bg-light" id="developer_div">
-              <p>共同作成者:</p>
+            <p id="co_developer_add_button_assist"></p>
+            <div id="developers_area">
               {% for checkbox in development_form.co_developers %}
                 <div class="checkbox">
-                  <label for="users">
-                    {{ checkbox.tag }} {{ checkbox.choice_label }}
+                  <label>
+                    {{ checkbox.tag }} 
+                    <span id="id_co_developer_name">{{ checkbox.choice_label }}</span>
                   </label>
                 </div>
               {% endfor %}
@@ -63,7 +73,8 @@
             {% for checkbox in development_form.associations %}
               <div class="checkbox">
                 <label for="associations">
-                  {{ checkbox.tag }} {{ checkbox.choice_label }}
+                  {{ checkbox.tag }}
+                  <span>{{ checkbox.choice_label }}</span>
                 </label>
               </div>
             {% endfor %}
@@ -71,32 +82,65 @@
         </div>
 
         <div class="row form-group py-3">
-          <label class="col-xs-12 col-sm-4 col-form-label" for="is_private">みす内のみに公開</label>
+          <label class="col-xs-12 col-sm-4 col-form-label" for="id_is_private">みす内のみに公開</label>
           <div class="col-xs-12 col-sm-8">
             {{ development_form.is_private }}
           </div>
         </div>
 
-        <div class="row form-group py-3">
-          <label class="col-xs-12 col-sm-4 col-form-label" for="gameImageInput">トップ画像</label>
+        <div class="image_input_group row form-group py-3">
+          <label class="col-xs-12 col-sm-4 col-form-label" for="id_top_image">トップ画像</label>
           <div class="col-xs-12 col-sm-8">
             {% if development.top_image %}
               現在:
               <a href="{{ development.top_image.url }}">{{ development.top_image }}</a>
               <input type="checkbox" name="top_image-clear" id="top_image-clear_id">
               <label for="top_image-clear_id">クリア</label>
+              <image src="{{ development.top_image.url }}" class="top_image image_old_output"></image>
               <br>
               変更:
             {% endif %}
             {{ development_form.top_image }}
+            <image class="top_image image_new_output"></image>
           </div>
         </div>
 
         <hr>
         <div class="row form-group py-3">
           <label class="col-xs-12 col-sm-4 col-form-label" for="is_private">メディアファイル</label>
-          <div class="col-xs-12 col-sm-8">
-            {{ media_form.as_p }}
+          <div class="col-xs-12 col-sm-8"> 
+            <!-- media file form is copied from html in <div id="media_file_input_base"> -->
+            <div id="media_file_input_base"> 
+              <div class="media_file_input py-3">
+                <div class="py-1"> 
+                  【<span class="media_file_count"></span>】
+                  <input type="button" id="remove_media_file_button" class="btn-success float-right" value="-">
+                </div>
+                <div class="pl-4">
+                  {{ media_form_base.as_p }} 
+                </div>
+              </div>
+            </div>
+            <!-- media file form is here -->
+            <div id="media_file_input_area">
+              {% for form in media_forms %}
+              <div class="media_file_input py-3">
+                <div class="py-1"> 
+                  【<span class="media_file_count"></span>】
+                  <!-- <input type="button" id="remove_media_file_button" class="btn-success float-right" value="clear"> -->
+                </div>
+                <div class="pl-4">
+                  {{ form.as_p }} 
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+            <div class="pb-4">
+              <button type="button" class="btn px-1">
+                <img src="{% static 'icons/plus.svg' %}" width="25" alt="メディアファイル追加" id="add_media_file_button">
+              </button>
+              <span> (max: <span id="media_file_input_num_max"></span>)</span>
+            </div>
           </div>
         </div>
 
@@ -104,16 +148,48 @@
         <div class="row form-group py-3">
           <label class="col-xs-12 col-sm-4 col-form-label" for="is_private">リンク</label>
           <div class="col-xs-12 col-sm-8">
-            {{ link_form.as_p }}
+            <!-- link form is copied from html in <div id="link_input_base"> -->
+            <div id="link_input_base"> 
+              <div class="link_input py-3">
+                <div class="py-1"> 
+                  【<span class="link_count"></span>】
+                  <input type="button" id="remove_link_button" class="btn-success float-right " value="-">
+                </div>
+                <div class="pl-4">
+                  {{ link_form_base.as_p }}
+                </div>
+              </div>
+            </div>
+            <!-- link form is here -->
+            <div id="link_input_area">
+              {% for link in link_forms %}
+              <div class="link_input py-3">
+                <div class="py-1"> 
+                  【<span class="link_count"></span>】
+                  <!--<input type="button" id="remove_link_button" class="btn-success float-right" value="-">-->
+                </div>
+                <div class="pl-4">
+                  {{ link.as_p }} 
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+            <div class="pb-4">
+              <button type="button" class="btn px-1">
+                <img src="{% static 'icons/plus.svg' %}" width="25" alt="リンク追加" id="add_link_button">
+              </button>
+              <span> (max: <span id="link_input_num_max"></span>)</span>
+            </div>
           </div>
         </div>
 
-        <div class="col-12 p-4 text-center text-break">
-          <a class="px-3">
+        <hr>
+        <div class="col-12 text-center text-break">
+          <a class="pr-3">
             <button type="submit" class="btn btn-primary">変更申請</button>
           </a>
-          <a href="{% url 'mypage:developments_delete' development.pk %}" class="btn btn-danger">削除</a>
-          <span class="pl-5">
+          <a href="{% url 'mypage:developments_delete' development.pk %}" class="btn btn-danger" id="form_delete">削除</a>
+          <span class="pl-4">
             <a href="{% url 'mypage:home' user.pk %}" class="btn btn-secondary">戻る</a>
           </span>
         </div>

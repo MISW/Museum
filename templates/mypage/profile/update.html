@@ -25,11 +25,11 @@
               <!-- col-12 col-md-4 -->
               <!-- col-4 col-auto-->
 
-              <label for="image">
+              <label for="id_image">
                 {% if user.image %}
-                  <img class="rounded-circle" src="{{ user.image.url }}" width="200" height="200">
+                  <img id="id_image_output" class="rounded-circle" src="{{ user.image.url }}" width="200" height="200">
                 {% else %}
-                  <img class="rounded-circle" src="{% static 'icons/profile.svg' %}" width="200" height="200">
+                  <img id="id_image_output" class="rounded-circle" src="{% static 'icons/profile.svg' %}" width="200" height="200">
                 {% endif %}
               </label>
               <div class="form-control-file center-block" accept="image/*">
@@ -66,10 +66,10 @@
                 </span>
               </div>
               <div class="row form-group">
-                <span class="col-6 col-md-5">
+                <span class="col-12 col-md-5 ">
                   <label for="shortCommentInput">ひとこと: </label>
                 </span>
-                <span>
+                <span class="col-12 col-md-5 ">
                   {{ form.description }}
                 </span>
               </div>

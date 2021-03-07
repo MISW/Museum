@@ -44,7 +44,10 @@ class DevelopmentCreateForm(forms.ModelForm):
         required=False,
         widget=forms.CheckboxSelectMultiple
     )
-    top_image = forms.FileField(required=False)
+    top_image = forms.FileField(
+        required=False,
+        #widget=forms.FileInput(attrs={"accept":"image/*"}) #これつけるとdeleteが効かない. ???
+    )
     is_private = forms.BooleanField(required=False)
 
     class Meta:

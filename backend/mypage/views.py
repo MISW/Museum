@@ -79,8 +79,8 @@ class DevelopmentNewView(LoginRequiredMixin, generic.TemplateView):
 
         context = {
             'development_form': development_form,
-            'media_form': media_form,
-            'link_form': link_form
+            'media_form_base': MediaCreateForm(), #media_form,
+            'link_form_base': LinkCreateForm() #link_form
         }
         return self.render_to_response(context)
 
@@ -187,8 +187,10 @@ class DevelopmentUpdateView(LoginRequiredMixin, generic.TemplateView):
         context = {
             'development': development,
             'development_form': development_form,
-            'media_form': media_form,
-            'link_form': link_form
+            'media_form_base': MediaCreateForm(), #media_form,
+            'link_form_base': LinkCreateForm(), #link_form
+            'media_forms': [ MediaCreateForm(initial={'media_type': media.type,'file':media.file}) for media in development.medias.all()],
+            'link_forms': [ LinkCreateForm(initial={'link_type': link.type,'link':link.link}) for link in development.links.all()],
         }
 
         return self.render_to_response(context)
