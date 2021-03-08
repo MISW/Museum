@@ -41,6 +41,8 @@ $(function(){
             $(media_file_input[i]).find("#remove_media_file_button").remove();
             NewMediaTypeFileRelation( $(this).find('select[name$="media_type"]'), $(this).find('input[name$="file"]') );
             media_file_input_num.show.push(i);
+            //output
+            Output_OldMediaFile(this);
         }
     });
     $("#media_file_input_num_max").html(media_file_input_num.show.length+" / "+(media_file_input_num.show.length+media_file_input_num.hide.length) );
@@ -60,7 +62,6 @@ $(function(){
         media_file_input_num.hide.splice(0,1);
         $("#media_file_input_num_max").html(media_file_input_num.show.length+" / "+(media_file_input_num.show.length+media_file_input_num.hide.length));
     });
-
     function addEvent_RemoveMediaFormEvent(t){
     var eles=$(t).find('#remove_media_file_button');
         //eles.off();
@@ -136,6 +137,37 @@ $(function(){
                 output.html(ele);
             }
             reader.readAsDataURL(e.target.files[0]);
+        });
+    }
+    function Output_OldMediaFile(t){
+        const type=media_type_set[$(t).find('select[name$="media_type"]').val()];
+        const clear_input=$(t).find('input[name$="file-clear"]');
+        const url=$(t).find('a').prop('href');
+        var ele;
+        switch(type){
+            case "画像":
+                ele=$("<img>").attr({'src': url, });
+                break;
+            case "音声":
+                ele=$("<audio>").attr({'src': url, 'controls':true, });
+                break;
+            case "動画":
+                ele=$("<video>").attr({'src': url, 'controls':true, });
+                break;
+            case "zip":
+                ele=$("<p>現在zipが登録されています。</p>");
+                break;
+            default: 
+                ele=$('<p style="color:red;">typeを選択してください</p>');
+                break;
+        };
+        const div=$('<div>').attr({'id':'old_output_area'});
+        div.append(ele);
+        clear_input.next('label').after(div);
+        //event
+        clear_input.on('change',function(){
+            if(clear_input.prop('checked')==true) $(div).fadeOut();
+            else $(div).fadeIn();
         });
     }
     function clearMediaForm(t){
