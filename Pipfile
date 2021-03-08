@@ -4,20 +4,18 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-selenium = "*"
 
 [packages]
 django = "*"
 pillow = "*"
 gunicorn = "*"
+selenium = "*"
 whitenoise = "*"
 django-cloudinary-storage = "*"
 django-cleanup = "*"
 python-jose = "*"
 social-auth-app-django = "*"
 mysqlclient = "*"
-slackweb = "*"
-dj-database-url = "*"
 
 [requires]
 python_version = "3.8"
