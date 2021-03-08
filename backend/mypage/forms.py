@@ -31,10 +31,14 @@ class ProfileUpdateForm(forms.ModelForm):
         )
 
 
+class NameMultipleChoiceField(forms.ModelMultipleChoiceField):
+    def label_from_instance(self, obj):
+        return f'{obj.first_name}'
+
 class DevelopmentCreateForm(forms.ModelForm):
     title = forms.CharField(required=True, max_length=30)
     description = forms.CharField(required=False, widget=forms.Textarea)
-    co_developers = forms.ModelMultipleChoiceField(
+    co_developers = NameMultipleChoiceField(
         queryset=User.objects.all(),
         required=False,
         widget=forms.CheckboxSelectMultiple

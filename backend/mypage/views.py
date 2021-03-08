@@ -198,7 +198,7 @@ class DevelopmentUpdateView(LoginRequiredMixin, generic.TemplateView):
         link_form = LinkCreateForm(initial=link_form_initial)
         development_form.fields['co_developers'].queryset = (
             User.objects.filter(is_superuser=False)
-                .exclude(pk=self.request.user.pk)
+                .exclude(pk=self.request.user.pk).order_by('first_name')
         )
         development_form.fields['co_developers'].initial = (
             [co_developer.pk for co_developer in development.co_developers.all()]
