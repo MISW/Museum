@@ -101,22 +101,21 @@
         <div class="row form-group py-3">
           <label class="col-xs-12 col-sm-4 col-form-label" for="is_private">メディアファイル</label>
           <div class="col-xs-12 col-sm-8"> 
-            <!-- media file form is copied from html in <div id="media_file_input_base"> -->
-            <div id="media_file_input_base"> 
+            <!-- media file form is here -->
+            <div id="media_file_input_area">
+              {% for form in media_forms %}
               <div class="media_file_input py-3">
                 <div class="py-1"> 
                   【<span class="media_file_count"></span>】
                   <input type="button" id="remove_media_file_button" class="btn-success float-right" value="-">
                 </div>
                 <div class="pl-4">
-                  {{ media_form_base.as_p }} 
+                  {{ form.as_p }} 
                   <div id="new_output_area">
                   </div>
                 </div>
               </div>
-            </div>
-            <!-- media file form is here -->
-            <div id="media_file_input_area">
+              {% endfor %}
             </div>
             <div class="pb-4">
               <button type="button" class="btn px-1">
@@ -131,20 +130,19 @@
         <div class="row form-group py-3">
           <label class="col-xs-12 col-sm-4 col-form-label" for="is_private">リンク</label>
           <div class="col-xs-12 col-sm-8">
-            <!-- link form is copied from html in <div id="link_input_base"> -->
-            <div id="link_input_base"> 
+            <!-- link form is here -->
+            <div id="link_input_area">
+              {% for link in link_forms %}
               <div class="link_input py-3">
                 <div class="py-1"> 
                   【<span class="link_count"></span>】
                   <input type="button" id="remove_link_button" class="btn-success float-right " value="-">
                 </div>
                 <div class="pl-4">
-                  {{ link_form_base.as_p }}
+                  {{ link.as_p }} 
                 </div>
               </div>
-            </div>
-            <!-- link form is here -->
-            <div id="link_input_area">
+              {% endfor %}
             </div>
             <div class="pb-4">
               <button type="button" class="btn px-1">

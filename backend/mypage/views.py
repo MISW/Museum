@@ -14,7 +14,8 @@ from .forms import (
     DevelopmentCreateForm,
     MediaCreateForm,
     LinkCreateForm,
-    MediaCreateFormSet
+    MediaCreateFormSet,
+    LinkCreateFormSet,
 )
 from backend.interface.slack import webhook
 
@@ -81,8 +82,8 @@ class DevelopmentNewView(LoginRequiredMixin, generic.TemplateView):
 
         context = {
             'development_form': development_form,
-            'media_form_base': MediaCreateForm(), #media_form,
-            'link_form_base': LinkCreateForm() #link_form
+            'media_forms': MediaCreateFormSet(),
+            'link_forms': LinkCreateFormSet(), 
         }
         return self.render_to_response(context)
 
@@ -206,11 +207,8 @@ class DevelopmentUpdateView(LoginRequiredMixin, generic.TemplateView):
         context = {
             'development': development,
             'development_form': development_form,
-            'media_form_base': MediaCreateForm(), #media_form,
-            'link_form_base': LinkCreateForm(), #link_form
-            'media_forms': [ MediaCreateForm(initial={'media_type': media.type,'file':media.file}) for media in development.medias.all()],
-            #'media_forms': MediaCreateFormSet(initial=[{'media_type': media.type,'file':media.file} for media in development.medias.all()] ), #formset,
-            'link_forms': [ LinkCreateForm(initial={'link_type': link.type,'link':link.link}) for link in development.links.all()],
+            'media_forms': MediaCreateFormSet(initial=[{'media_type': media.type,'file':media.file} for media in development.medias.all()] ),
+            'link_forms': LinkCreateFormSet(initial=[{'media_type': link.type,'file':link.link} for link in development.links.all()] ), 
         }
 
         return self.render_to_response(context)
