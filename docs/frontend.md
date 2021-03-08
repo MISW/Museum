@@ -25,11 +25,8 @@
 - nav-text
 - nav-button
 - side
-- side-content
+- sideContents
 - game-img
 - game-list
 ### アイコン
 https://icon-icons.com/ja/
-### 進行具合
-nabvar設定ミス
-sidevar設定ミス

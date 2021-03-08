@@ -33,22 +33,22 @@
       <a href="{% url 'home:home' %}" class="nav-item navbar-brand">みすミュージアム</a>
       <ul id="nav-text" class="navbar-nav mr-auto mt-2 mt-xs-0">
         <li class="nav-item">
-          <a class="nav-link text-secondary" href="{% url 'manage_home:home' %}">管理者画面<span class="sr-only">(current)</span></a>
+          <a class="nav-link text-secondary" href="{% url 'manage_home:home' %}">管理者画面<span
+              class="sr-only">(current)</span></a>
         </li>
       </ul>
 
-      <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler navbar-light " type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle"  aria-haspopup="true" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <!-- aria-haspopup="true" -->
 
       <button class="dropdown-toggle p-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-      aria-haspopup="true" aria-expanded="false">
-      {% if user.image %}
-      <img src="{{ user.image.url }}" class="rounded-circle" width="32" height="32">
-      {% else %}
-      <img src="{% static 'icons/profile.svg' %}" class="rounded-circle" width="32" height="32">
-      {% endif %}
+              aria-haspopup="true" aria-expanded="false">
+        {% if user.image %}
+          <img src="{{ user.image.url }}" class="rounded-circle" width="32" height="32">
+        {% else %}
+          <img src="{% static 'icons/profile.svg' %}" class="rounded-circle" width="32" height="32">
+        {% endif %}
       </button>
 
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
@@ -58,35 +58,30 @@
     </nav>
   </div>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
   <div class="collapse navbar-collapse justify-content-end" id="navbarToggle">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav text-right">
       <li id="toggleContent">
-        <a class="p-3 text-dark text-nowrap" href="{% url 'manage_developments:home' %}">成果物一覧</a>
+        <a class=" text-dark text-nowrap" href="{% url 'manage_developments:home' %}">成果物一覧</a>
       </li>
       <li id="toggleContent">
-        <a class="p-3 text-dark text-nowrap" href="{% url 'manage_developments:pending_home' %}">申請中成果物一覧</a>
+        <a class=" text-dark text-nowrap" href="{% url 'manage_developments:pending_home' %}">申請中成果物一覧</a>
       </li>
       <li id="toggleContent">
-        <a class="p-3 text-dark text-nowrap"
+        <a class=" text-dark text-nowrap"
             href="{% url 'manage_developments:public_home' %}">公開中成果物一覧</a>
       </li>
       <li id="toggleContent">
-        <a class="p-3 text-dark text-nowrap"
+        <a class=" text-dark text-nowrap"
             href="{% url 'manage_developments:closed_home' %}">非公開成果物一覧</a>
       </li>
       <li id="toggleContent">
-        <a class="p-3 text-dark text-nowrap" href="">開発者一覧</a>
+        <a class=" text-dark text-nowrap" href="">開発者一覧</a>
       </li>
       <li id="toggleContent">
-        <a class="p-3 text-dark text-nowrap" href="">変更ログ</a>
+        <a class=" text-dark text-nowrap" href="">変更ログ</a>
       </li>
-
-  </ul>
-</div>
+    </ul>
+  </div>
 </nav>
 </header>
 
@@ -96,28 +91,28 @@
   <div class="container-fluid">
     <div class="row no-gutters">
       <!-- side bar -->
-      <div class="col-sm-3 col-1" id="side navbarToggle">
+      <div class="col-sm-3 col-xs-1">
         <ul id="side" class="text-center item-center col-10">
           <br>
-          <li id="side-content">
-            <a class="p-3 text-dark text-center text-nowrap" href="{% url 'manage_developments:home' %}">成果物一覧</a>
+          <li class="sideContents">
+            <a class="text-dark text-nowrap" href="{% url 'manage_developments:home' %}">成果物一覧</a>
           </li>
-          <li id="side-content">
-            <a class="p-3 text-dark text-center text-nowrap" href="{% url 'manage_developments:pending_home' %}">申請中成果物一覧</a>
+          <li class="sideContents">
+            <a class="text-dark text-nowrap" href="{% url 'manage_developments:pending_home' %}">申請中成果物一覧</a>
           </li>
-          <li id="side-content">
-            <a class="p-3 text-dark text-center text-nowrap"
+          <li class="sideContents">
+            <a class="text-dark text-nowrap"
                href="{% url 'manage_developments:public_home' %}">公開中成果物一覧</a>
           </li>
-          <li id="side-content">
-            <a class="p-3 text-dark text-center text-nowrap"
+          <li class="sideContents">
+            <a class="text-dark text-nowrap"
                href="{% url 'manage_developments:closed_home' %}">非公開成果物一覧</a>
           </li>
-          <li id="side-content">
-            <a class="p-3 text-dark text-center text-nowrap" href="">開発者一覧</a>
+          <li class="sideContents">
+            <a class="text-dark text-nowrap" href="">開発者一覧</a>
           </li>
-          <li id="side-content">
-            <a class="p-3 text-dark text-center text-nowrap" href="">変更ログ</a>
+          <li class="sideContents">
+            <a class="text-dark text-nowrap" href="">変更ログ</a>
           </li>
         </ul>
       </div>
