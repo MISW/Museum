@@ -84,3 +84,15 @@ class LinkCreateForm(forms.ModelForm):
             'link_type',
             'link'
         )
+
+class DevelopmentUpdateForm(DevelopmentCreateForm):
+    title = forms.CharField(required=False, max_length=30)
+
+    class Meta:
+        model = Development
+        fields = (
+            'title',
+            'description',
+            'top_image',
+            'is_private'
+        )
