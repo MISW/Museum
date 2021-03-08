@@ -38,8 +38,7 @@
         </li>
       </ul>
 
-      <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbars01"
-              aria-controls="navbars01" aria-haspopup="true" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler navbar-light " type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle"  aria-haspopup="true" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -58,35 +57,62 @@
       </div>
     </nav>
   </div>
+
+  <div class="collapse navbar-collapse justify-content-end" id="navbarToggle">
+    <ul class="navbar-nav text-right">
+      <li id="toggleContent">
+        <a class=" text-dark text-nowrap" href="{% url 'manage_developments:home' %}">成果物一覧</a>
+      </li>
+      <li id="toggleContent">
+        <a class=" text-dark text-nowrap" href="{% url 'manage_developments:pending_home' %}">申請中成果物一覧</a>
+      </li>
+      <li id="toggleContent">
+        <a class=" text-dark text-nowrap"
+            href="{% url 'manage_developments:public_home' %}">公開中成果物一覧</a>
+      </li>
+      <li id="toggleContent">
+        <a class=" text-dark text-nowrap"
+            href="{% url 'manage_developments:closed_home' %}">非公開成果物一覧</a>
+      </li>
+      <li id="toggleContent">
+        <a class=" text-dark text-nowrap" href="">開発者一覧</a>
+      </li>
+      <li id="toggleContent">
+        <a class=" text-dark text-nowrap" href="">変更ログ</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 </header>
+
 
 
 <main role="main">
   <div class="container-fluid">
     <div class="row no-gutters">
       <!-- side bar -->
-      <div class="col-sm-3 col-1" id="navbars01">
+      <div class="col-sm-3 col-xs-1">
         <ul id="side" class="text-center item-center col-10">
           <br>
-          <li id="side-content">
-            <a class="p-3 text-dark text-center text-nowrap" href="{% url 'manage_developments:home' %}">成果物一覧</a>
+          <li class="sideContents">
+            <a class="text-dark text-nowrap" href="{% url 'manage_developments:home' %}">成果物一覧</a>
           </li>
-          <li id="side-content">
-            <a class="p-3 text-dark text-center text-nowrap" href="{% url 'manage_developments:pending_home' %}">申請中成果物一覧</a>
+          <li class="sideContents">
+            <a class="text-dark text-nowrap" href="{% url 'manage_developments:pending_home' %}">申請中成果物一覧</a>
           </li>
-          <li id="side-content">
-            <a class="p-3 text-dark text-center text-nowrap"
+          <li class="sideContents">
+            <a class="text-dark text-nowrap"
                href="{% url 'manage_developments:public_home' %}">公開中成果物一覧</a>
           </li>
-          <li id="side-content">
-            <a class="p-3 text-dark text-center text-nowrap"
+          <li class="sideContents">
+            <a class="text-dark text-nowrap"
                href="{% url 'manage_developments:closed_home' %}">非公開成果物一覧</a>
           </li>
-          <li id="side-content">
-            <a class="p-3 text-dark text-center text-nowrap" href="">開発者一覧</a>
+          <li class="sideContents">
+            <a class="text-dark text-nowrap" href="">開発者一覧</a>
           </li>
-          <li id="side-content">
-            <a class="p-3 text-dark text-center text-nowrap" href="">変更ログ</a>
+          <li class="sideContents">
+            <a class="text-dark text-nowrap" href="">変更ログ</a>
           </li>
         </ul>
       </div>

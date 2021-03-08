@@ -25,7 +25,7 @@
 - nav-text
 - nav-button
 - side
-- side-content
+- sideContents
 - game-img
 - game-list
 ### アイコン

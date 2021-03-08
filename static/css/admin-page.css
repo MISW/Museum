@@ -1,59 +1,73 @@
-
 /*基本設定*/
-a{
-    text-decoration:none;
-    color:black;
+a {
+    text-decoration: none;
+    color: black;
 }
+
 ul {
     list-style: none;
 }
-.container-fluid{
+
+.container-fluid {
     padding: 0;
     margin: 0;
 }
 
 
 /*ページ設定*/
-#navbar{
-    border-bottom:solid 1.5px;
-    border-radius:0px;
-    background-color:#B1DDF0;
-    border-color:#10739E;
+#navbar {
+    border-bottom: solid 1.5px;
+    border-radius: 0px;
+    background-color: #B1DDF0;
+    border-color: #10739E;
 }
+
 .navbar-toggler {
-    border-color: rgba(0,0,0,0);
-}
-#nav-toggle{
-    border-color: rgba(0,0,0,0);
+    border-color: rgba(0, 0, 0, 0);
 }
 
-#side{
-    background-color:#F5F5F5;
-    border-right:0.5px solid;
-    padding-left: 0;
-    padding-bottom: 5rem;
-    float:left;
-    margin:0;
+#nav-toggle {
+    border-color: rgba(0, 0, 0, 0);
+}
+
+#side {
+    background-color: #F5F5F5;
+    border-right: 0.5px solid;
+    float: left;
+    margin: 0;
     min-height: 100vh;
-    height:100%;
-}
-#side-content{
-    margin-top:10%;
-}
-table,thead,tr, th, td {
-    border-top:0.5px solid;
-    border-bottom:0.5px solid;
-    }
-table{
-    border:0.5px solid;
-}
-thead{
-    background-color:#F5F5F5;
+    height: 100%;
 }
 
-.detail{
-    color:gray;
+.sideContents {
+    padding-top: 1rem;
 }
+
+#toggleContent {
+    padding: 20px 10px 0px 0px
+}
+
+table,
+thead,
+tr,
+th,
+td {
+    border-top: 0.5px solid;
+    border-bottom: 0.5px solid;
+}
+
+table {
+    border: 0.5px solid;
+}
+
+thead {
+    background-color: #F5F5F5;
+}
+
+.detail {
+    color: gray;
+}
+
 #game-img {
     max-width: 90%;
     height: auto;
@@ -62,42 +76,54 @@ thead{
 
 
 /*条件付き設定*/
-@media (min-width: 768px) {
-    table{
-        padding-left:5%;
+@media (min-width: 770px) {
+    table {
+        padding-left: 5%;
+    }
+
+    #toggleContent {
+        display: none;
     }
 }
 
-@media (max-width:768px) {
-    #nav-text{
-        display:none;
+@media (max-width:770px) {
+    #nav-text {
+        display: none;
     }
-    #nav-button{
-        display:none;
+
+    #nav-button {
+        display: none;
     }
-    #navbar{
-        width:100%;
-        padding:0;
+
+    #navbar {
+        width: 100%;
+        padding: 0;
     }
-    #side-content{
-        font-size:small;
-        text-align:center;
-        margin:20px 10px 0px 0px
+
+    #sideContent {
+        font-size: small;
+        text-align: center;
+        margin: 20px 10px 0px 0px
     }
-    #side{
-        display:none;
+
+    #side {
+        display: none;
     }
-    table{
-        margin:0;
-        padding:0;
+
+    table {
+        margin: 0;
+        padding: 0;
     }
-    #menu{
-        background-color:white;
+
+    #menu {
+        background-color: white;
     }
-    table{
-        font-size:10px;
+
+    table {
+        font-size: 10px;
     }
-    #game-list{
-        padding:0;
+
+    #game-list {
+        padding: 0;
     }
 }
