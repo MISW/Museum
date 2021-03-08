@@ -10,15 +10,15 @@ from backend.users.models import User
 MEDIA_CHOICES = (
     (0, '画像'),
     (1, '音声'),
-    (2, '動画')
+    (2, '動画'),
+    (3, 'zip')
 )
 
 LINK_CHOICES = (
-    (0, 'Windows'),
-    (1, 'iOS'),
-    (2, 'Android'),
-    (3, 'ブラウザ'),
-    (4, 'その他')
+    (0, 'Microsoft Store'),
+    (1, 'Apple Store'),
+    (2, 'Google Play'),
+    (3, 'その他')
 )
 
 ASSOCIATION_CHOICES = (

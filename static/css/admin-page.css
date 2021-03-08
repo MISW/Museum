@@ -1,132 +1,129 @@
-
 /*基本設定*/
-body{
-    margin:0;
-    padding:0;
+a {
+    text-decoration: none;
+    color: black;
 }
 
-a{
-    text-decoration:none;
-    color:black;
-}
 ul {
     list-style: none;
-  }
-.text-dark {
-    color: #343a40 !important;
 }
 
-.p-2 {
-    padding: .5rem !important;
+.container-fluid {
+    padding: 0;
+    margin: 0;
 }
 
-.mb-4,
-.my-4 {
-    margin-bottom: 1.5rem !important;
-}
-.container-fluid{
-    padding:0;
-    margin:0;
-}
-
-html {
-    font-size: 14px;
-    width:100%;
-}
 
 /*ページ設定*/
-#navbar{
-    border-bottom:solid 1.5px;
-    border-radius:0px;
-    background-color:#B1DDF0;
-    border-color:#10739E;
+#navbar {
+    border-bottom: solid 1.5px;
+    border-radius: 0px;
+    background-color: #B1DDF0;
+    border-color: #10739E;
 }
+
 .navbar-toggler {
-    border-color: rgba(0,0,0,0);
+    border-color: rgba(0, 0, 0, 0);
 }
-#nav-toggle{
-    border-color: rgba(0,0,0,0);
+
+#nav-toggle {
+    border-color: rgba(0, 0, 0, 0);
 }
-#side{
-    padding:0;
+
+#side {
+    background-color: #F5F5F5;
+    border-right: 0.5px solid;
+    float: left;
+    margin: 0;
+    min-height: 100vh;
+    height: 100%;
 }
-#side{
-    float:left;
-    background-color:#F5F5F5;
-    border-right:0.5px solid;
-    list-style: none;
-    margin:0;
+
+.sideContents {
+    padding-top: 1rem;
 }
-#side-content{
-    margin-top:10%;
+
+#toggleContent {
+    padding: 20px 10px 0px 0px
 }
-table,thead,tr, th, td {
-    border-top:0.5px solid;
-    border-bottom:0.5px solid;
-    }
-table{
-    border:0.5px solid;
+
+table,
+thead,
+tr,
+th,
+td {
+    border-top: 0.5px solid;
+    border-bottom: 0.5px solid;
 }
-thead{
-    background-color:#F5F5F5;
+
+table {
+    border: 0.5px solid;
 }
-.detail{
-    color:gray;
+
+thead {
+    background-color: #F5F5F5;
 }
+
+.detail {
+    color: gray;
+}
+
 #game-img {
-    width:90%;
+    max-width: 90%;
+    height: auto;
+    width: auto;
 }
 
 
 /*条件付き設定*/
-@media (min-width: 768px) {
-    .navbar{
-        align-items: center;
-        padding:0% 0% 0% 0%;
+@media (min-width: 770px) {
+    table {
+        padding-left: 5%;
     }
-    html {
-        font-size: 16px;
-    }
-    table{
-        padding-left:5%;
-    }
-    #side{
-        height:100vh;
+
+    #toggleContent {
+        display: none;
     }
 }
 
-@media (max-width:767px) {
-    #nav-text{
-        display:none;
+@media (max-width:770px) {
+    #nav-text {
+        display: none;
     }
-    #nav-button{
-        display:none;
+
+    #nav-button {
+        display: none;
     }
-    #navbars01{;
+
+    #navbar {
+        width: 100%;
+        padding: 0;
     }
-    #side-content{
-        font-size:small;
-        text-align:center;
-        margin:20px 10px 0px 0px
+
+    #sideContent {
+        font-size: small;
+        text-align: center;
+        margin: 20px 10px 0px 0px
     }
-    table{
-        margin:0;
-        padding:0;
+
+    #side {
+        display: none;
     }
-    #navbar{
-        width:100%;
-        padding:0;
+
+    table {
+        margin: 0;
+        padding: 0;
     }
-    #side{
-        display:none;
+
+    #menu {
+        background-color: white;
     }
-    #menu{
-        background-color:white;
+
+    table {
+        font-size: 10px;
     }
-    table{
-        font-size:10px;
-    }
-    #game-list{
-        padding:0;
+
+    #game-list {
+        padding: 0;
     }
 }
