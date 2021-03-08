@@ -74,6 +74,8 @@ class MediaCreateForm(forms.ModelForm):
             'file'
         )
 
+MediaCreateFormSet=forms.formset_factory( form=MediaCreateForm, extra=3 ,max_num=3 )
+
 class LinkCreateForm(forms.ModelForm):
     LINK_CHOICES_WITH_EMPTY = [(None, '----')] + list(LINK_CHOICES)
 
@@ -87,3 +89,5 @@ class LinkCreateForm(forms.ModelForm):
             'link_type',
             'link'
         )
+
+LinkCreateFormSet=forms.formset_factory( form=LinkCreateForm, extra=5 ,max_num=5 )

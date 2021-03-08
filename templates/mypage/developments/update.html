@@ -96,12 +96,15 @@
               <a href="{{ development.top_image.url }}">{{ development.top_image }}</a>
               <input type="checkbox" name="top_image-clear" id="top_image-clear_id">
               <label for="top_image-clear_id">クリア</label>
-              <image src="{{ development.top_image.url }}" class="top_image image_old_output"></image>
+              <div id="old_output_area">
+                <img src="{{ development.top_image.url }}" class="top_image "></img>
+              </div>
               <br>
               変更:
             {% endif %}
             {{ development_form.top_image }}
-            <image class="top_image image_new_output"></image>
+            <div id="new_output_area" class="top_image">
+            </div>
           </div>
         </div>
 
@@ -118,7 +121,10 @@
                 </div>
                 <div class="pl-4">
                   {{ media_form_base.as_p }} 
+                  <div id="new_output_area">
+                  </div>
                 </div>
+                
               </div>
             </div>
             <!-- media file form is here -->
@@ -131,6 +137,8 @@
                 </div>
                 <div class="pl-4">
                   {{ form.as_p }} 
+                  <div id="new_output_area">
+                  </div>
                 </div>
               </div>
               {% endfor %}

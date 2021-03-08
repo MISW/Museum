@@ -59,7 +59,8 @@
                   {% for checkbox in form.associations %}
                     <div class="checkbox">
                     <label for="associations">
-                      {{ checkbox.tag }} {{ checkbox.choice_label }}
+                      {{ checkbox.tag }} 
+                      <span class="association_name">{{ checkbox.choice_label }}</span>
                     </label>
                   </div>
                   {% endfor %}

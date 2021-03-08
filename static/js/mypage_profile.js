@@ -44,9 +44,19 @@ $(function(){
 
     $('form').submit(
         function(){
-            alert("「ひとこと」を「"+$('#shortCommentInput').val()+"」、\n「代」を"+$('#generationInput').val()+"に変更します。");
+            var message="";
+            message+="代:　　　　　"+$('input[name="generation"]').val();
+            message+="\n研究会:　　　";
+            $(".checkbox").each(function(){
+                if($(this).find('input[name="associations"]').prop("checked")==true){
+                    message+=$(this).find('.association_name').text()+", ";
+                }
+            });
+            message+="\nひとこと:　\n「"+$('textarea[name="description"]').text()+"」";
+            message+="\nで登録します。";
+            alert( message );
         } 
     );
-
+assosiations
 
 })

@@ -13,7 +13,8 @@ from .forms import (
     ProfileUpdateForm,
     DevelopmentCreateForm,
     MediaCreateForm,
-    LinkCreateForm
+    LinkCreateForm,
+    MediaCreateFormSet
 )
 from backend.interface.slack import webhook
 
@@ -208,6 +209,7 @@ class DevelopmentUpdateView(LoginRequiredMixin, generic.TemplateView):
             'media_form_base': MediaCreateForm(), #media_form,
             'link_form_base': LinkCreateForm(), #link_form
             'media_forms': [ MediaCreateForm(initial={'media_type': media.type,'file':media.file}) for media in development.medias.all()],
+            #'media_forms': MediaCreateFormSet(initial=[{'media_type': media.type,'file':media.file} for media in development.medias.all()] ), #formset,
             'link_forms': [ LinkCreateForm(initial={'link_type': link.type,'link':link.link}) for link in development.links.all()],
         }
 

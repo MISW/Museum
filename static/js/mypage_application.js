@@ -1,23 +1,23 @@
 $(function(){
 
 
-    //TOP IMAGE 
+//TOP IMAGE 
     $(".image_input_group").each(function(i){
-        const new_output=$(this).find(".image_new_output");
-        const old_output=$(this).find(".image_old_output");
+        const new_output_area=$(this).find("#new_output_area");
+        const old_output_area=$(this).find("#old_output_area");
         const top_image_input=$(this).find("#id_top_image");
         const top_image_clear= $(this).find("#top_image-clear_id");
 
         //new (add new top image)
-        ShowInputImage(top_image_input,new_output);
+        ShowInputImage(top_image_input,new_output_area);
 
         //clear (delete old top image)
         top_image_clear.on("change",function(){
             if(top_image_clear.prop('checked')===true){
-                old_output.fadeOut()
+                old_output_area.fadeOut()
                 console.log("true")
             }else{
-                old_output.fadeIn()
+                old_output_area.fadeIn()
                 console.log("false")
             }  
         });
@@ -25,54 +25,123 @@ $(function(){
 
 
 
-    //Media Files
+//Media Files
+    const media_type_set={0:"画像", 1:"音声", 2:"動画", 3:"zip"};
     const media_file_input_num_max=3;
     const media_file_input_area=$("#media_file_input_area");
     const media_file_input_base=$("#media_file_input_base").html()
     $("#media_file_input_base").remove()
     var media_file_input_num_now= media_file_input_area.find(".media_file_input").length;
     $("#media_file_input_num_max").html(media_file_input_num_now+" / "+media_file_input_num_max);
-    addEventRemoveMediaForm();
-
+    //event
+    media_file_input_area.find(".media_file_input").each(function(){
+        addEvent_RemoveMediaFormEvent(this);
+        addEvent_MediaFileInputEvent(this);
+        addEvent_MediaFileTypeSelectEvent(this);
+    });
+    
+    //add media
     $('#add_media_file_button').on('click',function(){
         if(media_file_input_num_now==media_file_input_num_max) return;
         media_file_input_num_now++;
-        //media_file_input_area.append("<p>【"+media_file_input_num_now+"】</p>"+media_file_input_base);
         media_file_input_area.append(media_file_input_base);
         $("#media_file_input_num_max").html(media_file_input_num_now+" / "+media_file_input_num_max);
 
-        //for remove (clear)
-        addEventRemoveMediaForm();
+        //event
+        media_file_input_area.find(".media_file_input").each(function(){
+            addEvent_RemoveMediaFormEvent(this);
+            addEvent_MediaFileInputEvent(this);
+            addEvent_MediaFileTypeSelectEvent(this);
+        });
     });
 
-    function addEventRemoveMediaForm(){
-        media_file_input_area.find(".media_file_input").each(function(){
-            var eles=$(this).find('#remove_media_file_button');
-            eles.off();
-            eles.on('click',function(){
-                if(media_file_input_num_now==0) return;
-                media_file_input_num_now--;
-                $("#media_file_input_num_max").html(media_file_input_num_now+" / "+media_file_input_num_max);
-                const ele=$(this).parents(".media_file_input");
-                ele.fadeOut();
-                $(this).remove();
-                setTimeout(function(){
-                    ele.remove();
-                },1000);
-            });
+    function addEvent_RemoveMediaFormEvent(t){
+    var eles=$(t).find('#remove_media_file_button');
+        eles.off();
+        eles.on('click',function(){
+            if(media_file_input_num_now==0) return;
+            media_file_input_num_now--;
+            $("#media_file_input_num_max").html(media_file_input_num_now+" / "+media_file_input_num_max);
+            const ele=$(t).parents(".media_file_input");
+            ele.fadeOut();
+            $(t).remove();
+            setTimeout(function(){
+                ele.remove();
+            },1000);
+        });
+    }
+    function addEvent_MediaFileTypeSelectEvent(t){
+        var input_type=$(t).find('#id_media_type');
+        input_type.off();
+        var input_file=$(t).find('#id_file');
+        input_type.on('change',function(){
+            var v=media_type_set[input_type.val()]?media_type_set[input_type.val()]:"";
+            switch(v){
+                case "画像":
+                    input_file.attr({'accept':'image/*'})
+                    break;
+                case "音声":
+                    input_file.attr({'accept':'audio/*'})
+                    break;
+                case "動画":
+                    input_file.attr({'accept':'video/*'})
+                    break;
+                case "zip":
+                    input_file.attr({'accept':'.zip'})
+                    break;
+                default: 
+                    input_file.attr({'accept':'*'})
+                    break;
+            }
+        });
+    }
+    function addEvent_MediaFileInputEvent(t){
+        var input=$(t).find('#id_file');
+        input.off();
+        var output=$(t).find("#new_output_area");
+        const type=$(t).find("#id_media_type");
+        input.on("change",function(e){
+            if(!e.target.files[0]){
+                output.html("");
+                return;
+            }
+            var reader = new FileReader();
+            const url=createObjectURL ? createObjectURL(e.target.files[0]): e.target.result;
+
+            reader.onload = function (e) {
+                var ele;
+                switch(media_type_set[type.val()]){
+                    case "画像":
+                        ele=$("<img>").attr({'src': url });
+                        break;
+                    case "音声":
+                        ele=$("<audio>").attr({'src': url, 'controls':true, });
+                        break;
+                    case "動画":
+                        ele=$("<video>").attr({'src': url, 'controls':true, });
+                        break;
+                    case "zip":
+                        break;
+                    default: 
+                        ele=$("");
+                        break;
+                }
+                output.html(ele);
+            }
+            reader.readAsDataURL(e.target.files[0]);
         });
     }
 
 
     
-    //Links
+//Links
     const link_input_num_max=5;
     const link_input_area=$("#link_input_area");
     const link_input_base=$("#link_input_base").html()
     $("#link_input_base").remove()
     var link_input_num_now=link_input_area.find(".link_input").length;;
     $("#link_input_num_max").html(link_input_num_now+" / "+link_input_num_max);
-    addEventRemoveLinkForm()
+    addEvent_RemoveLinkFormEvent()
     
     $('#add_link_button').on('click',function(){
         if(link_input_num_now==link_input_num_max) return;
@@ -81,10 +150,10 @@ $(function(){
         $("#link_input_num_max").html(link_input_num_now+" / "+link_input_num_max);
 
         //for remove (clear)
-        addEventRemoveLinkForm()
+        addEvent_RemoveLinkFormEvent()
     });
 
-    function addEventRemoveLinkForm(){
+    function addEvent_RemoveLinkFormEvent(){
         link_input_area.find(".link_input").each(function(){
             var eles=$(this).find('#remove_link_button');
             eles.off();
@@ -102,9 +171,7 @@ $(function(){
         });
     }   
 
-
-
-    //共同作成者
+//共同作成者 co_developers
     const co_developer_input=$("#co_developer_input");
     const co_developer_add_button=$("#co_developer_add_button");
     const co_developers_output=$("#co_developers_output");
@@ -158,31 +225,7 @@ $(function(){
     }
 
 
-    //linkの必要不必要管理  見たらわかるようにele→label→div↓input という厳密な順番でないと使えない
-    /*
-    function link_required_prop(ele){
-        ele.on('change',function(){
-            if($(this).prop('checked')){
-                console.log(0);
-                $(this).next('label').next('div').children('input').prop('required',true);
-            }else{
-                console.log(1);
-                $(this).next('label').next('div').children('input').prop('required',false);
-                $(this).next('label').next('div').children('input').val("");//入力を消す
-            }
-        });
-    }
-    link_required_prop($("#check0"));
-    link_required_prop($("#check1"));
-    link_required_prop($("#check2"));
-    link_required_prop($("#check3"));
-    link_required_prop($("#check4"));
-    */
-
-
-
-
-    //ページ移動警告
+//ページ移動警告 
     $("input").change(function() {
         $(window).on('beforeunload', function(e) {
             return '入力済みデータが失われます。このまま移動しますか？\n申請する場合は「このまま移動する」を押してください。';
@@ -198,7 +241,7 @@ $(function(){
    
 
 
-    //formの中身をalertで表示
+//formの中身をalertで表示
     $('form').submit(
         //$('#submit').click(
         function(){
@@ -231,16 +274,26 @@ $(function(){
 
 });
 
+//入力された画像の出力
 function ShowInputImage(input,output){
     input.on("change",function(e){
         if(!e.target.files[0]){
-            output.attr('src',"");
+            output.html("");
             return;
         }
         var reader = new FileReader();
+        const url=createObjectURL ? createObjectURL(e.target.files[0]): e.target.result;
+
         reader.onload = function (e) {
-            output.attr('src', e.target.result);
+            var img=$("<img>").attr({'src': url });
+            output.html( img );
         }
         reader.readAsDataURL(e.target.files[0]);
     });
 }
+
+var createObjectURL = (window.URL && window.URL.createObjectURL) ? function(file) {
+    return window.URL.createObjectURL(file);
+} : (window.webkitURL && window.webkitURL.createObjectURL) ? function(file) {
+    return window.webkitURL.createObjectURL(file);
+} : undefined;
