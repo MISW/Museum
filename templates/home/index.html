@@ -27,6 +27,7 @@
         <p>検索したいキーワードを入力してください。</p>
         <input type="search" name="search" id="searchinput" placeholder="キーワードを入力" value="{{keyword}}">
         <input type="submit" name="submit" value="検索">
+        {% comment %}
         <!-- 折り畳み展開ポインタ -->
         <div onclick="obj=document.getElementById('open').style; obj.display=(obj.display=='none')?'block':'none';">
           <a style="cursor:pointer;"><img src="{% static 'icons/plus.png' %}" width="20px" height="20px"></a>
@@ -35,7 +36,6 @@
 
         <!-- 折り畳まれ部分 -->
         <div id="open" style="display:none;clear:both;background-color: #eee">
-          {% comment %}
           <h4>対象機種</h4>
           <p>
             <input type="checkbox" name="kisyu[]" value="Windows">Windows
@@ -53,10 +53,9 @@
             <input type="radio" name="category" value="パズル">パズル
             <input type="radio" name="category" value="音ゲー">音ゲー
           </p>
-          {% endcomment %}
-
         </div>
         <!--// 折り畳まれ部分 -->
+        {% endcomment %}
       </form>
 
         <div class="row" position="relative">
