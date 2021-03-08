@@ -87,8 +87,32 @@
               <p>メディアファイル:
               <div class="pl-5">
                 {% for media in development.medias.all %}
-                  <p>ファイルタイプ: {{ media.get_type_display }}</p>
-                  <a href="{{ media.file.url }}">{{ media.file }}</a>
+                {% if media.get_type_display == '画像' %}
+                  <a href="{{ media.file.url }}" title="{{ media.get_type_display }}">
+                    <img class="media_file_show" src="{{ media.file.url }}" >
+                  </a>
+                {% elif media.get_type_display == '音声' %}
+                  <audio controls preload="metadata">
+                    <source src="{{ media.file.url }}">
+                  </audio>
+                  <a href="{{ media.file.url }}" download="{{ media.file }}">
+                    <button>ダウンロード</button>
+                  </a>
+                  <br>
+                {% elif media.get_type_display == '動画' %}
+                  <video class="media_file_show" controls preload="metadata">
+                    <source src="{{ media.file.url }}">
+                  </video>
+                  <br>
+                  <a href="{{ media.file.url }}" download="{{ media.file }}">
+                    <button>ダウンロード</button>
+                  </a>
+                {% elif media.get_type_display == 'zip' %}
+                  <a href="{{ media.file.url }}" download="{{ media.file }}">
+                    <button>Zipダウンロード</button>
+                  </a>
+                  <br>
+                {% endif %}
                 {% endfor %}
               </div>
               </p>

@@ -30,6 +30,13 @@ textarea{
   /*max-height: 300px;*/
 }
 
+.media_file_show{
+  width: auto;
+  height: auto;
+  max-width: 400px;
+  max-height: 400px;
+}
+
 body{
   counter-reset: media link;
 }
