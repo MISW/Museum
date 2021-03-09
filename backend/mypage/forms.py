@@ -31,10 +31,14 @@ class ProfileUpdateForm(forms.ModelForm):
         )
 
 
+class NameMultipleChoiceField(forms.ModelMultipleChoiceField):
+    def label_from_instance(self, obj):
+        return f'{obj.first_name}'
+
 class DevelopmentCreateForm(forms.ModelForm):
     title = forms.CharField(required=True, max_length=30)
     description = forms.CharField(required=False, widget=forms.Textarea)
-    co_developers = forms.ModelMultipleChoiceField(
+    co_developers = NameMultipleChoiceField(
         queryset=User.objects.all(),
         required=False,
         widget=forms.CheckboxSelectMultiple
@@ -44,7 +48,10 @@ class DevelopmentCreateForm(forms.ModelForm):
         required=False,
         widget=forms.CheckboxSelectMultiple
     )
-    top_image = forms.FileField(required=False)
+    top_image = forms.FileField(
+        required=False,
+        #widget=forms.FileInput(attrs={"accept":"image/*"}) #これつけるとdeleteが効かない. ???
+    )
     is_private = forms.BooleanField(required=False)
 
     class Meta:
@@ -71,6 +78,8 @@ class MediaCreateForm(forms.ModelForm):
             'file'
         )
 
+MediaCreateFormSet=forms.formset_factory( form=MediaCreateForm, extra=3 ,max_num=3 )
+
 class LinkCreateForm(forms.ModelForm):
     LINK_CHOICES_WITH_EMPTY = [(None, '----')] + list(LINK_CHOICES)
 
@@ -84,3 +93,5 @@ class LinkCreateForm(forms.ModelForm):
             'link_type',
             'link'
         )
+
+LinkCreateFormSet=forms.formset_factory( form=LinkCreateForm, extra=5 ,max_num=5 )

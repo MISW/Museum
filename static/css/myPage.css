@@ -1,4 +1,6 @@
-
+textarea{
+  width: 100%;
+}
 
 td .status_public{
     background-color: rgb(28, 28, 196);
@@ -19,6 +21,38 @@ textarea{
   box-sizing:border-box;
   -moz-box-sizing:border-box; /* Firefox */
   -webkit-box-sizing:border-box; /* Chrome, Safari */
+}
+
+.top_image, #old_output_area img, #old_output_area video, #new_output_area img, #new_output_area video{
+  width: 100%;
+  height: auto;
+  max-width: 400px;
+  /*max-height: 300px;*/
+}
+
+.media_file_show{
+  width: auto;
+  height: auto;
+  max-width: 400px;
+  max-height: 400px;
+}
+
+body{
+  counter-reset: media link;
+}
+
+.media_file_count::before{
+  counter-increment: media 1;
+  content:counter(media);
+}
+
+.link_count::before{
+  counter-increment: link 1;
+  content:counter(link);
+}
+
+#remove_media_file_button, #remove_link_button{
+  font-size: small;
 }
 
 /*
