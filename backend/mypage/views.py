@@ -15,6 +15,7 @@ from .forms import (
     MediaCreateForm,
     LinkCreateForm
 )
+from backend.interface.slack import webhook
 
 
 class MypageHomeView(LoginRequiredMixin, generic.TemplateView):
@@ -133,6 +134,23 @@ class DevelopmentNewView(LoginRequiredMixin, generic.TemplateView):
                 development.submitted_at = timezone.now()
                 development.updated_at = timezone.now()
                 development.save()
+
+
+                # 通知の処理
+                variable_attachment = webhook.create_variable_attachment(
+                    pretext="Development created by {}".format(development.developer.first_name),
+                    title=development.title,
+                    title_link=request._current_scheme_host \
+                        + "/manage/developments/detail/" \
+                        + str(development.pk),
+                    author_name=development.developer.first_name,
+                    ts=timezone.now()
+                )
+                webhook.send_alert_to_channel(
+                    channel="development",
+                    mode="create",
+                    variable_attachment=variable_attachment
+                )
 
                 return redirect('mypage:home', request.user.pk)
         else:
@@ -256,6 +274,23 @@ class DevelopmentUpdateView(LoginRequiredMixin, generic.TemplateView):
 
                 development.updated_at = timezone.now()
                 development.save()
+
+
+                # 通知の処理
+                variable_attachment = webhook.create_variable_attachment(
+                    pretext="Development updated by {}".format(development.developer.first_name),
+                    title=development.title,
+                    title_link=request._current_scheme_host \
+                               + "/manage/developments/detail/" \
+                               + str(development.pk),
+                    author_name=development.developer.first_name,
+                    ts=timezone.now()
+                )
+                webhook.send_alert_to_channel(
+                    channel="development",
+                    mode="update",
+                    variable_attachment=variable_attachment
+                )
 
                 return redirect('mypage:home', request.user.pk)
         else:

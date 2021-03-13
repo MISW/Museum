@@ -6,20 +6,26 @@
   MISW Museum
 {% endblock %}
 
+{% block head %}
+  <!-- js link -->
+  <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+{% endblock head %}
+
 {% block main %}
   <main role="main">
-    <div class="jumbotron text-center" style="background-image: url({% static 'icons/eyecatch.png' %})">
-      
+    <div class="jumbotron">
+      <img src="{% static 'icons/eyecatch.png' %}" alt="" class="img-fluid w-100 h-100">
     </div>
 
     <div>
-      <div class="container">
+     <div class="container">
 
-        {% comment %} <form action="{% url 'backapp:search' %}" method="post">
+       <form action="{% url 'home:search' %}" method="post">
         {% csrf_token %}
         <p>検索したいキーワードを入力してください。</p>
-        <input type="search" name="search" placeholder="キーワードを入力" value="{{keyword}}">
+        <input type="search" name="search" id="searchinput" placeholder="キーワードを入力" value="{{keyword}}">
         <input type="submit" name="submit" value="検索">
+        {% comment %}
         <!-- 折り畳み展開ポインタ -->
         <div onclick="obj=document.getElementById('open').style; obj.display=(obj.display=='none')?'block':'none';">
           <a style="cursor:pointer;"><img src="{% static 'icons/plus.png' %}" width="20px" height="20px"></a>
@@ -45,10 +51,10 @@
             <input type="radio" name="category" value="パズル">パズル
             <input type="radio" name="category" value="音ゲー">音ゲー
           </p>
-
         </div>
         <!--// 折り畳まれ部分 -->
-      </form> {% endcomment %}
+        {% endcomment %}
+       </form>
 
         <div class="row" position="relative">
           {% for development in developments %}
@@ -74,8 +80,9 @@
               </div>
             </div>
           {% endfor %}
-        </div>
-      </div>
+       </div>
+     </div>
     </div>
+   
   </main>
 {% endblock %}
