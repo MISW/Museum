@@ -140,11 +140,6 @@ SOCIAL_AUTH_AUTH0_SCOPE = [
     'email'
 ]
 
-# Slack webhook settings
-SLACK_WEBHOOK_URL_DEVELOPMENT = os.environ.get('SLACK_WEBHOOK_URL_DEVELOPMENT')
-SLACK_WEBHOOK_URL_INQUIRY = os.environ.get('SLACK_WEBHOOK_URL_INQUIRY')
-
-
 AUTHENTICATION_BACKENDS = {
     'backend.oauth.auth0backend.Auth0',
     'django.contrib.auth.backends.ModelBackend'
