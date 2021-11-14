@@ -1,5 +1,6 @@
 from django.contrib.auth.mixins import UserPassesTestMixin
 
+
 class OnlyAdminMixin(UserPassesTestMixin):
     raise_exception = False
 
@@ -10,4 +11,3 @@ class OnlyAdminMixin(UserPassesTestMixin):
                 return True
 
         return False
-

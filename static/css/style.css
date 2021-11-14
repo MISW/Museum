@@ -1,23 +1,35 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
 .header {
     padding: 30px;
     color: blue
 }
 
 .jumbotron {
-    height: 100%;
-    background-repeat: repeat-x;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    background: center no-repeat;
+    background-size: cover;
+    padding: 0rem;
     margin-bottom: 0;
     background-color: ;
+}
+
+.jumbotron-heading2{
+    background-color: #e9ecef;
 }
 
 
 
 @media (min-width: 768px) {
     .jumbotron {
-        padding-top: 6rem;
-        padding-bottom: 6rem;
+        
     }
 }
 
@@ -76,16 +88,6 @@ form {
     margin: 15px
 }
 
-html {
-    font-size: 14px;
-}
-
-@media (min-width: 768px) {
-    html {
-        font-size: 16px;
-    }
-}
-
 .pricing-header {
     max-width: 700px;
 }
@@ -95,6 +97,7 @@ html {
 }
 
 .container {
+    height: 100%;
     max-width: auto;
     margin-top: 20px;
 }

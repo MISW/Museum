@@ -10,15 +10,15 @@ from backend.users.models import User
 MEDIA_CHOICES = (
     (0, '画像'),
     (1, '音声'),
-    (2, '動画'),
-    (3, 'zip')
+    (2, '動画')
 )
 
 LINK_CHOICES = (
     (0, 'Microsoft Store'),
     (1, 'Apple Store'),
     (2, 'Google Play'),
-    (3, 'その他')
+    (3, 'Browser'),
+    (4, 'Others')
 )
 
 ASSOCIATION_CHOICES = (
@@ -77,7 +77,6 @@ class Link(models.Model):
 
     type = models.IntegerField(
         choices=LINK_CHOICES,
-        help_text='0: Windows, 1: iOS, 2: Android, 3: browser, 4: others'
     )
 
     link = models.URLField(blank=True, null=True)
@@ -162,6 +161,3 @@ class Development(models.Model):  # ゲーム情報テーブル
         return ', '.join(
             [ASSOCIATION_CHOICES[int(data)][1] for data in self.get_associations()]
         )
-
-
-

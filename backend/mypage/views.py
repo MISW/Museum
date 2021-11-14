@@ -12,10 +12,10 @@ from backend.users.models import User
 from .forms import (
     ProfileUpdateForm,
     DevelopmentCreateForm,
+    DevelopmentUpdateForm,
     MediaCreateForm,
     LinkCreateForm
 )
-from backend.interface.slack import webhook
 
 
 class MypageHomeView(LoginRequiredMixin, generic.TemplateView):
@@ -135,23 +135,6 @@ class DevelopmentNewView(LoginRequiredMixin, generic.TemplateView):
                 development.updated_at = timezone.now()
                 development.save()
 
-
-                # 通知の処理
-                variable_attachment = webhook.create_variable_attachment(
-                    pretext="Development created by {}".format(development.developer.first_name),
-                    title=development.title,
-                    title_link=request._current_scheme_host \
-                        + "/manage/developments/detail/" \
-                        + str(development.pk),
-                    author_name=development.developer.first_name,
-                    ts=timezone.now()
-                )
-                webhook.send_alert_to_channel(
-                    channel="development",
-                    mode="create",
-                    variable_attachment=variable_attachment
-                )
-
                 return redirect('mypage:home', request.user.pk)
         else:
             form = DevelopmentCreateForm
@@ -173,7 +156,7 @@ class DevelopmentUpdateView(LoginRequiredMixin, generic.TemplateView):
             'description': development.description,
             'associations': development.get_associations(),
             'is_private': development.is_private,
-            'top_image': [ development.top_image if development.top_image else None]
+            'top_image': [development.top_image if development.top_image else None]
         }
         if media_flag:
             media_form_initial = {
@@ -219,7 +202,6 @@ class DevelopmentUpdateView(LoginRequiredMixin, generic.TemplateView):
             media = development.medias.first()
         link_exists = False
         if development.links.exists():
-            link_exists = True
             link = development.links.first()
 
         if request.method == 'POST':
@@ -275,26 +257,9 @@ class DevelopmentUpdateView(LoginRequiredMixin, generic.TemplateView):
                 development.updated_at = timezone.now()
                 development.save()
 
-
-                # 通知の処理
-                variable_attachment = webhook.create_variable_attachment(
-                    pretext="Development updated by {}".format(development.developer.first_name),
-                    title=development.title,
-                    title_link=request._current_scheme_host \
-                               + "/manage/developments/detail/" \
-                               + str(development.pk),
-                    author_name=development.developer.first_name,
-                    ts=timezone.now()
-                )
-                webhook.send_alert_to_channel(
-                    channel="development",
-                    mode="update",
-                    variable_attachment=variable_attachment
-                )
-
                 return redirect('mypage:home', request.user.pk)
         else:
-            form = DevelopmentCreateForm()
+            form = DevelopmentUpdateForm()
 
         return redirect('mypage:devlopments_update', development.pk)
 

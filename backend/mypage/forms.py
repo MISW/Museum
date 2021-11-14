@@ -21,7 +21,6 @@ class ProfileUpdateForm(forms.ModelForm):
     description = forms.CharField(required=False, widget=forms.Textarea)
     image = forms.FileField(required=False)
 
-
     class Meta:
         model = User
         fields = (
@@ -71,6 +70,7 @@ class MediaCreateForm(forms.ModelForm):
             'file'
         )
 
+
 class LinkCreateForm(forms.ModelForm):
     LINK_CHOICES_WITH_EMPTY = [(None, '----')] + list(LINK_CHOICES)
 
@@ -83,4 +83,17 @@ class LinkCreateForm(forms.ModelForm):
         fields = (
             'link_type',
             'link'
+        )
+
+
+class DevelopmentUpdateForm(DevelopmentCreateForm):
+    title = forms.CharField(required=False, max_length=30)
+
+    class Meta:
+        model = Development
+        fields = (
+            'title',
+            'description',
+            'top_image',
+            'is_private'
         )
