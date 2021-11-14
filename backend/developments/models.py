@@ -161,6 +161,3 @@ class Development(models.Model):  # ゲーム情報テーブル
         return ', '.join(
             [ASSOCIATION_CHOICES[int(data)][1] for data in self.get_associations()]
         )
-
-
-

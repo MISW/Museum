@@ -156,7 +156,7 @@ class DevelopmentUpdateView(LoginRequiredMixin, generic.TemplateView):
             'description': development.description,
             'associations': development.get_associations(),
             'is_private': development.is_private,
-            'top_image': [ development.top_image if development.top_image else None]
+            'top_image': [development.top_image if development.top_image else None]
         }
         if media_flag:
             media_form_initial = {

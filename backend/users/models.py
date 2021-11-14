@@ -7,7 +7,6 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.core.validators import validate_comma_separated_integer_list
 
-
 ASSOCIATION_CHOICES = (
     (0, 'プログラミング'),
     (1, 'CG'),
@@ -68,7 +67,6 @@ class User(AbstractUser):
     class Meta:
         verbose_name_plural = 'User'
 
-
     def get_associations(self) -> list:
         associations = self.associations
         if not associations:
@@ -79,5 +77,3 @@ class User(AbstractUser):
         return ', '.join(
             [ASSOCIATION_CHOICES[int(data)][1] for data in self.get_associations()]
         )
-
-
