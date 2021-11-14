@@ -18,14 +18,14 @@
     </div>
 
     <div>
-     <div class="container">
+      <div class="container">
 
-       <form action="{% url 'home:search' %}" method="post">
-        {% csrf_token %}
-        <p>検索したいキーワードを入力してください。</p>
-        <input type="search" name="search" id="searchinput" placeholder="キーワードを入力" value="{{keyword}}">
-        <input type="submit" name="submit" value="検索">
-        {% comment %}
+        <form action="{% url 'home:search' %}" method="post">
+          {% csrf_token %}
+          <p>検索したいキーワードを入力してください。</p>
+          <input type="search" name="search" id="searchinput" placeholder="キーワードを入力" value="{{ keyword }}">
+          <input type="submit" name="submit" value="検索">
+          {% comment %}
         <!-- 折り畳み展開ポインタ -->
         <div onclick="obj=document.getElementById('open').style; obj.display=(obj.display=='none')?'block':'none';">
           <a style="cursor:pointer;"><img src="{% static 'icons/plus.png' %}" width="20px" height="20px"></a>
@@ -54,7 +54,7 @@
         </div>
         <!--// 折り畳まれ部分 -->
         {% endcomment %}
-       </form>
+        </form>
 
         <div class="row" position="relative">
           {% for development in developments %}
@@ -80,9 +80,9 @@
               </div>
             </div>
           {% endfor %}
-       </div>
-     </div>
+        </div>
+      </div>
     </div>
-   
+
   </main>
 {% endblock %}
