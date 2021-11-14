@@ -11,7 +11,8 @@
 {% endblock headerupper %}
 
 {% block main %}
-  <div class="container">
+　<main role="main">
+  　<div class="container">
     <div class="page-container">
       <div class="single-portfolio-holder portfolio-type-2 alt-four">
         <div class="title section-title">
@@ -87,24 +88,61 @@
               <p>メディアファイル:
               <div class="pl-5">
                 {% for media in development.medias.all %}
-                  <p>ファイルタイプ: {{ media.get_type_display }}</p>
-                  <a href="{{ media.file.url }}">{{ media.file }}</a>
+                {% if media.get_type_display == '画像' %}
+                  <a href="{{ media.file.url }}" title="{{ media.get_type_display }}">
+                    <img class="media_file_show" src="{{ media.file.url }}" >
+                  </a>
+                {% elif media.get_type_display == '音声' %}
+                  <audio controls preload="metadata">
+                    <source src="{{ media.file.url }}">
+                  </audio>
+                  <a href="{{ media.file.url }}" download="{{ media.file }}">
+                    <button>ダウンロード</button>
+                  </a>
+                  <br>
+                {% elif media.get_type_display == '動画' %}
+                  <video class="media_file_show" controls preload="metadata">
+                    <source src="{{ media.file.url }}">
+                  </video>
+                  <br>
+                  <a href="{{ media.file.url }}" download="{{ media.file }}">
+                    <button>ダウンロード</button>
+                  </a>
+                {% elif media.get_type_display == 'zip' %}
+                  <a href="{{ media.file.url }}" download="{{ media.file }}">
+                    <button>Zipダウンロード</button>
+                  </a>
+                  <br>
+                {% endif %}
                 {% endfor %}
               </div>
               </p>
             </div>
             <div>
-              <p>リンク:
+              <p>リンク:</p>
               <div class="pl-5">
                 {% for link in development.links.all %}
-                  <p>リンクタイプ: {{ link.get_type_display }}</p>
-                  <a href="{{ link.link }}">{{ link.link }}</a>
+                  {% if link.get_type_display == 'Microsoft Store' %}
+                    <a href="{{ link.link }}" title="{{ link.get_type_display }}">
+                      <img src="{% static 'images/microsoftstore.svg' %}" width="120rem" height="60rem">
+                    </a>
+                  {% elif link.get_type_display == 'Apple Store' %}
+                    <a href="{{ link.link }}" title="{{ link.get_type_display }}">
+                      <img src="{% static 'icons/apple.svg' %}"
+                          width="120rem" height="60rem">
+                    </a>
+                  {% elif link.get_type_display == 'Google Play' %}
+                    <a href="{{ link.link }}" title="{{ link.get_type_display }}">
+                      <img src="{% static 'images/googleplay.svg' %}" width="120rem" height="60rem">
+                    </a>
+                  {% else %}
+                  {% endif %}
                 {% endfor %}
               </div>
-              </p>
             </div>
           </div>
         </div>
       </div>
     </div>
+　</main>
 {% endblock main %}
